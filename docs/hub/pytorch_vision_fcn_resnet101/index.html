@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      FCN-ResNet101 | PyTorch
+    
+  </title>
+  <meta property="og:title" content="PyTorch Korea User Group" />
+<meta
+  name="description"
+  property="og:description"
+  content="(Unofficial) Korean user community for PyTorch which is an open source machine learning framework that accelerates the path from research prototyping to production deployment."
+/>
+<meta property="og:url" content="https://www.pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="http://localhost:4000/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+</head>
+
+  <body class="hub hub-detail">
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="http://localhost:4000" aria-label="PyTorch"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr">커뮤니티</a>
+    </li>
+
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          
+            <a href="/hub/research-models"><</a>
+          
+        </span>
+        <h1>
+          FCN-ResNet101
+        </h1>
+
+        <div class="row">
+          <div class="col-md-6">
+            <p class="detail-lead">By Pytorch Team </p>
+          </div>
+
+          <div class="col-md-6">
+            <p class="detail-lead lead-summary">Fully-Convolutional Network model with a ResNet-101 backbone</p>
+            <a href="https://github.com/pytorch/vision/blob/master/torchvision/models/segmentation/fcn.py"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+            <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/pytorch_vision_fcn_resnet101.ipynb"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="/assets/images/deeplab1.png" data-image-name="deeplab1.png" class="featured-image img-fluid">
+              <img src="/assets/images/fcn2.png" data-image-name="fcn2.png" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'pytorch/vision:v0.9.0'</span><span class="p">,</span> <span class="s">'fcn_resnet101'</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>All pre-trained models expect input images normalized in the same way,
+i.e. mini-batches of 3-channel RGB images of shape <code class="language-plaintext highlighter-rouge">(N, 3, H, W)</code>, where <code class="language-plaintext highlighter-rouge">N</code> is the number of images, <code class="language-plaintext highlighter-rouge">H</code> and <code class="language-plaintext highlighter-rouge">W</code> are expected to be at least <code class="language-plaintext highlighter-rouge">224</code> pixels.
+The images have to be loaded in to a range of <code class="language-plaintext highlighter-rouge">[0, 1]</code> and then normalized using <code class="language-plaintext highlighter-rouge">mean = [0.485, 0.456, 0.406]</code>
+and <code class="language-plaintext highlighter-rouge">std = [0.229, 0.224, 0.225]</code>.</p>
+
+<p>The model returns an <code class="language-plaintext highlighter-rouge">OrderedDict</code> with two Tensors that are of the same height and width as the input Tensor, but with 21 classes.
+<code class="language-plaintext highlighter-rouge">output['out']</code> contains the semantic masks, and <code class="language-plaintext highlighter-rouge">output['aux']</code> contains the auxillary loss values per-pixel. In inference mode, <code class="language-plaintext highlighter-rouge">output['aux']</code> is not useful.
+So, <code class="language-plaintext highlighter-rouge">output['out']</code> is of shape <code class="language-plaintext highlighter-rouge">(N, 21, H, W)</code>. More documentation can be found <a href="https://pytorch.org/docs/stable/torchvision/models.html#object-detection-instance-segmentation-and-person-keypoint-detection">here</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Download an example image from the pytorch website
+</span><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="n">url</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="p">(</span><span class="s">"https://github.com/pytorch/hub/raw/master/images/dog.jpg"</span><span class="p">,</span> <span class="s">"dog.jpg"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span> <span class="n">urllib</span><span class="p">.</span><span class="n">URLopener</span><span class="p">().</span><span class="n">retrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span> <span class="n">urllib</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># sample execution (requires torchvision)
+</span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">transforms</span>
+<span class="n">input_image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">preprocess</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+    <span class="n">transforms</span><span class="p">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">]),</span>
+<span class="p">])</span>
+
+<span class="n">input_tensor</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
+<span class="n">input_batch</span> <span class="o">=</span> <span class="n">input_tensor</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># create a mini-batch as expected by the model
+</span>
+<span class="c1"># move the input and model to GPU for speed if available
+</span><span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">input_batch</span> <span class="o">=</span> <span class="n">input_batch</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="s">'cuda'</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="s">'cuda'</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_batch</span><span class="p">)[</span><span class="s">'out'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">output_predictions</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The output here is of shape <code class="language-plaintext highlighter-rouge">(21, H, W)</code>, and at each location, there are unnormalized probabilities corresponding to the prediction of each class.
+To get the maximum prediction of each class, and then use it for a downstream task, you can do <code class="language-plaintext highlighter-rouge">output_predictions = output.argmax(0)</code>.</p>
+
+<p>Here’s a small snippet that plots the predictions, with each color being assigned to each class (see the visualized image on the left).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># create a color pallette, selecting a color for each class
+</span><span class="n">palette</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">25</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">15</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">21</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">as_tensor</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">21</span><span class="p">)])[:,</span> <span class="bp">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">palette</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">(</span><span class="n">colors</span> <span class="o">%</span> <span class="mi">255</span><span class="p">).</span><span class="n">numpy</span><span class="p">().</span><span class="n">astype</span><span class="p">(</span><span class="s">"uint8"</span><span class="p">)</span>
+
+<span class="c1"># plot the semantic segmentation predictions of 21 classes in each color
+</span><span class="n">r</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">output_predictions</span><span class="p">.</span><span class="n">byte</span><span class="p">().</span><span class="n">cpu</span><span class="p">().</span><span class="n">numpy</span><span class="p">()).</span><span class="n">resize</span><span class="p">(</span><span class="n">input_image</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">r</span><span class="p">.</span><span class="n">putpalette</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="c1"># plt.show()
+</span></code></pre></div></div>
+
+<h3 id="model-description">Model Description</h3>
+
+<p>FCN-ResNet101 is constructed by a Fully-Convolutional Network model with a ResNet-101 backbone.
+The pre-trained models have been trained on a subset of COCO train2017, on the 20 categories that are present in the Pascal VOC dataset.</p>
+
+<p>Their accuracies of the pre-trained models evaluated on COCO val2017 dataset are listed below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model structure</th>
+      <th>Mean IOU</th>
+      <th>Global Pixelwise Accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>fcn_resnet101</td>
+      <td>63.7</td>
+      <td>91.9</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="resources">Resources</h3>
+
+<ul>
+  <li><a href="https://arxiv.org/abs/1605.06211">Fully Convolutional Networks for Semantic Segmentation</a></li>
+</ul>
+
+                <a href=""><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>공식 문서 (영어)</h2>
+        <p>PyTorch 공식 문서입니다.</p>
+        <a class="with-right-arrow" href="https://pytorch.org/docs" target="_blank">공식 문서로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 PyTorch 튜토리얼입니다.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나눠보세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="http://localhost:4000" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="https://pytorch.org">PyTorch 홈페이지 (공식)</a></li>
+          <li><a href="https://pytorch.org" target="_blank">공식 홈페이지</a></li>
+          <li><a href="https://pytorch.org/tutorials" target="_blank">공식 튜토리얼</a></li>
+          <li><a href="https://pytorch.org/docs" target="_blank">공식 문서</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">한국 사용자 모임</a></li>
+          <li><a href="/about">사이트 소개</a></li>
+          <li><a href="https://tutorials.pytorch.kr/">한국어 튜토리얼</a></li>
+          <li><a href="https://github.com/9bow/PyTorch-tutorials-kr" target="_blank">한국어 튜토리얼 저장소</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 PyTorch 한국어 사용자 커뮤니티로 Facebook, Inc와 관련이 없습니다. PyTorch, PyTorch 로고 및 모든 관련 표기는 Facebook, Inc의 상표입니다.</li>
+        <li>This site is a user community and is not related with Facebook, Inc. PyTorch, the PyTorch logo and any related marks are trademarks of Facebook, Inc.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156349638-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156349638-1');
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="http://localhost:4000" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/hub-detail.js"></script>

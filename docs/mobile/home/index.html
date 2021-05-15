@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      Home | PyTorch
+    
+  </title>
+  <meta property="og:title" content="PyTorch Korea User Group" />
+<meta
+  name="description"
+  property="og:description"
+  content="(Unofficial) Korean user community for PyTorch which is an open source machine learning framework that accelerates the path from research prototyping to production deployment."
+/>
+<meta property="og:url" content="https://www.pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="http://localhost:4000/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+</head>
+
+  <body class="mobile">
+    <div class="container-fluid header-holder mobile-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="http://localhost:4000" aria-label="PyTorch"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr">커뮤니티</a>
+    </li>
+
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background mobile-background"></div>
+
+    
+
+    <div class="jumbotron jumbotron-fluid on-dark-background">
+      <div class="container">
+        <h1>PyTorch Mobile</h1>
+
+        <p class="lead">End-to-end workflow from Training to Deployment for iOS and Android mobile devices</p>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container-fluid nav-menu-wrapper">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light main-content-menu">
+              <ul class="navbar-nav">
+                
+                  <li class="nav-item nav-select">
+                    <a class="nav-link" data-id="home" href="/mobile/home/">Home</a>
+                  </li>
+                
+                  <li class="nav-item nav-select">
+                    <a class="nav-link" data-id="ios" href="/mobile/ios/">iOS</a>
+                  </li>
+                
+                  <li class="nav-item nav-select">
+                    <a class="nav-link" data-id="android" href="/mobile/android/">Android</a>
+                  </li>
+                
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="sticky-top mobile-page-sidebar">
+  <p id="shortcuts-menu">Shortcuts</p>
+  <ul id="mobile-page-sidebar-list"></ul>
+</div>
+
+
+            </div>
+            <div class="col-md-8 offset-md-1">
+              <div class="article-wrapper" data-id="">
+                <article class="pytorch-article">
+                  <h1 id="pytorch-mobile">PyTorch Mobile</h1>
+
+<p>There is a growing need to execute ML models on edge devices to reduce latency, preserve privacy, and enable new interactive use cases.</p>
+
+<p>The PyTorch Mobile runtime beta release allows you to seamlessly go from training a model to deploying it, while staying entirely within the PyTorch ecosystem. It provides an end-to-end workflow that simplifies the research to production environment for mobile devices. In addition, it paves the way for privacy-preserving features via federated learning techniques.</p>
+
+<p>PyTorch Mobile is in beta stage right now, and is already in wide scale production use. It will soon be available as a stable release once the APIs are locked down.</p>
+
+<h2 id="key-features">Key features</h2>
+<ul>
+  <li>Available for <a href="/mobile/ios">iOS</a>, <a href="/mobile/android">Android</a> and Linux</li>
+  <li>Provides APIs that cover common preprocessing and integration tasks needed for incorporating ML in mobile applications</li>
+  <li>Support for tracing and scripting via TorchScript IR</li>
+  <li>Support for XNNPACK floating point kernel libraries for Arm CPUs</li>
+  <li>Integration of QNNPACK for 8-bit quantized kernels. Includes support for per-channel quantization, dynamic quantization and more</li>
+  <li>Build level optimization and selective compilation depending on the operators needed for user applications, i.e., the final binary size of the app is determined by the actual operators the app needs</li>
+  <li>Streamline model optimization via optimize_for_mobile</li>
+  <li>Support for hardware backends like GPU, DSP, and NPU will be available soon in Beta</li>
+</ul>
+
+<h2 id="prototypes">Prototypes</h2>
+<p>We have launched the following features in prototype, available in the PyTorch nightly releases, and would love to get your feedback on the <a href="https://discuss.pytorch.org/c/mobile/18">PyTorch forums</a>:</p>
+
+<ul>
+  <li>Runtime binary size reduction via our <a href="https://pytorch.org/tutorials/prototype/lite_interpreter.html">Lite Interpreter</a></li>
+  <li>GPU support on <a href="https://pytorch.org/tutorials/prototype/ios_gpu_workflow.html">iOS via Metal</a></li>
+  <li>GPU support on <a href="https://pytorch.org/tutorials/prototype/vulkan_workflow.html">Android via Vulkan</a></li>
+  <li>DSP and NPU support on Android via <a href="https://pytorch.org/tutorials/prototype/nnapi_mobilenetv2.html">Google NNAPI</a></li>
+</ul>
+
+<h2 id="deployment-workflow">Deployment workflow</h2>
+
+<p>A typical workflow from training to mobile deployment with the optional model optimization steps is outlined in the following figure.</p>
+<div class="text-center">
+  <img src="/assets/images/pytorch-mobile.png" width="100%" />
+</div>
+
+<h2 id="examples-to-get-you-started">Examples to get you started</h2>
+
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=amTepUIR93k">PyTorch Mobile Runtime for iOS</a></li>
+  <li><a href="https://www.youtube.com/watch?v=5Lxuu16_28o">PyTorch Mobile Runtime for Android</a></li>
+  <li><a href="https://pytorch.org/tutorials/recipes/ptmobile_recipes_summary.html">PyTorch Mobile Recipes in Tutorials</a></li>
+  <li><a href="https://pytorch.org/tutorials/beginner/deeplabv3_on_ios.html">Image Segmentation DeepLabV3 on iOS</a></li>
+  <li><a href="https://pytorch.org/tutorials/beginner/deeplabv3_on_android.html">Image Segmentation DeepLabV3 on Android</a></li>
+  <li><a href="https://github.com/pytorch/ios-demo-app/tree/master/D2Go">D2Go Object Detection on iOS</a></li>
+  <li><a href="https://github.com/pytorch/android-demo-app/tree/master/D2Go">D2Go Object Detection on Android</a></li>
+  <li><a href="https://github.com/pytorch/ios-demo-app/tree/master/TorchVideo">PyTorchVideo on iOS</a></li>
+  <li><a href="https://github.com/pytorch/android-demo-app/tree/master/TorchVideo">PyTorchVideo on Android</a></li>
+  <li><a href="https://github.com/pytorch/ios-demo-app/tree/master/SpeechRecognition">Speech Recognition on iOS</a></li>
+  <li><a href="https://github.com/pytorch/android-demo-app/tree/master/SpeechRecognition">Speech Recognition on Android</a></li>
+  <li><a href="https://github.com/pytorch/ios-demo-app/tree/master/QuestionAnswering">Question Answering on iOS</a></li>
+  <li><a href="https://github.com/pytorch/android-demo-app/tree/master/QuestionAnswering">Question Answering on Android</a></li>
+</ul>
+
+<h2 id="demo-apps">Demo apps</h2>
+
+<p>Our new demo apps also include examples of image segmentation, object detection, neural machine translation,
+question answering, and vision transformers. They are available on both iOS and Android:</p>
+
+<ul>
+  <li><a href="https://github.com/pytorch/ios-demo-app">iOS demo apps</a></li>
+  <li><a href="https://github.com/pytorch/android-demo-app">Android demo apps</a></li>
+</ul>
+
+<!-- Do not remove the below script -->
+
+<script page-id="home" src="/assets/menu-tab-selection.js"></script>
+
+
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>공식 문서 (영어)</h2>
+        <p>PyTorch 공식 문서입니다.</p>
+        <a class="with-right-arrow" href="https://pytorch.org/docs" target="_blank">공식 문서로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 PyTorch 튜토리얼입니다.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나눠보세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="http://localhost:4000" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="https://pytorch.org">PyTorch 홈페이지 (공식)</a></li>
+          <li><a href="https://pytorch.org" target="_blank">공식 홈페이지</a></li>
+          <li><a href="https://pytorch.org/tutorials" target="_blank">공식 튜토리얼</a></li>
+          <li><a href="https://pytorch.org/docs" target="_blank">공식 문서</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">한국 사용자 모임</a></li>
+          <li><a href="/about">사이트 소개</a></li>
+          <li><a href="https://tutorials.pytorch.kr/">한국어 튜토리얼</a></li>
+          <li><a href="https://github.com/9bow/PyTorch-tutorials-kr" target="_blank">한국어 튜토리얼 저장소</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 PyTorch 한국어 사용자 커뮤니티로 Facebook, Inc와 관련이 없습니다. PyTorch, PyTorch 로고 및 모든 관련 표기는 Facebook, Inc의 상표입니다.</li>
+        <li>This site is a user community and is not related with Facebook, Inc. PyTorch, the PyTorch logo and any related marks are trademarks of Facebook, Inc.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156349638-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156349638-1');
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="http://localhost:4000" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/mobile-page-sidebar.js"></script>

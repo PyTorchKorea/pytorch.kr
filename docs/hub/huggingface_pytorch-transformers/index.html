@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      PyTorch-Transformers | PyTorch
+    
+  </title>
+  <meta property="og:title" content="PyTorch Korea User Group" />
+<meta
+  name="description"
+  property="og:description"
+  content="(Unofficial) Korean user community for PyTorch which is an open source machine learning framework that accelerates the path from research prototyping to production deployment."
+/>
+<meta property="og:url" content="https://www.pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="http://localhost:4000/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+</head>
+
+  <body class="hub hub-detail">
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="http://localhost:4000" aria-label="PyTorch"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr">커뮤니티</a>
+    </li>
+
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          
+            <a href="/hub/research-models"><</a>
+          
+        </span>
+        <h1>
+          PyTorch-Transformers
+        </h1>
+
+        <div class="row">
+          <div class="col-md-6">
+            <p class="detail-lead">By HuggingFace Team </p>
+          </div>
+
+          <div class="col-md-6">
+            <p class="detail-lead lead-summary">PyTorch implementations of popular NLP Transformers</p>
+            <a href="https://github.com/huggingface/pytorch-transformers.git"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+            <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/huggingface_pytorch-transformers.ipynb"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="/assets/images/no-image" data-image-name="no-image" class="featured-image img-fluid">
+              <img src="/assets/images/no-image" data-image-name="no-image" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                <h1 id="model-description">Model Description</h1>
+
+<p>PyTorch-Transformers (formerly known as <code class="language-plaintext highlighter-rouge">pytorch-pretrained-bert</code>) is a library of state-of-the-art pre-trained models for Natural Language Processing (NLP).</p>
+
+<p>The library currently contains PyTorch implementations, pre-trained model weights, usage scripts and conversion utilities for the following models:</p>
+
+<ol>
+  <li><strong><a href="https://github.com/google-research/bert">BERT</a></strong> (from Google) released with the paper <a href="https://arxiv.org/abs/1810.04805">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a> by Jacob Devlin, Ming-Wei Chang, Kenton Lee and Kristina Toutanova.</li>
+  <li><strong><a href="https://github.com/openai/finetune-transformer-lm">GPT</a></strong> (from OpenAI) released with the paper <a href="https://blog.openai.com/language-unsupervised/">Improving Language Understanding by Generative Pre-Training</a> by Alec Radford, Karthik Narasimhan, Tim Salimans and Ilya Sutskever.</li>
+  <li><strong><a href="https://blog.openai.com/better-language-models/">GPT-2</a></strong> (from OpenAI) released with the paper <a href="https://blog.openai.com/better-language-models/">Language Models are Unsupervised Multitask Learners</a> by Alec Radford<em>, Jeffrey Wu</em>, Rewon Child, David Luan, Dario Amodei** and Ilya Sutskever**.</li>
+  <li><strong><a href="https://github.com/kimiyoung/transformer-xl">Transformer-XL</a></strong> (from Google/CMU) released with the paper <a href="https://arxiv.org/abs/1901.02860">Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context</a> by Zihang Dai<em>, Zhilin Yang</em>, Yiming Yang, Jaime Carbonell, Quoc V. Le, Ruslan Salakhutdinov.</li>
+  <li><strong><a href="https://github.com/zihangdai/xlnet/">XLNet</a></strong> (from Google/CMU) released with the paper <a href="https://arxiv.org/abs/1906.08237">​XLNet: Generalized Autoregressive Pretraining for Language Understanding</a> by Zhilin Yang<em>, Zihang Dai</em>, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le.</li>
+  <li><strong><a href="https://github.com/facebookresearch/XLM/">XLM</a></strong> (from Facebook) released together with the paper <a href="https://arxiv.org/abs/1901.07291">Cross-lingual Language Model Pretraining</a> by Guillaume Lample and Alexis Conneau.</li>
+  <li><strong><a href="https://github.com/pytorch/fairseq/tree/master/examples/roberta">RoBERTa</a></strong> (from Facebook), released together with the paper a <a href="https://arxiv.org/abs/1907.11692">Robustly Optimized BERT Pretraining Approach</a> by Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, Veselin Stoyanov.</li>
+  <li><strong><a href="https://github.com/huggingface/pytorch-transformers/tree/master/examples/distillation">DistilBERT</a></strong> (from HuggingFace), released together with the blogpost <a href="https://medium.com/huggingface/distilbert-8cf3380435b">Smaller, faster, cheaper, lighter: Introducing DistilBERT, a distilled version of BERT</a> by Victor Sanh, Lysandre Debut and Thomas Wolf.</li>
+</ol>
+
+<p>The components available here are based on the <code class="language-plaintext highlighter-rouge">AutoModel</code> and <code class="language-plaintext highlighter-rouge">AutoTokenizer</code> classes of the <code class="language-plaintext highlighter-rouge">pytorch-transformers</code> library.</p>
+
+<h1 id="requirements">Requirements</h1>
+
+<p>Unlike most other PyTorch Hub models, BERT requires a few additional Python packages to be installed.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>tqdm boto3 requests regex sentencepiece sacremoses
+</code></pre></div></div>
+
+<h1 id="usage">Usage</h1>
+
+<p>The available methods are the following:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">config</code>: returns a configuration item corresponding to the specified model or pth.</li>
+  <li><code class="language-plaintext highlighter-rouge">tokenizer</code>: returns a tokenizer corresponding to the specified model or path</li>
+  <li><code class="language-plaintext highlighter-rouge">model</code>: returns a model corresponding to the specified model or path</li>
+  <li><code class="language-plaintext highlighter-rouge">modelForCausalLM</code>: returns a model with a language modeling head corresponding to the specified model or path</li>
+  <li><code class="language-plaintext highlighter-rouge">modelForSequenceClassification</code>: returns a model with a sequence classifier corresponding to the specified model or path</li>
+  <li><code class="language-plaintext highlighter-rouge">modelForQuestionAnswering</code>: returns a model with  a question answering head corresponding to the specified model or path</li>
+</ul>
+
+<p>All these methods share the following argument: <code class="language-plaintext highlighter-rouge">pretrained_model_or_path</code>, which is a string identifying a pre-trained model or path from which an instance will be returned. There are several checkpoints available for each model, which are detailed below:</p>
+
+<p>The available models are listed on the <a href="https://huggingface.co/pytorch-transformers/pretrained_models.html">pytorch-transformers documentation, pre-trained models section</a>.</p>
+
+<h1 id="documentation">Documentation</h1>
+
+<p>Here are a few examples detailing the usage of each available method.</p>
+
+<h2 id="tokenizer">Tokenizer</h2>
+
+<p>The tokenizer object allows the conversion from character strings to tokens understood by the different models. Each model has its own tokenizer, and some tokenizing methods are different across tokenizers. The complete documentation can be found <a href="https://huggingface.co/pytorch-transformers/main_classes/tokenizer.html">here</a>.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>    <span class="c1"># Download vocabulary from S3 and cache.
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'./test/bert_saved_model/'</span><span class="p">)</span>  <span class="c1"># E.g. tokenizer was saved using `save_pretrained('./test/saved_model/')`
+</span></code></pre></div></div>
+
+<h2 id="models">Models</h2>
+
+<p>The model object is a model instance inheriting from a <code class="language-plaintext highlighter-rouge">nn.Module</code>. Each model is accompanied by their saving/loading methods, either from a local file or directory, or from a pre-trained configuration (see previously described <code class="language-plaintext highlighter-rouge">config</code>). Each model works differently, a complete overview of the different models can be found in the <a href="https://huggingface.co/pytorch-transformers/pretrained_models.html">documentation</a>.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'./test/bert_model/'</span><span class="p">)</span>  <span class="c1"># E.g. model was saved using `save_pretrained('./test/saved_model/')`
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attentions</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># Update configuration during loading
+</span><span class="k">assert</span> <span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">output_attentions</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="c1"># Loading from a TF checkpoint file instead of a PyTorch model (slower)
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">.</span><span class="n">from_json_file</span><span class="p">(</span><span class="s">'./tf_model/bert_tf_model_config.json'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'./tf_model/bert_tf_checkpoint.ckpt.index'</span><span class="p">,</span> <span class="n">from_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="models-with-a-language-modeling-head">Models with a language modeling head</h2>
+
+<p>Previously mentioned <code class="language-plaintext highlighter-rouge">model</code> instance with an additional language modeling head.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/transformers'</span><span class="p">,</span> <span class="s">'modelForCausalLM'</span><span class="p">,</span> <span class="s">'gpt2'</span><span class="p">)</span>    <span class="c1"># Download model and configuration from huggingface.co and cache.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/transformers'</span><span class="p">,</span> <span class="s">'modelForCausalLM'</span><span class="p">,</span> <span class="s">'./test/saved_model/'</span><span class="p">)</span>  <span class="c1"># E.g. model was saved using `save_pretrained('./test/saved_model/')`
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/transformers'</span><span class="p">,</span> <span class="s">'modelForCausalLM'</span><span class="p">,</span> <span class="s">'gpt2'</span><span class="p">,</span> <span class="n">output_attentions</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># Update configuration during loading
+</span><span class="k">assert</span> <span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">output_attentions</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="c1"># Loading from a TF checkpoint file instead of a PyTorch model (slower)
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">'./tf_model/gpt_tf_model_config.json'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/transformers'</span><span class="p">,</span> <span class="s">'modelForCausalLM'</span><span class="p">,</span> <span class="s">'./tf_model/gpt_tf_checkpoint.ckpt.index'</span><span class="p">,</span> <span class="n">from_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="models-with-a-sequence-classification-head">Models with a sequence classification head</h2>
+
+<p>Previously mentioned <code class="language-plaintext highlighter-rouge">model</code> instance  with an additional sequence classification head.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'./test/bert_model/'</span><span class="p">)</span>  <span class="c1"># E.g. model was saved using `save_pretrained('./test/saved_model/')`
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># Update configuration during loading
+</span><span class="k">assert</span> <span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="c1"># Loading from a TF checkpoint file instead of a PyTorch model (slower)
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">.</span><span class="n">from_json_file</span><span class="p">(</span><span class="s">'./tf_model/bert_tf_model_config.json'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'./tf_model/bert_tf_checkpoint.ckpt.index'</span><span class="p">,</span> <span class="n">from_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="models-with-a-question-answering-head">Models with a question answering head</h2>
+
+<p>Previously mentioned <code class="language-plaintext highlighter-rouge">model</code> instance  with an additional question answering head.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>    <span class="c1"># Download model and configuration from S3 and cache.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'./test/bert_model/'</span><span class="p">)</span>  <span class="c1"># E.g. model was saved using `save_pretrained('./test/saved_model/')`
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># Update configuration during loading
+</span><span class="k">assert</span> <span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="c1"># Loading from a TF checkpoint file instead of a PyTorch model (slower)
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">.</span><span class="n">from_json_file</span><span class="p">(</span><span class="s">'./tf_model/bert_tf_model_config.json'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'./tf_model/bert_tf_checkpoint.ckpt.index'</span><span class="p">,</span> <span class="n">from_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>The configuration is optional. The configuration object holds information concerning the model, such as the number of heads/layers, if the model should output attentions or hidden states, or if it should be adapted for TorchScript. Many parameters are available, some specific to each model. The complete documentation can be found <a href="https://huggingface.co/pytorch-transformers/main_classes/configuration.html">here</a>.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>  <span class="c1"># Download configuration from S3 and cache.
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'./test/bert_saved_model/'</span><span class="p">)</span>  <span class="c1"># E.g. config (or model) was saved using `save_pretrained('./test/saved_model/')`
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'./test/bert_saved_model/my_configuration.json'</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">config</span><span class="p">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="n">config</span><span class="p">,</span> <span class="n">unused_kwargs</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">return_unused_kwargs</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">config</span><span class="p">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="k">assert</span> <span class="n">unused_kwargs</span> <span class="o">==</span> <span class="p">{</span><span class="s">'foo'</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+
+<span class="c1"># Using the configuration with a model
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>
+<span class="n">config</span><span class="p">.</span><span class="n">output_attentions</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">config</span><span class="p">.</span><span class="n">output_hidden_states</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="c1"># Model will now output attentions and hidden states as well
+</span>
+</code></pre></div></div>
+
+<h1 id="example-usage">Example Usage</h1>
+
+<p>Here is an example on how to tokenize the input text to be fed as input to a BERT model, and then get the hidden states computed by such a model or predict masked tokens using language modeling BERT model.</p>
+
+<h2 id="first-tokenize-the-input">First, tokenize the input</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'bert-base-cased'</span><span class="p">)</span>
+
+<span class="n">text_1</span> <span class="o">=</span> <span class="s">"Who was Jim Henson ?"</span>
+<span class="n">text_2</span> <span class="o">=</span> <span class="s">"Jim Henson was a puppeteer"</span>
+
+<span class="c1"># Tokenized input with special tokens around it (for BERT: [CLS] at the beginning and [SEP] at the end)
+</span><span class="n">indexed_tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text_1</span><span class="p">,</span> <span class="n">text_2</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="using-bertmodel-to-encode-the-input-sentence-in-a-sequence-of-last-layer-hidden-states">Using <code class="language-plaintext highlighter-rouge">BertModel</code> to encode the input sentence in a sequence of last layer hidden-states</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Define sentence A and B indices associated to 1st and 2nd sentences (see paper)
+</span><span class="n">segments_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Convert inputs to PyTorch tensors
+</span><span class="n">segments_tensors</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">segments_ids</span><span class="p">])</span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'bert-base-cased'</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">encoded_layers</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="using-modelformaskedlm-to-predict-a-masked-token-with-bert">Using <code class="language-plaintext highlighter-rouge">modelForMaskedLM</code> to predict a masked token with BERT</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Mask a token that we will try to predict back with `BertForMaskedLM`
+</span><span class="n">masked_index</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">indexed_tokens</span><span class="p">[</span><span class="n">masked_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">mask_token_id</span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span>
+
+<span class="n">masked_lm_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForMaskedLM'</span><span class="p">,</span> <span class="s">'bert-base-cased'</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">masked_lm_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">)</span>
+
+<span class="c1"># Get the predicted token
+</span><span class="n">predicted_index</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="n">masked_index</span><span class="p">].</span><span class="n">item</span><span class="p">()</span>
+<span class="n">predicted_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">convert_ids_to_tokens</span><span class="p">([</span><span class="n">predicted_index</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">predicted_token</span> <span class="o">==</span> <span class="s">'Jim'</span>
+</code></pre></div></div>
+
+<h2 id="using-modelforquestionanswering-to-do-question-answering-with-bert">Using <code class="language-plaintext highlighter-rouge">modelForQuestionAnswering</code> to do question answering with BERT</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">question_answering_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'bert-large-uncased-whole-word-masking-finetuned-squad'</span><span class="p">)</span>
+<span class="n">question_answering_tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'bert-large-uncased-whole-word-masking-finetuned-squad'</span><span class="p">)</span>
+
+<span class="c1"># The format is paragraph first and then question
+</span><span class="n">text_1</span> <span class="o">=</span> <span class="s">"Jim Henson was a puppeteer"</span>
+<span class="n">text_2</span> <span class="o">=</span> <span class="s">"Who was Jim Henson ?"</span>
+<span class="n">indexed_tokens</span> <span class="o">=</span> <span class="n">question_answering_tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text_1</span><span class="p">,</span> <span class="n">text_2</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">segments_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">segments_tensors</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">segments_ids</span><span class="p">])</span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span>
+
+<span class="c1"># Predict the start and end positions logits
+</span><span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">question_answering_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">)</span>
+
+<span class="c1"># get the highest prediction
+</span><span class="n">answer</span> <span class="o">=</span> <span class="n">question_answering_tokenizer</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">indexed_tokens</span><span class="p">[</span><span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="n">start_logits</span><span class="p">):</span><span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="n">end_logits</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">"puppeteer"</span>
+
+<span class="c1"># Or get the total loss which is the sum of the CrossEntropy loss for the start and end token positions (set model to train mode before if used for training)
+</span><span class="n">start_positions</span><span class="p">,</span> <span class="n">end_positions</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">12</span><span class="p">]),</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">14</span><span class="p">])</span>
+<span class="n">multiple_choice_loss</span> <span class="o">=</span> <span class="n">question_answering_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">,</span> <span class="n">start_positions</span><span class="o">=</span><span class="n">start_positions</span><span class="p">,</span> <span class="n">end_positions</span><span class="o">=</span><span class="n">end_positions</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="using-modelforsequenceclassification-to-do-paraphrase-classification-with-bert">Using <code class="language-plaintext highlighter-rouge">modelForSequenceClassification</code> to do paraphrase classification with BERT</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sequence_classification_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'bert-base-cased-finetuned-mrpc'</span><span class="p">)</span>
+<span class="n">sequence_classification_tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'bert-base-cased-finetuned-mrpc'</span><span class="p">)</span>
+
+<span class="n">text_1</span> <span class="o">=</span> <span class="s">"Jim Henson was a puppeteer"</span>
+<span class="n">text_2</span> <span class="o">=</span> <span class="s">"Who was Jim Henson ?"</span>
+<span class="n">indexed_tokens</span> <span class="o">=</span> <span class="n">sequence_classification_tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text_1</span><span class="p">,</span> <span class="n">text_2</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">segments_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">segments_tensors</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">segments_ids</span><span class="p">])</span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span>
+
+<span class="c1"># Predict the sequence classification logits
+</span><span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">seq_classif_logits</span> <span class="o">=</span> <span class="n">sequence_classification_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">)</span>
+
+<span class="n">predicted_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">seq_classif_logits</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="n">item</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="n">predicted_labels</span> <span class="o">==</span> <span class="mi">0</span>  <span class="c1"># In MRPC dataset this means the two sentences are not paraphrasing each other
+</span>
+<span class="c1"># Or get the sequence classification loss (set model to train mode before if used for training)
+</span><span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">seq_classif_loss</span> <span class="o">=</span> <span class="n">sequence_classification_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+</code></pre></div></div>
+
+                <a href=""><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>공식 문서 (영어)</h2>
+        <p>PyTorch 공식 문서입니다.</p>
+        <a class="with-right-arrow" href="https://pytorch.org/docs" target="_blank">공식 문서로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 PyTorch 튜토리얼입니다.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나눠보세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="http://localhost:4000" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="https://pytorch.org">PyTorch 홈페이지 (공식)</a></li>
+          <li><a href="https://pytorch.org" target="_blank">공식 홈페이지</a></li>
+          <li><a href="https://pytorch.org/tutorials" target="_blank">공식 튜토리얼</a></li>
+          <li><a href="https://pytorch.org/docs" target="_blank">공식 문서</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">한국 사용자 모임</a></li>
+          <li><a href="/about">사이트 소개</a></li>
+          <li><a href="https://tutorials.pytorch.kr/">한국어 튜토리얼</a></li>
+          <li><a href="https://github.com/9bow/PyTorch-tutorials-kr" target="_blank">한국어 튜토리얼 저장소</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 PyTorch 한국어 사용자 커뮤니티로 Facebook, Inc와 관련이 없습니다. PyTorch, PyTorch 로고 및 모든 관련 표기는 Facebook, Inc의 상표입니다.</li>
+        <li>This site is a user community and is not related with Facebook, Inc. PyTorch, the PyTorch logo and any related marks are trademarks of Facebook, Inc.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-156349638-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-156349638-1');
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="http://localhost:4000" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/hub-detail.js"></script>
