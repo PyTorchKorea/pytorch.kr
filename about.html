@@ -1,0 +1,69 @@
+---
+layout: default
+title: 소개
+permalink: about/
+background-class: about-background
+body-class: features
+---
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>반갑습니다!</h1>
+
+        <p class="lead">파이토치 한국 사용자 모임은 한국 사용자를 위한 비공식 / 비영리 사용자 모임입니다.</p>
+
+        <a href="{{ site.baseurl }}/get-started" class="btn btn-lg with-right-arrow btn-white" data-cta="get-started">
+            시작하기
+        </a>
+    </div>
+</div>
+
+{% assign about_blocks = site.about | sort: 'order' %}
+
+<div class="main-content-wrapper">
+  <div class="main-content">
+    <div class="container">
+      <!-- START CONTENT -->
+
+      {% for about in about_blocks %}
+        <div class="row features-row">
+        {% capture odd_or_even %}{% cycle 'odd', 'even' %}{% endcapture %}
+
+        {% if odd_or_even == 'odd' %}
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               {{ about.snippet | markdownify }}
+             </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>{{ about.title }}</h3>
+              {{ about.content }}
+            </div>
+          </div>
+        {% else %}
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>{{ about.title }}</h3>
+              {{ about.content }}
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               {{ about.snippet | markdownify }}
+             </div>
+            </div>
+          </div>
+        {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% include quick_start_module.html %}

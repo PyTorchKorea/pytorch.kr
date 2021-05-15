@@ -1,0 +1,275 @@
+.get-started article {
+  margin-bottom: rem(80px);
+}
+
+.get-started .quick-start-guides {
+  ul {
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+}
+
+.get-started .main-background {
+  height: 275px;
+
+  @include desktop {
+    height: 380px;
+  }
+}
+
+.get-started .main-content-wrapper {
+  margin-top: 275px;
+  @include desktop {
+    margin-top: 260px + $desktop_header_height;
+  }
+}
+
+.get-started .jumbotron {
+  height: 190px;
+  @include desktop {
+    height: 260px;
+  }
+}
+
+.get-started .main-content .navbar {
+  background-color: #f3f4f7;
+
+  padding-left: 0;
+  padding-bottom: 0;
+  padding-top: 0;
+
+  @media (min-width: 992px) {
+    li:first-of-type {
+      padding-left: rem(55px);
+    }
+
+    .nav-item {
+      padding: 2rem;
+      cursor: pointer;
+    }
+
+    .nav-link {
+      position: relative;
+      top: 10%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .nav-select {
+    background-color: $white;
+    .nav-link {
+      color: $orange;
+      font-weight: 500;
+    }
+  }
+
+  .nav-link {
+    font-size: rem(18px);
+    color: #8c8c8c;
+    @include desktop {
+      margin-left: rem(30px);
+    }
+    &:hover {
+      color: $orange;
+    }
+  }
+
+  .get-started-nav-link {
+    padding-left: rem(20px);
+    padding-right: rem(20px);
+
+    @include desktop {
+      padding-left: rem(30px);
+      padding-right: rem(30px);
+    }
+  }
+
+  .nav-item {
+    padding-top: rem(15px);
+    padding-bottom: rem(15px);
+    @include desktop {
+      padding-bottom: 0;
+      padding-top: 2rem;
+    }
+    @include small-desktop {
+      padding-bottom: 0;
+      padding-top: 2rem;
+    }
+    @media (max-width: 990px) {
+      padding-bottom: rem(10px);
+      padding-top: 1rem;
+    }
+  }
+
+  .navbar-toggler {
+    margin-left: rem(40px);
+  }
+}
+
+.get-started .main-content {
+  padding-top: 0;
+  @include desktop {
+    padding-top: 1.9rem;
+  }
+}
+
+.get-started .quick-start-module {
+  padding-bottom: 0;
+  padding-top: 0;
+  background-color: $white;
+
+  .option,
+  #command {
+    border: 2px solid $white;
+    background: $light_grey;
+  }
+
+  .title-block {
+    border: 2px solid $white;
+  }
+
+  .selected {
+    background-color: $orange;
+  }
+
+  h1 {
+    font-size: rem(32px);
+    letter-spacing: 1.78px;
+    line-height: rem(40px);
+    text-transform: uppercase;
+    margin-bottom: rem(24px);
+  }
+}
+
+.get-started .nav-menu-wrapper {
+  background-color: $light_grey;
+}
+
+.get-started .navbar-nav {
+  flex-direction: row;
+}
+
+#installation .os {
+  display: none;
+}
+
+#installation .selected {
+  display: block;
+}
+
+#cloud .platform {
+  display: none;
+}
+
+#cloud .selected {
+  display: block;
+}
+
+.screencast {
+  iframe {
+    width: 100% !important;
+  }
+  display: none;
+}
+
+.get-started {
+  .quick-starts {
+    .row.ptbuild,
+    .row.os,
+    .row.package,
+    .row.language,
+    .row.cuda {
+      margin-bottom: rem(20px);
+      @include desktop {
+        margin-bottom: 0;
+      }
+    }
+
+    @include small-desktop {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    @include desktop {
+      margin-bottom: rem(40px);
+
+      .row {
+        margin-bottom: 0;
+      }
+    }
+
+    @include max-width-desktop {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.get-started .get-started-locally-sidebar {
+  padding-top: rem(40px);
+  padding-bottom: rem(40px);
+  top: 15%;
+
+  @include desktop {
+    padding-top: 0;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    list-style-type: none;
+    line-height: 36px;
+
+    a {
+      color: #8c8c8c;
+      &.active,
+      &:hover {
+        color: $orange;
+      }
+    }
+
+    .subitem {
+      padding-left: rem(20px);
+    }
+  }
+
+  li.subitem {
+    padding-left: rem(20px);
+  }
+}
+
+.cloud-nav {
+  display: none;
+}
+
+.get-started .get-started-cloud-sidebar {
+  padding-top: rem(50px);
+  padding-bottom: rem(40px);
+  top: 15%;
+
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    list-style-type: none;
+    line-height: 36px;
+
+    a {
+      color: #8c8c8c;
+      &.active,
+      &:hover {
+        color: $orange;
+      }
+    }
+
+    .subitem {
+      padding-left: rem(20px);
+    }
+  }
+
+  li.subitem {
+    padding-left: rem(20px);
+  }
+}

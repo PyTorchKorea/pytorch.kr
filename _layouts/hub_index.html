@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body class="{{ page.body-class }} hub-index">
+    {% include header.html %}
+
+    <div class="main-background {{ page.background-class }} hub-index-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1>
+          <span id="hub-header">PyTorch</span> <span id="hub-sub-header"></span>Hub</span> <br>
+          {{ page.title }}
+        </h1>
+
+        <p class="lead">{{ page.summary }}</p>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <!-- START CONTENT -->
+          <div class="row" id="model-row">
+            <div class="col-md-12 hub-column">
+              {{content}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+  </body>
+</html>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="{{ site.baseurl }}/assets/hub-search-bar.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+{% if page.compact == true %}
+
+  <div id="filter-script" data-list-id="hub-cards" data-display-count="100" data-pagination="false"></div>
+
+{% else %}
+  <div id="filter-script" data-list-id="hub-cards" data-display-count="12" data-pagination="true"></div>
+
+{% endif %}
+
+<script star-count-call-date="hubStarCountCallDate" star-count-data="hubStarCountData" src="{{ site.baseurl }}/assets/github-stars.js"></script>

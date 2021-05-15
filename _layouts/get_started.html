@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body class="{{ page.body-class }}">
+    {% include header.html %}
+
+    <div class="main-background {{ page.background-class }}"></div>
+
+    {% assign items = site.get_started | where: "published",true | sort: "order" %}
+
+    <div class="jumbotron jumbotron-fluid on-dark-background">
+      <div class="container">
+        <h1>시작하기</h1>
+
+        <p class="lead">사용 환경을 선택하고 명령을 실행해서 PyTorch를 직접 설치하시거나, <br />클라우드 플랫폼에서 빠르게 시작하실 수 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container-fluid nav-menu-wrapper">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light main-content-menu">
+              <ul class="navbar-nav">
+                {% for item in items %}
+                  <li class="nav-item nav-select">
+                    <a class="nav-link get-started-nav-link" data-id="{{ item.slug }}" href="{{ site.baseurl }}{{ item.permalink }}">{{ item.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="container">
+          {% if page.get-started-locally == true %}
+
+            {% include get_started_locally.html %}
+
+          {% elsif page.get-started-via-cloud == true %}
+
+            {% include get_started_via_cloud.html %}
+
+          {% else %}
+
+            <div class="article-wrapper" data-id="{{ item.slug }}">
+              <article class="pytorch-article">
+                {{ content }}
+              </article>
+            </div>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+  </body>
+</html>
+
+<script src="{{ site.baseurl }}/assets/get-started-sidebar.js"></script>

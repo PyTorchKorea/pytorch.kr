@@ -1,0 +1,36 @@
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="{{ site.url }}{{ site.baseurl }}" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item {% if current[1] == 'get-started' %}active{% endif %}">
+          <a href="{{ site.baseurl }}/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="{{ site.external_urls.tutorials }}">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="{{ site.baseurl }}/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="{{ site.external_urls.community }}">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>

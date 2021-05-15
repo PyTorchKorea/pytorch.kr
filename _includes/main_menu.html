@@ -1,0 +1,22 @@
+<div class="main-menu">
+  <ul>
+    <li class="main-menu-item {% if current[1] == 'get-started' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="{{ site.external_urls.tutorials }}">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item {% if current[1] == 'hub' %}active{% endif %}">
+      <a href="{{ site.baseurl }}/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="{{ site.external_urls.community }}">커뮤니티</a>
+    </li>
+
+  </ul>
+</div>
+
+<script src="{{ site.baseurl }}/assets/main-menu-dropdown.js"></script>

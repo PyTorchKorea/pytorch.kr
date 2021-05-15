@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body class="{{ page.body-class }} hub-detail">
+    {% include header.html %}
+
+    <div class="main-background {{ page.background-class }} hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          {% if page.category == 'researchers' %}
+            <a href="{{ site.baseurl }}/hub/research-models"><</a>
+          {% else %}
+            <a href="{{ site.baseurl }}/hub/developer-models"><</a>
+          {% endif %}
+        </span>
+        <h1>
+          {{ page.title }}
+        </h1>
+
+        <div class="row">
+          <div class="col-md-6">
+            <p class="detail-lead">By {{ page.author }} </p>
+          </div>
+
+          <div class="col-md-6">
+            <p class="detail-lead lead-summary">{{ page.summary }}</p>
+            <a href="{{ page.github-link }}"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+            <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/{{ page.path | replace: "_hub", "assets/hub" | replace: ".md", ".ipynb" }}"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="{{ site.baseurl }}/assets/images/{{ page.featured_image_1 }}" data-image-name="{{ page.featured_image_1 }}" class="featured-image img-fluid">
+              <img src="{{ site.baseurl }}/assets/images/{{ page.featured_image_2 }}" data-image-name="{{ page.featured_image_2 }}" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                {{ content }}
+                <a href="{{ site.external_urls.hub_issues }}"><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include footer.html %}
+  </body>
+</html>
+
+<script src="{{ site.baseurl }}/assets/hub-detail.js"></script>

@@ -1,0 +1,22 @@
+<div>
+  <iframe
+    class="col-12"
+    id="iframe-id"
+    src="https://docs.google.com/forms/d/e/1FAIpQLSd7gnpQggoetUnn2DvCy7teNn_35rDH9Xnlsr-4jkUJYHdEGg/viewform?embedded=true"
+    height="780"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0">
+    Loading…
+  </iframe>
+</div>
+
+<script>
+  var load = 0;
+  $('#iframe-id').on('load', function() {
+    load++;
+    if (load > 1) {
+      window.location.href = "{{site.baseurl}}/deep-learning-with-pytorch-thank-you";
+    }
+  })
+</script>

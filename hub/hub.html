@@ -1,0 +1,206 @@
+---
+layout: default
+title: 파이토치 허브
+permalink: hub/
+background-class: hub-background
+body-class: hub
+---
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>
+      <span id="hub-header">파이토치</span> <span id="hub-sub-header">허브</span>
+    </h1>
+
+    <p class="lead">
+      사전 학습된 모델 저장소에 모델을 검색하고 공개합니다.<br />
+      <a href="#model-row">연구자</a>를 위한 모델을 확인하거나, <a href="{{ site.external_urls.org }}/docs/stable/hub.html" target="_blank">어떻게 사용하는지</a> 알아보세요.
+    </p>
+    <p class="lead"><a href="{{ site.external_urls.hub_template }}">모델 기여하기</a></p>
+    <p class="hub-release-message">* 현재는 베타입니다 - 앞으로 몇 달 동안 피드백을 수집하고 PyTorch Hub를 개선 예정입니다.</p>
+
+  </div>
+</div>
+
+<div class="main-content-wrapper">
+  <div class="main-content">
+    <div class="container">
+      <!-- START CONTENT -->
+      <div class="row" id="model-row">
+        <div class="col-md-12 hub-column">
+          <h3 class="research-hub-title">연구자용 —</h3>
+          <h3 class="research-hub-sub-title">최신의 연구들을 찾아보고 모델을 확장하세요.</h3>
+
+          <nav class="navbar navbar-expand-lg navbar-light research-menu col-12">
+            {% include hub_model_tags.html category="researchers" %}
+            <div id="hub-icons" class="hub-select-container hub-sort-main col-5">
+              {% include hub_sort.html %}
+            </div>
+            {% include hub_search.html %}
+          </nav>
+
+          <hr class="hub-divider">
+
+          <div id="hub-index-cards">
+            <div class="list row hub-cards-wrapper cards-left">
+              {% assign hub = site.hub | where: "category", "researchers" | sort: "order" %}
+
+              {% for item in hub %}
+                <div class="col-md-6 research-hub-card-wrapper" data-item-count="{{ forloop.index }}" data-tags="{{ item.tags | join: ',' }}" data-id="{{ item.github-id }}">
+                  <div class="card hub-card">
+                    <a href="{{ site.baseurl }}{{ item.url }}">
+                      <div class="card-body">
+                        <div class="hub-card-title-container">
+                          <ul class="star-list">
+                            <li class="card-title">{{ item.title | truncate: 25 }}</li>
+                            <div class="icon-count-container">
+                              <li>
+                                <li><img class="github-logo" src="/assets/images/logo-github.svg"></li>
+                              </li>
+                              <li class="github-stars-count"></li>
+                              <li class="github-stars-count-whole-number"></li>
+                            </div>
+                          </ul>
+                        </div>
+                        <p class="card-summary">{{ item.summary | truncate: 150 }}</p>
+                        <div class="hub-image">
+                          <img src="{{ site.baseurl }}/assets/images/{{ item.image }}">
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              {% endfor %}
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 buttons-container">
+              <a class="all-models-button" id="research-models" href="{{ site.baseurl }}/hub/research-models">모든 모델 보기 ({{ hub | size}})</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-md-6 hub-column">
+          <h3 class="research-hub-title">For Developers —</h3>
+          <h3 class="research-hub-sub-title">Get plug & play models<br> to accelerate <br> ML development</h3>
+
+          <h5 class="coming-soon">Coming Soon</h5>
+          <!--
+          <nav class="navbar navbar-expand-lg navbar-light development-menu">
+            <a id="dropdownFilter" data-toggle="dropdown" data-target="#dropdownFilterRight" >
+              Filter <img src="{{ site.baseurl }}/assets/images/filter-arrow.svg">
+            </a>
+
+            <div class="dropdown-menu" id="dropdownFilterRight">
+              {% assign all_tags = site.hub | where: "category", "developers" | map: "tags" | join: ',' | split: ',' | uniq | sort %}
+
+              <div class="hub-filter-menu">
+                <ul>
+                  <li>
+                    <a class="right-hub-filter" data-right-tag="all" href="#">All</a>
+                  </li>
+                  {% for tag in all_tags %}
+                    <li>
+                      <a class="right-hub-filter" data-right-tag="{{ tag }}" href="#{{ tag }}">{{ tag | capitalize }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+
+            <a id="dropdownSort" data-toggle="dropdown" data-target="#dropdownSortMenu" >
+              Sort <img src="{{ site.baseurl }}/assets/images/filter-arrow.svg">
+            </a>
+
+            <div class="dropdown-menu sort-menu" id="dropdownSortMenu">
+              <div class="hub-filter-menu">
+                <ul>
+                  <li>
+                    <a class= "hub-filter" id="sortLow">Lowest</a>
+                  </li>
+
+                  <li>
+                    <a class= "hub-filter" id="sortHigh">Highest</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </nav>
+
+          <hr>
+
+          <div class="row hub-cards-wrapper cards-right">
+            {% assign hub = site.hub | where: "category", "developers" | sort: "order" %}
+
+            {% for item in hub %}
+              <div class="col-md-12 hub-card-wrapper" data-item-count="{{ forloop.index }}" data-right-tags="{{ item.tags | join: ',' }}" data-id="{{ item.github-id }}">
+                <div class="card hub-card">
+                  <a href="{{ site.baseurl }}{{ item.url }}">
+                    <div class="card-body">
+                      <div class="hub-card-title-container">
+                        <h4>{{ item.title }} </h4>
+                      </div>
+                      <p class="card-summary">{{ item.summary }}</p>
+                      <div class="hub-image">
+                        <img src="{{ site.baseurl }}/assets/images/{{ item.image }}">
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <a class="all-models-button" id="development-models" href="{{ site.baseurl }}/hub/developer-models">All Developer Models ({{ hub | size}})</a>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <div class="row how-it-works">
+        <div class="col-md-12 how-it-works-title-col">
+          <h3 class="research-hub-title">사용 방법 —</h3>
+        </div>
+        <div class="col-md-6">
+          <h3 class="research-hub-sub-title">모델 공개하기</h3>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="how-it-works-text">
+                파이토치 허브는 <code class="hub-code-text">hubconf.py</code> 파일을 간단히 추가하여 사전 학습된 모델(모델 정의 및 사전 학습된 가중치)을 GitHub 저장소에 게시하는 것을 지원합니다.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <h3 class="research-hub-sub-title">모델 불러오기</h3>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="how-it-works-text">
+                사용자는 <code class="hub-code-text">torch.hub.load()</code> API를 사용하여 사전 학습된 모델을 사용할 수 있습니다.
+              </div>
+              <p class="how-it-works-text">
+                다음은 <code class="hub-code-text">pytorch/vision</code> 저장소에서 <code class="hub-code-text">resnet18</code>을 불러오는 예시입니다.
+              <p class="how-it-works-text"><code class="hub-code-text hub-code-block">model = torch.hub.load('pytorch/vision', 'resnet18', pretrained=True)</code></p>
+              <button class="full-docs-button"><a href="{{ site.external_urls.org }}/docs/stable/hub.html" target="_blank">전체 문서 보기</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+<div id="filter-script" data-list-id="hub-index-cards" data-display-count="6" data-pagination="false"></div>
+<script star-count-call-date="hubStarCountCallDate" star-count-data="hubStarCountData" src="{{ site.baseurl }}/assets/github-stars.js"></script>
+<script src="{{ site.baseurl }}/assets/hub-search-bar.js"></script>

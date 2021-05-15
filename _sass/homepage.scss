@@ -1,0 +1,387 @@
+.homepage {
+
+  .main-content-wrapper {
+    @include desktop {
+      margin-top: 539px;
+    }
+  }
+  h2 {
+    margin-bottom: rem(25px);
+    text-transform: uppercase;
+    letter-spacing: 1.78px;
+    line-height: rem(40px);
+
+    @include desktop {
+      margin-bottom: rem(33px);
+    }
+  }
+
+  h3 {
+    font-size: rem(24px);
+    letter-spacing: 1.33px;
+    line-height: rem(32px);
+    text-transform: uppercase;
+    margin-bottom: rem(20px);
+  }
+
+  h5 {
+    margin-bottom: rem(8px);
+    @include desktop {
+      margin-bottom: rem(15px);
+    }
+  }
+
+  .jumbotron {
+    height: 195px;
+    @include desktop {
+    height: 395px;
+    }
+    .btn {
+      margin-top: rem(6px);
+    }
+  }
+
+  .main-background {
+    height: 330px;
+    @include desktop {
+      height: 570px;
+    }
+  }
+
+  .ecosystem-row {
+    .card {
+      background-color: $light_grey;
+    }
+  }
+
+  .homepage-header {
+    background-color: rgba(0, 0, 0, 0.165);
+  }
+}
+
+.homepage-feature-module {
+  padding-top: rem(40px);
+  padding-bottom: rem(40px);
+
+  @include desktop {
+    padding-top: rem(62px);
+    padding-bottom: rem(72px);
+
+    .module-button {
+      position: absolute;
+      right: 15px;
+      top: 0;
+    }
+  }
+
+  p {
+    color: $dark_grey;
+    font-size: 1.125em;
+  }
+
+  .title {
+    color: $black;
+    font-weight: 300;
+    font-size: rem(24px);
+
+    @include small-desktop {
+      font-size: rem(20px);
+    }
+  }
+
+  .pytorch-title {
+    font-size: rem(24px);
+    letter-spacing: 0.33px;
+    line-height: rem(36px);
+  }
+
+  .subtext {
+    font-size: rem(18px);
+    color: #8c8c8c;
+    letter-spacing: 0;
+    line-height: rem(24px);
+
+    @include small-desktop {
+      font-size: rem(15px);
+    }
+  }
+}
+
+.key-features-module {
+  padding-bottom: 0;
+
+  @include desktop {
+    padding-bottom: 1.55rem;
+  }
+
+  .key-features-boxes {
+    margin-top: rem(32px);
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
+  .key-feature-box {
+    margin-bottom: rem(32px);
+
+    p {
+      margin-bottom: 0;
+      letter-spacing: 0.25px;
+    }
+
+    @include desktop {
+      margin-bottom: rem(40px);
+    }
+  }
+}
+
+.community-heading {
+  margin-top: rem(32px);
+}
+
+.community-module {
+  background-color: $white;
+
+  .ecosystem-card {
+    height: auto;
+
+    @include small-desktop {
+      padding: rem(10px);
+    }
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  h5 {
+    text-transform: uppercase;
+    color: #c6000a;
+    margin-bottom: rem(20px);
+  }
+
+  .h2-subheadline {
+    margin-top: rem(20px);
+    margin-bottom: 2.6rem;
+
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
+  .card-body {
+    @include small-desktop {
+      padding: rem(10px);
+    }
+  }
+
+  .module-button {
+    background-color: $light_grey;
+  }
+
+  p {
+    margin-bottom: rem(40px);
+    letter-spacing: 0.25px;
+  }
+
+  .module-subtext {
+    margin-right: rem(250px);
+  }
+
+  .email-subscribe-form input.email {
+    border-bottom: 1px solid #d6d7d8;
+    font-size: rem(20px);
+    line-height: 0;
+    padding-bottom: rem(12px);
+  }
+
+  .email-subscribe-form input[type="submit"] {
+    top: 6px;
+    @include desktop {
+      top: 10px;
+    }
+  }
+}
+
+.pytorch-users-module,
+.homepage-bottom-wrapper {
+  background-color: $light_grey;
+}
+
+.pytorch-users-module {
+  @include desktop {
+    padding-bottom: 1.9rem;
+  }
+}
+
+.community-avatar {
+  height: 60px;
+  width: 60px;
+}
+
+.community-logo-bottom {
+  height: 200px;
+  background-color: $light_grey;
+}
+
+.university-testimonials h2 {
+  margin-bottom: 2.2rem;
+}
+
+.university-testimonials-content {
+  margin-top: rem(40px);
+  margin-bottom: 2rem;
+
+  @include desktop {
+    margin-top: 0;
+  }
+
+  .col-md-4 {
+    margin-bottom: rem(40px);
+    @include desktop {
+      margin-bottom: 0;
+    }
+  }
+
+  .case-study-title {
+    font-size: rem(24px);
+    margin-bottom: rem(20px);
+  }
+
+  p {
+    color: $not_quite_black;
+    font-size: rem(24px);
+    letter-spacing: 0.25px;
+    line-height: rem(36px);
+  }
+}
+
+.follow-us-on-twitter h2 {
+  margin-bottom: rem(20px);
+  @include desktop {
+    margin-bottom: rem(40px);
+  }
+}
+
+.homepage-feature-module .tweets-wrapper p {
+  font-size: rem(16px);
+}
+
+.quick-starts {
+  p {
+    font-size: rem(18px);
+    line-height: rem(28px);
+  }
+}
+
+.quick-start-guides {
+  font-size: rem(24px);
+  letter-spacing: 0.25px;
+  line-height: rem(36px);
+  color: #a5a5a5;
+
+  .step-counter {
+    margin-bottom: rem(3px);
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    li {
+      margin-bottom: 0;
+      font-size: rem(18px);
+
+      @include desktop {
+        margin-bottom: rem(12px);
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      &.selected {
+        color: $orange;
+        &:before {
+          content: "\2022";
+          position: absolute;
+          left: 0;
+          @include desktop {
+            left: -5px;
+          }
+        }
+      }
+    }
+  }
+
+  .select-instructions {
+    color: $slate;
+    border-bottom: 2px solid #a5a5a5;
+    margin-bottom: rem(16px);
+    font-size: rem(18px);
+    display: inline-block;
+    @include desktop {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.homepage .news-banner-container {
+  background: $black;
+  color: $white;
+  text-align: center;
+  padding: 20px;
+  width: 90%;
+
+  .right-arrow, .left-arrow {
+    height: 15px;
+    bottom: -3px;
+    position: relative;
+    @include desktop {
+      bottom: -8px;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .right-arrow {
+    float: right;
+  }
+  .left-arrow {
+    float: left;
+  }
+}
+
+.homepage #news-items {
+  .pagination {
+    display: none !important;
+  }
+}
+
+.banner-info {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: auto;
+  width: 80%;
+  font-size: rem(18px);
+  @include desktop {
+    padding-top: 3px;
+  }
+  &:hover {
+    cursor: pointer;
+    color: $orange;
+  }
+}
+
+.news-banner-text {
+  a {
+    color: white;
+    &:hover {
+      color: $orange;
+    }
+  }
+}
+
+.no-banner {
+  padding-bottom: 2rem;
+}

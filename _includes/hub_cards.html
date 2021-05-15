@@ -1,0 +1,34 @@
+<div id="hub-cards">
+  <div class="list row hub-cards-wrapper cards-left">
+    {% assign hub = site.hub | where: "category", include.category | sort: "order" %}
+
+    {% for item in hub %}
+      <div class="col-md-6 research-hub-card-wrapper" data-item-count="{{ forloop.index }}" data-tags="{{ item.tags | join: ',' }}" data-id="{{ item.github-id }}">
+        <div class="card hub-card">
+          <a href="{{ site.baseurl }}{{ item.url }}">
+            <div class="card-body">
+              <div class="hub-card-title-container">
+                <ul class="star-list">
+                  <li class="card-title">{{ item.title | truncate: 25 }}</li>
+                  <div class="icon-count-container">
+                    <li>
+                      <li><img class="github-logo" src="/assets/images/logo-github.svg"></li>
+                    </li>
+                    <li class="github-stars-count"></li>
+                    <li class="github-stars-count-whole-number"></li>
+                  </div>
+                </ul>
+              </div>
+              <p class="card-summary">{{ item.summary | truncate: 150 }}</p>
+              <div class="hub-image">
+                <img src="{{ site.baseurl }}/assets/images/{{ item.image }}">
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="pagination d-flex justify-content-center"></div>
+</div>

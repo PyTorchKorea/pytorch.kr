@@ -1,0 +1,63 @@
+<div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>공식 문서 (영어)</h2>
+        <p>PyTorch 공식 문서입니다.</p>
+        <a class="with-right-arrow" href="{{ site.external_urls.org_docs }}" target="_blank">공식 문서로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 PyTorch 튜토리얼입니다.</p>
+        <a class="with-right-arrow" href="{{ site.external_urls.tutorials }}">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나눠보세요!</p>
+        <a class="with-right-arrow" href="{{ site.external_urls.community }}">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="{{ site.url }}{{ site.baseurl }}" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="{{ site.external_urls.org }}">PyTorch 홈페이지 (공식)</a></li>
+          <li><a href="{{ site.external_urls.org }}" target="_blank">공식 홈페이지</a></li>
+          <li><a href="{{ site.external_urls.org_tutorials }}" target="_blank">공식 튜토리얼</a></li>
+          <li><a href="{{ site.external_urls.org_docs }}" target="_blank">공식 문서</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="{{ site.baseurl }}">한국 사용자 모임</a></li>
+          <li><a href="{{ site.baseurl }}/about">사이트 소개</a></li>
+          <li><a href="{{ site.external_urls.tutorials }}">한국어 튜토리얼</a></li>
+          <li><a href="{{ site.external_urls.tutorials_github }}" target="_blank">한국어 튜토리얼 저장소</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 PyTorch 한국어 사용자 커뮤니티로 Facebook, Inc와 관련이 없습니다. PyTorch, PyTorch 로고 및 모든 관련 표기는 Facebook, Inc의 상표입니다.</li>
+        <li>This site is a user community and is not related with Facebook, Inc. PyTorch, the PyTorch logo and any related marks are trademarks of Facebook, Inc.</li>
+      </ul>
+    </div>
+  </div>
+  {% include analytics.html %}
+</footer>
+
+{% include mobile_menu.html %}
+
+{% include footer_scripts.html %}

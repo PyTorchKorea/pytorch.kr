@@ -1,0 +1,187 @@
+.features {
+  .main-content {
+    padding-bottom: 0;
+  }
+  .navbar-nav .nav-link {
+    color: $black;
+  }
+
+  .nav-logo {
+    background-image: url($baseurl + "/assets/images/logo-kr-sm-dark.svg");
+  }
+
+  .main-background {
+    @include desktop {
+      height: 575px
+    }
+  }
+}
+
+.features {
+  .main-content-wrapper {
+    @media (max-width: 320px) {
+      margin-top: 340px;
+    }
+  }
+}
+
+.features-row {
+  padding-bottom: rem(60px);
+  align-items: center;
+
+  &:first-of-type {
+    margin-top: rem(20px);
+  }
+
+  &:last-of-type {
+    padding-bottom: rem(72px);
+  }
+
+  @include desktop {
+    padding-bottom: rem(96px);
+    &:first-of-type {
+      margin-top: 4.05rem;
+    }
+  }
+
+  h3 {
+    font-size: rem(32px);
+    letter-spacing: 1.78px;
+    line-height: rem(36px);
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: rem(20px);
+    font-weight: 300;
+
+    @include small-desktop {
+      width: 80%;
+    }
+
+    @include max-width-desktop {
+      width: 590px;
+    }
+  }
+
+  p {
+    font-size: rem(18px);
+    letter-spacing: 0.25px;
+    line-height: rem(28px);
+    color: $dark_grey;
+    padding-right: rem(30px);
+
+    @include small-desktop {
+      width: 80%;
+    }
+
+    @include max-width-desktop {
+      width: 590px;
+    }
+  }
+
+  .feature-content-holder {
+    width: 100%;
+
+    @include max-width-desktop {
+      width: 495px;
+    }
+
+    pre.highlight {
+      margin-bottom: 0;
+    }
+  }
+
+  &:nth-child(odd) {
+    .col-md-6:nth-child(1n) {
+      order: 2;
+    }
+
+    .col-md-6:nth-child(2n) {
+      order: 1;
+    }
+
+    @include desktop {
+      .col-md-6:nth-child(1n) {
+        order: 1;
+      }
+
+      .col-md-6:nth-child(2n) {
+        order: 2;
+      }
+    }
+  }
+
+  &:nth-child(1n) {
+    h3 {
+      color: #B73BC9;
+    }
+
+    .feature-content-holder {
+      border-bottom: 2px solid #B73BC9;
+    }
+  }
+
+  &:nth-child(2n) {
+    h3 {
+      color: #D92F4C;
+    }
+
+    .feature-content-holder { border-bottom: 2px solid #D92F4C;
+    }
+  }
+
+  &:nth-child(3n) {
+    h3 {
+      color: #8038E0;
+    }
+
+    .feature-content-holder {
+      border-bottom: 2px solid #8038E0;
+    }
+  }
+
+  .col-md-6 {
+    @include max-width-desktop {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include desktop {
+      &:nth-of-type(2) {
+        .feature-content {
+          width: 100%;
+
+          h3, p, .feature-content-holder {
+            float: right;
+          }
+        }
+      }
+    }
+  }
+}
+
+.features .jumbotron {
+  height: 200px;
+  @include desktop {
+    height: 195px;
+  }
+  @media (max-width: 320px) {
+    height: 250px;
+  }
+  h1 {
+    padding-top: rem(30px);
+  }
+  @include desktop {
+    height: 468px;
+    h1 {
+      padding-top: 0;
+    }
+  }
+  h1, p {
+    color: $white;
+  }
+  .btn {
+    @include desktop {
+      margin-top: rem(6px);
+    }
+  }
+}
