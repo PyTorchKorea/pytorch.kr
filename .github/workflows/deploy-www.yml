@@ -1,0 +1,52 @@
+name: gh-pages deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '9.8'
+    - name: Install node dependencies
+      run: |
+        npm install
+    - name: Set up Ruby 2.5.9
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.5.9'
+    - name: Install ruby dependencies
+      run: |
+        gem install bundler -v 2.2.17
+        bundle install
+    - name: Initialize & update hub submodule
+      run: |
+        git submodule deinit -f . && git submodule update --init --recursive
+        ./_devel/update_hub_submodule.sh
+        pushd _hub
+        rm -R `ls -1 -d */`
+        rm -f README.md
+        popd
+    - name: Build Jekyll site
+      run: |
+        make build_deploy
+    - name: Deploy Jekyll site
+      run: |
+        git config --global user.name "GitHub Action"
+        git config --global user.email "reserve.dev@gmail.com"
+        export remote_repo="https://x-access-token:${{ secrets.DEPLOY_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
+        export remote_branch="gh-pages"
+        cd _site/
+        git init
+        git add .
+        git commit -m "Rebuild"
+        git push --force $remote_repo master:$remote_branch > /dev/null 2>&1
+        echo "Done"
