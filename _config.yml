@@ -1,8 +1,8 @@
 # Site settings
 title: "PyTorch KR Website"
-author: "PyTorch Korea Community"
-default_author: The PyTorch KR Team
-description: "PyTorch Korea Community - it's an unofficial user community for Korean"
+author: "PyTorch Korea User Group"
+default_author: The PyTorch Korea Community
+description: "PyTorch Korea User Group - it's an unofficial user community for Korean"
 latest_version: 1.0
 timezone: Asia/Seoul
 url: "https://pytorch.kr"
@@ -38,19 +38,12 @@ collections:
     output: true
   get_started:
     output: true
-  ecosystem:
-    output: false
-    permalink: /ecosystem/:path/
   hub:
     output: true
     permalink: /hub/:title/
   resources:
     output: false
   features:
-    output: true
-  courses:
-    output: false
-  mobile:
     output: true
   news:
     output: true
