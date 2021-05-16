@@ -68,7 +68,7 @@
   height: 7px;
   position: absolute;
   right: 0;
-  top: 4px;
+  top: 20px;
   @include full-nav-menu-desktop {
     display: none;
   }
@@ -195,7 +195,7 @@
   position: absolute;
   right: 0;
   width: 24px;
-  top: -4px;
+  top: 10px;
 }
 
 .mobile-main-menu-header-container {
@@ -206,16 +206,13 @@
   display: flex;
   align-items: center;
   padding-left: rem(45px);
-  height: 100%;
-  min-height: 100%;
-  margin-top: -$mobile_header_height;
-  padding-top: 50rem;
+  height: 90vh;
+  margin-top: -25px;
+  padding-top: 50%;
   overflow-y: scroll;
-  @media only screen and (max-width: 320px) {
-    margin-top: -85px;
-    .main-menu {
-      padding-top: 5rem;
-    }
+  .main-menu {
+    height: 100vh;
+    width: 100%
   }
 
   @include small-desktop {
