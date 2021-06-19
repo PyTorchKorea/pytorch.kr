@@ -1,6 +1,6 @@
 ---
 order: 3
-link: https://pytorch.org/blog/ecosystem_day_2021/
-summary: (영문) Announcing PyTorch Ecosystem Day - April 21, 2021
+link: https://github.com/pytorch/pytorch/releases/tag/v1.8.1
+summary: (영문) PyTorch 1.8.1 is now available with improvements and bug fixes
 ---
 

@@ -101,7 +101,7 @@ conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cpuonly -c pyt
 ##### OSX
 
 ```
-pip install torch==1.7.1 torchvision==0.8.2 torchaudio=0.7.2
+pip install torch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2
 ```
 
 ##### Linux and Windows
@@ -158,7 +158,7 @@ conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cpuonly -c pyt
 ##### OSX
 
 ```
-pip install torch==1.7.0 torchvision==0.8.0 torchaudio=0.7.0
+pip install torch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0
 ```
 
 ##### Linux and Windows
