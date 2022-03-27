@@ -1,6 +1,6 @@
 set -ex
 pushd _hub
-git pull https://github.com/9bow/PyTorch-hub-kr
+git pull https://github.com/PyTorchKorea/hub-kr
 popd
 cp _hub/images/* assets/images/
 

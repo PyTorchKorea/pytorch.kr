@@ -10,15 +10,14 @@
       font-weight: lighter;
     }
     #hub-sub-header {
-      color: $white;
+      color: $not_quite_black;
     }
   }
 
   p.lead, p.hub-release-message {
     margin-bottom: rem(10px);
     padding-top: rem(5px);
-    // color: $dark_grey;
-    color: $white;
+    color: $dark_grey;
 
     @include desktop {
       width: 77%;

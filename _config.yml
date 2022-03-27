@@ -1,8 +1,8 @@
 # Site settings
-title: "PyTorch KR Website"
+title: "PyTorch Korea User Group"
 author: "PyTorch Korea User Group"
-default_author: The PyTorch Korea Community
-description: "PyTorch Korea User Group - it's an unofficial user community for Korean"
+default_author: PyTorch Korea User Group
+description: "파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
 latest_version: 1.0
 timezone: Asia/Seoul
 url: "https://pytorch.kr"
