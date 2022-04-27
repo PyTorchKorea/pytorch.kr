@@ -1,76 +1,55 @@
-# Code of Conduct
+# 파이토치 한국 사용자 모임 행동 강령
 
-## Our Pledge
+## 환영합니다.
 
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to make participation in our project and
-our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, sex characteristics, gender identity and expression,
-level of experience, education, socio-economic status, nationality, personal
-appearance, race, religion, or sexual identity and orientation.
+파이토치 한국 사용자 모임은 모임에 참여하는 모든 사람들을 열렬히 환영합니다.
+우리는 서로 다른 배경과 정체성을 가진 다양한 사람들이 열린 생각으로 모였을 때 함께 성장할 수 있다고 믿습니다.
+생산적이고 창의적인 대화를 나누고 협업할 수 있도록 새로운 참여자를 환영해주시고 귀 기울여주세요.
 
-## Our Standards
+## 지켜주세요.
 
-Examples of behavior that contributes to creating a positive environment
-include:
+행동 강령은 다양성을 존중하며 모두가 더 나은 방향으로 나아가기 위해 지켜야 하는 최소한의 약속입니다.
+이 행동 강령은 파이토치 한국 사용자 모임이 운영하거나 관리하는 모든 온라인과 오프라인 공간에 적용됩니다.
+구체적으로는 GitHub, Slack과 같은 서비스를 비롯하여 이벤트 및 행사, 포럼 등의 개최 장소가 해당합니다.
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+## 다름을 존중해주세요.
 
-Examples of unacceptable behavior by participants include:
+서로 다른 관점과 경험으로부터 발현된 다양한 생각과 의견은 커뮤니티를 풍요롭게 만드는 원천입니다.
+하지만 이 과정에서 발생하는 오해와 갈등은 긍정적인 변화를 불러오는데 걸림돌이 되기도 합니다.
+다름을 존중해주시고 성별, 학력, 국적, 인종, 장애, 외모, 취향 등에 따른 차별적 언행을 하지 말아주세요.
 
-* The use of sexualized language or imagery and unwelcome sexual attention or
-advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic
-address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
-professional setting
+## 안전한 공간을 만들어주세요.
 
-## Our Responsibilities
+스스로의 말과 행동이 다른 사람들에게 영향을 주고 있다는 것을 항상 인지해주세요.
+다른 사람을 위협하거나 위험하게 만들지 않도록 주의해주시고, 언행에 따른 결과를 고려해주세요.
+욕설, 조롱, 모욕, 위협적인 언행이나 괴롭힘, 타인의 개인정보 공개 등과 같은 행동을 하지 말아주세요.
 
-Project maintainers are responsible for clarifying the standards of acceptable
-behavior and are expected to take appropriate and fair corrective action in
-response to any instances of unacceptable behavior.
+## 서로의 시간과 노력을 존중해주세요.
 
-Project maintainers have the right and responsibility to remove, edit, or
-reject comments, commits, code, wiki edits, issues, and other contributions
-that are not aligned to this Code of Conduct, or to ban temporarily or
-permanently any contributor for other behaviors that they deem inappropriate,
-threatening, offensive, or harmful.
+모임에 참여하거나 기여하는데 들인 시간과 노력 이상으로 발표를 준비하거나 답변을 위한 시간과 노력이 필요합니다.
+또한, 프로젝트 관리자는 여러분의 기여를 더 많은 사람들에게 가치있게 전달할 수 있도록 도우려 노력하고 있습니다.
+누군가의 시간과 노력이 헛되지 않도록 충분히 생각하고 행동해주세요.
 
-## Scope
+## 사려 깊게 행동해주세요.
 
-This Code of Conduct applies within all project spaces, and it also applies when
-an individual is representing the project or its community in public spaces.
-Examples of representing a project or community include using an official
-project e-mail address, posting via an official social media account, or acting
-as an appointed representative at an online or offline event. Representation of
-a project may be further defined and clarified by project maintainers.
+우리는 해도 되는 일과 해서 안되는 일의 예시를 여기에 모두 담을 수 없고, 담으려고 하지도 않았습니다.
+행동 강령을 문자 그대로가 아닌, 작성한 의도를 파악하고 서로를 더 잘 대할 수 있는 기준으로 삼아주세요.
+누군가 불쾌하거나 불편하지 않도록 상식적이고 합리적인 수준에서 사려 깊게 행동해주세요.
 
-## Enforcement
+## 알려주세요.
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team at <conduct@pytorch.org>. All
-complaints will be reviewed and investigated and will result in a response that
-is deemed necessary and appropriate to the circumstances. The project team is
-obligated to maintain confidentiality with regard to the reporter of an incident.
-Further details of specific enforcement policies may be posted separately.
+행동 강령은 파이토치 한국 사용자 모임의 대표자, 운영진을 비롯한 모든 참여자에게 동등하게 적용됩니다.
+문제를 겪으시거나 목격하셨다면 이메일로 알려주세요. 필요하다면 사법기관에도 함께 도움을 요청해주세요.
+모든 운영진들(maintainers@pytorch.kr) 또는 소수의 책임자들(coc@pytorch.kr)에게 알려주실 수 있습니다.
 
-Project maintainers who do not follow or enforce the Code of Conduct in good
-faith may face temporary or permanent repercussions as determined by other
-members of the project's leadership.
+## 노력하겠습니다.
 
-## Attribution
+파이토치 한국 사용자 모임은 알려주신 내용들에 대해서 검토하고 적절한 대응을 하기 위해 노력하겠습니다.
+이는 이슈나 게시물 등의 삭제를 포함하여 필요한 경우 당사자의 추방과 같은 모든 조치를 포함합니다.
+필요 시 또는 요청에 따라 파이토치 한국 사용자 모임은 사법 기관 / 의료 기관에 신고 또는 협조하겠습니다.
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
-available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
+## 앞서 고민한 다음의 문서와 행동 강령들을 참고하였습니다.
 
-[homepage]: https://www.contributor-covenant.org
-
-For answers to common questions about this code of conduct, see
-https://www.contributor-covenant.org/faq
+* [오픈 소스 가이드의 행동 강령](https://opensource.guide/ko/code-of-conduct/)
+* [파이콘 준비 위원회의 행동 강령](https://2021.pycon.kr/coc/)
+* [이상한모임의 행동 강령](https://www.weirdx.io/m/policy/coc/)

@@ -23,6 +23,7 @@
   &.features-header,
   &.ecosystem-header,
   &.hub-header,
+  &.coc-header,
   &.mobile-header {
     background-color: $white;
     border-bottom: 1px solid #e2e2e2;
@@ -233,6 +234,7 @@
 .features-header,
 .ecosystem-header,
 .hub-header,
+.coc-header,
 .mobile-header {
   .header-logo {
     background-image: url($baseurl + "/assets/images/logo-kr-sm-dark.svg");
