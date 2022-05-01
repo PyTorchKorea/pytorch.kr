@@ -1,0 +1,61 @@
+.coc .quick-start-guides {
+  ul {
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+}
+
+.coc .main-background {
+  height: 275px;
+
+  @include desktop {
+    height: 380px;
+  }
+}
+
+.coc .main-content-wrapper {
+  margin-top: 275px;
+  @include desktop {
+    margin-top: 260px + $desktop_header_height;
+  }
+}
+
+.coc .jumbotron {
+  height: 190px;
+  @include desktop {
+    height: 260px;
+  }
+}
+
+.coc .main-content {
+  padding-top: 0;
+  @include desktop {
+    padding-top: 1.9rem;
+  }
+
+  .pytorch-article {
+    margin-top: 50px;
+    max-width: 800px;
+    br {
+      display: none;
+    }
+    p {
+      line-height: 2.1rem;
+      br {
+        display: inline;
+      }
+    }
+    h1 {
+      font-size: 2.0rem;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 2.0rem;
+      margin-bottom: 0.5rem;
+    }
+    ul, ol {
+      padding-left: 1.25rem;
+    }
+  }
+}

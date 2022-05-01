@@ -156,6 +156,10 @@ a, .btn {
     background-image: url($baseurl + "/assets/images/get-started-background.jpg");
   }
 
+  &.coc-background {
+    background-image: url($baseurl +"/assets/images/coc-background.jpg");
+  }
+
   &.style-guide {
     background-image: url("https://via.placeholder.com/2560x1280/262626/3a3a3a");
   }
