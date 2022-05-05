@@ -24,12 +24,12 @@ external_urls:
   org_docs: https://pytorch.org/docs
   org_tutorials: https://pytorch.org/tutorials
   hub_template: https://github.com/pytorch/hub/blob/master/docs/template.md
-  previous_pytorch_versions: https://pytorch.kr/previous-versions/
-  hub_issue: https://github.com/9bow/PyTorch-hub-kr/issues
-  www_issue: https://github.com/9bow/PyTorchKR/issues
-  community: https://discuss.pytorch.kr
+  previous_pytorch_versions: https://pytorch.kr/get-started/previous-versions/
+  community: https://discuss.pytorch.kr/
   tutorials: https://tutorials.pytorch.kr/
-  tutorials_github: https://github.com/9bow/PyTorch-tutorials-kr
+  repo_tutorials: https://github.com/PyTorchKorea/tutorials-kr
+  repo_hub: https://github.com/PyTorchKorea/hub-kr
+  repo_www: https://github.com/PyTorchKorea/pytorch.kr
 livereload: false
 markdown: kramdown
 highlighter: rouge
