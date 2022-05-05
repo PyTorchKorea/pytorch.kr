@@ -7,4 +7,4 @@ background-class: coc-background
 body-class: coc
 ---
 
-{% include_relative CODE_OF_CONDUCT.md %}
+{% include_relative _coc/CODE_OF_CONDUCT.md %}
