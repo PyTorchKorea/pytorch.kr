@@ -15,18 +15,19 @@ sass:
   load_paths:
     - _sass
     - node_modules
-exclude: [vendor, node_modules, README.md, CODE_OF_CONDUCT.md, Gemfile, Gemdile.lock, LICENSE, yarn.lock, yarn-error.log, package.json, Makefile, scripts, docs, _hub/docs/template.md]
+exclude: [vendor, node_modules, Gemfile, Gemdile.lock, README.md, LICENSE, CONTRIBUTING.md, yarn.lock, yarn-error.log, package.json, Makefile, scripts, docs, _hub/docs/template.md]
 include: [.nojekyll, CNAME, _static, _images, _modules, _sources, _tensor_str.html, _utils.html]
 keep_files: [vendor/assets, docs/master/_static/js/vendor/]
 github: [metadata]
 external_urls:
-  org: https://pytorch.org
+  org_www: https://pytorch.org
   org_docs: https://pytorch.org/docs
   org_tutorials: https://pytorch.org/tutorials
   hub_template: https://github.com/pytorch/hub/blob/master/docs/template.md
   previous_pytorch_versions: https://pytorch.kr/get-started/previous-versions/
-  community: https://discuss.pytorch.kr/
-  tutorials: https://tutorials.pytorch.kr/
+  site_tutorials: https://tutorials.pytorch.kr/
+  site_community: https://discuss.pytorch.kr/
+  site_hub: https://pytorch.kr/hub
   repo_tutorials: https://github.com/PyTorchKorea/tutorials-kr
   repo_hub: https://github.com/PyTorchKorea/hub-kr
   repo_www: https://github.com/PyTorchKorea/pytorch.kr
