@@ -1,87 +1,69 @@
-# pytorch.org site
+# 파이토치 한국 사용자 모임 홈페이지
 
-[https://pytorch.org](https://pytorch.org)
+## 개요
 
-A static website built in [Jekyll](https://jekyllrb.com/) and [Bootstrap](https://getbootstrap.com/) for [PyTorch](https://pytorch.org/), and its tutorials and documentation.
+[파이토치 한국 사용자 모임 홈페이지](https://pytorch.kr) 저장소에 오신 것을 환영합니다! \
+파이토치 한국 사용자 모임 홈페이지는 [PyTorch 공식 홈페이지 저장소](https://github.com/pytorch/pytorch.github.io)를 복제하여 만들었습니다. \
+홈페이지 빌드를 위해 [Jekyll](https://jekyllrb.com/)과 [Bootstrap](https://getbootstrap.com/) 등을 사용하고 있습니다.
 
-## Prerequisites
+## 빌드하기
 
-Install the following packages before attempting to setup the project:
+이 저장소를 빌드하기 위해 필요한 절차를 안내합니다.
+
+### 필요 도구
+
+이 저장소를 빌드하기 위해서는 아래 도구들의 필요합니다.
 
 - [rbenv](https://github.com/rbenv/rbenv)
 - [ruby-build](https://github.com/rbenv/ruby-build)
 - [nvm](https://github.com/creationix/nvm)
 
-On OSX, you can use:
+macOS에서 [homebrew](https://brew.sh/)를 사용하신다면, 아래 명령어로 설치하실 수 있습니다:
 
-```
-brew install rbenv ruby-build nvm
-```
-
-## Setup
-
-#### Install required Ruby version:
-
-```
-#### You only need to run these commands if you are missing the needed Ruby version.
-
-rbenv install `cat .ruby-version`
-gem install bundler -v 1.16.3
-rbenv rehash
-
-####
-
-bundle install
-rbenv rehash
+```sh
+  brew install rbenv ruby-build nvm
 ```
 
-#### Install required Node version
+### 빌드 절차
 
-```
-nvm install
-nvm use
-```
+#### ruby 및 bundler, 필요 패키지 설치
 
-#### Install Yarn
+아래 명령어로 이 저장소에서 필요로 하는 ruby 버전에 맞춰 ruby와 bundler, 필요 패키지들을 설치합니다.
 
-```
-brew install yarn --ignore-dependencies
-yarn install
-```
-
-## Local Development
-
-To run the website locally for development:
-
-```
-make serve
+```sh
+  rbenv install `cat .ruby-version`   # ruby 설치
+  gem install bundler -v 2.2.17       # bundler 설치
+  rbenv rehash
+  bundle install                      # 필요 패키지 설치
+  rbenv rehash
 ```
 
-Then navigate to [localhost:4000](localhost:4000).
+#### node.js 및 필요 패키지 설치
 
-Note the `serve` task is contained in a `Makefile` in the root directory. We are using `make` as an alternative to the standard `jekyll serve` as we want to run `yarn`, which is not included in Jekyll by default.
+아래 명령어로 이 저장소에서 필요로 하는 node.js 버전에 맞춰 node.js 및 yarn, 필요 패키지들을 설치합니다.
 
-### Building the Static Site
-
-To build the static website from source:
-
+```sh
+  nvm install       # node.js 설치
+  nvm use           # node.js 버전 적용
+  npm install yarn  # 패키지 도구 설치
+  yarn install      # 필요 패키지 설치
 ```
-make build
+
+#### 홈페이지 빌드
+
+아래 명령어로 jekyll을 사용하여 빌드합니다. 빌드 결과물은 `./_site` 디렉토리에 저장됩니다.
+
+```sh
+  make build
 ```
 
-This will build the static site at `./_site`. This directory is not tracked in git.
+## 배포하기
 
-## Deployments
+[파이토치 한국 사용자 모임 홈페이지](https://pytorch.kr)는 [GitHub Pages](https://pages.github.com/)를 사용합니다. \
+홈페이지는 [GitHub Actions](https://docs.github.com/en/actions)를 사용하여 자동으로 빌드 및 `gh-pages` 브랜치에 배포됩니다.
 
-The website is hosted on [Github Pages](https://pages.github.com/) at [https://pytorch.org](https://pytorch.org).
 
-To deploy changes, merge your latest code into the `site` branch. A build will be automatically built and committed to the `master` branch via a CircleCI job.
+## 기여하기
 
-To view the status of the build visit [https://circleci.com/gh/pytorch/pytorch.github.io](https://circleci.com/gh/pytorch/pytorch.github.io).
-
-## Contributing to PyTorch Documentation and Tutorials
-* You can find information about contributing to PyTorch documentation in the 
-PyTorch repo [README.md](https://github.com/pytorch/pytorch/blob/master/README.md) file. 
-* Information about contributing to PyTorch Tutorials can be found in the 
-tutorials [README.md](https://github.com/pytorch/tutorials/blob/master/README.md).
-* Additional contribution information can be found in [PyTorch CONTRIBUTING.md](https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md).
+홈페이지에서 잘못된 내용 또는 변경 / 추가하고 싶은 내용이 있다면 이 저장소에 기여하실 수 있습니다. \
+[기여하기](CONTRIBUTING.md) 문서를 참고해주세요.
