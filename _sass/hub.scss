@@ -1,7 +1,7 @@
 .hub .jumbotron {
-  height: 240px;
+  height: 375px;
   @include desktop {
-    height: 340px;
+    height: 420px;
   }
 
   h1 {
@@ -15,8 +15,8 @@
   }
 
   p.lead, p.hub-release-message {
-    margin-bottom: rem(10px);
-    padding-top: rem(5px);
+    margin-bottom: rem(15px);
+    padding-top: rem(35px);
     color: $dark_grey;
 
     @include desktop {

@@ -133,7 +133,7 @@ a, .btn {
   }
 
   &.hub-background {
-    background-image: url($baseurl + "/assets/images/hub-background.jpg");
+    background-color: $light_grey;
   }
 
    &.ecosystem-background {
