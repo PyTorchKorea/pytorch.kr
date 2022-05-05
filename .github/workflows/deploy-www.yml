@@ -35,6 +35,9 @@ jobs:
         rm -R `ls -1 -d */`
         rm -f README.md
         popd
+    - name: Update submodules
+      run: |
+        git submodule update --remote
     - name: Build Jekyll site
       run: |
         make build_deploy

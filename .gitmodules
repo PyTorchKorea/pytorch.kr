@@ -1,3 +1,6 @@
 [submodule "_hub"]
 	path = _hub
 	url = https://github.com/PyTorchKorea/hub-kr
+[submodule "_coc"]
+	path = _coc
+	url = https://github.com/PyTorchKorea/.github
