@@ -183,7 +183,7 @@
 
   @include desktop {
     margin-bottom: 0;
-    width: 14%;
+    width: 15%;
     margin-right: 23px;
 
     &.follow-us-col {
@@ -193,7 +193,7 @@
   }
 
   @include small-desktop {
-    width: 18%;
+    width: 58%;
     margin-right: 30px;
   }
 }

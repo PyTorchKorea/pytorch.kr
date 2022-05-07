@@ -32,6 +32,7 @@ external_urls:
   repo_tutorials: https://github.com/PyTorchKorea/tutorials-kr
   repo_hub: https://github.com/PyTorchKorea/hub-kr
   repo_www: https://github.com/PyTorchKorea/pytorch.kr
+  repo_org: https://github.com/PyTorchKorea
 livereload: false
 markdown: kramdown
 highlighter: rouge
