@@ -185,3 +185,46 @@
     }
   }
 }
+
+.contributors {
+  margin-top: 50px;
+  @include desktop {
+    margin-top: 20px;
+  }
+
+  h2 {
+    a {
+      margin-top: 30px;
+      font-size: rem(40px);
+      font-weight: 600;
+    }
+  }
+
+  ul {
+    li {
+      padding-top: rem(10px);
+      font-size: rem(23px);
+    }
+  }
+
+  .contributor-card {
+    border: none;
+    overflow: hidden;
+    text-align: center;
+
+    img {
+      width: 130px;
+      min-width: 100px;
+      border: none;
+      border-radius: 50%;
+    }
+
+    p.card-summary {
+      margin-top: 10px;
+      text-align: center;
+      font-size: rem(20px);
+      overflow: hidden;
+      color: $not_quite_black;
+    }
+  }
+}
