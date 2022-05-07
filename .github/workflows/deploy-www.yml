@@ -7,36 +7,29 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
     - name: Set up Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v3
       with:
-        node-version: '9.8'
+        node-version: 16.13.2
     - name: Install node dependencies
       run: |
         npm install
-    - name: Set up Ruby 2.5.9
-      uses: actions/setup-ruby@v1
+        yarn install
+    - name: Set up Ruby 2.7
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '2.5.9'
+        ruby-version: 2.7.4
+        bundler-cache: true
     - name: Install ruby dependencies
       run: |
-        gem install bundler -v 2.2.17
+        gem install bundler -v 2.3.13
         bundle install
     - name: Initialize & update hub submodule
       run: |
         git submodule deinit -f . && git submodule update --init --recursive
-        ./_devel/update_hub_submodule.sh
-        pushd _hub
-        rm -R `ls -1 -d */`
-        rm -f README.md
-        popd
-    - name: Update submodules
-      run: |
         git submodule update --remote
     - name: Build Jekyll site
       run: |

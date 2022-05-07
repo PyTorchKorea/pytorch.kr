@@ -32,7 +32,7 @@ macOS에서 [homebrew](https://brew.sh/)를 사용하신다면, 아래 명령어
 
 ```sh
   rbenv install `cat .ruby-version`   # ruby 설치
-  gem install bundler -v 2.2.17       # bundler 설치
+  gem install bundler -v 2.3.13       # bundler 설치
   rbenv rehash
   bundle install                      # 필요 패키지 설치
   rbenv rehash
