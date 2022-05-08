@@ -31,7 +31,7 @@ jobs:
       run: |
         git submodule deinit -f . && git submodule update --init --recursive
         git submodule update --remote
-        ./_deve/update_hub_submodule.sh
+        ./_devel/update_hub_submodule.sh
     - name: Build Jekyll site
       run: |
         make build_deploy
