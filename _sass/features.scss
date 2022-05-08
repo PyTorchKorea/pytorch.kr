@@ -228,3 +228,127 @@
     }
   }
 }
+
+.maintainers-row {
+  padding-bottom: rem(60px);
+  align-items: center;
+
+  @include desktop {
+    padding-bottom: rem(96px);
+    &:first-of-type {
+      margin-top: 4.05rem;
+    }
+  }
+
+  .maintainer-content {
+    width: 100%;
+    align-items: center;
+
+    h3.features {
+      font-size: rem(32px);
+      letter-spacing: 1.78px;
+      line-height: rem(36px);
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: rem(20px);
+      color: $black;
+    }
+
+    p.features {
+      font-size: rem(18px);
+      letter-spacing: 0.25px;
+      line-height: rem(28px);
+      color: $dark_grey;
+    }
+
+  }
+}
+
+.maintainer {
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-shadow: 0 0 200px rgba(0, 0, 0, 0);
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0);
+
+  a img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+  a.active:hover img {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+  }
+
+  .member-info {
+    position: relative;
+    text-align: center;
+    z-index: 3;
+    padding-bottom: 10px;
+
+    h3 {
+      color: $purple;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+
+    p.title{
+      font-size: rem(16px);
+      margin-bottom: 5px;
+      letter-spacing: 0.25px;
+      font-weight: 800;
+      color: $not_quite_black;
+    }
+
+    p.team {
+      font-size: rem(14px);
+      margin-bottom: 10px;
+      color: $dark_grey;
+    }
+
+    a {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    i {
+      color: $dark_blue;
+    }
+  }
+}
+
+.maintainer:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border: 2px solid #e3f0fa;
+  opacity: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.maintainer:hover {
+  -webkit-box-shadow: 0 26px 49px rgba(0, 0, 0, 0.17);
+  box-shadow: 0 26px 49px rgba(0, 0, 0, 0.17);
+}
+
+.maintainer:hover:after {
+  opacity: 0;
+}
