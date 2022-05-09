@@ -38,15 +38,18 @@ markdown: kramdown
 highlighter: rouge
 collections:
   about:
-    output: true
+    output: false
   get_started:
     output: true
   hub:
     output: true
     permalink: /hub/:title/
+  maintainers:
+    output: false
   resources:
     output: false
   features:
-    output: true
+    output: false
   news:
     output: true
+    permalink: /news/:title/
