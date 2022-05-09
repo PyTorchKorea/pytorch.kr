@@ -14,3 +14,4 @@ yarn.lock
 /.vscode/
 /.netlify/
 /assets/hub
+*.old
