@@ -5,6 +5,6 @@ title: Maintainer
 team: CoC, tutorials-kr, discuss
 link_linkedin:
 link_twitter:
-link_facebook:
+link_facebook: https://www.facebook.com/ihyoyoung
 link_instagram:
 ---
