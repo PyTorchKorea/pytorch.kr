@@ -35,6 +35,8 @@ jobs:
         git submodule update --remote
         ./_devel/update_hub_submodule.sh
     - name: Build Jekyll site
+      env:
+        JEKYLL_GITHUB_TOKEN: ${{ secrets.JEKYLL_GITHUB_TOKEN }}
       run: |
         make build_deploy
     - name: Deploy Jekyll site
