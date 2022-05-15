@@ -51,11 +51,15 @@ macOS에서 [homebrew](https://brew.sh/)를 사용하신다면, 아래 명령어
 
 #### 홈페이지 빌드
 
-아래 명령어로 jekyll을 사용하여 빌드합니다. 빌드 결과물은 `./_site` 디렉토리에 저장됩니다.
+아래 명령어로 jekyll을 사용하여 빌드합니다. 변경 사항을 실시간으로 확인하려면 `make build` 대신 `make serve` 명령어를 사용하면 됩니다.
 
 ```sh
-  make build
+  make build    # 빌드 결과물은 `./_site` 디렉토리에 저장됩니다.
+  # make serve
 ```
+
+* 참고: [기여해주신 분들](https://pytorch.kr/about/contributors) 페이지에서는 [jekyll/github-metadata](https://github.com/jekyll/github-metadata/tree/main/lib/jekyll-github-metadata) 플러그인을 사용하고 있으며 빌드를 위해서 `JEKYLL_GITHUB_TOKEN`이 필요합니다. \
+  [기여해주신 분들](https://pytorch.kr/about/contributors) 페이지를 빌드해야 하는 경우, [jekyll/github-metadata](https://github.com/jekyll/github-metadata/tree/main/lib/jekyll-github-metadata)의 [Authentication 문서](https://github.com/jekyll/github-metadata/blob/main/docs/authentication.md)를 참고해주세요.
 
 ## 배포하기
 
