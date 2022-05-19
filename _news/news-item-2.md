@@ -1,5 +1,5 @@
 ---
 order: 2
-link: https://pytorch.org/blog/pytorch-1.11-new-library-releases
-summary: (영문) NEW! Introducing TorchRec, and other domain library updates in PyTorch 1.11
+link: https://pytorch.org/blog/pytorch-1.11-released
+summary: (영문) NEW! PyTorch 1.11, TorchData, and functorch are now available
 ---
