@@ -7,5 +7,6 @@ group :jekyll_plugins do
   gem "jekyll-autoprefixer"
   gem "jekyll-github-metadata"
   gem "execjs", "2.7.0"
+  gem 'tzinfo'
   gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 end
