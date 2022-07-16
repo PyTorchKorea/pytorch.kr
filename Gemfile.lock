@@ -242,6 +242,8 @@ GEM
       jekyll-seo-tag (~> 2.1)
     minitest (5.15.0)
     multipart-post (2.1.1)
+    nokogiri (1.13.5-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.5-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.5-x86_64-linux)
@@ -278,6 +280,8 @@ GEM
       ethon (>= 0.9.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2022.1)
+      tzinfo (>= 1.0.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.1)
@@ -285,6 +289,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  arm64-darwin-21
   x86_64-darwin-20
   x86_64-linux
 
@@ -294,6 +299,8 @@ DEPENDENCIES
   jekyll-autoprefixer
   jekyll-github-metadata
   jekyll-paginate-v2
+  tzinfo
+  tzinfo-data
 
 RUBY VERSION
    ruby 2.7.4p191
