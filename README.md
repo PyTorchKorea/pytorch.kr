@@ -52,6 +52,19 @@ EOT
   rbenv rehash
 ```
 
+> 2022년 7월 17일 현재 apple silicon 에서 rbenv install 진행시 아래와 같은 문제로 설치가 안되는 문제가 있습니다.
+> https://github.com/openssl/openssl/issues/18720
+> ```sh
+> clang  -Iinclude -arch arm64 -O3 -Wall -D_REENTRANT -DZLIB -DZLIB_SHARED -DNDEBUG -I/Users/jlee/.rbenv/versions/2.7.4/include  -MMD -MF test/versions.d.tmp -MT test/versions.o -c -o test/versions.o test/versions.c
+> clang  -Iinclude -arch arm64 -O3 -Wall -D_REENTRANT -DZLIB -DZLIB_SHARED -DNDEBUG -I/Users/jlee/.rbenv/versions/2.7.4/include  -MMD -MF test/wpackettest.d.tmp -MT test/wpackettest.o -c -o test/wpackettest.o test/wpackettest.c
+> test/v3ext.c:201:24: error: implicitly declaring library function 'memcmp' with type 'int (const void *, const void *, unsigned long)' [-Werror,-Wimplicit-function-declaration]
+>        if (!TEST_true(memcmp(ip1->data, ip2->data, ip1->length) <= 0))
+> ```
+> 아래와 같이 OPENSSL_CFLAGS 를 설정해서 해결가능합니다.
+> ```sh
+>  OPENSSL_CFLAGS=-Wno-error=implicit-function-declaration rbenv install `cat .ruby-version`
+> ```
+
 #### node.js 및 필요 패키지 설치
 
 아래 명령어로 이 저장소에서 필요로 하는 node.js 버전에 맞춰 node.js 및 yarn, 필요 패키지들을 설치합니다.
