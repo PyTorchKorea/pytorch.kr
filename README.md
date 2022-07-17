@@ -24,6 +24,20 @@ macOS에서 [homebrew](https://brew.sh/)를 사용하신다면, 아래 명령어
   brew install rbenv ruby-build nvm
 ```
 
+mac os 에서 rbenv 와 nvm 을 최초 설치한 이후에는 쉘 설정파일을 업데이트 해야합니다.
+
+```sh
+# 관련 설정 업데이트
+  cat <<EOT >> ~/.zshrc
+eval "$(rbenv init - zsh)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+EOT
+  # 설정 반영
+  source ~/.zshrc # 혹은 재시작
+```
+
 ### 빌드 절차
 
 #### ruby 및 bundler, 필요 패키지 설치
