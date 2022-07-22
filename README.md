@@ -24,6 +24,20 @@ macOS에서 [homebrew](https://brew.sh/)를 사용하신다면, 아래 명령어
   brew install rbenv ruby-build nvm
 ```
 
+mac os 에서 rbenv 와 nvm 을 최초 설치한 이후에는 쉘 설정파일을 업데이트 해야합니다.
+
+```sh
+# 관련 설정 업데이트
+  cat <<EOT >> ~/.zshrc
+eval "$(rbenv init - zsh)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+EOT
+  # 설정 반영
+  source ~/.zshrc # 혹은 재시작
+```
+
 ### 빌드 절차
 
 #### ruby 및 bundler, 필요 패키지 설치
@@ -37,6 +51,19 @@ macOS에서 [homebrew](https://brew.sh/)를 사용하신다면, 아래 명령어
   bundle install                      # 필요 패키지 설치
   rbenv rehash
 ```
+
+> 2022년 7월 17일 현재 apple silicon 에서 rbenv install 진행시 아래와 같은 문제로 설치가 안되는 문제가 있습니다.
+> https://github.com/openssl/openssl/issues/18720
+> ```sh
+> clang  -Iinclude -arch arm64 -O3 -Wall -D_REENTRANT -DZLIB -DZLIB_SHARED -DNDEBUG -I/Users/jlee/.rbenv/versions/2.7.4/include  -MMD -MF test/versions.d.tmp -MT test/versions.o -c -o test/versions.o test/versions.c
+> clang  -Iinclude -arch arm64 -O3 -Wall -D_REENTRANT -DZLIB -DZLIB_SHARED -DNDEBUG -I/Users/jlee/.rbenv/versions/2.7.4/include  -MMD -MF test/wpackettest.d.tmp -MT test/wpackettest.o -c -o test/wpackettest.o test/wpackettest.c
+> test/v3ext.c:201:24: error: implicitly declaring library function 'memcmp' with type 'int (const void *, const void *, unsigned long)' [-Werror,-Wimplicit-function-declaration]
+>        if (!TEST_true(memcmp(ip1->data, ip2->data, ip1->length) <= 0))
+> ```
+> 아래와 같이 OPENSSL_CFLAGS 를 설정해서 해결가능합니다.
+> ```sh
+>  OPENSSL_CFLAGS=-Wno-error=implicit-function-declaration rbenv install `cat .ruby-version`
+> ```
 
 #### node.js 및 필요 패키지 설치
 
