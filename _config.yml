@@ -1,7 +1,7 @@
 # Site settings
-title: "PyTorch Korea User Group"
-author: "PyTorch Korea User Group"
-default_author: PyTorch Korea User Group
+title: "파이토치 한국 사용자 모임 (PyTorch Korea User Group)"
+author: "PyTorchKorea Maintainers"
+default_author: "PyTorchKorea Maintainers"
 description: "파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
 latest_version: 1.0
 timezone: Asia/Seoul
@@ -11,45 +11,63 @@ plugins:
   - jekyll-redirect-from
   - jekyll-autoprefixer
   - jekyll-feed
-  - jekyll-github-metadata
 sass:
   load_paths:
     - _sass
     - node_modules
-exclude: [vendor, node_modules, Gemfile, Gemdile.lock, README.md, LICENSE, CONTRIBUTING.md, yarn.lock, yarn-error.log, package.json, Makefile, scripts, docs, _hub/docs/template.md]
-include: [.nojekyll, CNAME, _static, _images, _modules, _sources, _tensor_str.html, _utils.html]
+exclude: [
+    vendor,
+    node_modules,
+    README.md,
+    CODE_OF_CONDUCT.md,
+    Gemfile,
+    Gemdile.lock,
+    LICENSE,
+    yarn.lock,
+    yarn-error.log,
+    package.json,
+    Makefile,
+    scripts,
+    docs,
+    _hub/docs/template.md
+  ]
+include: [
+    .nojekyll,
+    CNAME,
+    _static,
+    _images,
+    _modules,
+    _sources,
+    _tensor_str.html,
+    _utils.html
+  ]
 keep_files: [vendor/assets, docs/master/_static/js/vendor/]
-repository: PyTorchKorea/pytorch.kr
+github: [metadata]
 external_urls:
-  org_www: https://pytorch.org
+  org: https://pytorch.org
   org_docs: https://pytorch.org/docs
   org_tutorials: https://pytorch.org/tutorials
   hub_template: https://github.com/pytorch/hub/blob/master/docs/template.md
   previous_pytorch_versions: https://pytorch.kr/get-started/previous-versions/
-  site_tutorials: https://tutorials.pytorch.kr/
-  site_community: https://discuss.pytorch.kr/
-  site_hub: https://pytorch.kr/hub
-  repo_tutorials: https://github.com/PyTorchKorea/tutorials-kr
-  repo_hub: https://github.com/PyTorchKorea/hub-kr
-  repo_www: https://github.com/PyTorchKorea/pytorch.kr
-  repo_org: https://github.com/PyTorchKorea
+  hub_issue: https://github.com/PyTorchKorea/hub-kr/issues
+  www_issue: https://github.com/PyTorchKorea/pytorch.kr/issues
+  community: https://discuss.pytorch.kr/
+  tutorials: https://tutorials.pytorch.kr/
+  tutorials_github: https://github.com/PyTorchKorea/tutorials-kr
 livereload: false
 markdown: kramdown
 highlighter: rouge
 collections:
   about:
-    output: false
+    output: true
   get_started:
     output: true
   hub:
     output: true
     permalink: /hub/:title/
-  maintainers:
-    output: false
   resources:
     output: false
   features:
-    output: false
+    output: true
   news:
     output: true
-    permalink: /news/:title/

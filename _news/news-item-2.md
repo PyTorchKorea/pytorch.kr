@@ -1,5 +1,5 @@
 ---
 order: 2
-link: https://pytorch.org/blog/pytorch-1.11-released
-summary: (영문) NEW! PyTorch 1.11, TorchData, and functorch are now available
+link: https://discuss.pytorch.kr/t/apple-m1-pytorch-gpu/276
+summary: 이제 Apple M1에서도 PyTorch GPU 가속이 가능해집니다!🎉 (v1.12 이상)
 ---
