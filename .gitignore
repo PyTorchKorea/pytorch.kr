@@ -7,7 +7,6 @@
 !docs/master/_static/js/vendor/
 .bundle
 .sass_cache
-yarn.lock
 /_site/
 /.idea/
 /.jekyll-metadata
