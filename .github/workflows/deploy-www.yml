@@ -19,7 +19,7 @@ jobs:
     - name: Install node dependencies
       run: |
         npm install
-        yarn install
+        yarnpkg install
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
       with:
