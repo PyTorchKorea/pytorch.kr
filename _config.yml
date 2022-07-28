@@ -62,7 +62,7 @@ markdown: kramdown
 highlighter: rouge
 collections:
   about:
-    output: true
+    output: false
   get_started:
     output: true
   hub:
@@ -71,6 +71,8 @@ collections:
   resources:
     output: false
   features:
+    output: false
+  maintainers:
     output: false
   news:
     output: true
