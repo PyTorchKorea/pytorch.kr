@@ -85,8 +85,8 @@ EOT
   # make serve
 ```
 
-* 참고: [기여해주신 분들](https://pytorch.kr/about/contributors) 페이지에서는 [jekyll/github-metadata](https://github.com/jekyll/github-metadata/tree/main/lib/jekyll-github-metadata) 플러그인을 사용하고 있으며 빌드를 위해서 `JEKYLL_GITHUB_TOKEN`이 필요합니다. \
-  [기여해주신 분들](https://pytorch.kr/about/contributors) 페이지를 빌드해야 하는 경우, [jekyll/github-metadata](https://github.com/jekyll/github-metadata/tree/main/lib/jekyll-github-metadata)의 [Authentication 문서](https://github.com/jekyll/github-metadata/blob/main/docs/authentication.md)를 참고해주세요.
+* 참고: [기여해주신 분들](https://pytorch.kr) 페이지에서는 [jekyll/github-metadata](https://github.com/jekyll/github-metadata/tree/main/lib/jekyll-github-metadata) 플러그인을 사용하고 있으며 빌드를 위해서 `JEKYLL_GITHUB_TOKEN`이 필요합니다. \
+  [기여해주신 분들](https://pytorch.kr/contributors) 페이지를 빌드해야 하는 경우, [jekyll/github-metadata](https://github.com/jekyll/github-metadata/tree/main/lib/jekyll-github-metadata)의 [Authentication 문서](https://github.com/jekyll/github-metadata/blob/main/docs/authentication.md)를 참고해주세요.
 
 ## 배포하기
 

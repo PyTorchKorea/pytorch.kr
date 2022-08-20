@@ -1,8 +1,8 @@
 ---
 github: hrxorxm
 name: 이하람
-title: Maintainer
-team: tutorials-kr
+title: Inactive Maintainer
+team: Alumni
 link_linkedin:
 link_twitter:
 link_facebook:

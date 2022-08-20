@@ -66,13 +66,14 @@ body-class: features
       <!-- maintainers -->
       <div class="row maintainers-row">
         <div class="maintainer-content">
-          <h3 class="features">운영진 소개</h3>
-          <p class="features">파이토치 한국 사용자 모임을 함께 만들어가는 사람들을 소개합니다.</p>
+          <a name="maintainers"></a>
+          <h3 class="features">운영진 소개 (Maintainers)</h3>
+          <p class="features">파이토치 한국 사용자 모임을 함께 만들어가고 계신 분들을 소개합니다.</p>
           <div class="container">
             <div class="row">
               {% for maintainer in maintainers %}
               {% if maintainer.team == "Alumni" %}
-                {% assign active_class = "inactive" %}
+                {% continue %}
               {% else %}
                 {% assign active_class = "active" %}
               {% endif %}
@@ -104,6 +105,49 @@ body-class: features
           </div>
         </div>
       </div>
+      <!-- End of maintainers -->
+      <!-- inactive maintainers -->
+      <div class="row maintainers-row">
+        <div class="maintainer-content">
+          <h3 class="features">함께 하셨던 분들 (Alumni)</h3>
+          <p class="features">파이토치 한국 사용자 모임과 함께 하셨던 분들을 소개합니다.</p>
+          <div class="container">
+            <div class="row">
+              {% for maintainer in maintainers %}
+              {% if maintainer.team == "Alumni" %}
+                {% assign active_class = "inactive" %}
+              {% else %}
+                {% continue %}
+              {% endif %}
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="{{ active_class }}" href="#"><img src="{{ site.base_url }}/assets/images/maintainers/{{ maintainer.github }}.png" alt="{{ maintainer.github }}"></a>
+                  <div class="member-info">
+                    <h3>{{ maintainer.name }}</h3>
+                    <p class="title">{{ maintainer.title }}</p>
+                    <p class="team">@{{ maintainer.team | split: ", " | join: ", @"}}</p>
+                    <a href="https://github.com/{{ maintainer.github }}"><i class="fa fa-2x fa-github"></i></a>
+                    {% if maintainer.link_twitter %}
+                    <a href="{{ maintainer.link_twitter }}"><i class="fa fa-2x fa-twitter"></i></a>
+                    {% endif %}
+                    {% if maintainer.link_instagram %}
+                    <a href="{{ maintainer.link_instagram }}"><i class="fa fa-2x fa-instagram"></i></a>
+                    {% endif %}
+                    {% if maintainer.link_facebook %}
+                    <a href="{{ maintainer.link_facebook }}"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    {% endif %}
+                    {% if maintainer.link_linkedin %}
+                    <a href="{{ maintainer.link_linkedin }}"><i class="fa fa-2x fa-linkedin"></i></a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of inactive maintainers -->
     </div>
   </div>
 </div>

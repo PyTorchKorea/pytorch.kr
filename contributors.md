@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 기여자 소개
-permalink: about/contributors
+permalink: contributors/
 background-class: coc-background
 body-class: features
 ---

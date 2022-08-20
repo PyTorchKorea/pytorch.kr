@@ -18,7 +18,7 @@ jobs:
         node-version: 16.13.2
     - name: Install node dependencies
       run: |
-        npm install
+        npm install -g yarn
         yarn install
     - name: Set up Ruby 2.7
       uses: ruby/setup-ruby@v1
