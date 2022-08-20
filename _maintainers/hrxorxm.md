@@ -7,4 +7,5 @@ link_linkedin:
 link_twitter:
 link_facebook:
 link_instagram:
+link_youtube:
 ---

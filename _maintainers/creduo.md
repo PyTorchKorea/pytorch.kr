@@ -7,4 +7,5 @@ link_linkedin: https://www.linkedin.com/in/juhyukpark/
 link_twitter:
 link_facebook: https://www.facebook.com/funderbar
 link_instagram:
+link_youtube:
 ---
