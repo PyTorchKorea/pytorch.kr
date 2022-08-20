@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 BUNDLE := bundle
 YARN := yarn
+GEM := gem
 VENDOR_DIR = assets/vendor/
 JEKYLL := $(BUNDLE) exec jekyll
 
@@ -19,6 +20,7 @@ check:
 		_site
 
 install: $(PROJECT_DEPS)
+	$(GEM) install bundler -v 2.3.13
 	$(BUNDLE) install --path vendor/bundler
 	$(YARN) install
 
