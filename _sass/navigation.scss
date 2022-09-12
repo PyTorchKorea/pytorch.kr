@@ -42,11 +42,11 @@
 }
 
 .header-logo {
-  height: 43px;
-  width: 186px;
-  background-image: url($baseurl + "/assets/images/logo-kr.svg");
+  height: 40px;
+  width: 2000px;
+  background-image: url($baseurl + "/assets/images/logo-ko-dark.svg");
   background-repeat: no-repeat;
-  background-size: 186px 46px;
+  background-size: 180px 40px;
   display: block;
   float: left;
 
@@ -237,7 +237,7 @@
 .coc-header,
 .mobile-header {
   .header-logo {
-    background-image: url($baseurl + "/assets/images/logo-kr-sm-dark.svg");
+    background-image: url($baseurl + "/assets/images/logo-ko-dark.svg");
     background-size: 80px 40px;
     top: -30px;
 

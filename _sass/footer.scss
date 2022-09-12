@@ -149,19 +149,19 @@
 }
 
 .footer-logo {
-  background-image: url($baseurl + "/assets/images/logo-kr-sm.svg");
+  background-image: url($baseurl + "/assets/images/logo-ko-square-dark.svg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 120px 40px;
+  background-size: 100px 100px;
   display: block;
-  height: 40px;
-  width: 120px;
+  height: 130px;
+  width: 100px;
   margin-bottom: rem(45px);
 
   @include desktop {
-    background-size: 120px 40px;
-    height: 40px;
-    width: 120px;
+    background-size: 100px 100px;
+    height: 130px;
+    width: 100px;
     margin-bottom: 0;
   }
 }
