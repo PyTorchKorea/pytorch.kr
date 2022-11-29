@@ -1,8 +1,8 @@
 ---
 github: Taeyoung96
 name: 김태영
-title: Maintainer
-team: hub-kr
+title: Inactive Maintainer
+team: Alumni
 link_linkedin: https://www.linkedin.com/in/tae-young-kim-595692139/
 link_twitter:
 link_facebook:
