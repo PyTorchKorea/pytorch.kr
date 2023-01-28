@@ -1,5 +1,5 @@
 ---
 order: 1
-link: https://pytorch.org/blog/pytorch-1.12-released/
-summary: "(영문) New release! PyTorch 1.12: TorchArrow, Functional API for Modules and nvFuser are now available!"
+link: https://discuss.pytorch.kr
+summary: "파이토치 한국어 커뮤니티에서 다른 사용자들을 만나보세요! :)"
 ---
