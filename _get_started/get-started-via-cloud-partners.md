@@ -4,7 +4,7 @@ title: 클라우드에서 시작하기
 permalink: /get-started/cloud-partners/
 background-class: get-started-background
 body-class: get-started
-order: 2
+order: 3
 published: true
 get-started-via-cloud: true
 ---

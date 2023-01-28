@@ -35,13 +35,11 @@
 
         <div class="container">
           {% if page.get-started-locally == true %}
-
             {% include get_started_locally.html %}
-
+          {% elsif page.order == 2 %}
+            {% include pytorch.html %}
           {% elsif page.get-started-via-cloud == true %}
-
             {% include get_started_via_cloud.html %}
-
           {% else %}
 
             <div class="article-wrapper" data-id="{{ item.slug }}">

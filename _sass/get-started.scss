@@ -67,7 +67,8 @@
     font-size: rem(18px);
     color: #8c8c8c;
     @include desktop {
-      margin-left: rem(30px);
+      margin-left: rem(20px);
+      margin-right: rem(20px);
     }
     &:hover {
       color: $orange;
@@ -75,12 +76,12 @@
   }
 
   .get-started-nav-link {
-    padding-left: rem(20px);
-    padding-right: rem(20px);
+    padding-left: rem(10px);
+    padding-right: rem(10px);
 
     @include desktop {
-      padding-left: rem(30px);
-      padding-right: rem(30px);
+      padding-left: rem(15px);
+      padding-right: rem(15px);
     }
   }
 
