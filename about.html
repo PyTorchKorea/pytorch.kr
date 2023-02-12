@@ -79,12 +79,14 @@ body-class: features
               {% endif %}
               <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
                 <div class="maintainer">
-                  <a class="{{ active_class }}" href="#"><img src="{{ site.base_url }}/assets/images/maintainers/{{ maintainer.github }}.png" alt="{{ maintainer.github }}"></a>
+                  <a class="{{ active_class }}" href="#"><img src="{{ site.base_url }}/assets/images/maintainers/{{ maintainer._id }}.png" alt="{{ maintainer._id }}"></a>
                   <div class="member-info">
                     <h3>{{ maintainer.name }}</h3>
                     <p class="title">{{ maintainer.title }}</p>
                     <p class="team">@{{ maintainer.team | split: ", " | join: ", @"}}</p>
-                    <a href="https://github.com/{{ maintainer.github }}"><i class="fa fa-2x fa-github"></i></a>
+                    {% if maintainer.link_github %}
+                    <a href="{{ maintainer.link_github }}"><i class="fa fa-2x fa-github"></i></a>
+                    {% endif %}
                     {% if maintainer.link_twitter %}
                     <a href="{{ maintainer.link_twitter }}"><i class="fa fa-2x fa-twitter"></i></a>
                     {% endif %}
@@ -99,6 +101,9 @@ body-class: features
                     {% endif %}
                     {% if maintainer.link_youtube %}
                     <a href="{{ maintainer.link_youtube }}"><i class="fa fa-2x fa-youtube-play"></i></a>
+                    {% endif %}
+                    {% if maintainer.link_homepage %}
+                    <a href="{{ maintainer.link_homepage }}"><i class="fa fa-2x fa-home"></i></a>
                     {% endif %}
                   </div>
                 </div>
@@ -124,12 +129,14 @@ body-class: features
               {% endif %}
               <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
                 <div class="maintainer">
-                  <a class="{{ active_class }}" href="#"><img src="{{ site.base_url }}/assets/images/maintainers/{{ maintainer.github }}.png" alt="{{ maintainer.github }}"></a>
+                  <a class="{{ active_class }}" href="#"><img src="{{ site.base_url }}/assets/images/maintainers/{{ maintainer._id }}.png" alt="{{ maintainer._id }}"></a>
                   <div class="member-info">
                     <h3>{{ maintainer.name }}</h3>
                     <p class="title">{{ maintainer.title }}</p>
                     <p class="team">@{{ maintainer.team | split: ", " | join: ", @"}}</p>
-                    <a href="https://github.com/{{ maintainer.github }}"><i class="fa fa-2x fa-github"></i></a>
+                    {% if maintainer.link_github %}
+                    <a href="{{ maintainer.link_github }}"><i class="fa fa-2x fa-github"></i></a>
+                    {% endif %}
                     {% if maintainer.link_twitter %}
                     <a href="{{ maintainer.link_twitter }}"><i class="fa fa-2x fa-twitter"></i></a>
                     {% endif %}
@@ -141,6 +148,12 @@ body-class: features
                     {% endif %}
                     {% if maintainer.link_linkedin %}
                     <a href="{{ maintainer.link_linkedin }}"><i class="fa fa-2x fa-linkedin"></i></a>
+                    {% endif %}
+                    {% if maintainer.link_youtube %}
+                    <a href="{{ maintainer.link_youtube }}"><i class="fa fa-2x fa-youtube-play"></i></a>
+                    {% endif %}
+                    {% if maintainer.link_homepage %}
+                    <a href="{{ maintainer.link_homepage }}"><i class="fa fa-2x fa-home"></i></a>
                     {% endif %}
                   </div>
                 </div>
