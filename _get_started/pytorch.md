@@ -28,7 +28,7 @@ Underpinning `torch.compile` are new technologies -- TorchDynamo, AOTAutograd, P
 * **AOTAutograd** overloads PyTorch’s autograd engine as a tracing autodiff for generating ahead-of-time backward traces.
 
 - **PrimTorch** canonicalizes ~2000+ PyTorch operators down to a closed set of ~250 primitive operators that developers can target to build a complete PyTorch backend. This substantially lowers the barrier of writing a PyTorch feature or backend.
-- **TorchInductor** is a deep learning compiler that generates fast code for multiple accelerators and backends. For NVIDIA GPUs, it uses OpenAI Triton as a key building block.
+- **TorchInductor** is a deep learning compiler that generates fast code for multiple accelerators and backends. For NVIDIA and AMD GPUs, it uses OpenAI Triton as a key building block.
 
 TorchDynamo, AOTAutograd, PrimTorch and TorchInductor are written in Python and support dynamic shapes (i.e. the ability to send in Tensors of different sizes without inducing a recompilation), making them flexible, easily hackable and lowering the barrier of entry for developers and vendors.
 
@@ -283,7 +283,7 @@ The minifier automatically reduces the issue you are seeing to a small snippet o
 
 If you are not seeing the speedups that you expect, then we have the **torch.\_dynamo.explain** tool that explains which parts of your code induced what we call “graph breaks”. Graph breaks generally hinder the compiler from speeding up the code, and reducing the number of graph breaks likely will speed up your code (up to some limit of diminishing returns).
 
-You can read about these and more in our [troubleshooting guide](https://pytorch.org/docs/master/dynamo/troubleshooting.html).
+You can read about these and more in our [troubleshooting guide](https://pytorch.org/docs/stable/dynamo/troubleshooting.html).
 
 ### Dynamic Shapes
 
@@ -363,9 +363,9 @@ We have built utilities for partitioning an FX graph into subgraphs that contain
 
 We are super excited about the direction that we’ve taken for PyTorch 2.0 and beyond. The road to the final 2.0 release is going to be rough, but come join us on this journey early-on. If you are interested in deep-diving further or contributing to the compiler, please continue reading below which includes more information on how to get started (e.g., tutorials, benchmarks, models, FAQs) and **Ask the Engineers: 2.0 Live Q&A Series** starting this month. Additional resources include:
 
-- Getting Started @ [https://pytorch.org/docs/master/dynamo/get-started.html](https://pytorch.org/docs/master/dynamo/get-started.html)
+- Getting Started @ [https://pytorch.org/docs/stable/dynamo/get-started.html](https://pytorch.org/docs/stable/dynamo/get-started.html)
 - Tutorials @ [https://pytorch.org/tutorials/](https://pytorch.org/tutorials/)
-- Documentation @ [https://pytorch.org/docs/master](https://pytorch.org/docs/master) and [http://pytorch.org/docs/master/dynamo](http://pytorch.org/docs/master/dynamo)
+- Documentation @ [https://pytorch.org/docs/stable](https://pytorch.org/docs/stable) and [http://pytorch.org/docs/stable/dynamo](http://pytorch.org/docs/stable/dynamo)
 - Developer Discussions @ [https://dev-discuss.pytorch.org](https://dev-discuss.pytorch.org)
 
 <script page-id="pytorch" src="{{ site.baseurl }}/assets/menu-tab-selection.js"></script>
@@ -450,13 +450,13 @@ PyTorch 2.0 is what 1.14 would have been. We were releasing substantial new feat
 
     Install the latest nightlies:
 
-    CUDA 11.7<br>
+    CUDA 11.8<br>
+    ```
+    pip3 install numpy --pre torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cu118
+    ```
+    CUDA 11.7
     ```
     pip3 install numpy --pre torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cu117
-    ```
-    CUDA 11.6
-    ```
-    pip3 install numpy --pre torch torchvision torchaudio --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cu116
     ```
     CPU
     ```
@@ -478,7 +478,7 @@ While the speedups are primarily observed during training, you can also use it f
     def train(model, dataloader):
       model = torch.compile(model)
       for batch in dataloader:
-      run_epoch(model, batch)
+        run_epoch(model, batch)
 
     def infer(model, input):
       model = torch.compile(model)
@@ -488,37 +488,33 @@ While the speedups are primarily observed during training, you can also use it f
 7. **Why should I use PT2.0 instead of PT 1.X?**
 See answer to Question (2).
 
-8. **Are there any applications where I should NOT use PT 2.0?**
-The current release of PT 2.0 is still experimental and in the nightlies. Dynamic shapes support in torch.compile is still early, and you should not be using it yet, and wait until the Stable 2.0 release lands in March 2023.
-That said, even with static-shaped workloads, we’re still building Compiled mode and there might be bugs. Disable Compiled mode for parts of your code that are crashing, and raise an [issue](https://github.com/pytorch/pytorch/issues) (if it isn’t raised already).
-
-9. **What is my code doing differently when running PyTorch 2.0?**
+8. **What is my code doing differently when running PyTorch 2.0?**
 Out of the box, PyTorch 2.0 is the same as PyTorch 1.x, your models run in eager-mode i.e. every line of Python is executed one after the other.
 In 2.0, if you wrap your model in `model = torch.compile(model)`, your model goes through 3 steps before execution:
     1.  Graph acquisition: first the model is rewritten as blocks of subgraphs. Subgraphs which can be compiled by TorchDynamo are “flattened” and the other subgraphs (which might contain control-flow code or other unsupported Python constructs) will fall back to Eager-Mode.
     2.  Graph lowering: all the PyTorch operations are decomposed into their constituent kernels specific to the chosen backend.
     3.  Graph compilation, where the kernels call their corresponding low-level device-specific operations.
 
-10. **What new components does PT2.0 add to PT?**
-    - **TorchDynamo** generates FX Graphs from Python bytecode. It maintains the eager-mode capabilities using [guards](https://pytorch.org/docs/master/dynamo/guards-overview.html#caching-and-guards-overview) to ensure the generated graphs are valid ([read more](https://dev-discuss.pytorch.org/t/torchdynamo-an-experiment-in-dynamic-python-bytecode-transformation/361))
+9. **What new components does PT2.0 add to PT?**
+    - **TorchDynamo** generates FX Graphs from Python bytecode. It maintains the eager-mode capabilities using [guards](https://pytorch.org/docs/stable/dynamo/guards-overview.html#caching-and-guards-overview) to ensure the generated graphs are valid ([read more](https://dev-discuss.pytorch.org/t/torchdynamo-an-experiment-in-dynamic-python-bytecode-transformation/361))
     - **AOTAutograd** to generate the backward graph corresponding to the forward graph captured by TorchDynamo ([read more](https://dev-discuss.pytorch.org/t/torchdynamo-update-6-training-support-with-aotautograd/570)).
     - **PrimTorch** to decompose complicated PyTorch operations into simpler and more elementary ops ([read more](https://dev-discuss.pytorch.org/t/tracing-with-primitives-update-2/645)).
     - **\[Backend]** Backends integrate with TorchDynamo to compile the graph into IR that can run on accelerators. For example, **TorchInductor** compiles the graph to either **Triton** for GPU execution or **OpenMP** for CPU execution ([read more](https://dev-discuss.pytorch.org/t/torchinductor-a-pytorch-native-compiler-with-define-by-run-ir-and-symbolic-shapes/747)).
 
-11. **What compiler backends does 2.0 currently support?**
+10. **What compiler backends does 2.0 currently support?**
 The default and the most complete backend is [TorchInductor](https://github.com/pytorch/pytorch/tree/master/torch/_inductor), but TorchDynamo has a growing list of backends that can be found by calling `torchdynamo.list_backends()`.
 
-12. **How does distributed training work with 2.0?**
+11. **How does distributed training work with 2.0?**
 DDP and FSDP in Compiled mode  can run up to 15% faster than Eager-Mode in FP32 and up to 80% faster in AMP precision. PT2.0 does some extra optimization to ensure DDP’s communication-computation overlap works well with Dynamo’s partial graph creation. Ensure you run DDP with static_graph=False. More details [here](https://dev-discuss.pytorch.org/t/torchdynamo-update-9-making-ddp-work-with-torchdynamo/860).
 
-13. **How can I learn more about PT2.0 developments?**
+12. **How can I learn more about PT2.0 developments?**
 The [PyTorch Developers forum](http://dev-discuss.pytorch.org/) is the best place to learn about 2.0 components directly from the developers who build them.
 
-14. **Help my code is running slower with 2.0’s Compiled Mode!**
-The most likely reason for performance hits is too many graph breaks. For instance, something innocuous as a print statement in your model’s forward triggers a graph break. We have ways to diagnose these  - read more [here](https://pytorch.org/docs/master/dynamo/faq.html#why-am-i-not-seeing-speedups).
+13. **Help my code is running slower with 2.0’s Compiled Mode!**
+The most likely reason for performance hits is too many graph breaks. For instance, something innocuous as a print statement in your model’s forward triggers a graph break. We have ways to diagnose these  - read more [here](https://pytorch.org/docs/stable/dynamo/faq.html#why-am-i-not-seeing-speedups).
 
-15. **My previously-running code is crashing with 2.0’s Compiled Mode! How do I debug it?**
-Here are some techniques to triage where your code might be failing, and printing helpful logs: [https://pytorch.org/docs/master/dynamo/faq.html#why-is-my-code-crashing](https://pytorch.org/docs/master/dynamo/faq.html#why-is-my-code-crashing).
+14. **My previously-running code is crashing with 2.0’s Compiled Mode! How do I debug it?**
+Here are some techniques to triage where your code might be failing, and printing helpful logs: [https://pytorch.org/docs/stable/dynamo/faq.html#why-is-my-code-crashing](https://pytorch.org/docs/stable/dynamo/faq.html#why-is-my-code-crashing).
 
 ## Ask the Engineers: 2.0 Live Q&A Series
 

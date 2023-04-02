@@ -18,3 +18,4 @@ PyTorch 1.3부터, PyTorch는 Python으로 iOS 및 Android 배포에 이르기�
 [iOS]({{ site.external_urls.org_www }}/mobile/ios)에서 시작하기
 
 <script page-id="mobile" src="{{ site.baseurl }}/assets/menu-tab-selection.js"></script>
+<script src="{{ site.baseurl }}/assets/get-started-sidebar.js"></script>
