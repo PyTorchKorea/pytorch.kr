@@ -27,7 +27,7 @@
                 <img src="{{ site.baseurl }}/assets/images/logo-icon.svg" class="img-fluid author-icon">
                 <article class="pytorch-article">
                     <p class="author">
-                      {% if page.category contains 'translation' || page.category contains 'pytorch.org' %}
+                      {% if page.category contains 'translation' or page.category contains 'pytorch.org' %}
                         {% if page.author %}
                             작성: {{ page.author }}, 번역: {{ site.default_author }}
                         {% else %}
