@@ -15,9 +15,10 @@
     <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
         <div class="container blog-detail-container">
             <p class="featured-post">{{ page.date | date: '%B %d, %Y' }}</p>
-            <h1>
-                <a class="blog-title">{{ page.title }}</a>
-            </h1>
+            <h1><a class="blog-title">{{ page.title }}</a></h1>
+            {% if page.category contains 'translation' or page.category contains 'pytorch.org' %}
+                <h4 class="blog-subtitle">{{ page.org_title }}</h4>
+            {% endif %}
         </div>
     </div>
 
@@ -44,6 +45,10 @@
                     </p>
                     {% endif %}
                     {{ content }}
+                    <hr noshade />
+                    <p class="translation-description">
+                        궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="{{ site.external_urls.site_community }}">한국어 커뮤니티에 참여</a>해보세요!
+                    </p>
                 </article>
             </div>
         </div>

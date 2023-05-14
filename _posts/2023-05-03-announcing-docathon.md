@@ -1,13 +1,14 @@
 ---
 layout: blog_detail
-title: "파이토치 문서콘(Docathon) 2023 개최 안내"
+title: 파이토치 도카톤(Docathon) 2023 개최 안내
+org_title: Announcing PyTorch Docathon 2023
 category: ["pytorch.org", "translation"]
 org_link: https://pytorch.org/blog/announcing-docathon/
 ---
 
-![PyTorch Docathon](/assets/blog/docathon-cover.jpg){:style="max-height:800px; width:100%"}
+![PyTorch Docathon](/assets/blog/2023-05-03-announcing-docathon/docathon-cover.jpg){:style="max-height:800px; width:100%"}
 
-첫 번째 파이토치 문서콘(Docathon)을 개최하게 되어 매우 기쁩니다! 문서콘은 커뮤니티의 도움을 받아 문서를 개선하는 데 초점을 맞춘 해커톤 형식의 이벤트입니다. 문서는 모든 기술에서 매우 중요한 요소이며, 문서를 개선함으로써 사용자가 PyTorch를 더 쉽게 시작하고, 기능을 효과적으로 사용하는 방법을 이해하도록 돕고, 궁극적으로 머신러닝 분야의 연구부터 생산에 이르는 과정을 가속화할 수 있습니다.
+첫 번째 파이토치 도카톤(Docathon)을 개최하게 되어 매우 기쁩니다! 도카톤은 커뮤니티의 도움을 받아 문서를 개선하는 데 초점을 맞춘 해커톤 형식의 이벤트입니다. 문서는 모든 기술에서 매우 중요한 요소이며, 문서를 개선함으로써 사용자가 PyTorch를 더 쉽게 시작하고, 기능을 효과적으로 사용하는 방법을 이해하도록 돕고, 궁극적으로 머신러닝 분야의 연구부터 생산에 이르는 과정을 가속화할 수 있습니다.
 > We are excited to announce the first ever PyTorch Docathon! The Docathon is a hackathon-style event focused on improving the documentation by enlisting the help of the community. Documentation is a crucial aspect of any technology and by improving the documentation, we can make it easier for users to get started with PyTorch, help them understand how to use its features effectively, and ultimately accelerate research to production in the field of machine learning.
 
 

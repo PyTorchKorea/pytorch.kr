@@ -193,6 +193,13 @@
         color: $white;
       }
     }
+    .blog-subtitle {
+      display: inline-flex;
+      margin-top: 0;
+      color: $white;
+      font-size: rem(24px);
+      font-style: italic;
+    }
 
     .blog-detail-container {
       padding-top: 4rem;
@@ -320,6 +327,7 @@
   }
 
   .pytorch-article {
+    padding-bottom: 0;
     .enterprise-azure-logo-container {
       padding-left: 0;
       img {
