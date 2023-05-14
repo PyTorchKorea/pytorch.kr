@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.lang }}">
 {% include head.html %}
 
 <body class="{{ page.body-class }}">
@@ -16,16 +16,15 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       {% for post in posts limit:1 %}
-      <p class="featured-post">Featured Post</p>
+      <p class="featured-post">추천 게시물</p>
       <h1 class="blog-index-title">
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </h1>
-      <p class="featured-blog-preview">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+      <p class="featured-blog-preview">{{ post.excerpt | strip_html | truncate: 150 }}</p>
 
       <a href="{{ site.baseurl }}{{ post.url }}" class="btn btn-lg with-right-arrow">
-        Read More
+        더 읽기
       </a>
-
       {% endfor %}
     </div>
   </div>
@@ -46,7 +45,7 @@
                 <img src="{{ post.image }}" class="img-fluid">
               </div>
               <a href="{{ site.baseurl }}{{ post.url }}" class="btn btn-lg with-right-arrow">
-                Read More
+                더 읽기
               </a>
             </div>
           {% endfor %}
@@ -62,5 +61,4 @@
   {% include footer.html %}
 
 </body>
-
 </html>

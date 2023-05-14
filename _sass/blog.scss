@@ -129,10 +129,9 @@
 
     .author {
       color: $orange;
-      font-size: rem(20px);
+      font-size: rem(16px);
       letter-spacing: 0.25px;
       line-height: rem(30px);
-      margin-bottom: rem(30px);
     }
 
     .author-icon {
@@ -179,7 +178,7 @@
 
     h1 {
       letter-spacing: -1.65px;
-      font-size: rem(56px);
+      font-size: rem(48px);
       line-height: rem(60px);
       text-transform: none;
       a {
@@ -240,6 +239,7 @@
   p.featured-post {
     @include blog_date_and_feature;
     color: $white;
+    font-weight: bolder;
   }
 
   p.featured-blog-preview {
@@ -324,6 +324,31 @@
       padding-left: 0;
       img {
         margin-bottom: 0;
+      }
+    }
+    .translation-description {
+      font-style: italic;
+      font-size: rem(16px);
+    }
+    ul {
+      padding-left: 1.25rem;
+      li {
+        blockquote {
+          margin-left: -1.25rem;
+        }
+      }
+    }
+    blockquote {
+      padding: 5px 10px 5px 10px;
+      border-left: $orange 2px solid;
+      word-wrap: break-word;
+      p {
+        font-size: rem(16px);
+        margin-bottom: 0;
+      }
+      ul {
+        padding-left: 1.125rem;
+        margin: 5px 0 5px 0;
       }
     }
   }

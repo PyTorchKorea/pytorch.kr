@@ -176,6 +176,8 @@ a, .btn {
 
   &.blog-background {
     background-image: url($baseurl + "/assets/images/blog-background.jpg");
+    background-color: #2F2F2F;
+    background-blend-mode: saturation plus-darker;
   }
 
   &.mobile-background {
