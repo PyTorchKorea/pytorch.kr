@@ -38,7 +38,7 @@
                         작성: {{ site.default_author }}
                       {% endif %}
                     </p>
-                    {% if page.category contains 'translation' || page.category contains 'pytorch.org' %}
+                    {% if page.category contains 'translation' or page.category contains 'pytorch.org' %}
                     <p class="translation-description">
                         이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
                         번역 글은 원문을 함께 표시합니다. 원문으로 이동하시려면 <a href="{{ page.org_link }}">여기</a>를 클릭하세요.
