@@ -21,6 +21,8 @@ check:
 
 install: $(PROJECT_DEPS)
 	$(GEM) install bundler -v 2.3.13
+	# https://github.com/eventmachine/eventmachine/issues/960#issuecomment-1332076385
+	$(BUNDLE) config build.eventmachine --with-ldflags="-Wl,-undefined,dynamic_lookup"
 	$(BUNDLE) install --path vendor/bundler
 	$(YARN) install
 
