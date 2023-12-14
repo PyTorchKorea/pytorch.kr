@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 기여자 소개
+title: 기여하신 분들 소개 | PyTorchKR
 permalink: contributors/
 background-class: coc-background
 body-class: features

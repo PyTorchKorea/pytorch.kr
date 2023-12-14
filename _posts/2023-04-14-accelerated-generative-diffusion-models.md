@@ -5,6 +5,7 @@ org_title: Accelerated Generative Diffusion Models with PyTorch 2
 author: Grigory Sizov, Michael Gschwind, Hamid Shojanazeri, Driss Guessous, Daniel Haziza, Christian Puhrsch
 category: ["pytorch.org", "translation"]
 org_link: https://pytorch.org/blog/accelerated-generative-diffusion-models/
+discuss_id: 1401
 ---
 
 **요약**: PyTorch 2.0 nightly 버전은 새로운 `torch.compile()` 컴파일러를 사용하여 생성적 디퓨전 모델의 성능을 즉시 개선하고 PyTorch 2와 통합된 멀티헤드 어텐션의 최적화된 구현을 제공합니다.

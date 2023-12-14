@@ -20,7 +20,7 @@
       <h1 class="blog-index-title">
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </h1>
-      <p class="featured-blog-preview">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+      <p class="featured-blog-preview">{{ post.excerpt | strip_html | escape | truncate: 150 }}</p>
 
       <a href="{{ site.baseurl }}{{ post.url }}" class="btn btn-lg with-right-arrow">
         더 읽기
@@ -35,14 +35,18 @@
         <div class="row blog-vertical">
 
           {% for post in posts %}
+            {% if forloop.first %}
+              {% continue %}
+            {% endif %}
             <div class="vertical-blog-container">
               <div class="col-md-4">
                 <p class="blog-date">{{ post.date | date: '%B %d, %Y' }}</p>
                 <h4>
                   <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
                 </h4>
-                <p>{{ post.excerpt | remove: '<p>' | remove: '</p>' | truncate: 500}}</p>
-                <img src="{{ post.image }}" class="img-fluid">
+                <!-- <p>{{ post.excerpt | remove: '<h1>' | remove: '</h1>' | remove: '<img>' | remove: '<p>' | remove: '</p>' | truncate: 500}}</p> -->
+                <p>{{ post.excerpt | strip_html | strip | truncate: 250 | escape }}</p>
+                <!-- <img src="{{ post.image }}" class="img-fluid"> -->
               </div>
               <a href="{{ site.baseurl }}{{ post.url }}" class="btn btn-lg with-right-arrow">
                 더 읽기

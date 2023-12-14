@@ -46,8 +46,8 @@
                     {% endif %}
                     {{ content }}
                     <hr noshade />
-                    <p class="translation-description">
-                        궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="{{ site.external_urls.site_community }}">한국어 커뮤니티에 참여</a>해보세요!
+                    <p class="translation-description ad-discuss">
+                        {% if page.discuss_id %}이 주제와 관련하여 {% endif %} 더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="{{ site.external_urls.site_community }}{% if page.discuss_id %}{{ page.discuss_id | prepend: '/t/' }}{% endif %}">파이토치 한국어 커뮤니티에 참여</a>해주세요!
                     </p>
                 </article>
             </div>

@@ -5,6 +5,7 @@ org_title: Accelerating Large Language Models with Accelerated Transformers
 author: Lucas Pasqualin, Driss Guessous, Christian Puhrsch, Bertrand Maher, Michael Gschwind
 category: ["pytorch.org", "translation"]
 org_link: https://pytorch.org/blog/announcing-docathon/
+discuss_id: 1417
 ---
 
 **요약**: 안드레이 카파시(Andrej Karpathy)가 GPT 모델을 컴팩트한 오픈소스로 구현한 [nanoGPT](https://github.com/karpathy/nanoGPT)를 예제로, 가속화된 파이토치 2.0 트랜스포머와 새로 도입된 `torch.compile()` 메서드를 사용하여 대규모 언어 모델을 가속하는 방법을 보여줍니다. 가속화된 PT2 트랜스포머와 함께 도입된 새로운 [스케일드 닷 프로덕트 어텐션 연산자(scaled dot product attention operator)](https://pytorch.org/docs/master/generated/torch.nn.functional.scaled_dot_product_attention.html)를 사용하여 플래시-어텐션(flash_attention) 커스텀 커널을 선택하고 배치당 훈련 시간을 ~143ms/배치 기준에서 ~113ms/배치로 단축(Nvidia A100 GPU로 측정)했습니다. 또한 SDPA 연산자를 사용한 향상된 구현으로 수치 안정성이 향상되었습니다. 마지막으로, 플래시 주의와 결합된 패딩 입력을 사용하여 추가 최적화를 달성하면 배치당 ~87ms로 개선됩니다.

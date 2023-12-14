@@ -250,6 +250,9 @@
   }
 
   p.featured-blog-preview {
+    width: 65%;
+    min-width: 640px;
+    max-width: 1280px;
     margin-bottom: rem(12px);
   }
 
@@ -337,6 +340,9 @@
     .translation-description {
       font-style: italic;
       font-size: rem(16px);
+    }
+    .ad-discuss {
+      font-size: 1.3rem;
     }
     ul {
       padding-left: 1.25rem;
