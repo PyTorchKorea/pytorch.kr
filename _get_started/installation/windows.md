@@ -18,7 +18,7 @@ PyTorch is supported on the following Windows distributions:
 ### Python
 {: #windows-python}
 
-Currently, PyTorch on Windows only supports Python 3.7-3.9; Python 2.x is not supported.
+Currently, PyTorch on Windows only supports Python 3.8-3.10; Python 2.x is not supported.
 
 As it is not installed by default on Windows, there are multiple ways to install Python:
 
@@ -28,9 +28,9 @@ As it is not installed by default on Windows, there are multiple ways to install
 
 > If you use Anaconda to install PyTorch, it will install a sandboxed version of Python that will be used for running PyTorch applications.
 
-> If you decide to use Chocolatey, and haven't installed Chocolatey yet, ensure that you are [running your command prompt as an administrator](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/).
+> If you decide to use Chocolatey, and haven't installed Chocolatey yet, ensure that you are running your command prompt as an administrator.
 
-For a Chocolatey-based install, run the following command in an [administrative command prompt](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/):
+For a Chocolatey-based install, run the following command in an administrative command prompt:
 
 ```bash
 choco install python
