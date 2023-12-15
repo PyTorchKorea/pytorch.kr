@@ -344,11 +344,12 @@
     .ad-discuss {
       font-size: 1.3rem;
     }
-    ul {
-      padding-left: 1.25rem;
+    ul,
+    ol {
+      padding-left: 1.5rem;
       li {
         blockquote {
-          margin-left: -1.25rem;
+          margin-left: -1.5rem;
         }
       }
     }
@@ -364,6 +365,10 @@
         padding-left: 1.125rem;
         margin: 5px 0 5px 0;
       }
+    }
+    table tr th:first-of-type,
+    table tr td:first-of-type {
+      padding: rem(5px);
     }
   }
 }
