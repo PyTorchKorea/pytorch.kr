@@ -44,7 +44,9 @@
                         번역 글은 원문을 함께 표시합니다. 원문으로 이동하시려면 <a href="{{ page.org_link }}">여기</a>를 클릭하세요.
                     </p>
                     {% endif %}
-                    {{ content }}
+                    <div class="blog-content">
+                        {{ content }}
+                    </div>
                     <hr noshade />
                     <p class="translation-description ad-discuss">
                         {% if page.discuss_id %}이 주제와 관련하여 {% endif %} 더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="{{ site.external_urls.site_community }}{% if page.discuss_id %}{{ page.discuss_id | prepend: '/t/' }}{% endif %}">파이토치 한국어 커뮤니티에 참여</a>해주세요!
@@ -53,6 +55,8 @@
             </div>
         </div>
     </div>
+
+    {% include blog_comments.html %}
 
     {% include footer.html %}
 </body>

@@ -61,6 +61,8 @@ keep_files: [
     docs/master/_static/js/vendor/
   ]
 repository: PyTorchKorea/pytorch.kr
+variables:
+  community_discourse_id: bot
 external_urls:
   org_www: https://pytorch.org
   org_docs: https://pytorch.org/docs
