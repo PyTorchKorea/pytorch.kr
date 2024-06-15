@@ -28,7 +28,7 @@ discuss_id: 1417
 
 > <small style="line-height: 1.1">***Figure 1:** The Transformer model architecture based on [“Attention is All You Need”](https://arxiv.org/abs/1706.03762). With the new PyTorch SDPA operator, Multi-Head Attention is efficiently implemented by a linear layer for the in-projection, the SDPA operator, and a linear layer for the out-projection.*</small>
 
-새로운 scaled_dot_product_attention 연산자를 사용하면 선형 레이어를 사용한 in-projection, SDPA, 선형 레이어를 사용한 out-projection의 3단계만으로 멀티헤드 어텐션 기능을 구현할 수 있습니다.
+새로운 scaled_dot_product_attention 연산자를 사용하면 선형 레이어를 사용한 in-projection, SDPA, 선형 레이어를 사용한 out-projection의 3단계만으로 멀티헤드 어텐션 기능을 구현할 수 있습니다.
 > With the new scaled_dot_product_attention operator, multihead attention can be implemented in just 3 steps: in projection with a linear layer, SDPA, and out projection with a linear layer.
 
 ```
@@ -75,7 +75,7 @@ PyTorch 2는 특정 요구사항에 따라 특정 사용 사례에 최적화된 
 SDPA 연산자는 GPT 모델의 핵심 구성 요소이기 때문에 오픈소스 nanoGPT 모델이 구현의 용이성과 PyTorch 2.0의 가속화된 트랜스포머의 이점을 모두 입증할 수 있는 훌륭한 후보라고 판단했습니다. 다음은 nanoGPT에서 가속화된 트랜스포머가 활성화된 정확한 프로세스를 보여줍니다.
 > The SDPA operator being a critical component of the GPT model, we identified the open source nanoGPT model as an excellent candidate for both demonstrating the ease of implementation and benefits of PyTorch 2.0’s Accelerated Transformers. The following demonstrates the exact process by which Accelerated Transformers was enabled on nanoGPT.
 
-이 프로세스는 크게 기존 SDPA 구현을 [functional.py](https://github.com/pytorch/pytorch/blob/df14650f0b14b80db132b0c1797dc595fbee1054/torch/nn/functional.py#L4834)에서 새로 추가된 F.scaled_dot_product_attention 연산자로 대체하는 것을 중심으로 진행됩니다. 이 프로세스는 다른 많은 LLM에서 이 연산자를 활성화하도록 쉽게 조정할 수 있습니다. 또는 사용자가 F.multi_head_attention_forward()를 호출하거나 해당되는 경우 nn.MultiHeadAttention 모듈을 직접 활용할 수 있습니다. 다음 코드 스니펫은 Karpathy의 nanoGPT 저장소에서 가져온 것입니다.
+이 프로세스는 크게 기존 SDPA 구현을 [functional.py](https://github.com/pytorch/pytorch/blob/df14650f0b14b80db132b0c1797dc595fbee1054/torch/nn/functional.py#L4834)에서 새로 추가된 F.scaled_dot_product_attention 연산자로 대체하는 것을 중심으로 진행됩니다. 이 프로세스는 다른 많은 LLM에서 이 연산자를 활성화하도록 쉽게 조정할 수 있습니다. 또는 사용자가 F.multi_head_attention_forward()를 호출하거나 해당되는 경우 nn.MultiHeadAttention 모듈을 직접 활용할 수 있습니다. 다음 코드 스니펫은 Karpathy의 nanoGPT 저장소에서 가져온 것입니다.
 > This process largely revolves around replacing the existing SDPA implementation with the newly added F.scaled_dot_product_attention operator from [functional.py](https://github.com/pytorch/pytorch/blob/df14650f0b14b80db132b0c1797dc595fbee1054/torch/nn/functional.py#L4834). This process can be easily adapted to enable the operator in many other LLMs. Alternatively, users can instead choose to call F.multi_head_attention_forward() or utilize the nn.MultiHeadAttention module directly where applicable. The following code snippets are adapted from Karpathy’s nanoGPT repository.
 
 ### 1단계: 기존 SDPA 구현 식별하기 / Step 1: Identify the existing SDPA implementation
