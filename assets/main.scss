@@ -34,5 +34,11 @@ $baseurl:"{{ site.baseurl }}";
 @import "deep-learning";
 @import "contributors";
 @import "enterprise";
-@import "coc";
+@import "events";
+@import "community-stories";
+@import "announcement";
+
+
+// Import for PyTorchKR
 @import "community";
+@import "coc";

@@ -183,8 +183,13 @@ a, .btn {
   &.mobile-background {
     background-image: url($baseurl + "/assets/images/get-started-background.jpg");
   }
+
   &.deep-learning-background {
     background-image: url($baseurl + "/assets/images/deep-learning-thank-you-background.jpg");
+  }
+
+  &.announcement-background {
+    background-image: url($baseurl + "/assets/images/pytorch_bg_purple.jpg");
   }
 }
 
