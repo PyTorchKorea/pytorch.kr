@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      파이토치 한국 사용자 모임 소개 | PyTorchKR | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="features">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder features-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background about-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>반갑습니다!</h1>
+
+        <p class="lead">파이토치 한국 사용자 모임은 한국 사용자를 위한 비공식 사용자 모임으로,
+          한국어를 사용하시는 많은 분들께 PyTorch를 소개하고 함께 배우며 성장하는 것을 목표로 하고 있습니다.</p>
+
+        <a href="/get-started" class="btn btn-lg with-right-arrow btn-white" data-cta="get-started">
+            시작하기
+        </a>
+    </div>
+</div>
+
+
+
+
+<div class="main-content-wrapper">
+  <div class="main-content">
+    <div class="container">
+
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># import torch
+</span>  <span class="kn">import</span> <span class="nn">torch</span>
+
+  <span class="c1"># load model
+</span>  <span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'datvuthanh/hybridnets'</span><span class="p">,</span> <span class="s">'hybridnets'</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+  <span class="c1">#inference
+</span>  <span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">640</span><span class="p">,</span> <span class="mi">384</span><span class="p">)</span>
+  <span class="n">features</span><span class="p">,</span> <span class="n">regression</span><span class="p">,</span> <span class="n">classification</span><span class="p">,</span> <span class="n">anchors</span><span class="p">,</span> <span class="n">segmentation</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>파이토치(PyTorch) 소개</h3>
+              <p>PyTorch(파이토치)는 FAIR(Facebook AI Research)에서 만든 연구용 프로토타입부터 상용 제품까지 빠르게 만들 수 있는 오픈 소스 머신러닝 프레임워크입니다.<br /></p>
+
+<p>PyTorch는 사용자 친화적인 프론트엔드(front-end)와 분산 학습, 다양한 도구와 라이브러리를 통해 빠르고 유연한 실험 및 효과적인 상용화를 가능하게 합니다. <br /></p>
+
+<p>PyTorch에 대한 더 자세한 소개는 <a href="https://pytorch.org">공식 홈페이지</a>에서 확인하실 수 있습니다.</p>
+
+            </div>
+          </div>
+        
+        </div>
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>파이토치 한국 사용자 모임 소개</h3>
+              <p>파이토치 한국 사용자 모임은 2018년 중순 학습 목적으로 PyTorch 튜토리얼 문서를 한국어로 번역하면서 시작하였습니다. <br /></p>
+
+<p>PyTorch를 학습하고 사용하는 한국 사용자들이 시작한 사용자 커뮤니티로, 한국어를 사용하시는 많은 분들께 PyTorch를 소개하고 함께 배우며 성장하는 것을 목표로 합니다.<br /></p>
+
+<p>PyTorch를 사용하며 얻은 유용한 정보를 공유하고 싶으시거나 다른 사용자와 소통하고 싶으시다면 <a href="https://discuss.pytorch.kr/">커뮤니티 공간</a>에 방문해주세요!</p>
+
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">torch</span>
+
+  <span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+      <span class="nb">super</span><span class="p">(</span><span class="n">MyModule</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+      <span class="bp">self</span><span class="p">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+      <span class="k">if</span> <span class="nb">input</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">weight</span><span class="p">.</span><span class="n">mv</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">weight</span> <span class="o">+</span> <span class="nb">input</span>
+      <span class="k">return</span> <span class="n">output</span>
+
+    <span class="n">my_script_module</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">jit</span><span class="p">.</span><span class="n">script</span><span class="p">(</span><span class="n">MyModule</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">my_script_module</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"my_script_module.pt"</span><span class="p">)</span>
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+        
+        </div>
+      
+      <!-- maintainers -->
+      <div class="row maintainers-row">
+        <div class="maintainer-content">
+          <a name="maintainers"></a>
+          <h3 class="features">운영진 소개 (Maintainers)</h3>
+          <p class="features">파이토치 한국 사용자 모임을 함께 만들어가고 계신 분들을 소개합니다.</p>
+          <div class="container">
+            <div class="row">
+              
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="active" href="#"><img src="/assets/images/maintainers/9bow.png" alt="9bow"></a>
+                  <div class="member-info">
+                    <h3>박정환</h3>
+                    <p class="title">Lead Maintainer</p>
+                    <p class="team">@CoC, @PyTorchKorea</p>
+                    
+                    <a href="https://github.com/9bow"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="active" href="#"><img src="/assets/images/maintainers/adonisues.png" alt="adonisues"></a>
+                  <div class="member-info">
+                    <h3>황성수</h3>
+                    <p class="title">Maintainer</p>
+                    <p class="team">@Advisory</p>
+                    
+                    <a href="https://github.com/adonisues"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="active" href="#"><img src="/assets/images/maintainers/bongmo.png" alt="bongmo"></a>
+                  <div class="member-info">
+                    <h3>김봉모</h3>
+                    <p class="title">Maintainer</p>
+                    <p class="team">@Advisory</p>
+                    
+                    <a href="https://github.com/bongmo"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="active" href="#"><img src="/assets/images/maintainers/codingbowoo.png" alt="codingbowoo"></a>
+                  <div class="member-info">
+                    <h3>장보우</h3>
+                    <p class="title">Maintainer</p>
+                    <p class="team">@CoC, @hub-kr, @discuss</p>
+                    
+                    <a href="https://github.com/codingbowoo"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    <a href="https://www.facebook.com/catbowoo"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    
+                    
+                    <a href="https://www.linkedin.com/in/jangbowoo/"><i class="fa fa-2x fa-linkedin"></i></a>
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="active" href="#"><img src="/assets/images/maintainers/corazzon.png" alt="corazzon"></a>
+                  <div class="member-info">
+                    <h3>박조은</h3>
+                    <p class="title">Maintainer</p>
+                    <p class="team">@Coc, @discuss</p>
+                    
+                    <a href="https://github.com/corazzon"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <a href="https://www.youtube.com/c/todaycode"><i class="fa fa-2x fa-youtube-play"></i></a>
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="active" href="#"><img src="/assets/images/maintainers/des00.png" alt="des00"></a>
+                  <div class="member-info">
+                    <h3>김현길</h3>
+                    <p class="title">Maintainer</p>
+                    <p class="team">@tutorials-kr</p>
+                    
+                    <a href="https://github.com/des00"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="active" href="#"><img src="/assets/images/maintainers/hyoyoung.png" alt="hyoyoung"></a>
+                  <div class="member-info">
+                    <h3>장효영</h3>
+                    <p class="title">Maintainer</p>
+                    <p class="team">@CoC, @tutorials-kr</p>
+                    
+                    <a href="https://github.com/hyoyoung"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    <a href="https://www.facebook.com/ihyoyoung"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="active" href="#"><img src="/assets/images/maintainers/j-min.png" alt="j-min"></a>
+                  <div class="member-info">
+                    <h3>조재민</h3>
+                    <p class="title">Maintainer</p>
+                    <p class="team">@Advisory</p>
+                    
+                    <a href="https://github.com/j-min"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+                
+              
+                
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of maintainers -->
+      <!-- inactive maintainers -->
+      <div class="row maintainers-row">
+        <div class="maintainer-content">
+          <h3 class="features">함께 하셨던 분들 (Alumni)</h3>
+          <p class="features">파이토치 한국 사용자 모임과 함께 하셨던 분들을 소개합니다.</p>
+          <div class="container">
+            <div class="row">
+              
+              
+                
+              
+                
+              
+                
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="inactive" href="#"><img src="/assets/images/maintainers/codertimo.png" alt="codertimo"></a>
+                  <div class="member-info">
+                    <h3>김준성</h3>
+                    <p class="title">Inactive Maintainer</p>
+                    <p class="team">@Alumni</p>
+                    
+                    <a href="https://github.com/codertimo"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    <a href="https://www.facebook.com/codertimo/"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    
+                    
+                    <a href="https://www.linkedin.com/in/codertimo/"><i class="fa fa-2x fa-linkedin"></i></a>
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+                
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="inactive" href="#"><img src="/assets/images/maintainers/creduo.png" alt="creduo"></a>
+                  <div class="member-info">
+                    <h3>박주혁</h3>
+                    <p class="title">Inactive Maintainer</p>
+                    <p class="team">@Alumni</p>
+                    
+                    <a href="https://github.com/creduo"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    <a href="https://www.facebook.com/funderbar"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    
+                    
+                    <a href="https://www.linkedin.com/in/juhyukpark/"><i class="fa fa-2x fa-linkedin"></i></a>
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="inactive" href="#"><img src="/assets/images/maintainers/hrxorxm.png" alt="hrxorxm"></a>
+                  <div class="member-info">
+                    <h3>이하람</h3>
+                    <p class="title">Inactive Maintainer</p>
+                    <p class="team">@Alumni</p>
+                    
+                    <a href="https://github.com/hrxorxm"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+                
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="inactive" href="#"><img src="/assets/images/maintainers/jimin.lee.png" alt="jimin.lee"></a>
+                  <div class="member-info">
+                    <h3>이지민</h3>
+                    <p class="title">Inactive Maintainer</p>
+                    <p class="team">@Alumni</p>
+                    
+                    
+                    
+                    
+                    <a href="https://www.facebook.com/jimin.lee.5443"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    
+                    
+                    <a href="https://www.linkedin.com/in/jimin-lee-526a41121/"><i class="fa fa-2x fa-linkedin"></i></a>
+                    
+                    
+                    
+                    <a href="https://sites.google.com/view/rami-lab"><i class="fa fa-2x fa-home"></i></a>
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="inactive" href="#"><img src="/assets/images/maintainers/nysunshine.png" alt="nysunshine"></a>
+                  <div class="member-info">
+                    <h3>조형주</h3>
+                    <p class="title">Inactive Maintainer</p>
+                    <p class="team">@Alumni</p>
+                    
+                    <a href="https://github.com/NySunShine"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="https://www.linkedin.com/in/hyungjoo-cho-8bb943116/"><i class="fa fa-2x fa-linkedin"></i></a>
+                    
+                    
+                    
+                    <a href="https://scholar.google.com/citations?user=Pl95pGIAAAAJ&hl"><i class="fa fa-2x fa-home"></i></a>
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+                
+              
+              <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
+                <div class="maintainer">
+                  <a class="inactive" href="#"><img src="/assets/images/maintainers/Taeyoung96.png" alt="Taeyoung96"></a>
+                  <div class="member-info">
+                    <h3>김태영</h3>
+                    <p class="title">Inactive Maintainer</p>
+                    <p class="team">@Alumni</p>
+                    
+                    <a href="https://github.com/Taeyoung96"><i class="fa fa-2x fa-github"></i></a>
+                    
+                    
+                    
+                    
+                    
+                    <a href="https://www.linkedin.com/in/tae-young-kim-595692139/"><i class="fa fa-2x fa-linkedin"></i></a>
+                    
+                    
+                    
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of inactive maintainers -->
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid quick-start-module quick-starts">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 start-locally-col">
+
+        <h3>PyTorch 설치하기</h3>
+
+        <p>
+  사용 환경을 선택하고 설치 명령을 복사해서 실행해 보세요. Stable 버전은 테스트 및 지원되고 있는 가장 최근의 PyTorch 버전으로, 대부분의 사용자에게 적합합니다.
+  Preview 버전은 아직 완전히 테스트나 지원이 되지 않는 최신 버전으로 매일 밤 업데이트됩니다. 사용 중인 패키지 매니저에 따라 <b>아래의 사전 요구사항(예: numpy)</b>이 충족되었는지 확인해 주세요.
+  모든 의존성을 설치할 수 있는 Anaconda를 패키지 매니저로 추천합니다. <a href="/get-started/previous-versions">이전 버전의 PyTorch도 설치할 수 있습니다</a>.
+  LibTorch는 C++에서만 지원합니다.
+</p>
+<p>
+  <b>참고:</b>
+  최신 버전의 PyTorch를 사용하기 위해서는 Python 3.8 이상이 필요합니다. 자세한 내용은 <a href="/get-started/locally/#mac-python">Python 섹션</a>을 참고해주세요.
+</p>
+<div class="row">
+  <div class="col-md-3 headings">
+    <div class="col-md-12 title-block">
+      <div class="option-text">PyTorch 빌드</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text os-text">OS 종류</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text">패키지 매니저</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text">언어</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text">플랫폼</div>
+    </div>
+    <div class="col-md-12 title-block command-block">
+      <div class="option-text command-text">이 명령을 실행하세요:</div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="row ptbuild">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">PyTorch 빌드</div>
+      </div>
+      <div class="col-md-6 option block version selected" id="stable">
+        <div class="option-text">Stable (1.13.1)</div>
+      </div>
+      <div class="col-md-6 option block version" id="preview">
+        <div class="option-text">Preview (Nightly)</div>
+      </div>
+    </div>
+    <div class="row os">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">OS 종류</div>
+      </div>
+      <div class="col-md-4 option block" id="linux">
+        <div class="option-text">Linux</div>
+      </div>
+      <div class="col-md-4 option block" id="macos">
+        <div class="option-text">Mac</div>
+      </div>
+      <div class="col-md-4 option block" id="windows">
+        <div class="option-text">Windows</div>
+      </div>
+    </div>
+    <div class="row package">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">패키지 매니저</div>
+      </div>
+      <div class="col-md-3 option block selected" id="conda">
+        <div class="option-text">Conda</div>
+      </div>
+      <div class="col-md-3 option block" id="pip">
+        <div class="option-text">Pip</div>
+      </div>
+      <div class="col-md-3 option block" id="libtorch">
+        <div class="option-text">LibTorch</div>
+      </div>
+      <div class="col-md-3 option block" id="source">
+        <div class="option-text">Source</div>
+      </div>
+    </div>
+    <div class="row language">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">언어</div>
+      </div>
+      <div class="col-md-6 option block version selected" id="python">
+        <div class="option-text">Python</div>
+      </div>
+      <div class="col-md-6 option block" id="cplusplus">
+        <div class="option-text">C++ / Java</div>
+      </div>
+    </div>
+    <div class="row cuda">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">플랫폼</div>
+      </div>
+      <div class="col-md-3 option block version" id="cuda.x">
+        <div class="option-text">CUDA 11.6</div>
+      </div>
+      <div class="col-md-3 option block version" id="cuda.y">
+        <div class="option-text">CUDA 11.7</div>
+      </div>
+      <div class="col-md-3 option block version" id="rocm5.x">
+        <div class="option-text">ROCm 5.2</div>
+      </div>
+      <div class="col-md-3 option block version" id="accnone">
+        <div class="option-text">CPU</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 title-block command-mobile-heading">
+        <div class="option-text">이 명령을 실행하세요:</div>
+      </div>
+      <div class="command-container">
+        <div class="col-md-12" id="command">conda install pytorch torchvision -c pytorch</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <a href="/get-started/previous-versions" class="btn btn-lg with-right-arrow btn-white prev-versions-btn">
+          이전 버전의 PyTorch
+        </a>
+      </div>
+
+      <div class="col-md-3 offset-md-1 cloud-options-col">
+        <h3>클라우드에서 <br /> 빠르게 시작하기</h3>
+
+        <p>많이 쓰이는 클라우드 플랫폼과 머신러닝 서비스를 통해서 PyTorch를 빠르게 시작해보세요.</p>
+
+        <div class="quick-start-guides">
+  <div class="cloud-option-row">
+    <div class="cloud-option" data-toggle="cloud-dropdown">
+      <div class="cloud-option-body aws" id="aws">
+        Amazon Web Services
+      </div>
+
+      <ul>
+        <li><a href="https://aws.amazon.com/pytorch/">PyTorch on AWS</a></li>
+        <li><a href="https://aws.amazon.com/sagemaker">Amazon SageMaker</a></li>
+        <li><a href="https://docs.aws.amazon.com/deep-learning-containers/latest/devguide/deep-learning-containers-ec2-tutorials-training.html#deep-learning-containers-ec2-tutorials-training-pytorch">AWS Deep Learning Containers</a></li>
+        <li><a href="https://docs.aws.amazon.com/dlami/latest/devguide/tutorial-pytorch.html">AWS Deep Learning AMIs</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cloud-option-row">
+    <div class="cloud-option" data-toggle="cloud-dropdown">
+      <div class="cloud-option-body google-cloud" id="google-cloud">
+        Google Cloud Platform
+      </div>
+
+      <ul>
+        <li><a href="https://cloud.google.com/deep-learning-vm/docs/pytorch_start_instance">Cloud Deep Learning VM Image</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="https://cloud.google.com/ai-platform/deep-learning-containers/">Deep Learning Containers</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="cloud-option-row">
+    <div class="cloud-option" data-toggle="cloud-dropdown">
+      <div class="cloud-option-body microsoft-azure" id="microsoft-azure">
+        <p>Microsoft Azure</p>
+      </div>
+
+      <ul>
+        <li><a href="https://azure.microsoft.com/en-us/develop/pytorch/">PyTorch on Azure</a></li>
+        <li><a href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-train-pytorch">Azure Machine Learning</a></li>
+        <li><a href="https://docs.microsoft.com/en-us/azure/azure-functions/machine-learning-pytorch?tabs=bash">Azure Functions</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/quick-start-module.js"></script>
+
+
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>

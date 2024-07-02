@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      직접 설치하기 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="get-started">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder get-started-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item active">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background get-started-background"></div>
+
+    
+
+    <div class="jumbotron jumbotron-fluid on-dark-background">
+      <div class="container">
+        <h1>시작하기</h1>
+
+        <p class="lead">사용 환경을 선택하고 명령을 실행해서 PyTorch를 직접 설치하시거나, <br />클라우드 플랫폼에서 빠르게 시작하실 수 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container-fluid nav-menu-wrapper">
+          <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light main-content-menu">
+              <ul class="navbar-nav">
+                
+                  <li class="nav-item nav-select">
+                    <a class="nav-link get-started-nav-link" data-id="get-started-locally" href="/get-started/locally/">직접 설치하기</a>
+                  </li>
+                
+                  <li class="nav-item nav-select">
+                    <a class="nav-link get-started-nav-link" data-id="pytorch" href="/get-started/pytorch-2.0/">PyTorch 2.0</a>
+                  </li>
+                
+                  <li class="nav-item nav-select">
+                    <a class="nav-link get-started-nav-link" data-id="get-started-via-cloud-partners" href="/get-started/cloud-partners/">클라우드에서 시작하기</a>
+                  </li>
+                
+                  <li class="nav-item nav-select">
+                    <a class="nav-link get-started-nav-link" data-id="previous-versions" href="/get-started/previous-versions/">이전 버전의 PyTorch</a>
+                  </li>
+                
+                  <li class="nav-item nav-select">
+                    <a class="nav-link get-started-nav-link" data-id="mobile" href="/get-started/mobile/">모바일</a>
+                  </li>
+                
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div class="container">
+          
+            <div class="row">
+  <div class="col-md-3">
+    <div class="sticky-top get-started-locally-sidebar">
+  <p id="get-started-shortcuts-menu">Shortcuts</p>
+  <ul id="get-started-locally-sidebar-list"></ul>
+</div>
+
+
+  </div>
+  <div class="col-md-8 offset-md-1">
+    <div class="article-wrapper" data-id="">
+      <article class="pytorch-article">
+        <h2 id="직접-설치하기">직접 설치하기</h2>
+
+<div class="container-fluid quick-start-module quick-starts">
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+  사용 환경을 선택하고 설치 명령을 복사해서 실행해 보세요. Stable 버전은 테스트 및 지원되고 있는 가장 최근의 PyTorch 버전으로, 대부분의 사용자에게 적합합니다.
+  Preview 버전은 아직 완전히 테스트나 지원이 되지 않는 최신 버전으로 매일 밤 업데이트됩니다. 사용 중인 패키지 매니저에 따라 <b>아래의 사전 요구사항(예: numpy)</b>이 충족되었는지 확인해 주세요.
+  모든 의존성을 설치할 수 있는 Anaconda를 패키지 매니저로 추천합니다. <a href="/get-started/previous-versions">이전 버전의 PyTorch도 설치할 수 있습니다</a>.
+  LibTorch는 C++에서만 지원합니다.
+</p>
+<p>
+  <b>참고:</b>
+  최신 버전의 PyTorch를 사용하기 위해서는 Python 3.8 이상이 필요합니다. 자세한 내용은 <a href="/get-started/locally/#mac-python">Python 섹션</a>을 참고해주세요.
+</p>
+<div class="row">
+  <div class="col-md-3 headings">
+    <div class="col-md-12 title-block">
+      <div class="option-text">PyTorch 빌드</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text os-text">OS 종류</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text">패키지 매니저</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text">언어</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text">플랫폼</div>
+    </div>
+    <div class="col-md-12 title-block command-block">
+      <div class="option-text command-text">이 명령을 실행하세요:</div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="row ptbuild">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">PyTorch 빌드</div>
+      </div>
+      <div class="col-md-6 option block version selected" id="stable">
+        <div class="option-text">Stable (1.13.1)</div>
+      </div>
+      <div class="col-md-6 option block version" id="preview">
+        <div class="option-text">Preview (Nightly)</div>
+      </div>
+    </div>
+    <div class="row os">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">OS 종류</div>
+      </div>
+      <div class="col-md-4 option block" id="linux">
+        <div class="option-text">Linux</div>
+      </div>
+      <div class="col-md-4 option block" id="macos">
+        <div class="option-text">Mac</div>
+      </div>
+      <div class="col-md-4 option block" id="windows">
+        <div class="option-text">Windows</div>
+      </div>
+    </div>
+    <div class="row package">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">패키지 매니저</div>
+      </div>
+      <div class="col-md-3 option block selected" id="conda">
+        <div class="option-text">Conda</div>
+      </div>
+      <div class="col-md-3 option block" id="pip">
+        <div class="option-text">Pip</div>
+      </div>
+      <div class="col-md-3 option block" id="libtorch">
+        <div class="option-text">LibTorch</div>
+      </div>
+      <div class="col-md-3 option block" id="source">
+        <div class="option-text">Source</div>
+      </div>
+    </div>
+    <div class="row language">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">언어</div>
+      </div>
+      <div class="col-md-6 option block version selected" id="python">
+        <div class="option-text">Python</div>
+      </div>
+      <div class="col-md-6 option block" id="cplusplus">
+        <div class="option-text">C++ / Java</div>
+      </div>
+    </div>
+    <div class="row cuda">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">플랫폼</div>
+      </div>
+      <div class="col-md-3 option block version" id="cuda.x">
+        <div class="option-text">CUDA 11.6</div>
+      </div>
+      <div class="col-md-3 option block version" id="cuda.y">
+        <div class="option-text">CUDA 11.7</div>
+      </div>
+      <div class="col-md-3 option block version" id="rocm5.x">
+        <div class="option-text">ROCm 5.2</div>
+      </div>
+      <div class="col-md-3 option block version" id="accnone">
+        <div class="option-text">CPU</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 title-block command-mobile-heading">
+        <div class="option-text">이 명령을 실행하세요:</div>
+      </div>
+      <div class="command-container">
+        <div class="col-md-12" id="command">conda install pytorch torchvision -c pytorch</div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div id="installation">
+  <div class="os macos">
+<h1 class="no_toc" id="macos에서-설치하기">macOS에서 설치하기</h1>
+
+<p>PyTorch 는 macOS 에서 설치 및 사용할 수 있습니다. PyTorch를 설치할 시스템과 사용할 수 있는 GPU 에 따라, Mac에서의 처리 속도 측면에서의 PyTorch 사용 경험은 사람마다 다를 수 있습니다.</p>
+
+<h2 id="mac-prerequisites">요구 사항</h2>
+
+<h3 id="macos-버전">macOS 버전</h3>
+
+<p>PyTorch는 macOS 10.15 (Catalina) 이후 macOS에서 설치할 수 있습니다.</p>
+
+<h3 id="mac-python">Python</h3>
+
+<p>Python 3.8 ~ 3.11 사이의 버전을 사용하기를 권장합니다. 해당 버전은 아나콘다 패키지 관리자 (아래 <a href="#아나콘다">참조</a>), <a href="https://brew.sh">HomeBrew</a>, <a href="https://www.python.org/downloads/mac-osx/">Python 웹사이트</a> 에서 설치할 수 있습니다.</p>
+
+<h3 id="mac-package-manager">패키지 관리자</h3>
+
+<p>PyTorch 바이너리는 <a href="https://www.anaconda.com/download/#macos">아나콘다</a> 또는 <a href="https://pypi.org/project/pip/">pip</a> 패키지 관리자를 통해 설치할 수 있습니다.
+Python과 PyTorch 설치 환경을 쉽게 격리할 수 있는 아나콘다를 권장하고 있습니다.</p>
+
+<h4 id="아나콘다">아나콘다</h4>
+
+<p>아나콘다는 <a href="https://www.anaconda.com/download/#macos">그래픽 설치 인스톨러</a> 또는 명령줄 인스톨러를 사용할 수 있습니다.
+명령줄 인스톨러를 사용하는 경우, installer link를 복사하여 붙여넣거나 인텔 맥에서는 아래와 같이 실행할 수 있습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 설치 시기에 따라 아나콘다 버전은 다를 수 있습니다.</span>
+curl <span class="nt">-O</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+sh Miniconda3-latest-MacOSX-x86_64.sh
+<span class="c"># 프롬프트가 나오면 옵션을 선택합니다, 일반적으로 기본값을 사용합니다.</span>
+</code></pre></div></div>
+<p>혹은 m1 맥의 경우 아래와 같이 실행할 수 있습니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 설치 시기에 따라 아나콘다 버전은 다를 수 있습니다.</span>
+curl <span class="nt">-O</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+sh Miniconda3-latest-MacOSX-arm64.sh
+<span class="c"># 프롬프트가 나오면 옵션을 선택합니다, 일반적으로 기본값을 사용합니다.</span>
+</code></pre></div></div>
+<h4 id="pip">pip</h4>
+
+<p><em>Python 3</em></p>
+
+<p>Homebrew나 Python 웹사이트에서 Python을 설치했다면, <code class="language-plaintext highlighter-rouge">pip</code> 도 같이 설치됩니다.
+Python 3.x 를 설치했다면, <code class="language-plaintext highlighter-rouge">pip3</code> 를 사용합니다.</p>
+
+<blockquote>
+  <p>팁: 심볼릭 링크를 통해 <code class="language-plaintext highlighter-rouge">pip3</code> 대신 <code class="language-plaintext highlighter-rouge">pip</code>을 사용할 수도 있습니다.</p>
+</blockquote>
+
+<h2 id="mac-installation">설치</h2>
+
+<h3 id="mac-anaconda">아나콘다</h3>
+
+<p>아나콘다를 사용할 경우, 아래와 같이 PyTorch를 설치할 수 있습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda <span class="nb">install </span>pytorch torchvision <span class="nt">-c</span> pytorch
+</code></pre></div></div>
+
+<h3 id="mac-anaconda">pip</h3>
+
+<p>pip을 사용할 경우, 아래와 같이 설치할 수 있습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Python 3.x</span>
+pip3 <span class="nb">install </span>torch torchvision
+</code></pre></div></div>
+
+<h2 id="mac-verification">검증</h2>
+
+<p>PyTorch가 제대로 설치되었는지 확인하기 위해, 아래와 같은 샘플 코드를 실행해 볼 수 있습니다.
+아래는 무작위로 초기화된 tensor를 생성해보는 샘플 코드입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>출력 결과는 아래와 비슷한 형태여야 합니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[0.3380, 0.3845, 0.3217],
+        [0.8337, 0.9050, 0.2650],
+        [0.2979, 0.7141, 0.9069],
+        [0.1449, 0.1132, 0.1375],
+        [0.4675, 0.3947, 0.1426]])
+</code></pre></div></div>
+
+<h2 id="mac-from-source">소스에서 빌드</h2>
+
+<p>대부분의 PyTorch 사용자들은, 패키지 관리자를 통해 사전에 빌드된 바이너리를 사용하는 것이 제일 좋습니다. 정식으로 릴리즈 되지 않은 최신 PyTorch 코드를 사용하려고 하거나, PyTorch core에 대한 테스트나 개발을 하는 경우에는 직접 PyTorch를 빌드해야합니다.</p>
+
+<h3 id="mac-prerequisites-2">요구사항</h3>
+
+<ol>
+  <li>[선택사항] <a href="#아나콘다">아나콘다</a> 설치</li>
+  <li><a href="https://github.com/pytorch/pytorch#from-source">https://github.com/pytorch/pytorch#from-source</a> 참조하여 빌드 (영문)</li>
+</ol>
+
+<p><a href="#mac-verification">위 섹션</a>을 참조하여 잘 설치되었는지 검증 할 수 있습니다.</p>
+</div>
+  <div class="os linux selected">
+<h1 class="no_toc" id="installing-on-linux">Installing on Linux</h1>
+
+<p>PyTorch can be installed and used on various Linux distributions. Depending on your system and compute requirements, your experience with PyTorch on Linux may vary in terms of processing time. It is recommended, but not required, that your Linux system has an NVIDIA or AMD GPU in order to harness the full power of PyTorch’s <a href="https://developer.nvidia.com/cuda-zone">CUDA</a> <a href="https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html?highlight=cuda#cuda-tensors">support</a> or <a href="https://docs.amd.com">ROCm</a> support.</p>
+
+<h2 id="linux-prerequisites">Prerequisites</h2>
+
+<h3 id="supported-linux-distributions">Supported Linux Distributions</h3>
+
+<p>PyTorch is supported on Linux distributions that use <a href="https://www.gnu.org/software/libc/">glibc</a> &gt;= v2.17, which include the following:</p>
+
+<ul>
+  <li><a href="https://www.archlinux.org/download/">Arch Linux</a>, minimum version 2012-07-15</li>
+  <li><a href="https://www.centos.org/download/">CentOS</a>, minimum version 7.3-1611</li>
+  <li><a href="https://www.debian.org/distrib/">Debian</a>, minimum version 8.0</li>
+  <li><a href="https://getfedora.org/">Fedora</a>, minimum version 24</li>
+  <li><a href="https://linuxmint.com/download.php">Mint</a>, minimum version 14</li>
+  <li><a href="https://software.opensuse.org/">OpenSUSE</a>, minimum version 42.1</li>
+  <li><a href="https://www.pclinuxos.com/">PCLinuxOS</a>, minimum version 2014.7</li>
+  <li><a href="http://www.slackware.com/getslack/">Slackware</a>, minimum version 14.2</li>
+  <li><a href="https://www.ubuntu.com/download/desktop">Ubuntu</a>, minimum version 13.04</li>
+</ul>
+
+<blockquote>
+  <p>The install instructions here will generally apply to all supported Linux distributions. An example difference is that your distribution may support <code class="language-plaintext highlighter-rouge">yum</code> instead of <code class="language-plaintext highlighter-rouge">apt</code>. The specific examples shown were run on an Ubuntu 18.04 machine.</p>
+</blockquote>
+
+<h3 id="linux-python">Python</h3>
+
+<p>Python 3.8-3.11 is generally installed by default on any of our supported Linux distributions, which meets our recommendation.</p>
+
+<blockquote>
+  <p>Tip: By default, you will have to use the command <code class="language-plaintext highlighter-rouge">python3</code> to run Python. If you want to use just the command <code class="language-plaintext highlighter-rouge">python</code>, instead of <code class="language-plaintext highlighter-rouge">python3</code>, you can symlink <code class="language-plaintext highlighter-rouge">python</code> to the <code class="language-plaintext highlighter-rouge">python3</code> binary.</p>
+</blockquote>
+
+<p>However, if you want to install another version, there are multiple ways:</p>
+
+<ul>
+  <li>APT</li>
+  <li><a href="https://www.python.org/downloads/mac-osx/">Python website</a></li>
+</ul>
+
+<p>If you decide to use APT, you can run the following command to install it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>python
+</code></pre></div></div>
+
+<blockquote>
+  <p>If you use <a href="#anaconda">Anaconda</a> to install PyTorch, it will install a sandboxed version of Python that will be used for running PyTorch applications.</p>
+</blockquote>
+
+<h3 id="linux-package-manager">Package Manager</h3>
+
+<p>To install the PyTorch binaries, you will need to use one of two supported package managers: <a href="https://www.anaconda.com/download/#linux">Anaconda</a> or <a href="https://pypi.org/project/pip/">pip</a>. Anaconda is the recommended package manager as it will provide you all of the PyTorch dependencies in one, sandboxed install, including Python.</p>
+
+<h4 id="anaconda">Anaconda</h4>
+
+<p>To install Anaconda, you will use the <a href="https://www.anaconda.com/download/#linux">command-line installer</a>. Right-click on the 64-bit installer link, select <code class="language-plaintext highlighter-rouge">Copy Link Location</code>, and then use the following commands:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The version of Anaconda may be different depending on when you are installing`</span>
+curl <span class="nt">-O</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+sh Miniconda3-latest-Linux-x86_64.sh
+<span class="c"># and follow the prompts. The defaults are generally good.`</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>You may have to open a new terminal or re-source your <code class="language-plaintext highlighter-rouge">~/.bashrc </code>to get access to the <code class="language-plaintext highlighter-rouge">conda</code> command.</p>
+</blockquote>
+
+<h4 id="pip">pip</h4>
+
+<p><em>Python 3</em></p>
+
+<p>While Python 3.x is installed by default on Linux, <code class="language-plaintext highlighter-rouge">pip</code> is not installed by default.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install </span>python3-pip
+</code></pre></div></div>
+
+<blockquote>
+  <p>Tip: If you want to use just the command  <code class="language-plaintext highlighter-rouge">pip</code>, instead of <code class="language-plaintext highlighter-rouge">pip3</code>, you can symlink <code class="language-plaintext highlighter-rouge">pip</code> to the <code class="language-plaintext highlighter-rouge">pip3</code> binary.</p>
+</blockquote>
+
+<h2 id="linux-installation">Installation</h2>
+
+<h3 id="linux-anaconda">Anaconda</h3>
+
+<h4 id="no-cudarocm">No CUDA/ROCm</h4>
+
+<p>To install PyTorch via Anaconda, and do not have a <a href="https://developer.nvidia.com/cuda-zone">CUDA-capable</a> or <a href="https://docs.amd.com">ROCm-capable</a> system or do not require CUDA/ROCm (i.e. GPU support), in the above selector, choose OS: Linux, Package: Conda, Language: Python and Compute Platform: CPU.
+Then, run the command that is presented to you.</p>
+
+<h4 id="with-cuda">With CUDA</h4>
+
+<p>To install PyTorch via Anaconda, and you do have a <a href="https://developer.nvidia.com/cuda-zone">CUDA-capable</a> system, in the above selector, choose OS: Linux, Package: Conda and the CUDA version suited to your machine. Often, the latest CUDA version is better.
+Then, run the command that is presented to you.</p>
+
+<h4 id="with-rocm">With ROCm</h4>
+
+<p>PyTorch via Anaconda is not supported on ROCm currently. Please use pip instead.</p>
+
+<h3 id="linux-pip">pip</h3>
+
+<h4 id="no-cuda">No CUDA</h4>
+
+<p>To install PyTorch via pip, and do not have a <a href="https://developer.nvidia.com/cuda-zone">CUDA-capable</a> or <a href="https://docs.amd.com">ROCm-capable</a> system or do not require CUDA/ROCm (i.e. GPU support), in the above selector, choose OS: Linux, Package: Pip, Language: Python and Compute Platform: CPU.
+Then, run the command that is presented to you.</p>
+
+<h4 id="with-cuda-1">With CUDA</h4>
+
+<p>To install PyTorch via pip, and do have a <a href="https://developer.nvidia.com/cuda-zone">CUDA-capable</a> system, in the above selector, choose OS: Linux, Package: Pip, Language: Python and the CUDA version suited to your machine. Often, the latest CUDA version is better.
+Then, run the command that is presented to you.</p>
+
+<h4 id="with-rocm-1">With ROCm</h4>
+
+<p>To install PyTorch via pip, and do have a <a href="https://docs.amd.com">ROCm-capable</a> system, in the above selector, choose OS: Linux, Package: Pip, Language: Python and the ROCm version supported.
+Then, run the command that is presented to you.</p>
+
+<h2 id="linux-verification">Verification</h2>
+
+<p>To ensure that PyTorch was installed correctly, we can verify the installation by running sample PyTorch code. Here we will construct a randomly initialized tensor.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The output should be something similar to:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[0.3380, 0.3845, 0.3217],
+        [0.8337, 0.9050, 0.2650],
+        [0.2979, 0.7141, 0.9069],
+        [0.1449, 0.1132, 0.1375],
+        [0.4675, 0.3947, 0.1426]])
+</code></pre></div></div>
+
+<p>Additionally, to check if your GPU driver and CUDA/ROCm is enabled and accessible by PyTorch, run the following commands to return whether or not the GPU driver is enabled (the ROCm build of PyTorch uses the same semantics at the python API level (https://github.com/pytorch/pytorch/blob/master/docs/source/notes/hip.rst#hip-interfaces-reuse-the-cuda-interfaces), so the below commands should also work for ROCm):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="linux-from-source">Building from source</h2>
+
+<p>For the majority of PyTorch users, installing from a pre-built binary via a package manager will provide the best experience. However, there are times when you may want to install the bleeding edge PyTorch code, whether for testing or actual development on the PyTorch core. To install the latest PyTorch code, you will need to <a href="https://github.com/pytorch/pytorch#from-source">build PyTorch from source</a>.</p>
+
+<h3 id="linux-prerequisites-2">Prerequisites</h3>
+
+<ol>
+  <li>Install <a href="#anaconda">Anaconda</a> or <a href="#pip">Pip</a></li>
+  <li>If you need to build PyTorch with GPU support
+a. for NVIDIA GPUs, install <a href="https://developer.nvidia.com/cuda-downloads">CUDA</a>, if your machine has a <a href="https://developer.nvidia.com/cuda-gpus">CUDA-enabled GPU</a>.
+b. for AMD GPUs, install <a href="https://docs.amd.com">ROCm</a>, if your machine has a <a href="https://docs.amd.com">ROCm-enabled GPU</a></li>
+  <li>Follow the steps described here: <a href="https://github.com/pytorch/pytorch#from-source">https://github.com/pytorch/pytorch#from-source</a></li>
+</ol>
+
+<p>You can verify the installation as described <a href="#linux-verification">above</a>.</p>
+</div>
+  <div class="os windows">
+<h1 class="no_toc" id="installing-on-windows">Installing on Windows</h1>
+
+<p>PyTorch can be installed and used on various Windows distributions. Depending on your system and compute requirements, your experience with PyTorch on Windows may vary in terms of processing time. It is recommended, but not required, that your Windows system has an NVIDIA GPU in order to harness the full power of PyTorch’s <a href="https://developer.nvidia.com/cuda-zone">CUDA</a> <a href="https://pytorch.org/tutorials/beginner/blitz/tensor_tutorial.html?highlight=cuda#cuda-tensors">support</a>.</p>
+
+<h2 id="windows-prerequisites">Prerequisites</h2>
+
+<h3 id="supported-windows-distributions">Supported Windows Distributions</h3>
+
+<p>PyTorch is supported on the following Windows distributions:</p>
+
+<ul>
+  <li><a href="https://www.microsoft.com/en-us/windows">Windows</a> 7 and greater; <a href="https://www.microsoft.com/en-us/software-download/windows10ISO">Windows 10</a> or greater recommended.</li>
+  <li><a href="https://docs.microsoft.com/en-us/windows-server/windows-server">Windows Server 2008</a> r2 and greater</li>
+</ul>
+
+<blockquote>
+  <p>The install instructions here will generally apply to all supported Windows distributions. The specific examples shown will be run on a Windows 10 Enterprise machine</p>
+</blockquote>
+
+<h3 id="windows-python">Python</h3>
+
+<p>Currently, PyTorch on Windows only supports Python 3.8-3.10; Python 2.x is not supported.</p>
+
+<p>As it is not installed by default on Windows, there are multiple ways to install Python:</p>
+
+<ul>
+  <li><a href="https://chocolatey.org/">Chocolatey</a></li>
+  <li><a href="https://www.python.org/downloads/windows/">Python website</a></li>
+  <li><a href="#anaconda">Anaconda</a></li>
+</ul>
+
+<blockquote>
+  <p>If you use Anaconda to install PyTorch, it will install a sandboxed version of Python that will be used for running PyTorch applications.</p>
+</blockquote>
+
+<blockquote>
+  <p>If you decide to use Chocolatey, and haven’t installed Chocolatey yet, ensure that you are running your command prompt as an administrator.</p>
+</blockquote>
+
+<p>For a Chocolatey-based install, run the following command in an administrative command prompt:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>choco <span class="nb">install </span>python
+</code></pre></div></div>
+
+<h3 id="windows-package-manager">Package Manager</h3>
+
+<p>To install the PyTorch binaries, you will need to use at least one of two supported package managers: <a href="https://www.anaconda.com/download/#windows">Anaconda</a> and <a href="https://pypi.org/project/pip/">pip</a>. Anaconda is the recommended package manager as it will provide you all of the PyTorch dependencies in one, sandboxed install, including Python and <code class="language-plaintext highlighter-rouge">pip.</code></p>
+
+<h4 id="anaconda">Anaconda</h4>
+
+<p>To install Anaconda, you will use the <a href="https://www.anaconda.com/download/#windows">64-bit graphical installer</a> for PyTorch 3.x. Click on the installer link and select <code class="language-plaintext highlighter-rouge">Run</code>. Anaconda will download and the installer prompt will be presented to you. The default options are generally sane.</p>
+
+<h4 id="pip">pip</h4>
+
+<p>If you installed Python by any of the recommended ways <a href="#windows-python">above</a>, <a href="https://pypi.org/project/pip/">pip</a> will have already been installed for you.</p>
+
+<h2 id="windows-installation">Installation</h2>
+
+<h3 id="windows-anaconda">Anaconda</h3>
+
+<p>To install PyTorch with Anaconda, you will need to open an Anaconda prompt via <code class="language-plaintext highlighter-rouge">Start | Anaconda3 | Anaconda Prompt</code>.</p>
+
+<h4 id="no-cuda">No CUDA</h4>
+
+<p>To install PyTorch via Anaconda, and do not have a <a href="https://developer.nvidia.com/cuda-zone">CUDA-capable</a> system or do not require CUDA, in the above selector, choose OS: Windows, Package: Conda and CUDA: None.
+Then, run the command that is presented to you.</p>
+
+<h4 id="with-cuda">With CUDA</h4>
+
+<p>To install PyTorch via Anaconda, and you do have a <a href="https://developer.nvidia.com/cuda-zone">CUDA-capable</a> system, in the above selector, choose OS: Windows, Package: Conda and the CUDA version suited to your machine. Often, the latest CUDA version is better.
+Then, run the command that is presented to you.</p>
+
+<h3 id="windows-pip">pip</h3>
+
+<h4 id="no-cuda-1">No CUDA</h4>
+
+<p>To install PyTorch via pip, and do not have a <a href="https://developer.nvidia.com/cuda-zone">CUDA-capable</a> system or do not require CUDA, in the above selector, choose OS: Windows, Package: Pip and CUDA: None.
+Then, run the command that is presented to you.</p>
+
+<h4 id="with-cuda-1">With CUDA</h4>
+
+<p>To install PyTorch via pip, and do have a <a href="https://developer.nvidia.com/cuda-zone">CUDA-capable</a> system, in the above selector, choose OS: Windows, Package: Pip and the CUDA version suited to your machine. Often, the latest CUDA version is better.
+Then, run the command that is presented to you.</p>
+
+<h2 id="windows-verification">Verification</h2>
+
+<p>To ensure that PyTorch was installed correctly, we can verify the installation by running sample PyTorch code. Here we will construct a randomly initialized tensor.</p>
+
+<p>From the command line, type:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python
+</code></pre></div></div>
+
+<p>then enter the following code:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The output should be something similar to:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>tensor([[0.3380, 0.3845, 0.3217],
+        [0.8337, 0.9050, 0.2650],
+        [0.2979, 0.7141, 0.9069],
+        [0.1449, 0.1132, 0.1375],
+        [0.4675, 0.3947, 0.1426]])
+</code></pre></div></div>
+
+<p>Additionally, to check if your GPU driver and CUDA is enabled and accessible by PyTorch, run the following commands to return whether or not the CUDA driver is enabled:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="windows-from-source">Building from source</h2>
+
+<p>For the majority of PyTorch users, installing from a pre-built binary via a package manager will provide the best experience. However, there are times when you may want to install the bleeding edge PyTorch code, whether for testing or actual development on the PyTorch core. To install the latest PyTorch code, you will need to <a href="https://github.com/pytorch/pytorch#from-source">build PyTorch from source</a>.</p>
+
+<h3 id="windows-prerequisites-2">Prerequisites</h3>
+
+<ol>
+  <li>Install <a href="#anaconda">Anaconda</a></li>
+  <li>Install <a href="https://developer.nvidia.com/cuda-downloads">CUDA</a>, if your machine has a <a href="https://developer.nvidia.com/cuda-gpus">CUDA-enabled GPU</a>.</li>
+  <li>If you want to build on Windows, Visual Studio with MSVC toolset, and NVTX are also needed. The exact requirements of those dependencies could be found out <a href="https://github.com/pytorch/pytorch#from-source">here</a>.</li>
+  <li>Follow the steps described here: <a href="https://github.com/pytorch/pytorch#from-source">https://github.com/pytorch/pytorch#from-source</a></li>
+</ol>
+
+<p>You can verify the installation as described <a href="#windows-verification">above</a>.</p>
+</div>
+</div>
+
+<script page-id="get-started-locally" src="/assets/menu-tab-selection.js"></script>
+
+<script src="/assets/quick-start-module.js"></script>
+
+<script src="/assets/show-screencast.js"></script>
+
+<script src="/assets/get-started-sidebar.js"></script>
+
+
+      </article>
+    </div>
+  </div>
+</div>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item active">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/get-started-sidebar.js"></script>

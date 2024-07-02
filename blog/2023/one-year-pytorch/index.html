@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      파이토치 재단(PyTorch Foundation) 1주년 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="blog">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="main-background blog-background blog-detail-background"></div>
+
+    <div class="container-fluid header-holder blog-detail-header">
+        <div class="container">
+            
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
+        <div class="container blog-detail-container">
+            <p class="featured-post">September 12, 2023</p>
+            <h1><a class="blog-title">파이토치 재단(PyTorch Foundation) 1주년</a></h1>
+            
+                <h4 class="blog-subtitle">One Year of PyTorch Foundation</h4>
+            
+        </div>
+    </div>
+
+    <div class="main-content-wrapper blog-detail-wrapper">
+        <div class="main-content blog-detail-content">
+            <div class="container">
+                <img src="/assets/images/logo-icon.svg" class="img-fluid author-icon">
+                <article class="pytorch-article">
+                    <p class="author">
+                      
+                        
+                            작성: PyTorch Team, 번역: PyTorch Korea User Group
+                        
+                      
+                    </p>
+                    
+                    <p class="translation-description">
+                        이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
+                        번역 글은 원문을 함께 표시합니다. 원문으로 이동하시려면 <a href="https://pytorch.org/blog/one-year-pytorch/">여기</a>를 클릭하세요.
+                    </p>
+                    
+                    <div class="blog-content">
+                        <p>파이토치 재단(PyTorch Foundation)의 설립을 발표한지 1년이 되었습니다! 🎉</p>
+<blockquote>
+  <p>It’s been one year since we announced the formation of the PyTorch Foundation! 🎉</p>
+</blockquote>
+
+<p>창립 첫 해에 파이토치 재단은 PyTorch 2.0을 출시하고, 기여자를 늘리고, 새로운 회원사들이 합류하는 등의 상당한 성과를 거두었습니다. 재단이 발전할 수 있도록 지원해주신 창립 회원사들께 감사드립니다.</p>
+<blockquote>
+  <p>In its inaugural year, the PyTorch Foundation made a significant impact by launching PyTorch 2.0, growing contributors and adding new member companies. We’re grateful to our founding members for their support to move the foundation forward.</p>
+</blockquote>
+
+<p><strong>지난 한 해 동안의 몇몇 이정표(milestone)는 다음과 같습니다:</strong></p>
+<blockquote>
+  <p><strong>A few milestones in the past year include:</strong></p>
+</blockquote>
+
+<ul>
+  <li>💻 GitHub 저장소 60만 개 돌파 / <em>Over 600,000 repositories on GitHub</em></li>
+  <li>✅ AI 구현의 60%가 PyTorch 선택 / <em>60% of AI implementations choosing PyTorch</em></li>
+  <li>📈 신규 저장소들이 전년 대비 20% 이상 성장 / <em>More than 20% year over year growth in new repositories</em></li>
+  <li>🤝 작년부터 12,000개 이상의 커밋 달성 / <em>Over 12,000 commits since last year</em></li>
+</ul>
+
+<p><strong>그리고 지난 한 해 동안 재단이 어떤 일을 해왔는지 살펴보시죠:</strong></p>
+<blockquote>
+  <p><strong>And a look at what the foundation has been up to this past year:</strong></p>
+</blockquote>
+
+<p><img src="/assets/images/pytorch-timeline-ko.svg" alt="파이토치 프로젝트가 걸어온 길 / PyTorch project timeline" style="width:100%; max-width: 662px; display: block; margin-left: auto; margin-right: auto" /></p>
+
+<p>우리는 기여자들을 지원하고, AI 분야를 민주화하며, 새로운 혁신을 창출함으로써 앞으로 커뮤니티가 함께 성장할 수 있기를 기대하고 있습니다.</p>
+<blockquote>
+  <p>We look forward to growing our community for the years to come through supporting our contributors, democratizing the AI field, and creating new innovations.</p>
+</blockquote>
+
+<p>10월 16일, 17일에 샌프란시스코에서 열리는 올해 <a href="https://events.linuxfoundation.org/pytorch-conference/">파이토치 컨퍼런스(PyTorch Conference)</a>에 여러분을 초대합니다. 컨퍼런스 등록이 빠르게 마감되고 있으니 이 흥미로운 행사에 참여할 수 있는 기회를 놓치지 마세요.</p>
+<blockquote>
+  <p>We invite you to join us at this year’s <a href="https://events.linuxfoundation.org/pytorch-conference/">PyTorch Conference</a> on October 16-17 in San Francisco. Conference registration is filling up quickly, so take advantage of your chance to be part of this exciting event.</p>
+</blockquote>
+
+<p>파이토치 컨퍼런스(PyTorch Conference)에 참여하여 최신 발표에 대한 최신 정보를 얻고, 창립 회원사들 및 새롭게 파이토치 커뮤니티에 합류한 회원사들과 교류할 수 있는 기회를 잡으세요.</p>
+<blockquote>
+  <p>Join us to stay informed about the latest announcements and have the opportunity to connect with both the founding members and new additions to the PyTorch community.</p>
+</blockquote>
+
+<p>감사의 인사를 담아,<br />
+파이토치 재단 팀(The PyTorch Foundation Team)</p>
+<blockquote>
+  <p>With thanks and gratitude,<br />
+The PyTorch Foundation Team</p>
+</blockquote>
+
+                    </div>
+                    <hr noshade />
+                    <p class="translation-description ad-discuss">
+                         더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="https://discuss.pytorch.kr/">파이토치 한국어 커뮤니티에 참여</a>해주세요!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-comment">
+  <div class="container">
+      <div id="discourse-comments"></div>
+      <meta name="discourse-username" content="bot">
+  </div>
+</div>
+
+<script type="text/javascript">
+  DiscourseEmbed = {
+      discourseUrl: 'https://discuss.pytorch.kr/',
+      discourseEmbedUrl: 'https://pytorch.kr/blog/2023/one-year-pytorch/',
+      // className: 'CLASS_NAME',
+  };
+
+  (function() {
+      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+</body>
+</html>
