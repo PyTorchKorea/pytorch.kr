@@ -30,7 +30,7 @@
                     <p class="author">
                       {% if page.category contains 'translation' or page.category contains 'pytorch.org' %}
                         {% if page.author %}
-                            작성: {{ page.author }}, 번역: {{ site.default_author }}
+                            작성: {{ page.author }}. <br />번역: {{ site.default_author }}
                         {% else %}
                             작성: PyTorch Team, 번역: {{ site.default_author }}
                         {% endif %}
@@ -41,7 +41,9 @@
                     {% if page.category contains 'translation' or page.category contains 'pytorch.org' %}
                     <p class="translation-description">
                         이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
-                        번역 글은 원문을 함께 표시합니다. 원문으로 이동하시려면 <a href="{{ page.org_link }}">여기</a>를 클릭하세요.
+                        번역 글은 원문을 함께 표시합니다. 원문을 읽으시려면 <a href="{{ page.org_link }}">여기</a>를 클릭하세요.
+                        (This article is a Korean translation of the original post on the <a href="https://pytorch.org/blog/">PyTorch official blog</a>.
+                        Below translation includes the original text. To read the original post, click <a href="{{ page.org_link }}">here</a>.)
                     </p>
                     {% endif %}
                     <div class="blog-content">
