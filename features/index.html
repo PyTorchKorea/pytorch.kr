@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      Features | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="features">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder features-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background features-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;End-to-end
+            <br/>Machine Learning
+            <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Framework
+        </h1>
+
+        <p class="lead">PyTorch enables fast, flexible experimentation and efficient production through a user-friendly front-end, distributed training, and ecosystem of tools and libraries.
+        </p>
+
+        <a href="/get-started" class="btn btn-lg with-right-arrow btn-white" data-cta="get-started">
+            Get Started
+        </a>
+    </div>
+</div>
+
+
+
+<div class="main-content-wrapper">
+  <div class="main-content">
+    <div class="container">
+      <!-- START CONTENT -->
+
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">torch</span>
+  <span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+      <span class="nb">super</span><span class="p">(</span><span class="n">MyModule</span><span class="p">,</span> <span class="bp">self</span><span class="p">).</span><span class="n">__init__</span><span class="p">()</span>
+      <span class="bp">self</span><span class="p">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+      <span class="k">if</span> <span class="nb">input</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">weight</span><span class="p">.</span><span class="n">mv</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">weight</span> <span class="o">+</span> <span class="nb">input</span>
+      <span class="k">return</span> <span class="n">output</span>
+
+    <span class="c1"># Compile the model code to a static representation
+</span>    <span class="n">my_script_module</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">jit</span><span class="p">.</span><span class="n">script</span><span class="p">(</span><span class="n">MyModule</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="c1"># Save the compiled code and model data so it can be loaded elsewhere
+</span>    <span class="n">my_script_module</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">"my_script_module.pt"</span><span class="p">)</span>
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>Production Ready</h3>
+              <p>With TorchScript, PyTorch provides ease-of-use and flexibility in eager mode, while seamlessly transitioning to graph mode for speed, optimization, and functionality in C++ runtime environments.</p>
+
+            </div>
+          </div>
+        
+        </div>
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>TorchServe</h3>
+              <p>TorchServe is an easy to use tool for deploying PyTorch models at scale. It is cloud and environment agnostic and supports features such as multi-model serving, logging, metrics and the creation of RESTful endpoints for application integration.</p>
+
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">## Convert the model from PyTorch to TorchServe format
+</span>  <span class="n">torch</span><span class="o">-</span><span class="n">model</span><span class="o">-</span><span class="n">archiver</span> <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="n">name</span> <span class="n">densenet161</span> \
+  <span class="o">--</span><span class="n">version</span> <span class="mf">1.0</span> <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="nb">file</span> <span class="n">serve</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">image_classifier</span><span class="o">/</span><span class="n">densenet_161</span><span class="o">/</span><span class="n">model</span><span class="p">.</span><span class="n">py</span> \
+  <span class="o">--</span><span class="n">serialized</span><span class="o">-</span><span class="nb">file</span> <span class="n">densenet161</span><span class="o">-</span><span class="mi">8</span><span class="n">d451a50</span><span class="p">.</span><span class="n">pth</span> \
+  <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">files</span> <span class="n">serve</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="n">image_classifier</span><span class="o">/</span><span class="n">index_to_name</span><span class="p">.</span><span class="n">json</span> \
+  <span class="o">--</span><span class="n">handler</span> <span class="n">image_classifier</span>
+
+  <span class="c1">## Host your PyTorch model
+</span>
+ <span class="n">torchserve</span> <span class="o">--</span><span class="n">start</span> <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="n">store</span> <span class="n">model_store</span> <span class="o">--</span><span class="n">models</span> <span class="n">densenet161</span><span class="o">=</span><span class="n">densenet161</span><span class="p">.</span><span class="n">mar</span>
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+        
+        </div>
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">torch.distributed</span> <span class="k">as</span> <span class="n">dist</span>
+  <span class="kn">from</span> <span class="nn">torch.nn.parallel</span> <span class="kn">import</span> <span class="n">DistributedDataParallel</span>
+
+  <span class="n">dist</span><span class="p">.</span><span class="n">init_process_group</span><span class="p">(</span><span class="n">backend</span><span class="o">=</span><span class="s">'gloo'</span><span class="p">)</span>
+  <span class="n">model</span> <span class="o">=</span> <span class="n">DistributedDataParallel</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>Distributed Training</h3>
+              <p>Optimize performance in both research and production by taking advantage of native support for asynchronous execution of collective operations and peer-to-peer communication that is accessible from Python and C++.</p>
+
+            </div>
+          </div>
+        
+        </div>
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>Mobile (Experimental)</h3>
+              <p>PyTorch supports an end-to-end workflow from Python to deployment on iOS and Android. It extends the PyTorch API to cover common preprocessing and integration tasks needed for incorporating ML in mobile applications.</p>
+
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">## Save your model
+</span>  <span class="n">torch</span><span class="p">.</span><span class="n">jit</span><span class="p">.</span><span class="n">script</span><span class="p">(</span><span class="n">model</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">"my_mobile_model.pt"</span><span class="p">)</span>
+
+  <span class="c1">## iOS prebuilt binary
+</span>  <span class="n">pod</span> <span class="err">‘</span><span class="n">LibTorch</span><span class="err">’</span>
+  <span class="c1">## Android prebuilt binary
+</span>  <span class="n">implementation</span> <span class="s">'org.pytorch:pytorch_android:1.3.0'</span>
+
+  <span class="c1">## Run your model (Android example)
+</span>  <span class="n">Tensor</span> <span class="nb">input</span> <span class="o">=</span> <span class="n">Tensor</span><span class="p">.</span><span class="n">fromBlob</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">new</span> <span class="nb">long</span><span class="p">[]{</span><span class="mi">1</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">length</span><span class="p">});</span>
+  <span class="n">IValue</span> <span class="n">output</span> <span class="o">=</span> <span class="n">module</span><span class="p">.</span><span class="n">forward</span><span class="p">(</span><span class="n">IValue</span><span class="p">.</span><span class="n">tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">));</span>
+  <span class="nb">float</span><span class="p">[]</span> <span class="n">scores</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="n">getTensor</span><span class="p">().</span><span class="n">getDataAsFloatArray</span><span class="p">();</span>
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+        
+        </div>
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">torchvision.models</span> <span class="k">as</span> <span class="n">models</span>
+  <span class="n">resnet18</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">resnet18</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+  <span class="n">alexnet</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">alexnet</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+  <span class="n">squeezenet</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">squeezenet1_0</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+  <span class="n">vgg16</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">vgg16</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+  <span class="n">densenet</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">densenet161</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+  <span class="n">inception</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">inception_v3</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>Robust Ecosystem</h3>
+              <p>An active community of researchers and developers have built a rich ecosystem of tools and libraries for extending PyTorch and supporting development in areas from computer vision to reinforcement learning.</p>
+
+            </div>
+          </div>
+        
+        </div>
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>Native ONNX Support</h3>
+              <p>Export models in the standard ONNX (Open Neural Network Exchange) format for direct access to ONNX-compatible platforms, runtimes, visualizers, and more.</p>
+
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kn">import</span> <span class="nn">torch.onnx</span>
+  <span class="kn">import</span> <span class="nn">torchvision</span>
+
+  <span class="n">dummy_input</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">)</span>
+  <span class="n">model</span> <span class="o">=</span> <span class="n">torchvision</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">alexnet</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+  <span class="n">torch</span><span class="p">.</span><span class="n">onnx</span><span class="p">.</span><span class="n">export</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dummy_input</span><span class="p">,</span> <span class="s">"alexnet.onnx"</span><span class="p">)</span>
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+        
+        </div>
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="cp">#include &lt;torch/torch.h&gt;
+</span>
+  <span class="n">torch</span><span class="o">::</span><span class="n">nn</span><span class="o">::</span><span class="n">Linear</span> <span class="nf">model</span><span class="p">(</span><span class="n">num_features</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">torch</span><span class="o">::</span><span class="n">optim</span><span class="o">::</span><span class="n">SGD</span> <span class="nf">optimizer</span><span class="p">(</span><span class="n">model</span><span class="o">-&gt;</span><span class="n">parameters</span><span class="p">());</span>
+  <span class="k">auto</span> <span class="n">data_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">::</span><span class="n">data</span><span class="o">::</span><span class="n">data_loader</span><span class="p">(</span><span class="n">dataset</span><span class="p">);</span>
+
+  <span class="k">for</span> <span class="p">(</span><span class="kt">size_t</span> <span class="n">epoch</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">epoch</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">epoch</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">batch</span> <span class="o">:</span> <span class="n">data_loader</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">auto</span> <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="o">-&gt;</span><span class="n">forward</span><span class="p">(</span><span class="n">batch</span><span class="p">.</span><span class="n">data</span><span class="p">);</span>
+      <span class="k">auto</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">batch</span><span class="p">.</span><span class="n">target</span><span class="p">);</span>
+      <span class="n">loss</span><span class="p">.</span><span class="n">backward</span><span class="p">();</span>
+      <span class="n">optimizer</span><span class="p">.</span><span class="n">step</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>C++ Front-End</h3>
+              <p>The C++ frontend is a pure C++ interface to PyTorch that follows the design and architecture of the established Python frontend. It is intended to enable research in high performance, low latency and bare metal C++ applications.</p>
+
+            </div>
+          </div>
+        
+        </div>
+      
+        <div class="row features-row">
+        
+
+        
+          <div class="col-md-6">
+            <div class="feature-content">
+              <h3>Cloud Support</h3>
+              <p>PyTorch is well supported on major cloud platforms, providing frictionless development and easy scaling through prebuilt images, large scale training on GPUs, ability to run models in a production scale environment, and more.</p>
+
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-content">
+             <div class="feature-content-holder">
+               <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">export </span><span class="nv">IMAGE_FAMILY</span><span class="o">=</span><span class="s2">"pytorch-latest-cpu"</span>
+  <span class="nb">export </span><span class="nv">ZONE</span><span class="o">=</span><span class="s2">"us-west1-b"</span>
+  <span class="nb">export </span><span class="nv">INSTANCE_NAME</span><span class="o">=</span><span class="s2">"my-instance"</span>
+
+  gcloud compute instances create <span class="nv">$INSTANCE_NAME</span> <span class="se">\</span>
+    <span class="nt">--zone</span><span class="o">=</span><span class="nv">$ZONE</span> <span class="se">\</span>
+    <span class="nt">--image-family</span><span class="o">=</span><span class="nv">$IMAGE_FAMILY</span> <span class="se">\</span>
+    <span class="nt">--image-project</span><span class="o">=</span>deeplearning-platform-release
+</code></pre></div></div>
+
+             </div>
+            </div>
+          </div>
+        
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid quick-start-module quick-starts">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 start-locally-col">
+
+        <h3>PyTorch 설치하기</h3>
+
+        <p>
+  사용 환경을 선택하고 설치 명령을 복사해서 실행해 보세요. Stable 버전은 테스트 및 지원되고 있는 가장 최근의 PyTorch 버전으로, 대부분의 사용자에게 적합합니다.
+  Preview 버전은 아직 완전히 테스트나 지원이 되지 않는 최신 버전으로 매일 밤 업데이트됩니다. 사용 중인 패키지 매니저에 따라 <b>아래의 사전 요구사항(예: numpy)</b>이 충족되었는지 확인해 주세요.
+  모든 의존성을 설치할 수 있는 Anaconda를 패키지 매니저로 추천합니다. <a href="/get-started/previous-versions">이전 버전의 PyTorch도 설치할 수 있습니다</a>.
+  LibTorch는 C++에서만 지원합니다.
+</p>
+<p>
+  <b>참고:</b>
+  최신 버전의 PyTorch를 사용하기 위해서는 Python 3.8 이상이 필요합니다. 자세한 내용은 <a href="/get-started/locally/#mac-python">Python 섹션</a>을 참고해주세요.
+</p>
+<div class="row">
+  <div class="col-md-3 headings">
+    <div class="col-md-12 title-block">
+      <div class="option-text">PyTorch 빌드</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text os-text">OS 종류</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text">패키지 매니저</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text">언어</div>
+    </div>
+    <div class="col-md-12 title-block">
+      <div class="option-text">플랫폼</div>
+    </div>
+    <div class="col-md-12 title-block command-block">
+      <div class="option-text command-text">이 명령을 실행하세요:</div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="row ptbuild">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">PyTorch 빌드</div>
+      </div>
+      <div class="col-md-6 option block version selected" id="stable">
+        <div class="option-text">Stable (1.13.1)</div>
+      </div>
+      <div class="col-md-6 option block version" id="preview">
+        <div class="option-text">Preview (Nightly)</div>
+      </div>
+    </div>
+    <div class="row os">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">OS 종류</div>
+      </div>
+      <div class="col-md-4 option block" id="linux">
+        <div class="option-text">Linux</div>
+      </div>
+      <div class="col-md-4 option block" id="macos">
+        <div class="option-text">Mac</div>
+      </div>
+      <div class="col-md-4 option block" id="windows">
+        <div class="option-text">Windows</div>
+      </div>
+    </div>
+    <div class="row package">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">패키지 매니저</div>
+      </div>
+      <div class="col-md-3 option block selected" id="conda">
+        <div class="option-text">Conda</div>
+      </div>
+      <div class="col-md-3 option block" id="pip">
+        <div class="option-text">Pip</div>
+      </div>
+      <div class="col-md-3 option block" id="libtorch">
+        <div class="option-text">LibTorch</div>
+      </div>
+      <div class="col-md-3 option block" id="source">
+        <div class="option-text">Source</div>
+      </div>
+    </div>
+    <div class="row language">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">언어</div>
+      </div>
+      <div class="col-md-6 option block version selected" id="python">
+        <div class="option-text">Python</div>
+      </div>
+      <div class="col-md-6 option block" id="cplusplus">
+        <div class="option-text">C++ / Java</div>
+      </div>
+    </div>
+    <div class="row cuda">
+      <div class="col-md-12 title-block mobile-heading">
+        <div class="option-text">플랫폼</div>
+      </div>
+      <div class="col-md-3 option block version" id="cuda.x">
+        <div class="option-text">CUDA 11.6</div>
+      </div>
+      <div class="col-md-3 option block version" id="cuda.y">
+        <div class="option-text">CUDA 11.7</div>
+      </div>
+      <div class="col-md-3 option block version" id="rocm5.x">
+        <div class="option-text">ROCm 5.2</div>
+      </div>
+      <div class="col-md-3 option block version" id="accnone">
+        <div class="option-text">CPU</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 title-block command-mobile-heading">
+        <div class="option-text">이 명령을 실행하세요:</div>
+      </div>
+      <div class="command-container">
+        <div class="col-md-12" id="command">conda install pytorch torchvision -c pytorch</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <a href="/get-started/previous-versions" class="btn btn-lg with-right-arrow btn-white prev-versions-btn">
+          이전 버전의 PyTorch
+        </a>
+      </div>
+
+      <div class="col-md-3 offset-md-1 cloud-options-col">
+        <h3>클라우드에서 <br /> 빠르게 시작하기</h3>
+
+        <p>많이 쓰이는 클라우드 플랫폼과 머신러닝 서비스를 통해서 PyTorch를 빠르게 시작해보세요.</p>
+
+        <div class="quick-start-guides">
+  <div class="cloud-option-row">
+    <div class="cloud-option" data-toggle="cloud-dropdown">
+      <div class="cloud-option-body aws" id="aws">
+        Amazon Web Services
+      </div>
+
+      <ul>
+        <li><a href="https://aws.amazon.com/pytorch/">PyTorch on AWS</a></li>
+        <li><a href="https://aws.amazon.com/sagemaker">Amazon SageMaker</a></li>
+        <li><a href="https://docs.aws.amazon.com/deep-learning-containers/latest/devguide/deep-learning-containers-ec2-tutorials-training.html#deep-learning-containers-ec2-tutorials-training-pytorch">AWS Deep Learning Containers</a></li>
+        <li><a href="https://docs.aws.amazon.com/dlami/latest/devguide/tutorial-pytorch.html">AWS Deep Learning AMIs</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cloud-option-row">
+    <div class="cloud-option" data-toggle="cloud-dropdown">
+      <div class="cloud-option-body google-cloud" id="google-cloud">
+        Google Cloud Platform
+      </div>
+
+      <ul>
+        <li><a href="https://cloud.google.com/deep-learning-vm/docs/pytorch_start_instance">Cloud Deep Learning VM Image</a></li>
+      </ul>
+
+      <ul>
+        <li><a href="https://cloud.google.com/ai-platform/deep-learning-containers/">Deep Learning Containers</a></li>
+      </ul>
+
+    </div>
+  </div>
+
+  <div class="cloud-option-row">
+    <div class="cloud-option" data-toggle="cloud-dropdown">
+      <div class="cloud-option-body microsoft-azure" id="microsoft-azure">
+        <p>Microsoft Azure</p>
+      </div>
+
+      <ul>
+        <li><a href="https://azure.microsoft.com/en-us/develop/pytorch/">PyTorch on Azure</a></li>
+        <li><a href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-train-pytorch">Azure Machine Learning</a></li>
+        <li><a href="https://docs.microsoft.com/en-us/azure/azure-functions/machine-learning-pytorch?tabs=bash">Azure Functions</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/quick-start-module.js"></script>
+
+
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>

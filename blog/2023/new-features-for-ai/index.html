@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      PyTorch 2.1에 새로 추가된 성능 향상 기능 소개 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="blog">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="main-background blog-background blog-detail-background"></div>
+
+    <div class="container-fluid header-holder blog-detail-header">
+        <div class="container">
+            
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
+        <div class="container blog-detail-container">
+            <p class="featured-post">November 29, 2023</p>
+            <h1><a class="blog-title">PyTorch 2.1에 새로 추가된 성능 향상 기능 소개</a></h1>
+            
+                <h4 class="blog-subtitle">PyTorch 2.1 Contains New Performance Features for AI Developers</h4>
+            
+        </div>
+    </div>
+
+    <div class="main-content-wrapper blog-detail-wrapper">
+        <div class="main-content blog-detail-content">
+            <div class="container">
+                <img src="/assets/images/logo-icon.svg" class="img-fluid author-icon">
+                <article class="pytorch-article">
+                    <p class="author">
+                      
+                        
+                            작성: 인텔(Intel). <br />번역: PyTorch Korea User Group
+                        
+                      
+                    </p>
+                    
+                    <p class="translation-description">
+                        이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
+                        번역 글은 원문을 함께 표시합니다. 원문을 읽으시려면 <a href="https://pytorch.org/blog/new-features-for-ai/">여기</a>를 클릭하세요.
+                        (This article is a Korean translation of the original post on the <a href="https://pytorch.org/blog/">PyTorch official blog</a>.
+                        Below translation includes the original text. To read the original post, click <a href="https://pytorch.org/blog/new-features-for-ai/">here</a>.)
+                    </p>
+                    
+                    <div class="blog-content">
+                        <p>PyTorch(파이토치) 2.1을 출시하여 매우 기쁩니다. 이번 글에서는 PyTorch 2.1에 인텔(Intel)이 크게 기여한 다섯가지 기능들에 대해서 설명하겠습니다:</p>
+<blockquote>
+  <p>We are excited to see the release of PyTorch 2.1. In this blog, we discuss the five features for which Intel made significant contributions to PyTorch 2.1:</p>
+</blockquote>
+
+<ol>
+  <li>torch.compile()시 bfloat16 추론 경로를 포함하는 TorchInductor-CPU 최적화</li>
+  <li>torch.compile()에서 CPU용 동적 쉐입(dynamic shape) 추론 경로</li>
+  <li>C++ 래퍼 (wrapper, 프로토타입 기능)</li>
+  <li>CPU용 플래시 어텐션(flash-attention) 기반 스케일드-닷-프로덕트(scaled-dot-product) 알고리즘</li>
+  <li>Inductor를 통해 x86 백엔드를 사용한 PyTorch 2의 학습 후 양자화 내보내기 기능
+    <blockquote>
+      <ol>
+        <li>TorchInductor-CPU optimizations including Bfloat16 inference path for torch.compile</li>
+        <li>CPU dynamic shape inference path for torch.compile</li>
+        <li>C++ wrapper (prototype)</li>
+        <li>Flash-attention-based scaled dot product algorithm for CPU</li>
+        <li>PyTorch 2 export post-training qauantization with an x86 back end through an inductor</li>
+      </ol>
+    </blockquote>
+  </li>
+</ol>
+
+<p>인텔이 PyTorch 커뮤니티의 일원이 된 것을 기쁘게 생각하며, Meta*의 동료들과 이러한 기능들을 함께 개발하고 피드백을 주신 것에 감사드립니다.</p>
+<blockquote>
+  <p>At Intel, we are delighted to be part of the PyTorch community and appreciate the collaboration with and feedback from our colleagues at Meta* as we co-developed these features.</p>
+</blockquote>
+
+<p>이제 시작해보겠습니다.</p>
+<blockquote>
+  <p>Let’s get started.</p>
+</blockquote>
+
+<h2 id="torchinductor-cpu-최적화--torchinductor-cpu-optimizations">TorchInductor-CPU 최적화 / TorchInductor-CPU Optimizations</h2>
+
+<p>이 기능은 TorchInductor(토치인덕터)의 bfloat16 추론 성능을 최적화합니다. 3세대 및 4세대의 Intel® Xeon® Scalable 프로세서에는 bfloat16 데이터 타입의 닷-프로덕트(dot-product) 연산을 가속화하는 하드웨어 가속기가 내장되어 있습니다. 아래 그림 1은 BF16 추론 경로를 지정하는 코드 조각입니다.</p>
+<blockquote>
+  <p>This feature optimizes bfloat16 inference performance for TorchInductor. The 3rd and 4th generation Intel® Xeon® Scalable processors have built-in hardware accelerators for speeding up dot-product computation with the bfloat16 data type. Figure 1 shows a code snippet of how to specify the BF16 inference path.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user_model</span> <span class="o">=</span> <span class="p">...</span>
+
+<span class="n">user_model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">(),</span> <span class="n">torch</span><span class="p">.</span><span class="n">autocast</span><span class="p">(</span><span class="s">"cpu"</span><span class="p">):</span>
+	<span class="n">compiled_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">user_model</span><span class="p">)</span>
+	<span class="n">y</span> <span class="o">=</span> <span class="n">compiled_model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>그림 1. TorchInductor에서 BF16 추론 사용 예시 코드 / Figure 1. Code snippet showing the use of BF16 inference with TorchInductor <br /></p>
+
+<p>TorchBench, Hugging Face<em>, TIMM의 3종을 벤치마크 대상으로하여 TorchInductor의 성능을 측정했으며 그 결과는 표 1과 같습니다. 그래프 모드(TorchInductor)의 성능이 Eager 모드보다 1.25배에서 2.35배</em>까지 뛰어난 것을 확인할 수 있습니다.</p>
+<blockquote>
+  <p>We measured the performance on three TorchInductor benchmark suites—TorchBench, Hugging Face<em>, and TIMM—and the results are as follows in Table 1. Here we see that performance in graph mode (TorchInductor) outperforms eager mode by factors ranging from 1.25x to 2.35x.</em></p>
+</blockquote>
+
+<p>표 1. 그래프 모드와 Eager 모드에서의 bfloat16 성능 향상 (기하 평균, geometric mean) / Table 1. Bfloat16 performance geometric mean speedup in graph mode, compared with eager mode</p>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>Bfloat16 Geometric Mean Speedup (Single-Socket Multithreads)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+torchbench
+   </td>
+   <td>
+huggingface
+   </td>
+   <td>
+timm_models
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.81x
+   </td>
+   <td>
+1.25x
+   </td>
+   <td>
+2.35x
+   </td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>Bfloat16 Geometric Mean Speedup (Single-Core Single Thread)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+torchbench
+   </td>
+   <td>
+huggingface
+   </td>
+   <td>
+timm_models
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.74x
+   </td>
+   <td>
+1.28x
+   </td>
+   <td>
+1.29x
+   </td>
+  </tr>
+</table>
+
+<p>Intel® Advanced Matrix Extensions(Intel® AMX) 기능을 활용하여 <code class="language-plaintext highlighter-rouge">torch.compile()</code> 성능을 최대치로 끌어냄으로써 4세대 인텔 Xeon 프로세서에서 모델을 완전히 배포할 수 있습니다. 인텔 AMX에는 타일(Tile)과 타일드 매트릭스 곱셈(TMUL; Tiled Matric Multiplication)이라는 두 가지 주요 구성 요소가 있습니다. 타일(tile)은 각각 1KB 크기를 갖는 2차원 레지스터 8개에 대량의 데이터를 저장합니다. TMUL은 한 번의 연산(single operation)으로 더 큰 행렬을 계산하기 위한 명령어들을 지원하는, 타일에 연결된 가속 엔진입니다.</p>
+<blockquote>
+  <p>Developers can fully deploy their models on 4th generation Intel Xeon processors to take advantage of the Intel® Advanced Matrix Extensions (Intel® AMX) feature to get peak performance for <code class="language-plaintext highlighter-rouge">torch.compile</code>. Intel AMX has two primary components: tiles and tiled matrix multiplication (TMUL). The tiles store large amounts of data in eight two-dimensional registers, each one kilobyte in size. TMUL is an accelerator engine attached to the tiles that contain instructions to compute larger matrices in a single operation.</p>
+</blockquote>
+
+<h2 id="torchcompile에서-cpu용-동적-쉐입dynamic-shape-추론-경로--cpu-dynamic-shapes-inference-path-for-torchcompile">torch.compile()에서 CPU용 동적 쉐입(dynamic shape) 추론 경로 / CPU Dynamic Shapes Inference Path for torch.compile</h2>
+
+<p>동적 쉐입(Dynamic Shape)은 PyTorch 2.0의 핵심 기능들 중 하나입니다. PyTorch 2.0은 기본적으로 모든 것이 정적이라고 가정하고 있습니다. 크기가 변경되어 다시 컴파일을 해야 할 때는 동적 크기를 갖도록 다시 컴파일하려고  시도합니다. (한 번 변경된 크기는 앞으로 변경될 가능성이 높습니다.) 동적 쉐입을 지원하는 경우, conv/gemm 연산자에 대한 후처리 퓨전(post-op fusion)과 conv/gemm 연산자가 아닌 연산자(non-conv-gemm operators)에 대한 벡터화 코드 생성(vectorization code-gen)을 지원합니다.</p>
+<blockquote>
+  <p>Dynamic shapes is one of the key features in PyTorch 2.0. PyTorch 2.0 assumes everything is static by default. If we recompile because a size changed, we will instead attempt to recompile that size as being dynamic (sizes that have changed are likely to change in the future). Dynamic shapes support is required for popular models like large language models (LLM). Dynamic shapes that provide support for a broad scope of models can help users get more benefit from torch.compile. For dynamic shapes, we provide the post-op fusion for conv/gemm operators and vectorization code-gen for non-conv/gemm operators.</p>
+</blockquote>
+
+<p>동적 쉐입은 CUDA*용 인덕터 트리튼 백엔드와 CPU용 C++ 백엔드에서 모두 지원하고 있습니다. 여기에는 기능(모델 통과율로 측정)과 성능(추론 지연/처리량으로 측정) 모두에 대한 개선이 포함하고 있습니다. 그림 2는 TorchInductor에서 동적 쉐입 추론을 사용하는 코드 조각을 보여줍니다.</p>
+<blockquote>
+  <p>Dynamic shapes is supported by both the inductor Triton back end for CUDA* and the C++ back end for CPU. The scope covers improvements for both functionality (as measured by model passing rate) and performance (as measured by inference latency/throughput). Figure 2 shows a code snippet for the use of dynamic shape inference with TorchInductor.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user_model</span> <span class="o">=</span> <span class="p">...</span>
+
+<span class="c1"># 학습 예시 / Training example
+</span><span class="n">compiled_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">user_model</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">compiled_model</span><span class="p">(</span><span class="n">x_size1</span><span class="p">)</span>
+<span class="c1"># 여기서 입력 크기가 변경되어 재컴파일을 시작합니다
+# Here trigger the recompile because the input size changed
+</span><span class="n">y</span> <span class="o">=</span> <span class="n">compiled_model</span><span class="p">(</span><span class="n">x_size2</span><span class="p">)</span>
+
+
+<span class="c1"># 추론 예시 / Inference example
+</span><span class="n">user_model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+<span class="n">compiled_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">user_model</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+	<span class="n">y</span> <span class="o">=</span> <span class="n">compiled_model</span><span class="p">(</span><span class="n">x_size1</span><span class="p">)</span>
+ <span class="c1"># 여기서 입력 크기가 변경되어 재컴파일을 시작합니다
+</span> <span class="c1"># Here trigger the recompile because the input size changed
+</span> <span class="n">y</span> <span class="o">=</span> <span class="n">compiled_model</span><span class="p">(</span><span class="n">x_size2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>그림 2. TorchInductor로 동적 쉐입 추론을 사용하는 코드 조각 / Figure 2. Code snippet showing the use of dynamic shape inference with TorchInductor</p>
+
+<p>TorchInductor 벤치마크 제품군 3종(TorchBench, Hugging Face, TIMM)에 대해서 다시 성능을 측정한 결과를 표 2에 정리하였습니다. 여기서 그래프 모드의 성능이 Eager 모드보다 1.15배에서 1.79배까지 뛰어난 것을 확인할 수 있습니다.</p>
+<blockquote>
+  <p>We again measured the performance on the three TorchInductor benchmark suites—TorchBench, Hugging Face, and TIMM—and the results are in Table 2. Here we see that performance in graph mode outperforms eager mode by factors ranging from 1.15x to 1.79x.</p>
+</blockquote>
+
+<p>표 2. 동적 쉐입에서 Eager 모드 대비 성능 향상 (기하 평균, geometric mean) / Table 2. Dynamic shape geometric mean speedup compared with Eager mode</p>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>Dynamic Shape Geometric Mean Speedup (Single-Socket Multithreads)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+torchbench
+   </td>
+   <td>
+huggingface
+   </td>
+   <td>
+timm_models
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.35x
+   </td>
+   <td>
+1.15x
+   </td>
+   <td>
+1.79x
+   </td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>Dynamic Shape Geometric Mean Speedup (Single-Core Single-Thread)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+torchbench
+   </td>
+   <td>
+huggingface
+   </td>
+   <td>
+timm_models
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.48x
+   </td>
+   <td>
+1.15x
+   </td>
+   <td>
+1.48x
+   </td>
+  </tr>
+</table>
+
+<h2 id="c-래퍼프로토타입-기능--c-wrapper-prototype">C++ 래퍼(프로토타입 기능) / C++ Wrapper (Prototype)</h2>
+
+<p>이 기능은 TorchInductor의 생성된 커널 및 외부 커널을 호출하는 Python* 코드 대신 C++ 코드를 생성하여 Python 오버헤드를 줄입니다. 또한 Python이 없는 환경에서의 배포를 지원하기 위한 중간 단계이기도 합니다.</p>
+<blockquote>
+  <p>The feature generates C++ code instead of Python* code to invoke the generated kernels and external kernels in TorchInductor to reduce Python overhead. It is also an intermediate step to support deployment in environments without Python.</p>
+</blockquote>
+
+<p>다음과 같이 설정하면 이 기능을 사용할 수 있습니다:</p>
+<blockquote>
+  <p>To enable this feature, use the following configuration:</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch._inductor.config</span> <span class="k">as</span> <span class="n">config</span>
+<span class="n">config</span><span class="p">.</span><span class="n">cpp_wrapper</span> <span class="o">=</span> <span class="bp">True</span>
+</code></pre></div></div>
+
+<p>Python 래퍼에서의 오버헤드가 더 큰, 가벼운 워크로드의 경우에는 C++ 래퍼가 더 높은 성능 향상 비율을 보여줍니다. TorchBench, Hugging Face, TIMM의 모델들을 평균 추론 시간에 따라 Small, Medium, Large의 세 가지 그룹으로 정리하였습니다. 표 3은 C++ 래퍼가 기본 Python 래퍼 대비 얻은 기하 평균 성능 향상 비율을 보여줍니다.</p>
+<blockquote>
+  <p>For light workloads where the overhead of the Python wrapper is more dominant, C++ wrapper demonstrates a higher performance boost ratio. We grouped the models in TorchBench, Hugging Face, and TIMM per the average inference time of one iteration and categorized them into small, medium, and large categories. Table 3 shows the geometric mean speedups achieved by the C++ wrapper in comparison to the default Python wrapper.</p>
+</blockquote>
+
+<p>표 3. Eager 모드와 비교한 C++ 래퍼의 속도 향상 (기하 평균, geometric mean) / Table 3. C++ wrapper geometric mean speedup compared with Eager mode</p>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>FP32 Static Shape Mode Geometric Mean Speedup (Single-Socket Multithreads)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+Small (t &lt;= 0.04s)
+   </td>
+   <td>
+Medium (0.04s &lt; t &lt;= 1.5s)
+   </td>
+   <td>
+Large (t &gt; 1.5s)
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.06x
+   </td>
+   <td>
+1.01x
+   </td>
+   <td>
+1.00x
+   </td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>FP32 Static Shape Mode Geometric Mean Speedup (Single-Core Single-Thread)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+Small (t &lt;= 0.04s)
+   </td>
+   <td>
+Medium (0.04s &lt; t &lt;= 1.5s)
+   </td>
+   <td>
+Large (t &gt; 1.5s)
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.13x
+   </td>
+   <td>
+1.02x
+   </td>
+   <td>
+1.01x
+   </td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>FP32 Dynamic Shape Mode Geometric Mean Speedup (Single-Socket Multithreads)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+Small (t &lt;= 0.04s)
+   </td>
+   <td>
+Medium (0.04s &lt; t &lt;= 1.5s)
+   </td>
+   <td>
+Large (t &gt; 1.5s)
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.05x
+   </td>
+   <td>
+1.01x
+   </td>
+   <td>
+1.00x
+   </td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>FP32 Dynamic Shape Mode Geometric Mean Speedup (Single-Core Single-Thread)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+Small (t &lt;= 0.04s)
+   </td>
+   <td>
+Medium (0.04s &lt; t &lt;= 1.5s)
+   </td>
+   <td>
+Large (t &gt; 1.5s)
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.14x
+   </td>
+   <td>
+1.02x
+   </td>
+   <td>
+1.01x
+   </td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>BF16 Static Shape Mode Geometric Mean Speedup (Single-Socket Multithreads)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+Small (t &lt;= 0.04s)
+   </td>
+   <td>
+Medium (0.04s &lt; t &lt;= 1.5s)
+   </td>
+   <td>
+Large (t &gt; 1.5s)
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.09x
+   </td>
+   <td>
+1.03x
+   </td>
+   <td>
+1.04x
+   </td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="4">
+<strong>BF16 Static Shape Mode Geometric Mean Speedup (Single-Core Single-Thread)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+Small (t &lt;= 0.04s)
+   </td>
+   <td>
+Medium (0.04s &lt; t &lt;= 1.5s)
+   </td>
+   <td>
+Large (t &gt; 1.5s)
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.17x
+   </td>
+   <td>
+1.04x
+   </td>
+   <td>
+1.03x
+   </td>
+  </tr>
+</table>
+
+<h2 id="cpu용-플래시-어텐션flash-attention-기반-스케일드-닷-프로덕트scaled-dot-product-알고리즘--flash-attention-based-scaled-dot-product-algorithm-for-cpu">CPU용 플래시 어텐션(flash-attention) 기반 스케일드-닷-프로덕트(scaled-dot-product) 알고리즘 / Flash-Attention-Based Scaled Dot Product Algorithm for CPU</h2>
+
+<p>스케일-닷-프로덕트 어텐션(SDPA)은 Transformer 모델들의 속도 향상을 지원하는 PyTorch 2.0의 핵심 기능 중 하나입니다. 이 기능은 최적의 CUDA 커널을 사용하여 가속하지만, 최적화된 CPU의 커널은 아직 없었습니다. 이 플래시-어텐션(flash-attention) 구현은 FP32 및 bfloat16 데이터 타입에서의 학습과 추론 모두를 지원합니다. 사용자는 이 SDPA 최적화를 활용하기 위해 코드(frontend)를 변경할 필요는 없습니다. SDPA 호출 시에 자동적으로 구현체를 선택하는데, 이 새로운 구현체를 포함하고 있습니다.</p>
+<blockquote>
+  <p>Scaled dot product attention (SDPA) is one of the flagship features of PyTorch 2.0 that helps speed up transformer models. It is accelerated with optimal CUDA kernels while still lacking optimized CPU kernels. This flash-attention implementation targets both training and inference, with both FP32 and Bfloat16 data types supported. There is no front-end use change for users to leverage this SDPA optimization. When calling SDPA, a specific implementation will be chosen automatically, including this new implementation.</p>
+</blockquote>
+
+<p>허깅페이스의 SDPA 관련 모델들을 측정한 결과, 이 기능이 없는 SDPA(unfused SDPA)보다 효과적인 것을 확인하였습니다. 표 4에는 SDPA 최적화에 대한 기하 평균 속도 향상 비율을 보여줍니다.</p>
+<blockquote>
+  <p>We have measured the SDPA-related models in Hugging Face, and they are proven effective when compared to the unfused SDPA. Shown in Table 4 are the geometric mean speedups for SDPA optimization. <br /></p>
+</blockquote>
+
+<p>표 4. SDPA 최적화 속도 향상 (기하 평균, geometric mean) / Table 4. SDPA optimization performance geometric mean speedup</p>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="3">
+<strong>SDPA Geometric Mean Speedup (Single-Socket Multithreads)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+Geometric Speedup FP32
+   </td>
+   <td>
+Geometric Speedup BF16
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.15x, 20/20
+   </td>
+   <td>
+1.07x, 20/20
+   </td>
+  </tr>
+</table>
+
+<table class="table table-bordered">
+  <tr>
+   <td colspan="3">
+<strong>SDPA Geometric Mean Speedup (Single-Core Single-Thread)</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+Compiler
+   </td>
+   <td>
+Geometric Speedup FP32
+   </td>
+   <td>
+Geometric Speedup BF16
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+1.02x, 20/20
+   </td>
+   <td>
+1.04x, 20/20
+   </td>
+  </tr>
+</table>
+
+<h2 id="inductor를-통해-x86-백엔드를-사용한-학습-후-양자화-pytorch-2-내보내기-pytorch-2-export-post-training-quantization-with-x86-back-end-through-inductor">Inductor를 통해 x86 백엔드를 사용한 학습 후 양자화 PyTorch 2 내보내기/ PyTorch 2 Export Post-Training Quantization with x86 Back End through Inductor</h2>
+
+<p>PyTorch는 PyTorch 2.0 내보내기(export)에서 새로운 양자화 흐름(quantization flow)을 제공하고 있습니다. 이 기능은 x86 CPU 장치를 백엔드로 하는 TorchInductor를 사용하여, 새로운 양자화 흐름을 적용한 학습 후 정적 양자화(post-training quantization)를 수행합니다. 예시 코드 조각은 그림 3과 같습니다.</p>
+<blockquote>
+  <p>PyTorch provides a new quantization flow in the PyTorch 2.0 export. This feature uses TorchInductor with an x86 CPU device as the back end for post-training static quantization with this new quantization flow. An example code snippet is shown in Figure 3.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch._dynamo</span> <span class="k">as</span> <span class="n">torchdynamo</span>
+<span class="kn">from</span> <span class="nn">torch.ao.quantization.quantize_pt2e</span> <span class="kn">import</span> <span class="n">convert_pt2e</span><span class="p">,</span> <span class="n">prepare_pt2e</span>
+<span class="kn">import</span> <span class="nn">torch.ao.quantization.quantizer.x86_inductor_quantizer</span> <span class="k">as</span> <span class="n">xiq</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="p">...</span>
+
+<span class="n">model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+ <span class="c1"># 1단계: 모델을 평탄화(flatten)한 ATen 연산자의 FX 그래프로 추적합니다
+</span> <span class="c1"># Step 1: Trace the model into an FX graph of flattened ATen operators
+</span> <span class="n">exported_graph_module</span><span class="p">,</span> <span class="n">guards</span> <span class="o">=</span> <span class="n">torchdynamo</span><span class="p">.</span><span class="n">export</span><span class="p">(</span>
+	 <span class="n">model</span><span class="p">,</span>
+	 <span class="o">*</span><span class="n">copy</span><span class="p">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">example_inputs</span><span class="p">),</span>
+	 <span class="n">aten_graph</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+ <span class="p">)</span>
+
+ <span class="c1"># 2단계: 관찰자(observers) 또는 가짜 양자화 모듈을 삽입합니다
+</span> <span class="c1"># Step 2: Insert observers or fake quantize modules
+</span> <span class="n">quantizer</span> <span class="o">=</span> <span class="n">xiq</span><span class="p">.</span><span class="n">X86InductorQuantizer</span><span class="p">()</span>
+ <span class="n">operator_config</span> <span class="o">=</span> <span class="n">xiq</span><span class="p">.</span><span class="n">get_default_x86_inductor_quantization_config</span><span class="p">()</span>
+ <span class="n">quantizer</span><span class="p">.</span><span class="n">set_global</span><span class="p">(</span><span class="n">operator_config</span><span class="p">)</span>
+ <span class="n">prepared_graph_module</span> <span class="o">=</span> <span class="n">prepare_pt2e</span><span class="p">(</span><span class="n">exported_graph_module</span><span class="p">,</span> <span class="n">quantizer</span><span class="p">)</span>
+
+ <span class="c1"># 여기서 캘리브레이션을 수행합니다
+</span> <span class="c1"># Doing calibration here.
+</span>
+ <span class="c1"># 3단계: 모델을 양자화합니다
+</span> <span class="c1"># Step 3: Quantize the model
+</span> <span class="n">convert_graph_module</span> <span class="o">=</span> <span class="n">convert_pt2e</span><span class="p">(</span><span class="n">prepared_graph_module</span><span class="p">)</span>
+
+ <span class="c1"># 4단계: 백엔드로 양자화된 모델을 내보냅니다
+</span> <span class="c1"># Step 4: Lower Quantized Model into the backend
+</span> <span class="n">compile_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">convert_graph_module</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>그림 3. Inductor를 PyTorch 2의 학습 후 양자화 내보내기를 위한 백엔드로 사용하는 코드 조각 / Figure 3. Code snippet showing the use of Inductor as back end for PyTorch 2 export post-training quantization</p>
+
+<p>모든 합성곱 신경망(CNN; Convolutional Neural Network) 모델들은 TorchBench 벤치마크 테스트 스윗(suite)에서 측정하였으며, Inductor FP32 추론 경로와 비교하여 효과적임이 증명되었습니다. 성능 지표는 표 5와 같습니다.</p>
+<blockquote>
+  <p>All convolutional neural networks (CNN) models from the TorchBench test suite have been measured and proven effective when compared with the Inductor FP32 inference path. Performance metrics are shown in Table 5.</p>
+</blockquote>
+
+<p>표 5. Inductor를 통해 x86 백엔드를 사용한 학습 후 양자화 내보내기 성능 향상 (기하 평균, geometric mean) / Table 5. PyTorch 2 export post-training quantization performance geometric mean speedup with x86 back end through Inductor</p>
+
+<table class="table table-bordered">
+  <tr>
+   <td>
+<strong>Compiler</strong>
+   </td>
+   <td>
+<strong>Geometric Speedup</strong>
+   </td>
+   <td>
+<strong>Geometric Related Accuracy Loss</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>
+inductor
+   </td>
+   <td>
+3.25x, 12/12
+   </td>
+   <td>
+0.44%, 12/12
+   </td>
+  </tr>
+</table>
+
+<h2 id="다음-단계--next-steps">다음 단계 / Next Steps</h2>
+
+<h3 id="소프트웨어-다운로드--get-the-software">소프트웨어 다운로드 / Get the Software</h3>
+
+<p><a href="https://github.com/pytorch/pytorch/releases/tag/v2.1.0">PyTorch 2.1</a>을 사용해보고 인텔이 기여한 이러한 기능들의 성능 이점을 직접 확인해보세요.</p>
+<blockquote>
+  <p>Try out <a href="https://github.com/pytorch/pytorch/releases/tag/v2.1.0">PyTorch 2.1</a> and realize the performance benefits for yourself from these features contributed by Intel.</p>
+</blockquote>
+
+<p>인텔의 다른 <a href="https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/tools.html">AI 도구들</a>과 <a href="https://www.intel.com/content/www/us/en/developer/tools/frameworks/overview.html">프레임워크</a> 최적화를 확인하고 인텔의 AI 소프트웨어 포트폴리오의 기반이 되는 오픈, 표준 기반 <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html">oneAPI</a> 멀티아키텍처, 멀티벤더 프로그래밍 모델에 대해 알아보세요.</p>
+<blockquote>
+  <p>We encourage you to check out Intel’s other <a href="https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/tools.html">AI Tools</a> and <a href="https://www.intel.com/content/www/us/en/developer/tools/frameworks/overview.html">framework</a> optimizations and learn about the open, standards-based <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/overview.html">oneAPI</a> multiarchitecture, multivendor programming model that forms the foundation of Intel’s AI software portfolio.</p>
+</blockquote>
+
+<p>4세대 인텔 Xeon Scalable 프로세서에 대한 자세한 내용은 <a href="https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/platform.html">AI 플랫폼</a>에서 확인할 수 있으며, 개발자들이 고성능의 효율적인 엔드-투-엔드 AI 파이프라인을 실행할 수 있도록 지원하고 있는 방법에 대해 알아보세요.</p>
+<blockquote>
+  <p>For more details about the 4th generation Intel Xeon Scalable processor, visit the <a href="https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/platform.html">AI platform</a> where you can learn how Intel is empowering developers to run high-performance, efficient end-to-end AI pipelines.</p>
+</blockquote>
+
+<h3 id="파이토치-리소스--pytorch-resources">파이토치 리소스 / PyTorch Resources</h3>
+
+<ul>
+  <li><a href="http://pytorch.kr/get-started/pytorch-2.0/">파이토치 시작하기 (한국어)</a></li>
+  <li><a href="http://dev-discuss.pytorch.org/t/pytorch-release-2-0-execution-update/1077">파이토치 개발자 포럼</a></li>
+  <li><a href="http://pytorch.org/docs/2.0/">파이토치 2.0 문서</a>
+    <blockquote>
+      <ul>
+        <li><a href="http://pytorch.org/get-started/pytorch-2.0/">PyTorch Get Started</a></li>
+        <li><a href="http://dev-discuss.pytorch.org/t/pytorch-release-2-0-execution-update/1077">Dev Discussions</a></li>
+        <li><a href="http://pytorch.org/docs/2.0/">Documentation</a></li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<h3 id="제품-및-성능-정보--product-and-performance-information">제품 및 성능 정보 / Product and Performance Information</h3>
+
+<p>1 Amazon EC2* m7i.16xlarge: 1-node, Intel Xeon Platinum 8488C processor with 256 GB memory (1 x 256 GB DDR5 4800 MT/s), microcode 0x2b000461, hyperthreading on, turbo on, Ubuntu* 22.04.3 LTS, kernel 6.2.0-1011-aws, GCC* 11.3.0, Amazon Elastic Block Store 200 GB, BIOS Amazon EC2 1.0 10/16/2017; Software: <a href="https://github.com/pytorch/pytorch/tree/release/2.1">PyTorch 2.1.0_rc4</a>, <a href="https://github.com/oneapi-src/oneDNN/tree/v3.1.1">Intel® oneAPI Deep Neural Network Library (oneDNN) version 3.1.1</a>, <a href="https://github.com/pytorch/benchmark/commit/ffbbebb9">TorchBench</a>, <a href="https://github.com/pytorch/vision/commit/8636bf3">TorchVision</a>, <a href="https://github.com/pytorch/text/commit/142d029">TorchText</a>, <a href="https://github.com/pytorch/audio/commit/475b6ae">TorchAudio</a>, <a href="https://github.com/pytorch/data/commit/eb9bf61">TorchData</a>, <a href="https://github.com/pytorch/pytorch/tree/release/2.1/benchmarks/dynamo">TorchDynamo Benchmarks</a>, tested by Intel on 9/12/2023.</p>
+
+<p>2 Amazon EC2 c6i.16xlarge: 1-node, Intel Xeon Platinum 8375C processor with 128 GB memory (1 x 128 GB DDR4 3200 MT/s), microcode 0xd0003a5, hyperthreading on, turbo on, Ubuntu 22.04.2 LTS, kernel 6.2.0-1011-aws, gcc 11.3.0, Amazon Elastic Block Store 200 GB, BIOS Amazon EC2 1.010/16/2017; Software: <a href="https://github.com/pytorch/pytorch/tree/release/2.1">PyTorch 2.1.0_rc4</a>, <a href="https://github.com/oneapi-src/oneDNN/tree/v3.1.1">oneDNN version 3.1.1</a>, <a href="https://github.com/pytorch/benchmark/commit/ffbbebb9">TorchBench</a>, <a href="https://github.com/pytorch/vision/commit/8636bf3">TorchVision</a>, <a href="https://github.com/pytorch/text/commit/142d029">TorchText</a>, <a href="https://github.com/pytorch/audio/commit/475b6ae">TorchAudio</a>, <a href="https://github.com/pytorch/data/commit/eb9bf61">TorchData</a>, <a href="https://github.com/pytorch/pytorch/tree/release/2.1/benchmarks/dynamo">TorchDynamo Benchmarks</a>, <a href="https://github.com/pytorch/benchmark/tree/chuanqiw/inductor_quant/userbenchmark/cpu">TorchBench cpu userbenchmark</a>, tested by Intel on 9/12/2023.</p>
+
+                    </div>
+                    <hr noshade />
+                    <p class="translation-description ad-discuss">
+                         더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="https://discuss.pytorch.kr/">파이토치 한국어 커뮤니티에 참여</a>해주세요!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-comment">
+  <div class="container">
+      <div id="discourse-comments"></div>
+      <meta name="discourse-username" content="bot">
+  </div>
+</div>
+
+<script type="text/javascript">
+  DiscourseEmbed = {
+      discourseUrl: 'https://discuss.pytorch.kr/',
+      discourseEmbedUrl: 'https://pytorch.kr/blog/2023/new-features-for-ai/',
+      // className: 'CLASS_NAME',
+  };
+
+  (function() {
+      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+</body>
+</html>

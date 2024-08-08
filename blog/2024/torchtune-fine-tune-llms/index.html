@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      torchtune: PyTorch를 사용한 쉬운 LLM 파인튜닝 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="blog">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="main-background blog-background blog-detail-background"></div>
+
+    <div class="container-fluid header-holder blog-detail-header">
+        <div class="container">
+            
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
+        <div class="container blog-detail-container">
+            <p class="featured-post">April 16, 2024</p>
+            <h1><a class="blog-title">torchtune: PyTorch를 사용한 쉬운 LLM 파인튜닝</a></h1>
+            
+                <h4 class="blog-subtitle">torchtune: Easily fine-tune LLMs using PyTorch</h4>
+            
+        </div>
+    </div>
+
+    <div class="main-content-wrapper blog-detail-wrapper">
+        <div class="main-content blog-detail-content">
+            <div class="container">
+                <img src="/assets/images/logo-icon.svg" class="img-fluid author-icon">
+                <article class="pytorch-article">
+                    <p class="author">
+                      
+                        
+                            작성: PyTorch Team, 번역: PyTorch Korea User Group
+                        
+                      
+                    </p>
+                    
+                    <p class="translation-description">
+                        이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
+                        번역 글은 원문을 함께 표시합니다. 원문을 읽으시려면 <a href="https://pytorch.org/blog/torchtune-fine-tune-llms/">여기</a>를 클릭하세요.
+                        (This article is a Korean translation of the original post on the <a href="https://pytorch.org/blog/">PyTorch official blog</a>.
+                        Below translation includes the original text. To read the original post, click <a href="https://pytorch.org/blog/torchtune-fine-tune-llms/">here</a>.)
+                    </p>
+                    
+                    <div class="blog-content">
+                        <p>대규모 언어 모델(LLM)을 손쉽게 파인튜닝(미세조정)할 수 있는 PyTorch 네이티브 라이브러리인 torchtune의 알파 릴리즈를 발표하게 되어 기쁩니다.</p>
+<blockquote>
+  <p>We’re pleased to announce the alpha release of torchtune, a PyTorch-native library for easily fine-tuning large language models.</p>
+</blockquote>
+
+<p>torchtune은 파이토치(PyTorch)의 설계 원칙을 충실히 따랐으며, 다양한 소비자급 및 전문가용 GPU에서 인기있는 LLM들을 파인튜닝할 수 있도록 모듈식 블록 구성과 확장이 쉬운 학습 예시(training recipe)들을 제공합니다.</p>
+<blockquote>
+  <p>Staying true to PyTorch’s design principles, torchtune provides composable and modular building blocks along with easy-to-extend training recipes to fine-tune popular LLMs on a variety of consumer-grade and professional GPUs.</p>
+</blockquote>
+
+<p>torchtune은 다음과 같은 시작부터 끝까지의 파인튜닝 워크플로우를 전반을 지원합니다:</p>
+<blockquote>
+  <p>torchtune supports the full fine-tuning workflow from start to finish, including</p>
+</blockquote>
+
+<ul>
+  <li>데이터셋 및 모델 체크포인트 다운로드 및 준비.</li>
+  <li>다양한 모델 아키텍처와 매개변수 효율적 미세 조정(PEFT) 기술 등을 지원하는 빌딩 블록 구성으로 학습 과정의 커스터마이징.</li>
+  <li>학습 과정에서의 진행 상황 및 지표(metric)을 기록하여 인사이트 확보.</li>
+  <li>파인튜닝 후 모델 양자화(quantization).</li>
+  <li>파인튜닝된 모델을 인기 있는 벤치마크들로 평가.</li>
+  <li>파인튜닝된 모델 테스트를 위한 로컬 추론 실행.</li>
+  <li>(파인튜닝한 모델의) 체크포인트와 주로 사용되는 주요 프로덕션 추론 시스템과 호환성.
+    <blockquote>
+      <ul>
+        <li>Downloading and preparing datasets and model checkpoints.</li>
+        <li>Customizing the training with composable building blocks that support different model architectures, parameter-efficient fine-tuning (PEFT) techniques, and more.</li>
+        <li>Logging progress and metrics to gain insight into the training process.</li>
+        <li>Quantizing the model post-tuning.</li>
+        <li>Evaluating the fine-tuned model on popular benchmarks.</li>
+        <li>Running local inference for testing fine-tuned models.</li>
+        <li>Checkpoint compatibility with popular production inference systems.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p>시작하려면 <a href="https://www.github.com/pytorch/torchtune">코드</a>나다양한 <a href="https://pytorch.org/torchtune/main/">튜토리얼</a>을 살펴보세요!</p>
+<blockquote>
+  <p>To get started, jump right into the <a href="https://www.github.com/pytorch/torchtune">code</a> or walk through our many <a href="https://pytorch.org/torchtune/main/">tutorials</a>!</p>
+</blockquote>
+
+<h2 id="왜-torchtune을-사용해야-하나요--why-torchtune">왜 torchtune을 사용해야 하나요? / Why torchtune?</h2>
+
+<p>지난 한 해 동안 개방형 LLM(Open LLM)에 대한 관심이 폭발적으로 증가했습니다. 최신 모델(SotA, State-of-the-Art)들을 특정한 사용 사례에 맞춰 파인튜닝하는 것이 중요한 기술로 부상했으며, 이러한 적응은 데이터셋 및 모델 선택부터 양자화(Quantization), 평가(Evaluation) 및 추론(Inference)까지 광범위한 사용자 정의를 필요로 하기도 합니다. 게다가 이러한 모델의 크기는 메모리가 제한된 소비자급 GPU에서 파인튜닝을 시도할 때 상당한 어려움을 야기합니다.</p>
+<blockquote>
+  <p>Over the past year there has been an explosion of interest in open LLMs. Fine-tuning these state of the art models has emerged as a critical technique for adapting them to specific use cases. This adaptation can require extensive customization from dataset and model selection all the way through to quantization, evaluation and inference. Moreover, the size of these models poses a significant challenge when trying to fine-tune them on consumer-level GPUs with limited memory.</p>
+</blockquote>
+
+<p>기존 솔루션들은 사용자 정의(customization)나 최적화(optimization)에 필요한 부분들을 추상화된 계층 뒤에 숨겨놓아, 이러한 기능들을 추가하기 어렵게 만듭니다. 서로 다른 구성 요소가 어떻게 상호 작용하며 새로운 기능을 추가하려면 어떤 부분을 업데이트해야 하는지가 분명하지 않습니다. torchtune은 개발자들에게 완전한 제어와 가시성을 제공하여 특정한 요구 사항과 제약 조건에 맞춰 LLM을 쉽게 적응하고 제어할 수 있도록 지원합니다.</p>
+<blockquote>
+  <p>Existing solutions make it hard to add these customizations or optimizations by hiding the necessary pieces behind layers of abstractions. It’s unclear how different components interact with each other and which of these need to be updated to add new functionality. torchtune empowers developers to adapt LLMs to their specific needs and constraints with full control and visibility.</p>
+</blockquote>
+
+<h2 id="torchtune의-설계--torchtunes-design">torchtune의 설계 / torchtune’s Design</h2>
+
+<p>torchtune은 다음과 같은 원칙을 바탕으로 설계되었습니다:</p>
+<blockquote>
+  <p>torchtune was built with the following principles in mind</p>
+</blockquote>
+
+<ul>
+  <li><strong>손쉬운 확장</strong> - 새로운 기법들이 끊임없이 등장하고 있으며, 모든 파인튜닝 사례는 서로 다릅니다. torchtune의 학습 예시(recipe)는 쉽게 조합(composable)할 수 있는 구성요소들과 변경 가능한(hackable) 학습 루프로 설계되어 있어, 파인튜닝을 어렵게 하는 추상화를 최소화하였습니다. 각 <a href="https://github.com/pytorch/torchtune/tree/main/recipes">학습 예시(recipe)들</a>은 별도의 학습기(trainer)나 프레임워크 없이 독립적으로 구성되어 있으며, 600줄 미만의 코드로 쉽게 읽을 수 있도록 설계되었습니다!</li>
+  <li><strong>파인튜닝의 민주화</strong> - 모든 사용자들이 지식 수준과 상관없이 torchtune을 사용할 수 있도록 하였습니다. 설정(config)을 복제하고 변경하거나 코드를 직접 바꿔보세요! 또한, 데이터센터에 있는 고성능의 GPU가 필요하지 않습니다. 메모리 효율적인 학습 예시들은 24GB 게이밍 GPU를 단지 하나만 장착한 기기에서 테스트되었습니다.</li>
+  <li><strong>오픈소스 LLM 생태계와의 상호 운용성</strong> - 오픈소스 LLM 생태계는 엄청나게 번창하고 있으며, torchtune은 이를 활용하여 다양한 제품군과 상호 운용할 수 있도록 지원합니다. 이러한 유연성을 통해 사용자가 모델을 어떻게 학습하고, 파인튜닝된 모델을 사용할지를 확실하게 제어할 수 있습니다.
+    <blockquote>
+      <ul>
+        <li><strong>Easy extensibility</strong> - New techniques emerge all the time and everyone’s fine-tuning use case is different. torchtune’s recipes are designed around easily composable components and hackable training loops, with minimal abstraction getting in the way of fine-tuning your fine-tuning. Each <a href="https://github.com/pytorch/torchtune/tree/main/recipes">recipe</a> is self-contained - no trainers or frameworks, and is designed to be easy to read - less than 600 lines of code!</li>
+        <li><strong>Democratize fine-tuning</strong> - Users, regardless of their level of expertise, should be able to use torchtune. Clone and modify configs, or get your hands dirty with some code! You also don’t need beefy data center GPUs. Our memory efficient recipes have been tested on machines with a single 24GB gaming GPU.</li>
+        <li><strong>Interoperability with the OSS LLM ecosystem</strong> - The open source LLM ecosystem is absolutely thriving, and torchtune takes advantage of this to provide interoperability with a wide range of offerings. This flexibility puts you firmly in control of how you train and use your fine-tuned models.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p>내년에는 개방형 LLM(Open LLM)이 더 많은 언어(다국어)와 더 많은 모달리티(멀티모달), 그리고 더 많은 작업들을 지원하며 강력해질 것입니다. 이러한 모델의 복잡성이 증가함에 따라, 우리는 제공되는 기능이나 학습 실행 시의 성능뿐만 아니라 라이브러리를 ‘어떻게’ 설계할지에 대해서도 마찬가지로 주의를 기울여야 합니다. 커뮤니티가 현재의 혁신 속도를 유지하기 위해서는 유연성(flexibility)이 핵심 요소가 될 것이며, 다양한 사용 사례를 지원하기 위해 수많은 라이브러리와 도구들이 서로 잘 동작해야 할 것입니다. torchtune은 처음부터 이러한 미래를 염두에 두고 설계되었습니다.</p>
+<blockquote>
+  <p>Over the next year, open LLMs will become even more powerful, with support for more languages (multilingual), more modalities (multimodal) and more tasks. As the complexity of these models increases, we need to pay the same attention to “how” we design our libraries as we do to the features provided or performance of a training run. Flexibility will be key to ensuring the community can maintain the current pace of innovation, and many libraries/tools will need to play well with each other to power the full spectrum of use cases. torchtune is built from the ground up with this future in mind.</p>
+</blockquote>
+
+<p>진정한 파이토치 정신(True PyTorch Spirit)에 따라, torchtune은 LLM 작업에 주로 사용되는 도구들과의 통합을 제공하여 쉽게 시작할 수 있도록 합니다.</p>
+<blockquote>
+  <p>In the true PyTorch spirit, torchtune makes it easy to get started by providing integrations with some of the most popular tools for working with LLMs.</p>
+</blockquote>
+
+<ul>
+  <li><strong><a href="https://huggingface.co/docs/hub/en/index">허깅페이스 허브</a></strong> - 허깅페이스는 파인튜닝을 위한 방대한 오픈소스 모델과 데이터셋을 제공합니다. torchtune은 <code class="language-plaintext highlighter-rouge">tune download</code> CLI 명령을 통해 쉽게 시작할 수 있도록 허깅페이스 허브를 통합하여 파인튜닝을 바로 시작할 수 있도록 지원합니다.</li>
+  <li><strong><a href="https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html">PyTorch FSDP</a></strong> - PyTorch FSDP를 사용하여 학습을 확장할 수 있습니다. 일반적으로 NVIDIA의 3090/4090과 같은 소비자급 GPU를 장착한 기기들을 많이 사용하고 있습니다. torchtune은 FSDP 기반의 분산 학습 예시를 제공하여 이러한 설정을 활용할 수 있도록 지원합니다.</li>
+  <li><strong><a href="https://wandb.ai/site">Weights &amp; Biases</a></strong> - torchtune은 Weights &amp; Biases의 AI 플랫폼을 사용하여 학습 중 지표(metric)들과 모델의 체크포인트를 기록합니다. 파인튜닝 실행 중, 설정과 메트릭 및 모델 등을 한 곳에서 한꺼번에 추적할 수 있습니다!</li>
+  <li><strong><a href="https://github.com/EleutherAI/lm-evaluation-harness">EleutherAI의 언어모델 평가도구</a></strong> - 파인튜닝을 통해 원하는 결과를 얻을 수 있는지 여부를 이해하기 위해서는 파인튜닝된 모델의 평가(Evaluation)가 중요합니다. torchtune은 EleutherAI의 언어모델(LM) 평가도구(Evaluation Harness)를 활용하여 일반적으로 많이 사용하는 LLM 벤치마크 모음에 쉽게 접근할 수 있는 간단한 평가 학습 예시를 제공합니다. 평가 과정의 중요성을 고려하여, 앞으로 몇 달 동안 EleutherAI와 밀접하게 협력하여 더 깊고 더 “네이티브(native)”하게 통합할 예정입니다.</li>
+  <li><strong><a href="https://pytorch.org/executorch-overview">ExecuTorch</a></strong> - torchtune으로 파인튜닝된 모델은 ExecuTorch로 <a href="https://github.com/pytorch/executorch/tree/main/examples/models/llama2#optional-finetuning">쉽게 내보내기(export)</a>할 수 있어, 다양한 모바일 및 엣지 장치(Edge Device)에서 효율적인 추론을 실행할 수 있습니다.</li>
+  <li><strong><a href="https://github.com/pytorch-labs/ao">torchao</a></strong> - torchao의 양자화 API(Quantization API)를 활용한 간단한 <a href="https://github.com/pytorch/torchtune/blob/main/recipes/quantize.py">학습 후 양자화 예시(Post-training recipe)</a>를 통해 파인튜닝된 모델을 4비트 또는 8비트로 쉽게 양자화할 수 있습니다.
+    <blockquote>
+      <ul>
+        <li><strong><a href="https://huggingface.co/docs/hub/en/index">Hugging Face Hub</a></strong> - Hugging Face provides an expansive repository of open source models and datasets for fine-tuning. torchtune seamlessly integrates through the <code class="language-plaintext highlighter-rouge">tune download</code> CLI command so you can get started right away with fine-tuning your first model.</li>
+        <li><strong><a href="https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html">PyTorch FSDP</a></strong> - Scale your training using PyTorch FSDP. It is very common for people to invest in machines with multiple consumer level cards like the 3090/4090 by NVidia. torchtune allows you to take advantage of these setups by providing distributed recipes powered by FSDP.</li>
+        <li><strong><a href="https://wandb.ai/site">Weights &amp; Biases</a></strong> - torchtune uses the Weights &amp; Biases AI platform to log metrics and model checkpoints during training. Track your configs, metrics and models from your fine-tuning runs all in one place!</li>
+        <li><strong><a href="https://github.com/EleutherAI/lm-evaluation-harness">EleutherAI’s LM Evaluation Harness</a></strong> - Evaluating fine-tuned models is critical to understanding whether fine-tuning is giving you the results you need. torchtune includes a simple evaluation recipe powered by EleutherAI’s LM Evaluation Harness to provide easy access to a comprehensive suite of standard LLM benchmarks. Given the importance of evaluation, we will be working with EleutherAI very closely in the next few months to build an even deeper and more “native” integration.</li>
+        <li><strong><a href="https://pytorch.org/executorch-overview">ExecuTorch</a></strong> - Models fine-tuned with torchtune can be <a href="https://github.com/pytorch/executorch/tree/main/examples/models/llama2#optional-finetuning">easily exported</a> to ExecuTorch, enabling efficient inference to be run on a wide variety of mobile and edge devices.</li>
+        <li><strong><a href="https://github.com/pytorch-labs/ao">torchao</a></strong> - Easily and efficiently quantize your fine-tuned models into 4-bit or 8-bit using a simple <a href="https://github.com/pytorch/torchtune/blob/main/recipes/quantize.py">post-training recipe</a> powered by the quantization APIs from torchao.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="다음-단게는-무엇인가요--whats-next">다음 단게는 무엇인가요? / What’s Next?</h2>
+
+<p>이것은 시작에 불과하며 활기차고 에너지가 넘치는 커뮤니티에 이번 알파 버전을 제공하게 되어 매우 기쁩니다. 앞으로 몇 주 동안, 더 많은 모델과 기능 및 파인튜닝 기법들을 추가할 예정입니다. 피드백이나 의견, 기능 요청은 GitHub 저장소의 이슈(issue)나 <a href="https://discord.com/invite/4Xsdn8Rr9Q">Discord 채널</a>로 보내주시기 바랍니다. 언제나 그렇듯, 이 멋진 커뮤니티로부터의 모든 기여를 환영합니다. 즐거운 파인튜닝하세요!</p>
+<blockquote>
+  <p>This is just the beginning and we’re really excited to put this alpha version in front of a vibrant and energetic community. In the coming weeks, we’ll continue to augment the library with more models, features and fine-tuning techniques. We’d love to hear any feedback, comments or feature requests in the form of GitHub issues on our repository, or on our <a href="https://discord.com/invite/4Xsdn8Rr9Q">Discord channel</a>. As always, we’d love any contributions from this awesome community. Happy Tuning!</p>
+</blockquote>
+
+                    </div>
+                    <hr noshade />
+                    <p class="translation-description ad-discuss">
+                         더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="https://discuss.pytorch.kr/">파이토치 한국어 커뮤니티에 참여</a>해주세요!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-comment">
+  <div class="container">
+      <div id="discourse-comments"></div>
+      <meta name="discourse-username" content="bot">
+  </div>
+</div>
+
+<script type="text/javascript">
+  DiscourseEmbed = {
+      discourseUrl: 'https://discuss.pytorch.kr/',
+      discourseEmbedUrl: 'https://pytorch.kr/blog/2024/torchtune-fine-tune-llms/',
+      // className: 'CLASS_NAME',
+  };
+
+  (function() {
+      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+</body>
+</html>
