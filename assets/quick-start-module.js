@@ -12,8 +12,8 @@ var archInfoMap = new Map([
 ]);
 
 let version_map = {
-  nightly: { accnone: ["cpu", ""], "cuda.x": ["cuda", "11.8"], "cuda.y": ["cuda", "12.1"], "rocm5.x": ["rocm", "6.0"] },
-  release: { accnone: ["cpu", ""], "cuda.x": ["cuda", "11.8"], "cuda.y": ["cuda", "12.1"], "rocm5.x": ["rocm", "5.7"] },
+  nightly: { accnone: ["cpu", ""], "cuda.x": ["cuda", "11.8"], "cuda.y": ["cuda", "12.1"], "rocm5.x": ["rocm", "6.2"] },
+  release: { accnone: ["cpu", ""], "cuda.x": ["cuda", "11.8"], "cuda.y": ["cuda", "12.1"], "rocm5.x": ["rocm", "6.1"] },
 };
 let stable_version = "Stable (2.3.1)";
 
