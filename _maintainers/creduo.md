@@ -1,4 +1,5 @@
 ---
+joined: 2020
 _id: creduo
 name: 박주혁
 title: Inactive Maintainer

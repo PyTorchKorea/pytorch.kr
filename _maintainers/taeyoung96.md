@@ -1,4 +1,5 @@
 ---
+joined: 202112
 _id: Taeyoung96
 name: 김태영
 title: Inactive Maintainer

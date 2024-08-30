@@ -1,4 +1,5 @@
 ---
+joined: 2020
 _id: hyoyoung
 name: 장효영
 title: Maintainer

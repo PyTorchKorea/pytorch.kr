@@ -1,4 +1,5 @@
 ---
+joined: 2018
 _id: bongmo
 name: 김봉모
 title: Maintainer

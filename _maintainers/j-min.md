@@ -1,4 +1,5 @@
 ---
+joined: 202301
 _id: j-min
 name: 조재민
 title: Maintainer
