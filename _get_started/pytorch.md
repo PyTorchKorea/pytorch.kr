@@ -9,13 +9,13 @@ order: 2
 published: true
 ---
 
-## Overview
+## 개요
 
-Introducing PyTorch 2.0, our first steps toward the next generation 2-series release of PyTorch. Over the last few years we have innovated and iterated from PyTorch 1.0 to the most recent 1.13 and moved to the newly formed PyTorch Foundation, part of the Linux Foundation.
+파이토치의 차세대 2-시리즈 릴리즈를 향한 첫걸음인 PyTorch 2.0을 소개합니다. 지난 몇 년 동안 PyTorch 1.0부터 최신 1.13까지 혁신과 개선을 거듭해 왔으며, 이제 PyTorch는 Linux 재단 산하에 새로 설립된 PyTorch 재단에서 관리됩니다.
 
-PyTorch’s biggest strength beyond our amazing community is that we continue as a first-class Python integration, imperative style, simplicity of the API and options. PyTorch 2.0 offers the same eager-mode development and user experience, while fundamentally changing and supercharging how PyTorch operates at compiler level under the hood. We are able to provide faster performance and support for Dynamic Shapes and Distributed.
+PyTorch의 가장 큰 강점은 뛰어난 커뮤니티뿐만 아니라, 최고 수준의 Python 연동성, 명령형 스타일, 그리고 간결한 API와 다양한 옵션을 계속 유지한다는 점입니다. PyTorch 2.0은 기존의 Eager Execution(즉시 실행 모드) 개발 방식과 사용자 경험을 그대로 유지하면서, 내부적으로 컴파일러 수준에서 PyTorch의 작동 방식을 근본적으로 개선하고 강화했습니다. 이로 인해 더 빠른 성능은 물론, 동적 크기(Dynamic Shapes)와 분산 처리 지원도 가능해졌습니다.
 
-Below you will find all the information you need to better understand what PyTorch 2.0 is, where it’s going and more importantly how to get started today (e.g., tutorial, requirements, models, common FAQs). There is still a lot to learn and develop but we are looking forward to community feedback and contributions to make the 2-series better and thank you all who have made the 1-series so successful.
+아래에서는 PyTorch 2.0에 대한 정보, 향후 방향성, 그리고 지금 바로 시작하는 방법(예: 튜토리얼, 시스템 요구사항, 모델, FAQ 등)을 쉽게 이해할 수 있는 모든 내용을 제공합니다. 아직 배워야 할 점과 개발해야 할 부분이 많지만, 더 나은 2.0 버전을 만들기 위해 커뮤니티의 피드백과 기여를 기다리고 있습니다. 1-시리즈를 성공적으로 발전시켜 주신 모든 분들께 감사드립니다.
 
 ## PyTorch 2.x: faster, more pythonic and as dynamic as ever
 
