@@ -1,4 +1,5 @@
 ---
+joined: 2020
 _id: codingbowoo
 name: 장보우
 title: Maintainer

@@ -1,4 +1,5 @@
 ---
+joined: 202301
 _id: jimin.lee
 name: 이지민
 title: Inactive Maintainer

@@ -1,4 +1,5 @@
 ---
+joined: 202208
 _id: corazzon
 name: 박조은
 title: Maintainer
