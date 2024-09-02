@@ -11,7 +11,8 @@ var archInfoMap = new Map([
   ['accnone', {title: "CPU", platforms: new Set(['linux', 'macos', 'windows'])}]
 ]);
 
-let version_map={"nightly": {"accnone": ["cpu", ""], "cuda.x": ["cuda", "11.8"], "cuda.y": ["cuda", "12.1"], "cuda.z": ["cuda", "12.4"], "rocm5.x": ["rocm", "6.1"]}, "release": {"accnone": ["cpu", ""], "cuda.x": ["cuda", "11.8"], "cuda.y": ["cuda", "12.1"], "cuda.z": ["cuda", "12.4"], "rocm5.x": ["rocm", "6.1"]}}
+let version_map={"nightly": {"accnone": ["cpu", ""], "cuda.x": ["cuda", "11.8"], "cuda.y": ["cuda", "12.1"], "cuda.z": ["cuda", "12.4"], "rocm5.x": ["rocm", "6.1"]}, 
+                 "release": {"accnone": ["cpu", ""], "cuda.x": ["cuda", "11.8"], "cuda.y": ["cuda", "12.1"], "cuda.z": ["cuda", "12.4"], "rocm5.x": ["rocm", "6.1"]}}
 let stable_version="Stable (2.4.0)";
 
 var default_selected_os = getAnchorSelectedOS() || getDefaultSelectedOS();
