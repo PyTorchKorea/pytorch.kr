@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      PyTorch 2 논문 및 튜토리얼 @ ASPLOS 2024 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="blog">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="main-background blog-background blog-detail-background"></div>
+
+    <div class="container-fluid header-holder blog-detail-header">
+        <div class="container">
+            
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
+        <div class="container blog-detail-container">
+            <p class="featured-post">February 06, 2024</p>
+            <h1><a class="blog-title">PyTorch 2 논문 및 튜토리얼 @ ASPLOS 2024</a></h1>
+            
+                <h4 class="blog-subtitle">PyTorch 2 paper and tutorial @ ASPLOS 2024</h4>
+            
+        </div>
+    </div>
+
+    <div class="main-content-wrapper blog-detail-wrapper">
+        <div class="main-content blog-detail-content">
+            <div class="container">
+                <img src="/assets/images/logo-icon.svg" class="img-fluid author-icon">
+                <article class="pytorch-article">
+                    <p class="author">
+                      
+                        
+                            작성: PyTorch Team, 번역: PyTorch Korea User Group
+                        
+                      
+                    </p>
+                    
+                    <p class="translation-description">
+                        이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
+                        번역 글은 원문을 함께 표시합니다. 원문을 읽으시려면 <a href="https://pytorch.org/blog/pytorch-2-paper-tutorial/">여기</a>를 클릭하세요.
+                        (This article is a Korean translation of the original post on the <a href="https://pytorch.org/blog/">PyTorch official blog</a>.
+                        Below translation includes the original text. To read the original post, click <a href="https://pytorch.org/blog/pytorch-2-paper-tutorial/">here</a>.)
+                    </p>
+                    
+                    <div class="blog-content">
+                        <p>2024년 4월 27일부터 5월 1일까지 미국 캘리포니아주 샌디에이고에서 열릴 예정인 ACM 국제 컨퍼런스 ASPLOS(Architectural Support for Programming Languages and Operating Systems)에서 PyTorch 2에 대한 논문이 선정되어 발표하게 되었다는 소식을 전할 수 있어 기쁘게 생각합니다.</p>
+<blockquote>
+  <p>The PyTorch team is excited to share that our paper on PyTorch 2 has been accepted for presentation at the ACM International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS), scheduled to take place from April 27 to May 1, 2024, in San Diego, CA, USA.</p>
+</blockquote>
+
+<p>이 논문에서는 torch.compile의 구현에 대해 자세히 살펴보며, 특히 이를 위한 주요 기술들인 TorchDynamo(그래프 캡처), TorchInductor(백엔드 컴파일러) 및 Dynamic Shape 지원 등을 중점적으로 다루고 있습니다.</p>
+<blockquote>
+  <p>The paper delves into the implementation of torch.compile and highlights the key technologies driving it, including TorchDynamo (graph capture), TorchInductor (backend compiler), and Dynamic Shape support.</p>
+</blockquote>
+
+<p>ASPLOS 컨퍼런스 기간 중인 4월 27일(토)에 시스템 연구자들을 위해 PyTorch 2의 내부 동작 방식과 이를 활용하고 구축할 수 있는 방법에 초점을 맞춘 튜토리얼을 진행할 예정입니다. 행사 일정에 맞춰 세부적인 내용이 확정되는대로 공유드리도록 하겠습니다. 많은 참여 기대합니다!</p>
+<blockquote>
+  <p>During the ASPLOS conference, we’ll be conducting a tutorial on Saturday, April 27, focusing on the inner workings of PyTorch 2 and how systems researchers can leverage and build upon it. Stay tuned for more details as the event approaches – we look forward to your participation!</p>
+</blockquote>
+
+<p>논문의 미리보기는 아래 첨부하였습니다:</p>
+<blockquote>
+  <p>A preview of the paper is attached below:</p>
+</blockquote>
+
+<p>제목:  <strong>PyTorch 2: 동적 Python 바이트코드 변환과 그래프 컴파일을 통한 더 빠른 머신 러닝</strong> <a href="/assets/pytorch2-2.pdf"><strong>논문 전문 PDF</strong></a></p>
+<blockquote>
+  <p>Title: <strong>PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation.</strong> <a href="/assets/pytorch2-2.pdf"><strong>Full Paper PDF</strong></a></p>
+</blockquote>
+
+<h3 id="논문-초록-abstract">논문 초록 (Abstract)</h3>
+
+<p>이 논문에서는 인기있는 파이토치(PyTorch) 머신러닝 프레임워크의 두 가지 확장 기능인 TorchDynamo와 TorchInductor를 소개합니다. 이 두 확장 기능은 PyTorch 2에서 발표된 torch.compile 기능을 구현하기 위한 것입니다. TorchDynamo는 Python 수준의 JIT(Just-in-Time) 컴파일러로, Python의 유연성을 희생하지 않으면서 PyTorch 프로그램에서 그래프 컴파일(graph compilation)을 가능하게 합니다. 이를 위해 TorchDynamo는 Python 바이트코드(bytecode)를 실행 전 동적으로 수정하고 PyTorch 연산 시퀀스를 FX 그래프로 추출한 다음, 확장 가능한 다양한 백엔드 중 하나를 사용하여 JIT 컴파일을 수행합니다. TorchInductor는 TorchDynamo의 기본 컴파일 백엔드로, PyTorch 프로그램을 OpenAI의 Triton 및 CPU용 C++ 코드로 변환(translate)합니다. 실험 결과, TorchDynamo는 최소한의 오버헤드만으로 이전의 접근 방식보다 더 견고(robust)하게 그래프를 캡쳐할 수 있으며, TorchInductor는 MVIDIA A100 GPU에서 180개 이상의 실제 사용 모델(180+ real-world models)에 대해서 학습 시 1.14배와 추론 시 2.27배의 평균적 속도 향상(기하 평균, geometric mean)을 보이는 것으로 나타났습니다. 이러한 확장 기능들은 PyTorch와 같은 Eager 방식의 프레임워크에서 컴파일러를 통해 최적화를 적용하는 새로운 방법을 제공합니다.</p>
+<blockquote>
+  <p>This paper introduces two extensions to the popular PyTorch machine learning framework, TorchDynamo and TorchInductor, which implement the torch.compile feature released in PyTorch 2. TorchDynamo is a Python-level just-in-time (JIT) compiler that enables graph compilation in PyTorch programs without sacrificing the flexibility of Python. It achieves this by dynamically modifying Python bytecode before execution and extracting sequences of PyTorch operations into an FX graph, which is then JIT compiled using one of many extensible backends. TorchInductor is the default compiler backend for TorchDynamo, which translates PyTorch programs into OpenAI’s Triton for GPUs and C++ for CPUs. Results show that TorchDynamo is able to capture graphs more robustly than prior approaches while adding minimal overhead, and TorchInductor is able to provide a 2.27x inference and 1.41x training geometric mean speedup on an NVIDIA A100 GPU across 180+ real-world models, which outperforms six other compilers. These extensions provide a new way to apply optimizations through compilers in eager mode frameworks like PyTorch.</p>
+</blockquote>
+
+<h3 id="논문-저자-authors">논문 저자 (Authors)</h3>
+
+<p>Jason Ansel (Meta); Edward Yang (Meta); Horace He (Meta); Natalia Gimelshein (OpenAI); Animesh Jain (Meta); Michael Voznesensky (Meta); Bin Bao (Meta); Peter Bell (Quansight); David Berard (Meta); Evgeni Burovski Quansight; Geeta Chauhan (Meta); Anjali Chourdia (Meta); Will Constable (Meta); Alban Desmaison (Meta); Zachary DeVito (Meta); Elias Ellison (Meta); Will Feng (Meta); Jiong Gong (Intel); Michael Gschwind (Meta); Brian Hirsh (Meta); Sherlock Huang (Meta); Kshiteej Kalambarkar (Quansight); Laurent Kirsch (Meta); Michael Lazos (Meta); Mario Lezcano (Quansight); Yanbo Liang (Meta); Jason Liang (Meta); Yinghai Lu (Meta); CK Luk (Meta); Bert Maher (Meta); Yunjie Pan (University of Michigan); Christian Puhrsch (Meta); Matthias Reso (Meta); Mark Saroufim (Meta); Marcos Yukio Siraichi (Quansight); Helen Suk (Meta); Michael Suo (Meta); Phil Tillet (OpenAI); Eikan Wang (Intel); Xiaodong Wang (Meta); William Wen (Meta); Shunting Zhang (Meta); Xu Zhao (Meta); Keren Zhou (OpenAI &amp; George Mason University); Richard Zou (Meta); Ajit Mathews (Meta); Gregory Chanan (Meta); Peng Wu (Meta); Soumith Chintala (Meta)</p>
+
+<h3 id="asplos24---full-day-tutorial-schedule">ASPLOS’24 - Full Day Tutorial Schedule</h3>
+
+<p>ASPLOS’24의 파이토치 2(PyTorch 2) 튜토리얼은 4월 27일, 토요일에 진행됩니다. 자세한 일정은 <a href="https://github.com/pytorch/workshops/tree/master/ASPLOS_2024">여기</a>를 참고해 주세요.</p>
+<blockquote>
+  <p>Full schedule for the ASPLOS’24 PyTorch 2 Tutoral on Saturday, April 27th is available <a href="https://github.com/pytorch/workshops/tree/master/ASPLOS_2024">here</a></p>
+</blockquote>
+
+                    </div>
+                    <hr noshade />
+                    <p class="translation-description ad-discuss">
+                         더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="https://discuss.pytorch.kr/">파이토치 한국어 커뮤니티에 참여</a>해주세요!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-comment">
+  <div class="container">
+      <div id="discourse-comments"></div>
+      <meta name="discourse-username" content="bot">
+  </div>
+</div>
+
+<script type="text/javascript">
+  DiscourseEmbed = {
+      discourseUrl: 'https://discuss.pytorch.kr/',
+      discourseEmbedUrl: 'https://pytorch.kr/blog/2024/pytorch-2-paper-tutorial/',
+      // className: 'CLASS_NAME',
+  };
+
+  (function() {
+      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+</body>
+</html>
