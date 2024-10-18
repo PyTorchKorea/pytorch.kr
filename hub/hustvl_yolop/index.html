@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      YOLOP | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="hub hub-detail">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          
+            <a href="/hub/research-models"><</a>
+          
+        </span>
+        <h1>
+          YOLOP
+        </h1>
+
+        <div class="row">
+          <div class="col-md-4">
+            <p class="detail-lead">By Hust Visual Learning Team </p>
+          </div>
+
+          <div class="col-md-8">
+            <p class="detail-lead lead-summary">YOLOP pretrained on the BDD100K dataset</p>
+            <div class="detail-button-container">
+              <a href="https://github.com/hustvl/YOLOP"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+              <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/hustvl_yolop.ipynb"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+              
+                
+                  <a href="https://huggingface.co/spaces/pytorch/YOLOP"><button class="btn btn-lg with-right-white-arrow detail-web-demo-link">Open Model Demo</button></a>
+                
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="/assets/images/no-image" data-image-name="no-image" class="featured-image img-fluid">
+              <img src="/assets/images/no-image" data-image-name="no-image" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                <h2 id="시작하기-전-참고-사항">시작하기 전 참고 사항</h2>
+<p>YOLOP 종속 패키지를 설치하려면 아래 명령을 수행해주세요:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">-qr</span> https://github.com/hustvl/YOLOP/blob/main/requirements.txt  <span class="c"># install dependencies</span>
+</code></pre></div></div>
+
+<h2 id="yolop-you-only-look-once-for-panoptic-driving-perception">YOLOP: You Only Look Once for Panoptic driving Perception</h2>
+
+<h3 id="모델-설명">모델 설명</h3>
+
+<p><img width="800" alt="YOLOP Model" src="https://github.com/hustvl/YOLOP/raw/main/pictures/yolop.png" />
+ </p>
+
+<ul>
+  <li>YOLOP는 자율 주행에서 중요한, 다음의 세 가지 작업을 공동으로 처리할 수 있는 효율적인 다중 작업 네트워크 입니다. 이 다중 네트워크는 물체 감지(object detection), 주행 영역 분할(drivable area segmentation), 차선 인식(lane detection)을 수행합니다. 또한 YOLOP는  <strong>BDD100K</strong> 데이터셋에서 최신 기술(state-of-the-art)의 수준을 유지하면서 임베디드 기기에서 실시간성에 도달한 최초의 모델입니다.</li>
+</ul>
+
+<h3 id="결과">결과</h3>
+
+<h4 id="차량-객체traffic-object-인식-결과">차량 객체(Traffic Object) 인식 결과</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Recall(%)</th>
+      <th>mAP50(%)</th>
+      <th>Speed(fps)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Multinet</code></td>
+      <td>81.3</td>
+      <td>60.2</td>
+      <td>8.6</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DLT-Net</code></td>
+      <td>89.4</td>
+      <td>68.4</td>
+      <td>9.3</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Faster R-CNN</code></td>
+      <td>77.2</td>
+      <td>55.6</td>
+      <td>5.3</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">YOLOv5s</code></td>
+      <td>86.8</td>
+      <td>77.2</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">YOLOP(ours)</code></td>
+      <td>89.2</td>
+      <td>76.5</td>
+      <td>41</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="주행-가능-영역-인식-결과">주행 가능 영역 인식 결과</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>mIOU(%)</th>
+      <th>Speed(fps)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Multinet</code></td>
+      <td>71.6</td>
+      <td>8.6</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DLT-Net</code></td>
+      <td>71.3</td>
+      <td>9.3</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PSPNet</code></td>
+      <td>89.6</td>
+      <td>11.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">YOLOP(ours)</code></td>
+      <td>91.5</td>
+      <td>41</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="차선-인식-결과">차선 인식 결과</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>mIOU(%)</th>
+      <th>IOU(%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ENet</code></td>
+      <td>34.12</td>
+      <td>14.64</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">SCNN</code></td>
+      <td>35.79</td>
+      <td>15.84</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ENet-SAD</code></td>
+      <td>36.56</td>
+      <td>16.02</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">YOLOP(ours)</code></td>
+      <td>70.50</td>
+      <td>26.20</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="조건-변화에-따른-모델-평가-1-ablation-studies-1-end-to-end-vs-step-by-step">조건 변화에 따른 모델 평가 1 (Ablation Studies 1): End-to-end v.s. Step-by-step</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Training_method</th>
+      <th>Recall(%)</th>
+      <th>AP(%)</th>
+      <th>mIoU(%)</th>
+      <th>Accuracy(%)</th>
+      <th>IoU(%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ES-W</code></td>
+      <td>87.0</td>
+      <td>75.3</td>
+      <td>90.4</td>
+      <td>66.8</td>
+      <td>26.2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ED-W</code></td>
+      <td>87.3</td>
+      <td>76.0</td>
+      <td>91.6</td>
+      <td>71.2</td>
+      <td>26.1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ES-D-W</code></td>
+      <td>87.0</td>
+      <td>75.1</td>
+      <td>91.7</td>
+      <td>68.6</td>
+      <td>27.0</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ED-S-W</code></td>
+      <td>87.5</td>
+      <td>76.1</td>
+      <td>91.6</td>
+      <td>68.0</td>
+      <td>26.8</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">End-to-end</code></td>
+      <td>89.2</td>
+      <td>76.5</td>
+      <td>91.5</td>
+      <td>70.5</td>
+      <td>26.2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="조건-변화에-따른-모델-평가-2-ablation-studies-2-multi-task-vs-single-task">조건 변화에 따른 모델 평가 2 (Ablation Studies 2): Multi-task v.s. Single task</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Training_method</th>
+      <th>Recall(%)</th>
+      <th>AP(%)</th>
+      <th>mIoU(%)</th>
+      <th>Accuracy(%)</th>
+      <th>IoU(%)</th>
+      <th>Speed(ms/frame)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Det(only)</code></td>
+      <td>88.2</td>
+      <td>76.9</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>15.7</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Da-Seg(only)</code></td>
+      <td>-</td>
+      <td>-</td>
+      <td>92.0</td>
+      <td>-</td>
+      <td>-</td>
+      <td>14.8</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Ll-Seg(only)</code></td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>79.6</td>
+      <td>27.9</td>
+      <td>14.8</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Multitask</code></td>
+      <td>89.2</td>
+      <td>76.5</td>
+      <td>91.5</td>
+      <td>70.5</td>
+      <td>26.2</td>
+      <td>24.4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>안내</strong>:</p>
+
+<ul>
+  <li>표 4에서 E, D, S, W는 인코더(Encoder), 검출 헤드(Detect head), 2개의 세그먼트 헤드(Segment heads) 와 전체 네트워크를 의미합니다. 그래서 이 알고리즘(이 알고리즘은 첫째, 인코더 및 검출 헤드만 학습합니다. 그 후, 인코더 및 검출 헤드를 고정하고 두 개의 분할(segmentation) 헤드를 학습합니다. 마지막으로, 전체 네트워크는 세 가지 작업 모두에 대해 함께 학습됩니다.)은 ED-S-W로 표기되며, 다른 알고리즘도 마찬가지입니다.</li>
+</ul>
+
+<h3 id="시각화">시각화</h3>
+
+<h4 id="차량-객체traffic-object-인식-결과-1">차량 객체(Traffic Object) 인식 결과</h4>
+
+<p><img width="800" alt="Traffic Object Detection Result" src="https://github.com/hustvl/YOLOP/raw/main/pictures/detect.png" />
+ </p>
+
+<h4 id="주행-가능-영역-인식-결과-1">주행 가능 영역 인식 결과</h4>
+
+<p><img width="800" alt="Drivable Area Segmentation Result" src="https://github.com/hustvl/YOLOP/raw/main/pictures/da.png" />
+ </p>
+
+<h4 id="차선-인식-결과-1">차선 인식 결과</h4>
+
+<p><img width="800" alt="Lane Detection Result" src="https://github.com/hustvl/YOLOP/raw/main/pictures/ll.png" />
+ </p>
+
+<p><strong>안내</strong>:</p>
+
+<ul>
+  <li>차선 인식의 시각화 결과는 이차함수 형태로 근사하는 과정(quadratic fitting)을 통해 후처리(post processed) 되었습니다.</li>
+</ul>
+
+<h3 id="배포">배포</h3>
+
+<p>YOLOP 모델은 이미지 캡쳐를 <strong>Zed Camera</strong>가 장착된 <strong>Jetson Tx2</strong>에서 실시간으로 추론할 수 있습니다. 속도 향상을 위해 <strong>TensorRT</strong>를 사용합니다. 모델의 배포와 추론을 위해 <a href="https://github.com/hustvl/YOLOP/tree/main/toolkits/deploy">github code</a> 에서 코드를 제공합니다.</p>
+
+<h3 id="파이토치-허브로부터-모델-불러오기">파이토치 허브로부터 모델 불러오기</h3>
+<p>이 예제는 사전에 학습된 <strong>YOLOP</strong> 모델을 불러오고 추론을 위한 이미지를 모델에 전달합니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'hustvl/yolop'</span><span class="p">,</span> <span class="s">'yolop'</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">640</span><span class="p">,</span><span class="mi">640</span><span class="p">)</span>
+<span class="n">det_out</span><span class="p">,</span> <span class="n">da_seg_out</span><span class="p">,</span><span class="n">ll_seg_out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="인용citation">인용(Citation)</h3>
+
+<p>See for more detail in <a href="https://github.com/hustvl/YOLOP">github code</a> and <a href="https://arxiv.org/abs/2108.11250">arxiv paper</a>.</p>
+
+<p>본 논문과 코드가 여러분의 연구에 유용하다고 판단되면, GitHub star를 주는 것과 본 논문을 인용하는 것을 고려해 주세요:</p>
+
+
+                <a href="https://github.com/PyTorchKorea/hub-kr/issues"><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/hub-detail.js"></script>
