@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      Transformer (NMT) | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="hub hub-detail">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          
+            <a href="/hub/research-models"><</a>
+          
+        </span>
+        <h1>
+          Transformer (NMT)
+        </h1>
+
+        <div class="row">
+          <div class="col-md-4">
+            <p class="detail-lead">By Facebook AI (fairseq Team) </p>
+          </div>
+
+          <div class="col-md-8">
+            <p class="detail-lead lead-summary">영어-프랑스어 번역과 영어-독일어 번역을 위한 트랜스포머 모델</p>
+            <div class="detail-button-container">
+              <a href="https://github.com/pytorch/fairseq/"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+              <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/pytorch_fairseq_translation.ipynb"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+              
+                
+                  <a href="https://huggingface.co/spaces/pytorch/Transformer_NMT"><button class="btn btn-lg with-right-white-arrow detail-web-demo-link">Open Model Demo</button></a>
+                
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="/assets/images/no-image" data-image-name="no-image" class="featured-image img-fluid">
+              <img src="/assets/images/no-image" data-image-name="no-image" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                <h3 id="모델-설명">모델 설명</h3>
+
+<p>논문 <a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a>에 소개되었던 트랜스포머(Transformer)는<br />
+강력한 시퀀스-투-시퀀스 모델링 아키텍처로 최신 기계 신경망 번역 시스템을 가능하게 합니다.</p>
+
+<p>최근, <code class="language-plaintext highlighter-rouge">fairseq</code>팀은 역번역된 데이터를 활용한 
+트랜스포머의 대규모 준지도 학습을 통해 번역 수준을 기존보다 향상시켰습니다.
+더 자세한 내용은 <a href="https://code.fb.com/ai-research/scaling-neural-machine-translation-to-bigger-data-sets-with-faster-training-and-inference/">블로그 포스트</a>를 통해 찾으실 수 있습니다.</p>
+
+<h3 id="요구사항">요구사항</h3>
+
+<p>전처리 과정을 위해 몇 가지 python 라이브러리가 필요합니다:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>bitarray fastBPE hydra-core omegaconf regex requests sacremoses subword_nmt
+</code></pre></div></div>
+
+<h3 id="영어-️-프랑스어-번역">영어 ➡️ 프랑스어 번역</h3>
+
+<p>영어를 프랑스어로 번역하기 위해 <a href="https://arxiv.org/abs/1806.00187">Scaling
+Neural Machine Translation</a> 논문의 모델을 활용합니다:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># WMT'14 data에서 학습된 영어 ➡️ 프랑스어 트랜스포머 모델 불러오기:
+</span><span class="n">en2fr</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'pytorch/fairseq'</span><span class="p">,</span> <span class="s">'transformer.wmt14.en-fr'</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="s">'moses'</span><span class="p">,</span> <span class="n">bpe</span><span class="o">=</span><span class="s">'subword_nmt'</span><span class="p">)</span>
+
+<span class="c1"># GPU 사용 (선택사항):
+</span><span class="n">en2fr</span><span class="p">.</span><span class="n">cuda</span><span class="p">()</span>
+
+<span class="c1"># beam search를 통한 번역:
+</span><span class="n">fr</span> <span class="o">=</span> <span class="n">en2fr</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="s">'Hello world!'</span><span class="p">,</span> <span class="n">beam</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">fr</span> <span class="o">==</span> <span class="s">'Bonjour à tous !'</span>
+
+<span class="c1"># 토큰화:
+</span><span class="n">en_toks</span> <span class="o">=</span> <span class="n">en2fr</span><span class="p">.</span><span class="n">tokenize</span><span class="p">(</span><span class="s">'Hello world!'</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">en_toks</span> <span class="o">==</span> <span class="s">'Hello world !'</span>
+
+<span class="c1"># BPE 적용:
+</span><span class="n">en_bpe</span> <span class="o">=</span> <span class="n">en2fr</span><span class="p">.</span><span class="n">apply_bpe</span><span class="p">(</span><span class="n">en_toks</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">en_bpe</span> <span class="o">==</span> <span class="s">'H@@ ello world !'</span>
+
+<span class="c1"># 이진화:
+</span><span class="n">en_bin</span> <span class="o">=</span> <span class="n">en2fr</span><span class="p">.</span><span class="n">binarize</span><span class="p">(</span><span class="n">en_bpe</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">en_bin</span><span class="p">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">==</span> <span class="p">[</span><span class="mi">329</span><span class="p">,</span> <span class="mi">14044</span><span class="p">,</span> <span class="mi">682</span><span class="p">,</span> <span class="mi">812</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># top-k sampling을 통해 다섯 번역 사례 생성:
+</span><span class="n">fr_bin</span> <span class="o">=</span> <span class="n">en2fr</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span><span class="n">en_bin</span><span class="p">,</span> <span class="n">beam</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sampling</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sampling_topk</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">fr_bin</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+
+<span class="c1"># 예시중 하나를 문자열로 변환하고 비토큰화
+</span><span class="n">fr_sample</span> <span class="o">=</span> <span class="n">fr_bin</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'tokens'</span><span class="p">]</span>
+<span class="n">fr_bpe</span> <span class="o">=</span> <span class="n">en2fr</span><span class="p">.</span><span class="n">string</span><span class="p">(</span><span class="n">fr_sample</span><span class="p">)</span>
+<span class="n">fr_toks</span> <span class="o">=</span> <span class="n">en2fr</span><span class="p">.</span><span class="n">remove_bpe</span><span class="p">(</span><span class="n">fr_bpe</span><span class="p">)</span>
+<span class="n">fr</span> <span class="o">=</span> <span class="n">en2fr</span><span class="p">.</span><span class="n">detokenize</span><span class="p">(</span><span class="n">fr_toks</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">fr</span> <span class="o">==</span> <span class="n">en2fr</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">fr_sample</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="영어-️-독일어-번역">영어 ➡️ 독일어 번역</h3>
+
+<p>역번역에 대한 준지도학습은 번역 시스템을 향상시키는데 효율적인 방법입니다.
+논문 <a href="https://arxiv.org/abs/1808.09381">Understanding Back-Translation at Scale</a>에서,
+추가적인 학습 데이터로 사용하기 위해 2억개 이상의 독일어 문장을 역번역합니다. 이 다섯 모델들의 앙상블은 <a href="http://www.statmt.org/wmt18/translation-task.html">WMT’18 English-German news translation competition</a>의 수상작입니다.</p>
+
+<p><a href="https://arxiv.org/abs/1907.06616">noisy-channel reranking</a>을 통해 이 접근법을 더 향상시킬 수 있습니다. 
+더 자세한 내용은 <a href="https://ai.facebook.com/blog/facebook-leads-wmt-translation-competition/">블로그 포스트</a>에서 볼 수 있습니다. 
+이러한 노하우로 학습된 모델들의 앙상블은 <a href="http://www.statmt.org/wmt19/translation-task.html">WMT’19 English-German news
+translation competition</a>의 수상작입니다.</p>
+
+<p>앞서 소개된 대회 수상 모델 중 하나를 사용하여 영어를 독일어로 번역해보겠습니다:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># WMT'19 data에서 학습된 영어 ➡️ 독일어 트랜스포머 모델 불러오기:
+</span><span class="n">en2de</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'pytorch/fairseq'</span><span class="p">,</span> <span class="s">'transformer.wmt19.en-de.single_model'</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="s">'moses'</span><span class="p">,</span> <span class="n">bpe</span><span class="o">=</span><span class="s">'fastbpe'</span><span class="p">)</span>
+
+<span class="c1"># 기본 트랜스포머 모델에 접근
+</span><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">en2de</span><span class="p">.</span><span class="n">models</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">)</span>
+
+<span class="c1"># 영어 ➡️ 독일어 번역
+</span><span class="n">de</span> <span class="o">=</span> <span class="n">en2de</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="s">'PyTorch Hub is a pre-trained model repository designed to facilitate research reproducibility.'</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">de</span> <span class="o">==</span> <span class="s">'PyTorch Hub ist ein vorgefertigtes Modell-Repository, das die Reproduzierbarkeit der Forschung erleichtern soll.'</span>
+</code></pre></div></div>
+
+<p>교차번역으로 같은 문장에 대한 의역을 만들 수도 있습니다:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 영어 ↔️ 독일어 교차번역:
+</span><span class="n">en2de</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'pytorch/fairseq'</span><span class="p">,</span> <span class="s">'transformer.wmt19.en-de.single_model'</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="s">'moses'</span><span class="p">,</span> <span class="n">bpe</span><span class="o">=</span><span class="s">'fastbpe'</span><span class="p">)</span>
+<span class="n">de2en</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'pytorch/fairseq'</span><span class="p">,</span> <span class="s">'transformer.wmt19.de-en.single_model'</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="s">'moses'</span><span class="p">,</span> <span class="n">bpe</span><span class="o">=</span><span class="s">'fastbpe'</span><span class="p">)</span>
+
+<span class="n">paraphrase</span> <span class="o">=</span> <span class="n">de2en</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">en2de</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="s">'PyTorch Hub is an awesome interface!'</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">paraphrase</span> <span class="o">==</span> <span class="s">'PyTorch Hub is a fantastic interface!'</span>
+
+<span class="c1"># 영어 ↔️ 러시아어 교차번역과 비교:
+</span><span class="n">en2ru</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'pytorch/fairseq'</span><span class="p">,</span> <span class="s">'transformer.wmt19.en-ru.single_model'</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="s">'moses'</span><span class="p">,</span> <span class="n">bpe</span><span class="o">=</span><span class="s">'fastbpe'</span><span class="p">)</span>
+<span class="n">ru2en</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'pytorch/fairseq'</span><span class="p">,</span> <span class="s">'transformer.wmt19.ru-en.single_model'</span><span class="p">,</span> <span class="n">tokenizer</span><span class="o">=</span><span class="s">'moses'</span><span class="p">,</span> <span class="n">bpe</span><span class="o">=</span><span class="s">'fastbpe'</span><span class="p">)</span>
+
+<span class="n">paraphrase</span> <span class="o">=</span> <span class="n">ru2en</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="n">en2ru</span><span class="p">.</span><span class="n">translate</span><span class="p">(</span><span class="s">'PyTorch Hub is an awesome interface!'</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">paraphrase</span> <span class="o">==</span> <span class="s">'PyTorch is a great interface!'</span>
+</code></pre></div></div>
+
+<h3 id="참고-문헌">참고 문헌</h3>
+
+<ul>
+  <li><a href="https://arxiv.org/abs/1706.03762">Attention Is All You Need</a></li>
+  <li><a href="https://arxiv.org/abs/1806.00187">Scaling Neural Machine Translation</a></li>
+  <li><a href="https://arxiv.org/abs/1808.09381">Understanding Back-Translation at Scale</a></li>
+  <li><a href="https://arxiv.org/abs/1907.06616">Facebook FAIR’s WMT19 News Translation Task Submission</a></li>
+</ul>
+
+
+                <a href="https://github.com/PyTorchKorea/hub-kr/issues"><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/hub-detail.js"></script>
