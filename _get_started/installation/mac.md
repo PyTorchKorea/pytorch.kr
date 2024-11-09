@@ -13,7 +13,7 @@ PyTorch는 macOS 10.15 (Catalina) 이후 macOS에서 설치할 수 있습니다.
 ### Python
 {: #mac-python}
 
-Python 3.8 ~ 3.11 사이의 버전을 사용하기를 권장합니다. 해당 버전은 아나콘다 패키지 관리자 (아래 [참조](#아나콘다)), [HomeBrew](https://brew.sh), [Python 웹사이트](https://www.python.org/downloads/mac-osx/) 에서 설치할 수 있습니다.
+Python 3.9 ~ 3.12 사이의 버전을 사용하기를 권장합니다. 해당 버전은 아나콘다 패키지 관리자 (아래 [참조](#아나콘다)), [HomeBrew](https://brew.sh), [Python 웹사이트](https://www.python.org/downloads/mac-osx/) 에서 설치할 수 있습니다.
 
 ### 패키지 관리자
 {: #mac-package-manager}
