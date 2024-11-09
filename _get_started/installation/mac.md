@@ -1,7 +1,7 @@
 # macOS에서 설치하기
 {:.no_toc}
 
-PyTorch 는 macOS 에서 설치 및 사용할 수 있습니다. PyTorch를 설치할 시스템과 사용할 수 있는 GPU 에 따라, Mac에서의 처리 속도 측면에서의 PyTorch 사용 경험은 사람마다 다를 수 있습니다.
+PyTorch 는 macOS에서 설치 및 사용할 수 있습니다. PyTorch를 설치할 시스템과 사용할 수 있는 GPU 에 따라, Mac에서의 처리 속도 측면에서의 PyTorch 사용 경험은 사람마다 다를 수 있습니다.
 
 ## 요구 사항
 {: #mac-prerequisites}
@@ -18,27 +18,20 @@ Python 3.9 ~ 3.12 사이의 버전을 사용하기를 권장합니다. 해당 �
 ### 패키지 관리자
 {: #mac-package-manager}
 
-PyTorch 바이너리는 [아나콘다](https://www.anaconda.com/download/#macos) 또는 [pip](https://pypi.org/project/pip/) 패키지 관리자를 통해 설치할 수 있습니다.
-Python과 PyTorch 설치 환경을 쉽게 격리할 수 있는 아나콘다를 권장하고 있습니다.
+PyTorch 바이너리는 [pip](https://pypi.org/project/pip/) or [아나콘다(anaconda)](https://www.anaconda.com/download/#macos) 패키지 관리자를 통해 설치할 수 있습니다.
 
 #### 아나콘다
 
 아나콘다는 [그래픽 설치 인스톨러](https://www.anaconda.com/download/#macos) 또는 명령줄 인스톨러를 사용할 수 있습니다.
-명령줄 인스톨러를 사용하는 경우, installer link를 복사하여 붙여넣거나 인텔 맥에서는 아래와 같이 실행할 수 있습니다.
+명령줄 인스톨러를 사용하는 경우, installer link를 복사하여 붙여넣거나 애플 실리콘을 사용하는 macOS에서는 아래와 같이 실행할 수 있습니다.
 
-```bash
-# 설치 시기에 따라 아나콘다 버전은 다를 수 있습니다.
-curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-sh Miniconda3-latest-MacOSX-x86_64.sh
-# 프롬프트가 나오면 옵션을 선택합니다, 일반적으로 기본값을 사용합니다.
-```
-혹은 m1 맥의 경우 아래와 같이 실행할 수 있습니다.
 ```bash
 # 설치 시기에 따라 아나콘다 버전은 다를 수 있습니다.
 curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
 sh Miniconda3-latest-MacOSX-arm64.sh
 # 프롬프트가 나오면 옵션을 선택합니다, 일반적으로 기본값을 사용합니다.
 ```
+
 #### pip
 
 *Python 3*
