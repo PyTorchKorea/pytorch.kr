@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      Silero Speech-To-Text Models | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="hub hub-detail">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          
+            <a href="/hub/research-models"><</a>
+          
+        </span>
+        <h1>
+          Silero Speech-To-Text Models
+        </h1>
+
+        <div class="row">
+          <div class="col-md-4">
+            <p class="detail-lead">By Silero AI Team </p>
+          </div>
+
+          <div class="col-md-8">
+            <p class="detail-lead lead-summary">A set of compact enterprise-grade pre-trained STT Models for multiple languages.</p>
+            <div class="detail-button-container">
+              <a href="https://github.com/snakers4/silero-models"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+              <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/snakers4_silero-models_stt.ipynb"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+              
+                
+                  <a href="https://huggingface.co/spaces/pytorch/silero_stt"><button class="btn btn-lg with-right-white-arrow detail-web-demo-link">Open Model Demo</button></a>
+                
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="/assets/images/silero_stt_model.jpg" data-image-name="silero_stt_model.jpg" class="featured-image img-fluid">
+              <img src="/assets/images/silero_imagenet_moment.png" data-image-name="silero_imagenet_moment.png" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># PyTorch의 적절한 버전이 이미 설치되어 있다고 가정합니다.</span>
+pip <span class="nb">install</span> <span class="nt">-q</span> torchaudio omegaconf soundfile
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">torchaudio</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s">'cpu'</span><span class="p">)</span>  <span class="c1"># gpu에서도 잘 돌아가지만, cpu에서도 충분히 빠릅니다.
+</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">utils</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">repo_or_dir</span><span class="o">=</span><span class="s">'snakers4/silero-models'</span><span class="p">,</span>
+                                       <span class="n">model</span><span class="o">=</span><span class="s">'silero_stt'</span><span class="p">,</span>
+                                       <span class="n">language</span><span class="o">=</span><span class="s">'en'</span><span class="p">,</span> <span class="c1"># 'de', 'es'도 사용 가능
+</span>                                       <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="p">(</span><span class="n">read_batch</span><span class="p">,</span> <span class="n">split_into_batches</span><span class="p">,</span>
+ <span class="n">read_audio</span><span class="p">,</span> <span class="n">prepare_model_input</span><span class="p">)</span> <span class="o">=</span> <span class="n">utils</span>  <span class="c1"># 자세한 내용은 함수 시그니처(function signature)를 참조하세요.
+</span>
+<span class="c1"># TorchAudio와 호환되는 형식(사운드 파일 백엔드)중 하나의 파일 다운로드
+</span><span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">download_url_to_file</span><span class="p">(</span><span class="s">'https://opus-codec.org/static/examples/samples/speech_orig.wav'</span><span class="p">,</span>
+                               <span class="n">dst</span> <span class="o">=</span><span class="s">'speech_orig.wav'</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">test_files</span> <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="s">'speech_orig.wav'</span><span class="p">)</span>
+<span class="n">batches</span> <span class="o">=</span> <span class="n">split_into_batches</span><span class="p">(</span><span class="n">test_files</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">prepare_model_input</span><span class="p">(</span><span class="n">read_batch</span><span class="p">(</span><span class="n">batches</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                            <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">decoder</span><span class="p">(</span><span class="n">example</span><span class="p">.</span><span class="n">cpu</span><span class="p">()))</span>
+</code></pre></div></div>
+
+<h3 id="모델-설명">모델 설명</h3>
+
+<p>Silero Speech-To-Text 모델은 일반적으로 사용되는 여러 언어에 대해 소형 폼 팩터 형태로 엔터프라이즈급 STT를 제공합니다. 기존 ASR 모델과 달리 다양한 방언, 코덱, 도메인, 노이즈, 낮은 샘플링 속도에 강인합니다(단순화를 위해 오디오는 16kHz로 다시 샘플링해야 함). 모델은 샘플 형태의 정규화된 오디오(즉, [-1, 1] 범위로의 정규화를 제외한 어떤 전처리 없이)와 토큰 확률이 있는 출력 프레임을 사용합니다. 단순화를 위해 디코더 도구를 제공합니다. 모델 자체에 포함할 수 있지만 자막이 결합된 모듈은, 특정한 내보내기 상황에서 레이블같은 모델의 생성물을 저장할 때 문제가 있었습니다.</p>
+
+<p>Speech에서 Open-STT와 Silero Models에 대한 노력이 ImageNet 같은 순간에 다가가길 바랍니다.</p>
+
+<h3 id="지원되는-언어-및-형식">지원되는 언어 및 형식</h3>
+
+<p>지원되는 언어는 다음과 같습니다.</p>
+
+<ul>
+  <li>English</li>
+  <li>German</li>
+  <li>Spanish</li>
+</ul>
+
+<p>항상 최신 지원 언어 목록을 보려면 <a href="https://github.com/snakers4/silero-models">repo</a>를 방문하여 사용 가능한 체크포인트에 대한 <code class="language-plaintext highlighter-rouge">yml</code> <a href="https://github.com/snakers4/silero-models/blob/master/models.yml">file</a>을 확인하십시오 .
+To see the always up-to-date language list, please visit our <a href="https://github.com/snakers4/silero-models">repo</a> and see the <code class="language-plaintext highlighter-rouge">yml</code> <a href="https://github.com/snakers4/silero-models/blob/master/models.yml">file</a> for all available checkpoints.</p>
+
+<h3 id="추가-예제-및-벤치마크">추가 예제 및 벤치마크</h3>
+
+<p>추가 예제 및 기타 모델 형식을 보려면 이 <a href="https://github.com/snakers4/silero-models">link</a>를 방문하십시오. 품질 및 성능 벤치마크는 <a href="https://github.com/snakers4/silero-models/wiki">wiki</a>를 참조하십시오. 관련 자료는 수시로 업데이트됩니다.</p>
+
+<h3 id="참고문헌">참고문헌</h3>
+
+<ul>
+  <li><a href="https://github.com/snakers4/silero-models">Silero Models</a></li>
+  <li><a href="https://thegradient.pub/towards-an-imagenet-moment-for-speech-to-text/">Alexander Veysov, “Toward’s an ImageNet Moment for Speech-to-Text”, The Gradient, 2020</a></li>
+  <li><a href="https://thegradient.pub/a-speech-to-text-practitioners-criticisms-of-industry-and-academia/">Alexander Veysov, “A Speech-To-Text Practitioner’s Criticisms of Industry and Academia”, The Gradient, 2020</a></li>
+</ul>
+
+
+                <a href="https://github.com/PyTorchKorea/hub-kr/issues"><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/hub-detail.js"></script>
