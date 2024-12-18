@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      Semi-supervised and semi-weakly supervised ImageNet Models | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="hub hub-detail">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          
+            <a href="/hub/research-models"><</a>
+          
+        </span>
+        <h1>
+          Semi-supervised and semi-weakly supervised ImageNet Models
+        </h1>
+
+        <div class="row">
+          <div class="col-md-4">
+            <p class="detail-lead">By Facebook AI </p>
+          </div>
+
+          <div class="col-md-8">
+            <p class="detail-lead lead-summary">Billion scale semi-supervised learning for image classification 에서 제안된 ResNet, ResNext 모델</p>
+            <div class="detail-button-container">
+              <a href="https://github.com/facebookresearch/semi-supervised-ImageNet1K-models/blob/master/hubconf.py"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+              <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/facebookresearch_semi-supervised-ImageNet1K-models_resnext.ipynb"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+              
+                
+                  <a href="https://huggingface.co/spaces/pytorch/semi-supervised-ImageNet1K-models"><button class="btn btn-lg with-right-white-arrow detail-web-demo-link">Open Model Demo</button></a>
+                
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="/assets/images/ssl-image.png" data-image-name="ssl-image.png" class="featured-image img-fluid">
+              <img src="/assets/images/no-image" data-image-name="no-image" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># === 해시태그된 9억 4천만개의 이미지를 활용한 Semi-weakly supervised 사전 학습 모델 ===
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'facebookresearch/semi-supervised-ImageNet1K-models'</span><span class="p">,</span> <span class="s">'resnet18_swsl'</span><span class="p">)</span>
+<span class="c1"># model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnet50_swsl')
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnext50_32x4d_swsl')
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnext101_32x4d_swsl')
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnext101_32x8d_swsl')
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnext101_32x16d_swsl')
+# ================= YFCC100M 데이터를 활용한 Semi-supervised 사전 학습 모델 ==================
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnet18_ssl')
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnet50_ssl')
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnext50_32x4d_ssl')
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnext101_32x4d_ssl')
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnext101_32x8d_ssl')
+# model = torch.hub.load('facebookresearch/semi-supervised-ImageNet1K-models', 'resnext101_32x16d_ssl')
+</span><span class="n">model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>사전에 학습된 모든 모델은 동일한 방식으로 정규화된 입력 이미지, 즉, <code class="language-plaintext highlighter-rouge">H</code> 와 <code class="language-plaintext highlighter-rouge">W</code> 는 최소 <code class="language-plaintext highlighter-rouge">224</code> 이상인 <code class="language-plaintext highlighter-rouge">(3 x H x W)</code> 형태의 3-채널 RGB 이미지의 미니 배치를 요구합니다. 이미지를 <code class="language-plaintext highlighter-rouge">[0, 1]</code> 범위에서 불러온 다음 <code class="language-plaintext highlighter-rouge">mean = [0.485, 0.456, 0.406]</code> 과 <code class="language-plaintext highlighter-rouge">std = [0.229, 0.224, 0.225]</code>를 통해 정규화합니다.</p>
+
+<p>실행 예시입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 파이토치 웹사이트에서 예제 이미지를 다운로드합니다.
+</span><span class="kn">import</span> <span class="nn">urllib</span>
+<span class="n">url</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="p">(</span><span class="s">"https://github.com/pytorch/hub/raw/master/images/dog.jpg"</span><span class="p">,</span> <span class="s">"dog.jpg"</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span> <span class="n">urllib</span><span class="p">.</span><span class="n">URLopener</span><span class="p">().</span><span class="n">retrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span> <span class="n">urllib</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 실행 예시입니다. (torchvision 필요)
+</span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">transforms</span>
+<span class="n">input_image</span> <span class="o">=</span> <span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+<span class="n">preprocess</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">.</span><span class="n">Compose</span><span class="p">([</span>
+    <span class="n">transforms</span><span class="p">.</span><span class="n">Resize</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+    <span class="n">transforms</span><span class="p">.</span><span class="n">CenterCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
+    <span class="n">transforms</span><span class="p">.</span><span class="n">ToTensor</span><span class="p">(),</span>
+    <span class="n">transforms</span><span class="p">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span> <span class="mf">0.456</span><span class="p">,</span> <span class="mf">0.406</span><span class="p">],</span> <span class="n">std</span><span class="o">=</span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span> <span class="mf">0.224</span><span class="p">,</span> <span class="mf">0.225</span><span class="p">]),</span>
+<span class="p">])</span>
+<span class="n">input_tensor</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">input_image</span><span class="p">)</span>
+<span class="n">input_batch</span> <span class="o">=</span> <span class="n">input_tensor</span><span class="p">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># 모델에서 요구하는 미니배치를 생성합니다.
+</span>
+<span class="c1"># 가능하다면 속도를 위해 입력과 모델을 GPU로 옮깁니다.
+</span><span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">():</span>
+    <span class="n">input_batch</span> <span class="o">=</span> <span class="n">input_batch</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="s">'cuda'</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="s">'cuda'</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">input_batch</span><span class="p">)</span>
+<span class="c1"># 1000개의 ImageNet 클래스에 대한 신뢰도 점수(confidence score)를 가진 1000 크기의 Tensor
+</span><span class="k">print</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># output엔 정규화되지 않은 신뢰도 점수가 있습니다. 확률값을 얻으려면 softmax를 실행하세요.
+</span><span class="k">print</span><span class="p">(</span><span class="n">torch</span><span class="p">.</span><span class="n">nn</span><span class="p">.</span><span class="n">functional</span><span class="p">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<h3 id="모델-설명">모델 설명</h3>
+<p>본 문서에선 <a href="https://arxiv.org/abs/1905.00546">Billion-scale Semi-Supervised Learning for Image Classification</a>에서 제안된 Semi-supervised, Semi-weakly supervised 방식의 ImageNet 분류 모델을 다룹니다.</p>
+
+<p>“Semi-supervised” 방식에서 대용량(hight-capacity)의 teacher 모델은 ImageNet1K 훈련 데이터로 학습됩니다. student 모델은 레이블이 없는 YFCC100M의 일부 이미지를 활용해 사전 학습하며, 이후 ImageNet1K의 훈련 데이터를 통해서 파인 튜닝합니다. 자세한 사항은 앞서 언급한 논문에서 확인할 수 있습니다.</p>
+
+<p>“Semi-weakly supervised” 방식에서 teacher 모델은 해시태그가 포함된 9억 4천만장의 이미지 일부를 활용해 사전 학습되며, 이후 ImageNet1K 훈련 데이터로 파인 튜닝됩니다. 활용된 해시태그는 1500개 정도이며 ImageNet1K 레이블의 동의어 집합(synsets)들을 모은 것입니다. 해시태그는 teacher 모델 사전 학습 과정에서만 레이블로 활용됩니다. student 모델은 teacher 모델이 사용한 이미지와 ImageNet1k 레이블로 사전 학습하며, 이후 ImageNet1K의 훈련 데이터를 통해서 파인 튜닝합니다.</p>
+
+<p><a href="https://arxiv.org/pdf/1611.05431.pdf">Xie <em>et al</em>.</a>, <a href="https://arxiv.org/pdf/1710.09412.pdf">Mixup</a>, <a href="https://arxiv.org/pdf/1805.02641.pdf">LabelRefinery</a>, <a href="https://arxiv.org/pdf/1805.09501.pdf">Autoaugment</a>, <a href="https://arxiv.org/pdf/1805.00932.pdf">Weakly supervised</a> 기법을 활용했을 때와 비교했을 때, Semi-supervised 및 Semi-weakly-supervised 방식은 ResNet, ResNext 모델의 ImageNet Top-1 검증 정확도를 크게 개선했습니다. 예시, <strong>ResNet-50 구조로 ImageNet 검증 정확도를 81.2% 기록했습니다.</strong>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Architecture</th>
+      <th style="text-align: center">Supervision</th>
+      <th style="text-align: center">#Parameters</th>
+      <th style="text-align: center">FLOPS</th>
+      <th style="text-align: center">Top-1 Acc.</th>
+      <th style="text-align: center">Top-5 Acc.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ResNet-18</td>
+      <td style="text-align: center">semi-supervised</td>
+      <td style="text-align: center">14M</td>
+      <td style="text-align: center">2B</td>
+      <td style="text-align: center">72.8</td>
+      <td style="text-align: center">91.5</td>
+    </tr>
+    <tr>
+      <td>ResNet-50</td>
+      <td style="text-align: center">semi-supervised</td>
+      <td style="text-align: center">25M</td>
+      <td style="text-align: center">4B</td>
+      <td style="text-align: center">79.3</td>
+      <td style="text-align: center">94.9</td>
+    </tr>
+    <tr>
+      <td>ResNeXt-50 32x4d</td>
+      <td style="text-align: center">semi-supervised</td>
+      <td style="text-align: center">25M</td>
+      <td style="text-align: center">4B</td>
+      <td style="text-align: center">80.3</td>
+      <td style="text-align: center">95.4</td>
+    </tr>
+    <tr>
+      <td>ResNeXt-101 32x4d</td>
+      <td style="text-align: center">semi-supervised</td>
+      <td style="text-align: center">42M</td>
+      <td style="text-align: center">8B</td>
+      <td style="text-align: center">81.0</td>
+      <td style="text-align: center">95.7</td>
+    </tr>
+    <tr>
+      <td>ResNeXt-101 32x8d</td>
+      <td style="text-align: center">semi-supervised</td>
+      <td style="text-align: center">88M</td>
+      <td style="text-align: center">16B</td>
+      <td style="text-align: center">81.7</td>
+      <td style="text-align: center">96.1</td>
+    </tr>
+    <tr>
+      <td>ResNeXt-101 32x16d</td>
+      <td style="text-align: center">semi-supervised</td>
+      <td style="text-align: center">193M</td>
+      <td style="text-align: center">36B</td>
+      <td style="text-align: center">81.9</td>
+      <td style="text-align: center">96.2</td>
+    </tr>
+    <tr>
+      <td>ResNet-18</td>
+      <td style="text-align: center">semi-weakly supervised</td>
+      <td style="text-align: center">14M</td>
+      <td style="text-align: center">2B</td>
+      <td style="text-align: center"><strong>73.4</strong></td>
+      <td style="text-align: center">91.9</td>
+    </tr>
+    <tr>
+      <td>ResNet-50</td>
+      <td style="text-align: center">semi-weakly supervised</td>
+      <td style="text-align: center">25M</td>
+      <td style="text-align: center">4B</td>
+      <td style="text-align: center"><strong>81.2</strong></td>
+      <td style="text-align: center">96.0</td>
+    </tr>
+    <tr>
+      <td>ResNeXt-50 32x4d</td>
+      <td style="text-align: center">semi-weakly supervised</td>
+      <td style="text-align: center">25M</td>
+      <td style="text-align: center">4B</td>
+      <td style="text-align: center"><strong>82.2</strong></td>
+      <td style="text-align: center">96.3</td>
+    </tr>
+    <tr>
+      <td>ResNeXt-101 32x4d</td>
+      <td style="text-align: center">semi-weakly supervised</td>
+      <td style="text-align: center">42M</td>
+      <td style="text-align: center">8B</td>
+      <td style="text-align: center"><strong>83.4</strong></td>
+      <td style="text-align: center">96.8</td>
+    </tr>
+    <tr>
+      <td>ResNeXt-101 32x8d</td>
+      <td style="text-align: center">semi-weakly supervised</td>
+      <td style="text-align: center">88M</td>
+      <td style="text-align: center">16B</td>
+      <td style="text-align: center"><strong>84.3</strong></td>
+      <td style="text-align: center">97.2</td>
+    </tr>
+    <tr>
+      <td>ResNeXt-101 32x16d</td>
+      <td style="text-align: center">semi-weakly supervised</td>
+      <td style="text-align: center">193M</td>
+      <td style="text-align: center">36B</td>
+      <td style="text-align: center"><strong>84.8</strong></td>
+      <td style="text-align: center">97.4</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="인용">인용</h2>
+
+<p>저장소에 공개된 모델을 사용할 땐, 다음 논문을 인용해주세요. (<a href="https://arxiv.org/abs/1905.00546">Billion-scale Semi-Supervised Learning for Image Classification</a>)</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@misc{yalniz2019billionscale,
+    title={Billion-scale semi-supervised learning for image classification},
+    author={I. Zeki Yalniz and Hervé Jégou and Kan Chen and Manohar Paluri and Dhruv Mahajan},
+    year={2019},
+    eprint={1905.00546},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
+</code></pre></div></div>
+
+                <a href="https://github.com/PyTorchKorea/hub-kr/issues"><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/hub-detail.js"></script>
