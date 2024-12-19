@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      SSD | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="hub hub-detail">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          
+            <a href="/hub/research-models"><</a>
+          
+        </span>
+        <h1>
+          SSD
+        </h1>
+
+        <div class="row">
+          <div class="col-md-4">
+            <p class="detail-lead">By NVIDIA </p>
+          </div>
+
+          <div class="col-md-8">
+            <p class="detail-lead lead-summary">Single Shot MultiBox Detector model for object detection</p>
+            <div class="detail-button-container">
+              <a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+              <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/nvidia_deeplearningexamples_ssd.ipynb"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+              
+                
+                  <a href="https://huggingface.co/spaces/pytorch/SSD"><button class="btn btn-lg with-right-white-arrow detail-web-demo-link">Open Model Demo</button></a>
+                
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="/assets/images/ssd_diagram.png" data-image-name="ssd_diagram.png" class="featured-image img-fluid">
+              <img src="/assets/images/ssd.png" data-image-name="ssd.png" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                <h3 id="model-description">Model Description</h3>
+
+<p>SSD300 모델은 “단일 심층 신경망을 사용하여 이미지에서 물체를 감지하는 방법”을 설명하는 <a href="https://arxiv.org/abs/1512.02325">SSD: Single Shot MultiBox Detector</a> 논문을 기반으로 합니다. 입력 크기는 300x300으로 고정되어 있습니다.</p>
+
+<p>이 모델과 논문에 설명된 모델의 큰 차이점은 백본(backbone)에 있습니다. 특히, 논문에서 사용한 VGG 모델은 더 이상 사용되지 않으며 ResNet-50 모델로 대체되었습니다.</p>
+
+<p><a href="https://arxiv.org/abs/1611.10012">Speed/accuracy trade-offs for modern convolutional object detectors</a> 논문에서, 백본에 대해 다음과 같은 개선이 이루어졌습니다.</p>
+
+<ul>
+  <li>conv5_x, avgpool, fc 및 softmax 레이어는 기존의 분류 모델에서 제거되었습니다.</li>
+  <li>conv4_x의 모든 strides는 1x1로 설정됩니다.</li>
+</ul>
+
+<p>백본 뒤에는 5개의 합성곱 레이어가 추가됩니다. 또한 합성곱 레이어 외에도 6개의 detection heads를 추가했습니다.
+The backbone is followed by 5 additional convolutional layers.
+In addition to the convolutional layers, we attached 6 detection heads:</p>
+<ul>
+  <li>첫 번째 detection head는 마지막 conv4_x 레이어에 연결됩니다.</li>
+  <li>나머지 5개의 detection head는 추가되는 5개의 합성곱 레이어에 부착됩니다.</li>
+</ul>
+
+<p>Detector heads는 논문에서 언급된 것과 유사하지만, 각각의 합성곱 레이어 뒤에 BatchNorm 레이어를 추가함으로써 성능이 향상됩니다.</p>
+
+<h3 id="example">Example</h3>
+
+<p>아래 예에서는 사전에 학습된 SSD 모델을 사용하여 샘플 이미지에서 객체를 탐지하고 결과를 시각화합니다.</p>
+
+<p>예제를 실행하려면 몇 가지 추가적인 파이썬 패키지가 설치되어 있어야 합니다. 이는 이미지 전처리 및 시각화에 필요합니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>numpy scipy scikit-image matplotlib
+</code></pre></div></div>
+
+<p>COCO 데이터셋에 대해 사전에 학습된 SSD 모델과, 모델의 입력 및 출력에 대한 편리하고 포괄적인 형식 지정을 위한 유틸리티를 불러옵니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">ssd_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'NVIDIA/DeepLearningExamples:torchhub'</span><span class="p">,</span> <span class="s">'nvidia_ssd'</span><span class="p">)</span>
+<span class="n">utils</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'NVIDIA/DeepLearningExamples:torchhub'</span><span class="p">,</span> <span class="s">'nvidia_ssd_processing_utils'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>추론을 위해 불러온 모델을 준비합니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ssd_model</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="s">'cuda'</span><span class="p">)</span>
+<span class="n">ssd_model</span><span class="p">.</span><span class="nb">eval</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>객체 탐지를 위한 입력 이미지를 준비합니다. 
+(아래 예제 링크는 COCO 데이터셋의 처음 몇 개의 테스트 이미지에 해당하지만, 로컬 이미지에 대한 경로를 지정할 수도 있습니다.)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">uris</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'http://images.cocodataset.org/val2017/000000397133.jpg'</span><span class="p">,</span>
+    <span class="s">'http://images.cocodataset.org/val2017/000000037777.jpg'</span><span class="p">,</span>
+    <span class="s">'http://images.cocodataset.org/val2017/000000252219.jpg'</span>
+<span class="p">]</span>
+</code></pre></div></div>
+
+<p>네트워크 입력에 맞게 이미지를 포맷하고 텐서로 변환합니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">utils</span><span class="p">.</span><span class="n">prepare_input</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span> <span class="k">for</span> <span class="n">uri</span> <span class="ow">in</span> <span class="n">uris</span><span class="p">]</span>
+<span class="n">tensor</span> <span class="o">=</span> <span class="n">utils</span><span class="p">.</span><span class="n">prepare_tensor</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>객체를 탐지하기 위해 SSD 네트워크를 실행합니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">detections_batch</span> <span class="o">=</span> <span class="n">ssd_model</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>SSD 네트워크의 기본 출력값은 객체의 위치를 식별하는 8732개의 box와  클래스 확률 분포를 담고 있습니다.
+보다 의미있는 결과(신뢰도&gt;40%)만 필터링 해 보겠습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results_per_input</span> <span class="o">=</span> <span class="n">utils</span><span class="p">.</span><span class="n">decode_results</span><span class="p">(</span><span class="n">detections_batch</span><span class="p">)</span>
+<span class="n">best_results_per_input</span> <span class="o">=</span> <span class="p">[</span><span class="n">utils</span><span class="p">.</span><span class="n">pick_best</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="mf">0.40</span><span class="p">)</span> <span class="k">for</span> <span class="n">results</span> <span class="ow">in</span> <span class="n">results_per_input</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>이 모델은 COCO 데이터셋에 대해 학습되었고, 클래스 ID를 (사람이 식별할 수 있는) 객체 이름으로 바꾸기 위해 coco 데이터셋에 접근이 필요합니다.
+처음에 다운로드할 때는 시간이 걸릴 수 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">classes_to_labels</span> <span class="o">=</span> <span class="n">utils</span><span class="p">.</span><span class="n">get_coco_object_dictionary</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>끝으로, 탐지한 결과를 시각화해 보겠습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="n">patches</span>
+
+<span class="k">for</span> <span class="n">image_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">best_results_per_input</span><span class="p">)):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Show original, denormalized image...
+</span>    <span class="n">image</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">image_idx</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span>
+    <span class="n">ax</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="c1"># ...with detections
+</span>    <span class="n">bboxes</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">confidences</span> <span class="o">=</span> <span class="n">best_results_per_input</span><span class="p">[</span><span class="n">image_idx</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bboxes</span><span class="p">)):</span>
+        <span class="n">left</span><span class="p">,</span> <span class="n">bot</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span> <span class="o">=</span> <span class="n">bboxes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span> <span class="o">*</span> <span class="mi">300</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="p">[</span><span class="n">left</span><span class="p">,</span> <span class="n">bot</span><span class="p">,</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span> <span class="o">-</span> <span class="n">bot</span><span class="p">]]</span>
+        <span class="n">rect</span> <span class="o">=</span> <span class="n">patches</span><span class="p">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s">'none'</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">"{} {:.0f}%"</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">classes_to_labels</span><span class="p">[</span><span class="n">classes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">confidences</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">),</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s">'white'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="details">Details</h3>
+<p>모델 입력 및 출력, 학습 방법, 추론 및 성능 등에 대한 더 자세한 정보는 <a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">github</a> 및 <a href="https://ngc.nvidia.com/catalog/resources/nvidia:ssd_for_pytorch">NGC</a>에서 볼 수 있습니다.</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li><a href="https://arxiv.org/abs/1512.02325">SSD: Single Shot MultiBox Detector</a> paper</li>
+  <li><a href="https://arxiv.org/abs/1611.10012">Speed/accuracy trade-offs for modern convolutional object detectors</a> paper</li>
+  <li><a href="https://ngc.nvidia.com/catalog/resources/nvidia:ssd_for_pytorch">SSD on NGC</a></li>
+  <li><a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/Detection/SSD">SSD on github</a></li>
+</ul>
+
+                <a href="https://github.com/PyTorchKorea/hub-kr/issues"><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/hub-detail.js"></script>
