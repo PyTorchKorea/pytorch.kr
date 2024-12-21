@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      파이토치 도카톤(Docathon) 2023 개최 안내 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="blog">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="main-background blog-background blog-detail-background"></div>
+
+    <div class="container-fluid header-holder blog-detail-header">
+        <div class="container">
+            
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
+        <div class="container blog-detail-container">
+            <p class="featured-post">May 03, 2023</p>
+            <h1><a class="blog-title">파이토치 도카톤(Docathon) 2023 개최 안내</a></h1>
+            
+                <h4 class="blog-subtitle">Announcing PyTorch Docathon 2023</h4>
+            
+        </div>
+    </div>
+
+    <div class="main-content-wrapper blog-detail-wrapper">
+        <div class="main-content blog-detail-content">
+            <div class="container">
+                <img src="/assets/images/logo-icon.svg" class="img-fluid author-icon">
+                <article class="pytorch-article">
+                    <p class="author">
+                      
+                        
+                            작성: PyTorch Team, 번역: PyTorch Korea User Group
+                        
+                      
+                    </p>
+                    
+                    <p class="translation-description">
+                        이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
+                        번역 글은 원문을 함께 표시합니다. 원문을 읽으시려면 <a href="https://pytorch.org/blog/announcing-docathon/">여기</a>를 클릭하세요.
+                        (This article is a Korean translation of the original post on the <a href="https://pytorch.org/blog/">PyTorch official blog</a>.
+                        Below translation includes the original text. To read the original post, click <a href="https://pytorch.org/blog/announcing-docathon/">here</a>.)
+                    </p>
+                    
+                    <div class="blog-content">
+                        <p><img src="/assets/blog/2023-05-03-announcing-docathon/docathon-cover.jpg" alt="PyTorch Docathon" style="max-height:800px; width:100%" /></p>
+
+<p>첫 번째 파이토치 도카톤(Docathon)을 개최하게 되어 매우 기쁩니다! 도카톤은 커뮤니티의 도움을 받아 문서를 개선하는 데 초점을 맞춘 해커톤 형식의 이벤트입니다. 문서는 모든 기술에서 매우 중요한 요소이며, 문서를 개선함으로써 사용자가 PyTorch를 더 쉽게 시작하고, 기능을 효과적으로 사용하는 방법을 이해하도록 돕고, 궁극적으로 머신러닝 분야의 연구부터 생산에 이르는 과정을 가속화할 수 있습니다.</p>
+<blockquote>
+  <p>We are excited to announce the first ever PyTorch Docathon! The Docathon is a hackathon-style event focused on improving the documentation by enlisting the help of the community. Documentation is a crucial aspect of any technology and by improving the documentation, we can make it easier for users to get started with PyTorch, help them understand how to use its features effectively, and ultimately accelerate research to production in the field of machine learning.</p>
+</blockquote>
+
+<h2 id="참여해야-하는-이유--why-participate">참여해야 하는 이유 / WHY PARTICIPATE</h2>
+
+<h3 id="낮은-진입-장벽--low-barrier-to-entry">낮은 진입 장벽 / Low Barrier to Entry</h3>
+
+<p>많은 오픈소스 프로젝트는 해커톤 이벤트에 참여하기 위해 코드베이스에 대한 광범위한 지식과 프로젝트에 대한 사전 기여가 필요합니다. 반면에 문서톤(Docathon)은 초보자를 위해 설계되었습니다. Python에 대한 친숙함, PyTorch 및 ML에 대한 기본 지식이 있어야 합니다. 하지만 걱정하지 마세요! 웹사이트 이슈와 같은 일부 주제는 이마저도 필요하지 않으니까요.</p>
+<blockquote>
+  <p>Many open-source projects require extensive knowledge of the codebase and prior contributions to the project to participate in any sort of hackathon events. The Docathon, on the other hand, is designed for newcomers. We do expect familiarity with Python, basic knowledge of PyTorch, and ML. But don’t fret, there are some tasks that are related to website issues that won’t require even that.</p>
+</blockquote>
+
+<h3 id="가시적인-결과--tangible-results">가시적인 결과 / Tangible Results</h3>
+
+<p>문서톤(Docathon)의 가장 좋은 점 중 하나는 노력의 결과를 실시간으로 확인할 수 있다는 것입니다. 문서를 개선하는 것은 프로젝트의 사용성과 접근성에 큰 영향을 미칠 수 있으며, 이러한 개선 사항을 직접 확인할 수 있습니다. 또한 가시적인 성과는 계속 기여할 수 있는 큰 동기 부여가 되기도 합니다.</p>
+<blockquote>
+  <p>One of the best things about the Docathon is that you can see the results of your efforts in real time. Improving documentation can have a huge impact on a project’s usability and accessibility and you’ll be able to see those improvements firsthand. Plus having tangible results can be a great motivator to keep contributing.</p>
+</blockquote>
+
+<h3 id="협업-환경--collaborative-environment">협업 환경 / Collaborative Environment</h3>
+
+<p>문서톤(Docathon)은 협업 이벤트이므로 다른 기여자 및 PyTorch 유지 관리자와 함께 문서 개선 작업을 할 수 있는 기회가 주어집니다. 다른 사람들로부터 배우고, 아이디어를 공유하고, 인맥을 쌓을 수 있는 좋은 기회입니다.</p>
+<blockquote>
+  <p>The Docathon is a collaborative event which means you’ll have the opportunity to work with other contributors and PyTorch maintainers on improving the documentation. This can be a great way to learn from others, share ideas, and build connections.</p>
+</blockquote>
+
+<h3 id="학습-기회--learning-opportunities">학습 기회 / Learning Opportunities</h3>
+
+<p>마지막으로, 파이토치 전문가가 아니더라도 문서톤(Docathon)은 훌륭한 학습 경험이 될 수 있습니다. 파이토치 모듈들을 둘러보고 일부 튜토리얼들은 CI와 여러분의 컴퓨터에서 직접 테스트해볼 수 있습니다.</p>
+<blockquote>
+  <p>Finally, even if you are not an expert in PyTorch, the Docathon can be a great learning experience. You’ll have the opportunity to explore the PyTorch modules and test some of the tutorials on your machine as well as in the CI.</p>
+</blockquote>
+
+<h2 id="이벤트-상세--event-details">이벤트 상세 / EVENT DETAILS</h2>
+
+<ul>
+  <li><strong>5월 31일</strong>: 문서톤(Docathon) 시작</li>
+  <li><strong>5월 31일 - 6월 11일</strong>: 제출 및 피드백</li>
+  <li><strong>6월 12일 - 6월 13일</strong>: 최종 검토</li>
+  <li><strong>6월 15일</strong>: 수상자 발표
+    <blockquote>
+      <ul>
+        <li><strong>May 31</strong>: Kick-off</li>
+        <li><strong>May 31 - June 11</strong>:  Submissions and Feedback</li>
+        <li><strong>June 12 - June 13</strong>: Final Reviews</li>
+        <li><strong>June 15</strong>: Winner Announcements</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p>문서톤(Docathon)에 대한 자세한 내용은 5월 31일 킥오프 스트림에서 발표될 예정입니다.</p>
+<blockquote>
+  <p>Details for the Docathon to be announced at the kick-off stream on May 31.</p>
+</blockquote>
+
+<p>올해 행사에 관심이 있으신가요? <a href="https://community.linuxfoundation.org/e/mmbqqb/"><strong>지금 등록</strong></a>하세요!</p>
+<blockquote>
+  <p>Please register to join this year’s event: <a href="https://community.linuxfoundation.org/e/mmbqqb/"><strong>RSVP</strong></a></p>
+</blockquote>
+
+                    </div>
+                    <hr noshade />
+                    <p class="translation-description ad-discuss">
+                         더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="https://discuss.pytorch.kr/">파이토치 한국어 커뮤니티에 참여</a>해주세요!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-comment">
+  <div class="container">
+      <div id="discourse-comments"></div>
+      <meta name="discourse-username" content="bot">
+  </div>
+</div>
+
+<script type="text/javascript">
+  DiscourseEmbed = {
+      discourseUrl: 'https://discuss.pytorch.kr/',
+      discourseEmbedUrl: 'https://pytorch.kr/blog/2023/announcing-docathon/',
+      // className: 'CLASS_NAME',
+  };
+
+  (function() {
+      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+</body>
+</html>

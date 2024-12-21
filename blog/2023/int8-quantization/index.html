@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      PyTorch에서 x86 CPU용 INT8 양자화 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="blog">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="main-background blog-background blog-detail-background"></div>
+
+    <div class="container-fluid header-holder blog-detail-header">
+        <div class="container">
+            
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
+        <div class="container blog-detail-container">
+            <p class="featured-post">August 07, 2023</p>
+            <h1><a class="blog-title">PyTorch에서 x86 CPU용 INT8 양자화</a></h1>
+            
+                <h4 class="blog-subtitle">INT8 Quantization for x86 CPU in PyTorch</h4>
+            
+        </div>
+    </div>
+
+    <div class="main-content-wrapper blog-detail-wrapper">
+        <div class="main-content blog-detail-content">
+            <div class="container">
+                <img src="/assets/images/logo-icon.svg" class="img-fluid author-icon">
+                <article class="pytorch-article">
+                    <p class="author">
+                      
+                        
+                            작성: 인텔(Intel). <br />번역: PyTorch Korea User Group
+                        
+                      
+                    </p>
+                    
+                    <p class="translation-description">
+                        이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
+                        번역 글은 원문을 함께 표시합니다. 원문을 읽으시려면 <a href="https://pytorch.org/blog/int8-quantization/">여기</a>를 클릭하세요.
+                        (This article is a Korean translation of the original post on the <a href="https://pytorch.org/blog/">PyTorch official blog</a>.
+                        Below translation includes the original text. To read the original post, click <a href="https://pytorch.org/blog/int8-quantization/">here</a>.)
+                    </p>
+                    
+                    <div class="blog-content">
+                        <h2 id="개요--overview">개요 / Overview</h2>
+
+<p>INT8 양자화(quantization)는 x86 CPU 플랫폼에서 딥러닝 추론 속도를 높이는 강력한 기법입니다. 모델의 가중치와 활성화의 정밀도를 32비트 부동소수점(FP32; 32-bit floating-point)에서 8비트 정수(INT8; 8-bit integer)로 줄임으로써 INT8 양자화는 정확도를 유지하면서도 추론 속도와 메모리 요구량을 크게 향상시킬 수 있었습니다.</p>
+<blockquote>
+  <p>INT8 quantization is a powerful technique for speeding up deep learning inference on x86 CPU platforms. By reducing the precision of the model’s weights and activations from 32-bit floating-point (FP32) to 8-bit integer (INT8), INT8 quantization can significantly improve the inference speed and reduce memory requirements without sacrificing accuracy.</p>
+</blockquote>
+
+<p>이번 글에서는 파이토치(PyTorch)에서 x86 CPU용 INT8 양자화의 발전 상황에 대해서 논의해보겠습니다. 주로 새로운 x86 양자화 백엔드(quantization backend)에 초점을 맞추고, 파이토치 2.0 익스포트(PT2E; PyTorch 2.0 Export)와 TorchInductor(토치인덕터)를 사용한 새로운 양자화 경로에 대해서도 간략히 살펴보겠습니다.</p>
+<blockquote>
+  <p>In this blog, we will discuss the recent progress on INT8 quantization for x86 CPU in PyTorch, focusing on the new x86 quantization backend. We will also briefly look at the new quantization path with PyTorch 2.0 Export (PT2E) and TorchInductor.</p>
+</blockquote>
+
+<h2 id="x86-양자화-백엔드--x86-quantization-backend">X86 양자화 백엔드 / X86 Quantization Backend</h2>
+
+<p>현재 파이토치(PyTorch)에서 권장하는 양자화 방법은 <a href="http://pytorch.org/tutorials/prototype/fx_graph_mode_quant_guide.html?highlight=fx">FX</a>입니다. PyTorch 2.0 이전에는 x86 CPU의 기본 양자화 백엔드(일명 QEngine)는 FBGEMM(FB+GEMM; Facebook GEneral Matrix Multiplication)으로, 성능 향상을 위해 FBGEMM 라이브러리를 활용했습니다. PyTorch 2.0 출시 시에는 FBGEMM을 대체하기 위해 X86이라는 새로운 양자화 백엔드가 도입되었습니다. x86 양자화 백엔드는 FBGEMM과 <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/onednn.html">인텔(Intel)® oneDNN (oneAPI Deep Neural Network Library)</a> 커널 라이브러리의 강점을 모두 활용하여, 기존 FBGEMM 백엔드에 비해 향상된 INT8 추론 성능을 제공합니다.</p>
+<blockquote>
+  <p>The current recommended way of quantization in PyTorch is <a href="http://pytorch.org/tutorials/prototype/fx_graph_mode_quant_guide.html?highlight=fx">FX</a>. Before PyTorch 2.0, the default quantization backend (a.k.a. QEngine) on x86 CPUs was FBGEMM, which leveraged the FBGEMM performance library to achieve the performance speedup. In the PyTorch 2.0 release, a new quantization backend called X86 was introduced to replace FBGEMM. The x86 quantization backend offers improved INT8 inference performance when compared to the original FBGEMM backend by leveraging the strengths of both FBGEMM and the <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/onednn.html">Intel® oneAPI Deep Neural Network Library (oneDNN)</a> kernel libraries.</p>
+</blockquote>
+
+<h2 id="x86-백엔드의-성능-향상--performance-benefit-from-x86-backend">X86 백엔드의 성능 향상 / Performance Benefit from X86 Backend</h2>
+
+<p>새로운 X86 백엔드의 성능 향상을 측정하기 위해, <a href="https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/platform.html">4세대 인텔(Intel)® 제온(Xeon)® 스케일러블 프로세서</a>를 사용하여 인기있는 69종의 딥러닝 모델(아래 <strong>그림 1 ~ 그림 3</strong> 참조)에 대해 INT8 추론을 실행했습니다. 그 결과, FP32 추론 성능에 비해 2.97배의 기하평균(geomean) 성능 속도 향상을 보였으며, FBGEMM 백엔드에서는 1.43배의 속도 향상을 보였습니다. 아래 차트는 x86 백엔드와 FBGEMM 백엔드를 비교한 모델별 성능 속도 향상을 보여줍니다.</p>
+<blockquote>
+  <p>To measure the performance benefits of the new X86 backend, we ran INT8 inference on 69 popular deep learning models (shown in <strong>Figures 1-3</strong> below) using <a href="https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/platform.html">4th Gen Intel® Xeon® Scalable processors</a>. The results showed a 2.97X geomean performance speedup compared to FP32 inference performance, while the speedup was 1.43X with the FBGEMM backend. The charts below show the per-model performance speedup comparing the x86 backend and the FBGEMM backend.</p>
+</blockquote>
+
+<p><img src="/assets/images/int8/pytorch_quant_x86_1.jpg" alt="그림 1: x86 백엔드에서 2배 미만 성능 향상 모델 / Figure 1: Models with less than 2x performance boost with x86 backend" style="width:100%;" /></p>
+
+<p><small style="line-height: 1.1"><em><strong>그림 1</strong>: x86 백엔드에서 2배 미만 성능 향상 모델<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> / <strong>Figure 1</strong>: Models with less than 2x performance boost with x86 backend<sup id="fnref:1:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></em></small></p>
+
+<p><img src="/assets/images/int8/pytorch_quant_x86_2.jpg" alt="그림 2: x86 백엔드에서 2-4배 성능 향상 모델 / Figure 2: Models with 2x-4x performance boost with x86 backend" style="width:100%; margin-top: 4em;" /></p>
+
+<p><small style="line-height: 1.1"><em><strong>그림 2</strong>: x86 백엔드에서 2-4배 성능 향상 모델<sup id="fnref:1:2" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> / <strong>Figure 2</strong>: Models with 2x-4x performance boost with x86 backend<sup id="fnref:1:3" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></em></small></p>
+
+<p><img src="/assets/images/int8/pytorch_quant_x86_3.jpg" alt="그림 3: x86 백엔드에서 4배 이상의 성능 향상 모델 / Figure 3: Models with larger than 4x performance boost with x86 backend" style="width:100%; margin-top: 4em;" /></p>
+
+<p><small style="line-height: 1.1"><em><strong>그림 3</strong>: x86 백엔드에서 4배 이상의 성능 향상 모델<sup id="fnref:1:4" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> / <strong>Figure 3</strong>: Models with larger than 4x performance boost with x86 backend<sup id="fnref:1:5" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup></em></small></p>
+
+<h2 id="x86-백엔드-사용법--usage-of-x86-backend">x86 백엔드 사용법 / Usage of x86 Backend</h2>
+
+<p>2.0에서는 기본적으로 x86 플랫폼 사용자는 x86 양자화 백엔드를 사용하며 기본 백엔드를 사용할 때는 프로그램 변경 없이도 동작합니다. 또는 사용자가 x86를 양자화 백엔드로 명시적(explitcit)으로 지정할 수 있습니다. <br />
+아래는 x86 양자화 백엔드를 사용한 PyTorch 정적 학습-후(post-training) 양자화 예제 코드입니다.</p>
+<blockquote>
+  <p>By default in 2.0, users on x86 platforms will use the x86 quantization backend and their PyTorch programs will remain unchanged when using the default backend. Alternatively, users can specify x86 as the quantization backend explicitly. <br />
+Below is an example code snippet of PyTorch static post-training quantization with x86 quantization backend.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.ao.quantization</span> <span class="kn">import</span> <span class="n">get_default_qconfig_mapping</span>
+<span class="kn">from</span> <span class="nn">torch.quantization.quantize_fx</span> <span class="kn">import</span> <span class="n">prepare_fx</span><span class="p">,</span> <span class="n">convert_fx</span>
+
+<span class="n">qconfig_mapping</span> <span class="o">=</span> <span class="n">get_default_qconfig_mapping</span><span class="p">()</span>
+<span class="c1"># 또는, 명시적으로 qengine을 명시합니다 / Or explicity specify the qengine
+# qengine = 'x86'
+# torch.backends.quantized.engine = qengine
+# qconfig_mapping = get_default_qconfig_mapping(qengine)
+</span>
+<span class="n">model_fp32</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">().</span><span class="nb">eval</span><span class="p">()</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">randn</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="mi">224</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">.</span><span class="n">to</span><span class="p">(</span><span class="n">memory_format</span><span class="o">=</span><span class="n">torch</span><span class="p">.</span><span class="n">channels_last</span><span class="p">)</span>
+
+<span class="c1"># qconfig_mapping과 백엔드 설정에 따라 관찰자(observer)를 삽입합니다
+# Insert observers according to qconfig and backend config
+</span><span class="n">prepared_model</span> <span class="o">=</span> <span class="n">prepare_fx</span><span class="p">(</span><span class="n">model_fp32</span><span class="p">,</span> <span class="n">qconfig_mapping</span><span class="p">,</span> <span class="n">example_inputs</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># 캘리브레이션 코드는 표시하지 않음 / Calibration code not shown
+</span>
+<span class="c1"># 양자화된 모델로 변환 / Convert to quantized model
+</span><span class="n">quantized_model</span> <span class="o">=</span> <span class="n">convert_fx</span><span class="p">(</span><span class="n">prepared_model</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="x86-백엔드의-기술적-세부-사항--technical-details-of-x86-backend">x86 백엔드의 기술적 세부 사항 / Technical Details of x86 Backend</h2>
+
+<p>합성곱(convolution) 또는 행렬곱(matrix multiplication) 연산을 실행하기 위해서 oneDNN 또는 FBGEMM 성능 라이브러리 중 어떤 것을 호출할지 결정하기 위한 디스패치 규칙(dispatching rule)을 벤치마킹했던 모델들의 성능에 따라 휴리스틱하게 고안하였습니다. 이 규칙은 연산의 종류, 형태, CPU 아키텍처 정보 등을 고려하여 결정합니다. 자세한 로직은 <a href="http://github.com/pytorch/pytorch/blob/93ff71ec37e3c946603600a46edef70b42f81213/aten/src/ATen/native/quantized/cpu/OnednnUtils.h#L396">여기</a>에서 확인할 수 있습니다. 더 많은 설계 및 기술적 논의는 <a href="http://github.com/pytorch/pytorch/issues/83888">RFC 문서(Request for Comments)</a>를 참조하십시오.</p>
+<blockquote>
+  <p>We devised heuristic dispatching rules according to the performance numbers from the models we benchmarked to decide whether to invoke oneDNN or FBGEMM performance library to execute the convolution or matrix multiplication operations. The rules are a combination of operation kinds, shapes, CPU architecture information, etc. Detailed logic is available <a href="http://github.com/pytorch/pytorch/blob/93ff71ec37e3c946603600a46edef70b42f81213/aten/src/ATen/native/quantized/cpu/OnednnUtils.h#L396">here</a>. For more design and technical discussion, please refer to the <a href="http://github.com/pytorch/pytorch/issues/83888">Request for Comments</a>.</p>
+</blockquote>
+
+<h2 id="새로운-양자화-경로-pytorch-20-익스포트의-다음-단계--next-steps-with-a-new-quantization-path-pytorch-20-export">새로운 양자화 경로, PyTorch 2.0 익스포트의 다음 단계 / Next Steps With a New Quantization Path PyTorch 2.0 Export</h2>
+
+<p>아직 확정되지는 않았지만, 새로운 양자화 경로인 파이토치 2.0 익스포트(PT2E; PyTorch 2.0 Export)가 현재 초기 설계 및 PoC 단계에 있으며, 향후 FX 양자화 경로를 대체할 것입니다. 이는 TorchDynamo Export라는 PyTorch 2.0에서 도입한 FX 그래프 캡쳐 기능을 기반으로 구축되었으며, 이 그래프는 양자화되어 다양한 백엔드들로 나눠(lowered)집니다. PyTorch의 새로운 DL 컴파일러인 TorchInductor는 x86 CPU에서 의미있는 FP32 추론 속도 향상을 보여주었으며, PT2E의 양자화 백엔드 중 하나로 만들기 위해 작업 중입니다. 이러한 새로운 경로가 다양한 계층(level)에서의 융합 가능성을 증대시켜 INT8 추론 성능을 더욱 향상시킬 것을 기대합니다.</p>
+<blockquote>
+  <p>Although still far from finalized, a new quantization path, PyTorch 2.0 Export (PT2E), is in early design and PoC stage. The new approach is slated to replace the FX quantization path in the future. It is built upon the capabilities of TorchDynamo Export, a feature introduced in the PyTorch 2.0 release for FX graph capturing. This graph is then quantized and lowered to different backends. TorchInductor, the new DL compiler of PyTorch, has shown promising results in terms of FP32 inference speedup on x86 CPU. We are working actively to enable it as one of the quantization backends of PT2E. We believe the new path will lead to further improvements in INT8 inference performance due to more flexibility of fusion at different levels.</p>
+</blockquote>
+
+<h2 id="결론--conclusion">결론 / Conclusion</h2>
+
+<p>PyTorch 2.0 출시 시 도입된 x86 백엔드는 x86 CPU 플랫폼에서 놀라운 INT8 추론 속도의 향상을 보였습니다. 기존 FBGEMM 백엔드와 비교하여 1.43배의 속도 향상을 보이면서도 하위 호환성 또한 유지합니다. 이러한 성능 향상으로 최종 사용자는 프로그램을 약간 또는 전혀 수정하지 않고도 성능 향상을 누릴 수 있게 되었습니다. 또한, 현재 개발 중인 새로운 양자화 경로인 PT2E는 미래에 더 많은 가능성을 제공할 수 있을 것으로 기대합니다.</p>
+<blockquote>
+  <p>The x86 backend introduced in PyTorch 2.0 release has demonstrated a remarkable improvement in INT8 inference speed on x86 CPU platforms. It offers a 1.43X speedup compared to the original FBGEMM backend while maintaining backward compatibility. This enhancement can benefit end users with minimal or no modifications to their programs. Furthermore, a new quantization path, PT2E, is currently in development and is expected to provide even more possibilities in the future.</p>
+</blockquote>
+
+<h2 id="감사의-글--acknowledgement">감사의 글 / Acknowledgement</h2>
+
+<p>Nikita Shulga, Vasiliy Kuznetsov, Supriya Rao 및 Jongsoo Park에게 특별히 감사드립니다. 이들과 함께 PyTorch CPU 생태계를 개선하기 위한 발걸음을 내딛을 수 있었습니다.</p>
+<blockquote>
+  <p>Special thanks to Nikita Shulga, Vasiliy Kuznetsov, Supriya Rao, and Jongsoo Park. Together, we made one more step forward on the path of improving the PyTorch CPU ecosystem.</p>
+</blockquote>
+
+<h2 id="실험-구성--configuration">실험 구성 / Configuration</h2>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>AWS EC2 r7iz.metal-16xl instance (Intel(R) Xeon(R) Gold 6455B, 32-core/64-thread, Turbo Boost On, Hyper-Threading On, Memory: 8x64GB, Storage: 192GB); OS: Ubuntu 22.04.1 LTS; Kernel: 5.15.0-1028-aws; Batch Size: 1; Core per Instance: 4; PyTorch 2.0 RC3; TorchVision 0.15.0+cpu, 인텔이 2023년 3월 7일에 실험. 공개된 모든 보안 업데이트를 반영하지 않았을 수 있음(May not reflect all publicly available security updates). <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a> <a href="#fnref:1:2" class="reversefootnote" role="doc-backlink">&#8617;<sup>3</sup></a> <a href="#fnref:1:3" class="reversefootnote" role="doc-backlink">&#8617;<sup>4</sup></a> <a href="#fnref:1:4" class="reversefootnote" role="doc-backlink">&#8617;<sup>5</sup></a> <a href="#fnref:1:5" class="reversefootnote" role="doc-backlink">&#8617;<sup>6</sup></a></p>
+    </li>
+  </ol>
+</div>
+
+                    </div>
+                    <hr noshade />
+                    <p class="translation-description ad-discuss">
+                         더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="https://discuss.pytorch.kr/">파이토치 한국어 커뮤니티에 참여</a>해주세요!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-comment">
+  <div class="container">
+      <div id="discourse-comments"></div>
+      <meta name="discourse-username" content="bot">
+  </div>
+</div>
+
+<script type="text/javascript">
+  DiscourseEmbed = {
+      discourseUrl: 'https://discuss.pytorch.kr/',
+      discourseEmbedUrl: 'https://pytorch.kr/blog/2023/int8-quantization/',
+      // className: 'CLASS_NAME',
+  };
+
+  (function() {
+      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+</body>
+</html>
