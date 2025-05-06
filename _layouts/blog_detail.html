@@ -35,7 +35,11 @@
                             작성: PyTorch Team, 번역: {{ site.default_author }}
                         {% endif %}
                       {% else %}
-                        작성: {{ site.default_author }}
+                        {% if page.author %}
+                            작성: {{ page.author }} @ {{ site.default_author }}
+                        {% else %}
+                            작성: {{ site.default_author }}
+                        {% endif %}
                       {% endif %}
                     </p>
                     {% if page.category contains 'translation' or page.category contains 'pytorch.org' %}
