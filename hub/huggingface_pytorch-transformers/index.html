@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      PyTorch-Transformers | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="hub hub-detail">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          
+            <a href="/hub/research-models"><</a>
+          
+        </span>
+        <h1>
+          PyTorch-Transformers
+        </h1>
+
+        <div class="row">
+          <div class="col-md-4">
+            <p class="detail-lead">By HuggingFace Team </p>
+          </div>
+
+          <div class="col-md-8">
+            <p class="detail-lead lead-summary">PyTorch implementations of popular NLP Transformers</p>
+            <div class="detail-button-container">
+              <a href="https://github.com/huggingface/pytorch-transformers.git"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+              <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/huggingface_pytorch-transformers.ipynb"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+              
+                
+                  <a href="https://huggingface.co/spaces/pytorch/transformers"><button class="btn btn-lg with-right-white-arrow detail-web-demo-link">Open Model Demo</button></a>
+                
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="/assets/images/no-image" data-image-name="no-image" class="featured-image img-fluid">
+              <img src="/assets/images/no-image" data-image-name="no-image" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                <h1 id="모델-설명">모델 설명</h1>
+
+<p>PyTorch-Transformers (이전엔 <code class="language-plaintext highlighter-rouge">pytorch-pretrained-bert</code>으로 알려짐) 는 자연어 처리(NLP)를 위한 최신식 사전 학습된 모델들을 모아놓은 라이브러리입니다.</p>
+
+<p>라이브러리는 현재 다음 모델들에 대한 파이토치 구현과 사전 학습된 가중치, 사용 스크립트, 변환 유틸리티를 포함하고 있습니다.</p>
+
+<ol>
+  <li><strong><a href="https://github.com/google-research/bert">BERT</a></strong> 는 Google에서 발표한 <a href="https://arxiv.org/abs/1810.04805">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a> 논문과 함께 공개되었습니다. (저자: Jacob Devlin, Ming-Wei Chang, Kenton Lee, Kristina Toutanova)</li>
+  <li><strong><a href="https://github.com/openai/finetune-transformer-lm">GPT</a></strong> 는 OpenAI에서 발표한 <a href="https://blog.openai.com/language-unsupervised/">Improving Language Understanding by Generative Pre-Training</a> 논문과 함께 공개되었습니다. (저자: Alec Radford, Karthik Narasimhan, Tim Salimans, Ilya Sutskever)</li>
+  <li><strong><a href="https://blog.openai.com/better-language-models/">GPT-2</a></strong> 는 OpenAI에서 발표한 <a href="https://blog.openai.com/better-language-models/">Language Models are Unsupervised Multitask Learners</a> 논문과 함께 공개되었습니다. (저자: Alec Radford<em>, Jeffrey Wu</em>, Rewon Child, David Luan, Dario Amodei<strong>, Ilya Sutskever</strong>)</li>
+  <li><strong><a href="https://github.com/kimiyoung/transformer-xl">Transformer-XL</a></strong> 는 Google/CMU에서 발표한 <a href="https://arxiv.org/abs/1901.02860">Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context</a> 논문과 함께 공개되었습니다. (저자: Zihang Dai<em>, Zhilin Yang</em>, Yiming Yang, Jaime Carbonell, Quoc V. Le, Ruslan Salakhutdinov)</li>
+  <li><strong><a href="https://github.com/zihangdai/xlnet/">XLNet</a></strong> 는 Google/CMU에서 발표한 <a href="https://arxiv.org/abs/1906.08237">​XLNet: Generalized Autoregressive Pretraining for Language Understanding</a> 논문과 함께 공개되었습니다. (저자: Zhilin Yang<em>, Zihang Dai</em>, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le)</li>
+  <li><strong><a href="https://github.com/facebookresearch/XLM/">XLM</a></strong> 는 Facebook에서 발표한 <a href="https://arxiv.org/abs/1901.07291">Cross-lingual Language Model Pretraining</a> 논문과 함께 공개되었습니다. (저자: Guillaume Lample, Alexis Conneau)</li>
+  <li><strong><a href="https://github.com/pytorch/fairseq/tree/master/examples/roberta">RoBERTa</a></strong> 는 Facebook에서 발표한 <a href="https://arxiv.org/abs/1907.11692">Robustly Optimized BERT Pretraining Approach</a> 논문과 함께 공개되었습니다. (저자: Yinhan Liu, Myle Ott, Naman Goyal, Jingfei Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike Lewis, Luke Zettlemoyer, Veselin Stoyanov)</li>
+  <li><strong><a href="https://github.com/huggingface/pytorch-transformers/tree/master/examples/distillation">DistilBERT</a></strong> 는 HuggingFace에서 게시한 <a href="https://medium.com/huggingface/distilbert-8cf3380435b">Smaller, faster, cheaper, lighter: Introducing DistilBERT, a distilled version of BERT</a> 블로그 포스팅과 함께 발표되었습니다. (저자: Victor Sanh, Lysandre Debut, Thomas Wolf)</li>
+</ol>
+
+<p>여기에서 사용되는 구성요소들은 <code class="language-plaintext highlighter-rouge">pytorch-transformers</code> 라이브러리에 있는  <code class="language-plaintext highlighter-rouge">AutoModel</code> 과 <code class="language-plaintext highlighter-rouge">AutoTokenizer</code> 클래스를 기반으로 하고 있습니다.</p>
+
+<h1 id="요구-사항">요구 사항</h1>
+
+<p>파이토치 허브에 있는 대부분의 다른 모델들과 다르게, BERT는 별도의 파이썬 패키지들을 설치해야 합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>tqdm boto3 requests regex sentencepiece sacremoses
+</code></pre></div></div>
+
+<h1 id="사용-방법">사용 방법</h1>
+
+<p>사용 가능한 메소드는 다음과 같습니다:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">config</code>: 지정한 모델 또는 경로에 해당하는 설정값(configuration)을 반환합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">tokenizer</code>: 지정한 모델 또는 경로에 해당하는 토크나이저(tokenizer)를 반환합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">model</code>: 지정한 모델 또는 경로에 해당하는 모델을 반환합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">modelForCausalLM</code>: 지정한 모델 또는 경로에 해당하는, 언어 모델링 헤드(language modeling head)가 추가된 모델을 반환합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">modelForSequenceClassification</code>: 지정한 모델 또는 경로에 해당하는, 시퀀스 분류기(sequence classifier)가 추가된 모델을 반환합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">modelForQuestionAnswering</code>: 지정한 모델 또는 경로에 해당하는, 질의 응답 헤드(question answering head)가 추가된 모델을 반환합니다.</li>
+</ul>
+
+<p>여기의 모든 메소드들은 다음 인자를 공유합니다: <code class="language-plaintext highlighter-rouge">pretrained_model_or_path</code> 는 반환할 인스턴스에 대한 사전 학습된 모델 또는 경로를 나타내는 문자열입니다. 각 모델에 대해 사용할 수 있는 다양한 체크포인트(checkpoint)가 있고, 자세한 내용은 아래에서 확인하실 수 있습니다:</p>
+
+<p>사용 가능한 모델은 <a href="https://huggingface.co/pytorch-transformers/pretrained_models.html">pytorch-transformers 문서의 pre-trained models 섹션</a>에 나열되어 있습니다.</p>
+
+<h1 id="문서">문서</h1>
+
+<p>다음은 각 사용 가능한 메소드들의 사용법을 자세히 설명하는 몇 가지 예시입니다.</p>
+
+<h2 id="토크나이저">토크나이저</h2>
+
+<p>토크나이저 객체로 문자열을 모델에서 사용할 수 있는 토큰으로 변환할 수 있습니다. 각 모델마다 고유한 토크나이저가 있고, 일부 토큰화 메소드는 토크나이저에 따라 다릅니다. 전체 문서는 <a href="https://huggingface.co/pytorch-transformers/main_classes/tokenizer.html">여기</a>에서 확인해보실 수 있습니다.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>    <span class="c1"># S3 및 캐시에서 어휘(vocabulary)를 다운로드합니다.
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'./test/bert_saved_model/'</span><span class="p">)</span>  <span class="c1"># `save_pretrained('./test/saved_model/')`를 통해 토크나이저를 저장한 경우에 로딩하는 예시입니다.
+</span></code></pre></div></div>
+
+<h2 id="모델">모델</h2>
+
+<p>모델 객체는 <code class="language-plaintext highlighter-rouge">nn.Module</code> 를 상속하는 모델의 인스턴스입니다. 각 모델은 로컬 파일 혹은 디렉터리나 사전 학습할 때 사용된 설정값(앞서 설명한 <code class="language-plaintext highlighter-rouge">config</code>)으로부터 저장/로딩하는 방법이 함께 제공됩니다. 각 모델은 다르게 동작하며, 여러 다른 모델들의 전체 개요는 <a href="https://huggingface.co/pytorch-transformers/pretrained_models.html">여기</a>에서 확인해보실 수 있습니다.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>    <span class="c1"># S3와 캐시로부터 모델과 설정값을 다운로드합니다.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'./test/bert_model/'</span><span class="p">)</span>  <span class="c1"># `save_pretrained('./test/saved_model/')`를 통해 모델을 저장한 경우에 로딩하는 예시입니다.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attentions</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 설정값을 업데이트하여 로딩합니다.
+</span><span class="k">assert</span> <span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">output_attentions</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="c1"># 파이토치 모델 대신 텐서플로우 체크포인트 파일로부터 로딩합니다. (느림)
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">.</span><span class="n">from_json_file</span><span class="p">(</span><span class="s">'./tf_model/bert_tf_model_config.json'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'./tf_model/bert_tf_checkpoint.ckpt.index'</span><span class="p">,</span> <span class="n">from_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="언어-모델링-헤드가-추가된-모델">언어 모델링 헤드가 추가된 모델</h2>
+
+<p>앞서 언급한, 언어 모델링 헤드가 추가된 <code class="language-plaintext highlighter-rouge">model</code> 인스턴스입니다.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/transformers'</span><span class="p">,</span> <span class="s">'modelForCausalLM'</span><span class="p">,</span> <span class="s">'gpt2'</span><span class="p">)</span>    <span class="c1"># huggingface.co와 캐시로부터 모델과 설정값을 다운로드합니다.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/transformers'</span><span class="p">,</span> <span class="s">'modelForCausalLM'</span><span class="p">,</span> <span class="s">'./test/saved_model/'</span><span class="p">)</span>  <span class="c1"># `save_pretrained('./test/saved_model/')`를 통해 모델을 저장한 경우에 로딩하는 예시입니다.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/transformers'</span><span class="p">,</span> <span class="s">'modelForCausalLM'</span><span class="p">,</span> <span class="s">'gpt2'</span><span class="p">,</span> <span class="n">output_attentions</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 설정값을 업데이트하여 로딩합니다.
+</span><span class="k">assert</span> <span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">output_attentions</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="c1"># 파이토치 모델 대신 텐서플로우 체크포인트 파일로부터 로딩합니다. (느림)
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s">'./tf_model/gpt_tf_model_config.json'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/transformers'</span><span class="p">,</span> <span class="s">'modelForCausalLM'</span><span class="p">,</span> <span class="s">'./tf_model/gpt_tf_checkpoint.ckpt.index'</span><span class="p">,</span> <span class="n">from_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="시퀀스-분류기가-추가된-모델">시퀀스 분류기가 추가된 모델</h2>
+
+<p>앞서 언급한, 시퀀스 분류기가 추가된 <code class="language-plaintext highlighter-rouge">model</code> 인스턴스입니다.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>    <span class="c1"># S3와 캐시로부터 모델과 설정값을 다운로드합니다.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'./test/bert_model/'</span><span class="p">)</span>  <span class="c1"># `save_pretrained('./test/saved_model/')`를 통해 모델을 저장한 경우에 로딩하는 예시입니다.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 설정값을 업데이트하여 로딩합니다.
+</span><span class="k">assert</span> <span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="c1"># 파이토치 모델 대신 텐서플로우 체크포인트 파일로부터 로딩합니다. (느림)
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">.</span><span class="n">from_json_file</span><span class="p">(</span><span class="s">'./tf_model/bert_tf_model_config.json'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'./tf_model/bert_tf_checkpoint.ckpt.index'</span><span class="p">,</span> <span class="n">from_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="질의-응답-헤드가-추가된-모델">질의 응답 헤드가 추가된 모델</h2>
+
+<p>앞서 언급한, 질의 응답 헤드가 추가된 <code class="language-plaintext highlighter-rouge">model</code> 인스턴스입니다.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>    <span class="c1"># S3와 캐시로부터 모델과 설정값을 다운로드합니다.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'./test/bert_model/'</span><span class="p">)</span>  <span class="c1"># `save_pretrained('./test/saved_model/')`를 통해 모델을 저장한 경우에 로딩하는 예시입니다.
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  <span class="c1"># 설정값을 업데이트하여 로딩합니다.
+</span><span class="k">assert</span> <span class="n">model</span><span class="p">.</span><span class="n">config</span><span class="p">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="c1"># 파이토치 모델 대신 텐서플로우 체크포인트 파일로부터 로딩합니다. (느림)
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">AutoConfig</span><span class="p">.</span><span class="n">from_json_file</span><span class="p">(</span><span class="s">'./tf_model/bert_tf_model_config.json'</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'./tf_model/bert_tf_checkpoint.ckpt.index'</span><span class="p">,</span> <span class="n">from_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="설정값">설정값</h2>
+
+<p>설정값은 선택 사항입니다. 설정값 객체는 모델에 관한 정보, 예를 들어 헤드나 레이어의 개수, 모델이 어텐션(attentions) 또는 은닉 상태(hidden states)를 출력해야 하는지, 또는 모델이 TorchScript에 맞게 조정되어야 하는지 여부에 대한 정보를 가지고 있습니다. 각 모델에 따라 다양한 매개변수를 사용할 수 있습니다. 전체 문서는 <a href="https://huggingface.co/pytorch-transformers/main_classes/configuration.html">여기</a>에서 확인해보실 수 있습니다.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>  <span class="c1"># S3와 캐시로부터 모델과 설정값을 다운로드합니다.
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'./test/bert_saved_model/'</span><span class="p">)</span>  <span class="c1"># `save_pretrained('./test/saved_model/')`를 통해 모델을 저장한 경우에 로딩하는 예시입니다.
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'./test/bert_saved_model/my_configuration.json'</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">config</span><span class="p">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="n">config</span><span class="p">,</span> <span class="n">unused_kwargs</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">output_attention</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">foo</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">return_unused_kwargs</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">config</span><span class="p">.</span><span class="n">output_attention</span> <span class="o">==</span> <span class="bp">True</span>
+<span class="k">assert</span> <span class="n">unused_kwargs</span> <span class="o">==</span> <span class="p">{</span><span class="s">'foo'</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+
+<span class="c1"># 설정값을 사용하여 모델을 로딩합니다.
+</span><span class="n">config</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'config'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">)</span>
+<span class="n">config</span><span class="p">.</span><span class="n">output_attentions</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">config</span><span class="p">.</span><span class="n">output_hidden_states</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'bert-base-uncased'</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+<span class="c1"># 모델은 이제 어텐션과 은닉 상태도 출력하도록 설정되었습니다.
+</span>
+</code></pre></div></div>
+
+<h1 id="사용-예시">사용 예시</h1>
+
+<p>다음은 입력 텍스트를 토큰화한 후 BERT 모델에 입력으로 넣어서 계산된 은닉 상태를 가져오거나, 언어 모델링 BERT 모델을 이용하여 마스킹된 토큰들을 예측하는 방법에 대한 예시입니다.</p>
+
+<h2 id="먼저-입력을-토큰화하기">먼저, 입력을 토큰화하기</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'bert-base-cased'</span><span class="p">)</span>
+
+<span class="n">text_1</span> <span class="o">=</span> <span class="s">"Who was Jim Henson ?"</span>
+<span class="n">text_2</span> <span class="o">=</span> <span class="s">"Jim Henson was a puppeteer"</span>
+
+<span class="c1"># 주위에 특수 토큰이 있는 입력을 토큰화합니다. (BERT에서는 처음과 끝에 각각 [CLS]와 [SEP] 토큰이 있습니다.)
+</span><span class="n">indexed_tokens</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text_1</span><span class="p">,</span> <span class="n">text_2</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="bertmodel을-사용하여-입력-문장을-마지막-레이어-은닉-상태의-시퀀스로-인코딩하기"><code class="language-plaintext highlighter-rouge">BertModel</code>을 사용하여, 입력 문장을 마지막 레이어 은닉 상태의 시퀀스로 인코딩하기</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 첫번째 문장 A와 두번째 문장 B의 인덱스를 정의합니다. (논문 참조)
+</span><span class="n">segments_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 입력값을 PyTorch tensor로 변환합니다.
+</span><span class="n">segments_tensors</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">segments_ids</span><span class="p">])</span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'model'</span><span class="p">,</span> <span class="s">'bert-base-cased'</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">encoded_layers</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="modelformaskedlm을-사용하여-bert로-마스킹된-토큰-예측하기"><code class="language-plaintext highlighter-rouge">modelForMaskedLM</code>을 사용하여, BERT로 마스킹된 토큰 예측하기</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># `BertForMaskedLM`를 통해 예측할 토큰을 마스킹(마스크 토큰으로 변환)합니다.
+</span><span class="n">masked_index</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">indexed_tokens</span><span class="p">[</span><span class="n">masked_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">mask_token_id</span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span>
+
+<span class="n">masked_lm_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForMaskedLM'</span><span class="p">,</span> <span class="s">'bert-base-cased'</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="n">masked_lm_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">)</span>
+
+<span class="c1"># 예측된 토큰을 가져옵니다.
+</span><span class="n">predicted_index</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="n">masked_index</span><span class="p">].</span><span class="n">item</span><span class="p">()</span>
+<span class="n">predicted_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="p">.</span><span class="n">convert_ids_to_tokens</span><span class="p">([</span><span class="n">predicted_index</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">predicted_token</span> <span class="o">==</span> <span class="s">'Jim'</span>
+</code></pre></div></div>
+
+<h2 id="modelforquestionanswering을-사용하여-bert로-질의-응답하기"><code class="language-plaintext highlighter-rouge">modelForQuestionAnswering</code>을 사용하여, BERT로 질의 응답하기</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">question_answering_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForQuestionAnswering'</span><span class="p">,</span> <span class="s">'bert-large-uncased-whole-word-masking-finetuned-squad'</span><span class="p">)</span>
+<span class="n">question_answering_tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'bert-large-uncased-whole-word-masking-finetuned-squad'</span><span class="p">)</span>
+
+<span class="c1"># 형식은 단락이 먼저 주어지고, 그 다음에 질문이 주어지는 형식입니다.
+</span><span class="n">text_1</span> <span class="o">=</span> <span class="s">"Jim Henson was a puppeteer"</span>
+<span class="n">text_2</span> <span class="o">=</span> <span class="s">"Who was Jim Henson ?"</span>
+<span class="n">indexed_tokens</span> <span class="o">=</span> <span class="n">question_answering_tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text_1</span><span class="p">,</span> <span class="n">text_2</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">segments_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">segments_tensors</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">segments_ids</span><span class="p">])</span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span>
+
+<span class="c1"># 시작 및 종료 위치에 대한 로짓(logits)을 예측합니다.
+</span><span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">question_answering_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">)</span>
+
+<span class="c1"># 가장 높은 로짓을 가진 예측을 가져옵니다.
+</span><span class="n">answer</span> <span class="o">=</span> <span class="n">question_answering_tokenizer</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="n">indexed_tokens</span><span class="p">[</span><span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="n">start_logits</span><span class="p">):</span><span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="n">end_logits</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">answer</span> <span class="o">==</span> <span class="s">"puppeteer"</span>
+
+<span class="c1"># 또는 시작 및 종료 위치에 대한 교차 엔트로피 손실의 총합을 가져옵니다. (이 코드가 학습 시에 사용되는 경우 미리 모델을 학습 모드로 설정해야 합니다.)
+</span><span class="n">start_positions</span><span class="p">,</span> <span class="n">end_positions</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">12</span><span class="p">]),</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">14</span><span class="p">])</span>
+<span class="n">multiple_choice_loss</span> <span class="o">=</span> <span class="n">question_answering_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">,</span> <span class="n">start_positions</span><span class="o">=</span><span class="n">start_positions</span><span class="p">,</span> <span class="n">end_positions</span><span class="o">=</span><span class="n">end_positions</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="modelforsequenceclassification을-사용하여-bert로-패러프레이즈paraphrase-분류하기"><code class="language-plaintext highlighter-rouge">modelForSequenceClassification</code>을 사용하여, BERT로 패러프레이즈(paraphrase) 분류하기</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sequence_classification_model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'modelForSequenceClassification'</span><span class="p">,</span> <span class="s">'bert-base-cased-finetuned-mrpc'</span><span class="p">)</span>
+<span class="n">sequence_classification_tokenizer</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'huggingface/pytorch-transformers'</span><span class="p">,</span> <span class="s">'tokenizer'</span><span class="p">,</span> <span class="s">'bert-base-cased-finetuned-mrpc'</span><span class="p">)</span>
+
+<span class="n">text_1</span> <span class="o">=</span> <span class="s">"Jim Henson was a puppeteer"</span>
+<span class="n">text_2</span> <span class="o">=</span> <span class="s">"Who was Jim Henson ?"</span>
+<span class="n">indexed_tokens</span> <span class="o">=</span> <span class="n">sequence_classification_tokenizer</span><span class="p">.</span><span class="n">encode</span><span class="p">(</span><span class="n">text_1</span><span class="p">,</span> <span class="n">text_2</span><span class="p">,</span> <span class="n">add_special_tokens</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">segments_ids</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">segments_tensors</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">segments_ids</span><span class="p">])</span>
+<span class="n">tokens_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">indexed_tokens</span><span class="p">])</span>
+
+<span class="c1"># 시퀀스 분류를 위한 로짓을 예측합니다.
+</span><span class="k">with</span> <span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">seq_classif_logits</span> <span class="o">=</span> <span class="n">sequence_classification_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">)</span>
+
+<span class="n">predicted_labels</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">seq_classif_logits</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="n">item</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="n">predicted_labels</span> <span class="o">==</span> <span class="mi">0</span>  <span class="c1"># MRPC 데이터셋에서, 이는 두 문장이 서로 바꾸어 표현할 수 없다는 것을 뜻합니다.
+</span>
+<span class="c1"># 또는 시퀀스 분류에 대한 손실을 가져옵니다. (이 코드가 학습 시에 사용되는 경우 미리 모델을 학습 모드로 설정해야 합니다.)
+</span><span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">seq_classif_loss</span> <span class="o">=</span> <span class="n">sequence_classification_model</span><span class="p">(</span><span class="n">tokens_tensor</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="o">=</span><span class="n">segments_tensors</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+</code></pre></div></div>
+
+                <a href="https://github.com/PyTorchKorea/hub-kr/issues"><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/hub-detail.js"></script>

@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      파이토치 2를 사용한 가속화된 생성 디퓨전 모델 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="blog">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="main-background blog-background blog-detail-background"></div>
+
+    <div class="container-fluid header-holder blog-detail-header">
+        <div class="container">
+            
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
+        <div class="container blog-detail-container">
+            <p class="featured-post">April 14, 2023</p>
+            <h1><a class="blog-title">파이토치 2를 사용한 가속화된 생성 디퓨전 모델</a></h1>
+            
+                <h4 class="blog-subtitle">Accelerated Generative Diffusion Models with PyTorch 2</h4>
+            
+        </div>
+    </div>
+
+    <div class="main-content-wrapper blog-detail-wrapper">
+        <div class="main-content blog-detail-content">
+            <div class="container">
+                <img src="/assets/images/logo-icon.svg" class="img-fluid author-icon">
+                <article class="pytorch-article">
+                    <p class="author">
+                      
+                        
+                            작성: Grigory Sizov, Michael Gschwind, Hamid Shojanazeri, Driss Guessous, Daniel Haziza, Christian Puhrsch. <br />번역: PyTorch Korea User Group
+                        
+                      
+                    </p>
+                    
+                    <p class="translation-description">
+                        이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
+                        번역 글은 원문을 함께 표시합니다. 원문을 읽으시려면 <a href="https://pytorch.org/blog/accelerated-generative-diffusion-models/">여기</a>를 클릭하세요.
+                        (This article is a Korean translation of the original post on the <a href="https://pytorch.org/blog/">PyTorch official blog</a>.
+                        Below translation includes the original text. To read the original post, click <a href="https://pytorch.org/blog/accelerated-generative-diffusion-models/">here</a>.)
+                    </p>
+                    
+                    <div class="blog-content">
+                        <p><strong>요약</strong>: PyTorch 2.0 nightly 버전은 새로운 <code class="language-plaintext highlighter-rouge">torch.compile()</code> 컴파일러를 사용하여 생성적 디퓨전 모델의 성능을 즉시 개선하고 PyTorch 2와 통합된 멀티헤드 어텐션의 최적화된 구현을 제공합니다.</p>
+<blockquote>
+  <p><strong>TL;DR</strong>: PyTorch 2.0 nightly offers out-of-the-box performance improvement for Generative Diffusion models by using the new <code class="language-plaintext highlighter-rouge">torch.compile()</code> compiler and optimized implementations of Multihead Attention integrated with PyTorch 2.</p>
+</blockquote>
+
+<h2 id="소개--introduction">소개 / Introduction</h2>
+
+<p>최근 생성형 AI의 발전의 대부분은 텍스트 프롬프트에서 고품질 이미지와 동영상을 생성할 수 있는 노이즈 제거 디퓨전 모델에서 비롯되었습니다. 이 제품군에는 이미지, DALLE, 잠재 디퓨전 등이 포함됩니다. 그러나 이 제품군의 모든 모델은 공통적으로 이미지가 생성되는 샘플링 프로세스의 반복적인 특성으로 인해 생성 속도가 다소 느리다는 단점이 있습니다. 따라서 샘플링 루프 내부에서 실행되는 코드를 최적화하는 것이 중요합니다.</p>
+<blockquote>
+  <p>A large part of the recent progress in Generative AI came from denoising diffusion models, which allow producing high quality images and videos from text prompts. This family includes Imagen, DALLE, Latent Diffusion, and others. However, all models in this family share a common drawback: generation is rather slow, due to the iterative nature of the sampling process by which the images are produced. This makes it important to optimize the code running inside the sampling loop.</p>
+</blockquote>
+
+<p>저희는 널리 사용되는 텍스트-이미지 디퓨전 모델의 오픈 소스 구현을 출발점으로 삼아 PyTorch 2에서 제공되는 두 가지 최적화, 즉 컴파일과 빠른 어텐션 구현을 사용하여 생성 속도를 높였습니다. 이러한 최적화는 코드의 약간의 메모리 처리 개선과 함께 GPU 아키텍처와 배치 크기에 따라 xFormers를 사용하지 않은 원래 구현에 비해 추론 속도를 최대 49%, <a href="https://github.com/facebookresearch/xformers">xFormers</a>를 사용한 원래 코드(컴파일 시간 제외)에 비해 39%까지 향상시켰습니다. 중요한 점은 이러한 속도 향상은 xFormers나 다른 추가 종속 요소를 설치하지 않고도 얻을 수 있다는 것입니다.</p>
+<blockquote>
+  <p>We took an open source implementation of a popular text-to-image diffusion model as a starting point and accelerated its generation using two optimizations available in PyTorch 2: compilation and fast attention implementation. Together with a few minor memory processing improvements in the code these optimizations give up to 49% inference speedup relative to the original implementation without <a href="https://github.com/facebookresearch/xformers">xFormers</a>, and 39% inference speedup relative to using the original code with xFormers (excluding the compilation time), depending on the GPU architecture and batch size. Importantly, the speedup comes without a need to install xFormers or any other extra dependencies.</p>
+</blockquote>
+
+<p>아래 표는 xFormers를 설치한 원래 구현과 파이토치 통합 메모리 효율 어텐션(원래 <a href="https://github.com/facebookresearch/xformers">xFormers</a> 라이브러리용으로 개발되어 출시됨) 및 파이토치 컴파일이 포함된 최적화된 버전 간의 실행 시간 개선 효과를 보여줍니다. 컴파일 시간은 제외되었습니다.</p>
+<blockquote>
+  <p>The table below shows the improvement in runtime between the original implementation with xFormers installed and our optimized version with PyTorch-integrated memory efficient attention (originally developed for and released in the <a href="https://github.com/facebookresearch/xformers">xFormers</a> library) and PyTorch compilation. The compilation time is excluded.</p>
+</blockquote>
+
+<p><strong>실행 시간 개선율(%), 오리지널+xFormers 대비</strong> / <strong><em>Runtime improvement in <code class="language-plaintext highlighter-rouge">%</code> compared to original+xFormers</em></strong></p>
+
+<p>절대 수치는 “벤치마킹 설정 및 결과 요약” 섹션에서 확인하세요.</p>
+<blockquote>
+  <p>See the absolute runtime numbers in section “Benchmarking setup and results summary”</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>GPU</strong></th>
+      <th><strong>Batch size 1</strong></th>
+      <th><strong>Batch size 2</strong></th>
+      <th><strong>Batch size 4</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>P100 (no compilation)</strong></td>
+      <td>-3.8</td>
+      <td>0.44</td>
+      <td>5.47</td>
+    </tr>
+    <tr>
+      <td><strong>T4</strong></td>
+      <td>2.12</td>
+      <td>10.51</td>
+      <td>14.2</td>
+    </tr>
+    <tr>
+      <td><strong>A10</strong></td>
+      <td>-2.34</td>
+      <td>8.99</td>
+      <td>10.57</td>
+    </tr>
+    <tr>
+      <td><strong>V100</strong></td>
+      <td>18.63</td>
+      <td>6.39</td>
+      <td>10.43</td>
+    </tr>
+    <tr>
+      <td><strong>A100</strong></td>
+      <td>38.5</td>
+      <td>20.33</td>
+      <td>12.17</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>다음 사항을 확인할 수 있습니다:</p>
+<ul>
+  <li>A100 및 V100과 같은 강력한 GPU에 대한 개선이 두드러집니다. 이러한 GPU의 경우 배치 크기 1에서 개선이 가장 두드러집니다.</li>
+  <li>성능이 낮은 GPU의 경우 속도가 더 적게 향상되거나 두 경우 모두 약간 후퇴하는 것을 관찰할 수 있습니다. 배치 크기 추세가 역전되어 배치 크기가 클수록 개선 효과가 더 큽니다.
+    <blockquote>
+      <p>One can notice the following:</p>
+      <ul>
+        <li>The improvements are significant for powerful GPUs like A100 and V100. For those GPUs the improvement is most pronounced for batch size 1</li>
+        <li>For less powerful GPUs we observe smaller speedups (or in two cases slight regressions). The batch size trend is reversed here: improvement is larger for larger batches</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p>다음 섹션에서는 적용된 최적화에 대해 설명하고 다양한 최적화 기능을 켜고 껐을 때의 생성 시간을 비교하는 자세한 벤치마킹 데이터를 제공합니다.</p>
+<blockquote>
+  <p>In the following sections we describe the applied optimizations and provide detailed benchmarking data, comparing the generation time with various optimization features on/off.</p>
+</blockquote>
+
+<p>특히 5가지 구성을 벤치마킹하고 아래 도표는 다양한 GPU 및 배치 크기에 따른 절대 성능을 비교합니다. 이러한 구성에 대한 정의는 “벤치마킹 설정 및 결과” 섹션을 참조하세요.</p>
+<blockquote>
+  <p>Specifically, we benchmark 5 configurations and the plots below compare their absolute performance for different GPUs and batch sizes. For definitions of these configurations see section “Benchmarking setup and results”.</p>
+</blockquote>
+
+<p><img src="/assets/images/2023-04-11-accelerated-generative-diffusion-models1.png" alt="Benchmark of denoising diffusion text-to-image generation across GPU architectures, batch size 1" style="max-height:800px; width:100%" /></p>
+
+<p><img src="/assets/images/2023-04-11-accelerated-generative-diffusion-models2.png" alt="Benchmark of denoising diffusion text-to-image generation across GPU architectures, batch size 2" style="max-height:800px; width:100%" /></p>
+
+<p><img src="/assets/images/2023-04-11-accelerated-generative-diffusion-models3.png" alt="Benchmark of denoising diffusion text-to-image generation across GPU architectures, batch size 1" style="max-height:800px; width:100%" /></p>
+
+<h2 id="최적화--optimizations">최적화 / Optimizations</h2>
+
+<p>여기서는 모델 코드에 도입된 최적화에 대해 자세히 살펴보겠습니다. 이러한 최적화는 최근에 출시된 PyTorch 2.0의 기능에 의존합니다.</p>
+<blockquote>
+  <p>Here we’ll go into more detail about the optimizations introduced into the model code. These optimizations rely on features of PyTorch 2.0 which has been released recently.</p>
+</blockquote>
+
+<h3 id="최적화된-어텐션--optimized-attention">최적화된 어텐션 / Optimized Attention</h3>
+
+<p>코드에서 최적화한 부분 중 하나는 스케일링된 dot-product 어텐션입니다. 어텐션은 무거운 연산으로 알려져 있습니다. 나이브(naive)한 구현은 어텐션 행렬을 구체화하기 때문에 시퀀스 길이에 따라 시간과 메모리 복잡성이 이차적으로 증가합니다. 디퓨전 모델에서는 어텐션(<code class="language-plaintext highlighter-rouge">CrossAttention</code>)를 U-Net의 여러 부분에서 트랜스포머 블록의 일부로 사용하는 것이 일반적입니다. U-Net은 모든 샘플링 단계에서 실행되므로 이 부분이 최적화해야 할 중요한 지점이 됩니다. 커스텀 어텐션 구현 대신 파이토치 2에서는 최적화된 어텐션 구현이 통합되어 있는 <code class="language-plaintext highlighter-rouge">torch.nn.MultiheadAttention</code>을 사용할 수 있습니다. 이 최적화는 다음과 같은 의사 코드로 요약됩니다:</p>
+<blockquote>
+  <p>One part of the code which we optimized is the scaled dot-product attention. Attention is known to be a heavy operation: naive implementation materializes the attention matrix, leading to time and memory complexity quadratic in sequence length. It is common for diffusion models to use attention (<code class="language-plaintext highlighter-rouge">CrossAttention</code>) as part of Transformer blocks in multiple parts of the U-Net. Since the U-Net runs at every sampling step, this becomes a critical point to optimize. Instead of custom attention implementation one can use <code class="language-plaintext highlighter-rouge">torch.nn.MultiheadAttention,</code> which in PyTorch 2 has optimized attention implementation is integrated into it. This optimization schematically boils down to the following pseudocode:</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class CrossAttention(nn.Module):
+    def __init__(self, ...):
+        # 행렬을 생성합니다: Q, K, V, out_proj
+        # Create matrices: Q, K, V, out_proj
+        ...
+    def forward(self, x, context=None, mask=None):
+       # Compute out = SoftMax(Q*K/sqrt(d))V
+       # out_proj(out) 반환
+       # Return out_proj(out)
+       …
+</code></pre></div></div>
+
+<p>위 코드는 아래 코드로 대체됩니다</p>
+<blockquote>
+  <p>gets replaced with</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class CrossAttention(nn.Module):
+    def __init__(self, ...):
+        self.mha = nn.MultiheadAttention(...)
+    def forward(self, x, context):
+	return self.mha(x, context, context)
+</code></pre></div></div>
+
+<p>어텐션의 최적화된 구현은 이미 파이토치 1.13부터 사용할 수 있었고(<a href="https://pytorch.org/blog/a-better-transformer-for-fast-transformer-encoder-inference/">여기</a> 참조), 널리 채택되었습니다(예: <a href="https://medium.com/pytorch/bettertransformer-out-of-the-box-performance-for-huggingface-transformers-3fbe27d50ab2">HuggingFace Transformer 라이브러리 예제</a> 참조). 특히, <a href="https://github.com/facebookresearch/xformers">xFormers</a>의 메모리-효율적인(memory-efficient) 어텐션과 https://arxiv.org/abs/2205.14135 의 플래시(flash) 어텐션이 통합되어 있습니다. PyTorch 2.0은 이를 크로스 어텐션과 커스텀 커널과 같은 추가 어텐션 기능으로 확장하여 디퓨전 모델에 적용할 수 있도록 가속을 강화했습니다.</p>
+<blockquote>
+  <p>The optimized implementation of attention was available already in PyTorch 1.13 (see <a href="https://pytorch.org/blog/a-better-transformer-for-fast-transformer-encoder-inference/">here</a>) and widely adopted (see e.g. <a href="https://medium.com/pytorch/bettertransformer-out-of-the-box-performance-for-huggingface-transformers-3fbe27d50ab2">HuggingFace transformers library example</a>). In particular, it integrates memory-efficient attention from the <a href="https://github.com/facebookresearch/xformers">xFormers</a> library and flash attention from https://arxiv.org/abs/2205.14135. PyTorch 2.0 expands this to additional attention functions such as cross attention and custom kernels for further acceleration, making it applicable to diffusion models.</p>
+</blockquote>
+
+<p>플래시 어텐션은 컴퓨팅 성능이 SM 7.5 또는 SM 8.x인 GPU(예: 벤치마크에 포함된 T4, A10 및 A100)에서 사용할 수 있습니다(각 NVIDIA GPU의 컴퓨팅 성능은 <a href="https://developer.nvidia.com/cuda-gpus#compute">여기</a>에서 확인할 수 있습니다). 그러나 A100에 대한 테스트에서는 어텐션 헤드 수가 적고 배치 크기가 작기 때문에 특정 디퓨전 모델의 경우 메모리 효율적인 어텐션가 플래시 어텐션보다 더 나은 성능을 보였습니다. PyTorch는 이를 이해하고 있으며, 이 경우 두 가지 모두 사용 가능한 경우 플래시 어텐션보다 메모리 효율적인 어텐션을 선택합니다(<a href="https://github.com/pytorch/pytorch/blob/d8e795ecd53670682bd3b2e5ff1f378402b147d5/aten/src/ATen/native/transformers/cuda/sdp_utils.h#L33-L71">여기의 로직</a> 참조). 메모리 효율적인 어텐션, 플래시 어텐션, “순수한 수학” 또는 향후 어텐션 백엔드에 대한 완전한 제어를 위해 파워 유저는 컨텍스트 관리자 <a href="https://pytorch.org/docs/master/backends.html#torch.backends.cuda.sdp_kernel">torch.backends.cuda.sdp_kernel</a>를 사용하여 수동으로 활성화 및 비활성화할 수 있습니다.</p>
+<blockquote>
+  <p>Flash attention is available on GPUs with compute capability SM 7.5 or SM 8.x - for example, on T4, A10, and A100, which are included in our benchmark (you can check compute capability of each NVIDIA GPU <a href="https://developer.nvidia.com/cuda-gpus#compute">here</a>). However, in our tests on A100 the memory efficient attention performed better than flash attention for the particular case of diffusion models, due to the small number of attention heads and small batch size. PyTorch understands this and in this case chooses memory efficient attention over flash attention when both are available (see the logic <a href="https://github.com/pytorch/pytorch/blob/d8e795ecd53670682bd3b2e5ff1f378402b147d5/aten/src/ATen/native/transformers/cuda/sdp_utils.h#L33-L71">here</a>). For full control over the attention backends (memory-efficient attention, flash attention, “vanilla math”, or any future ones), power users can enable and disable them manually with the help of the context manager <a href="https://pytorch.org/docs/master/backends.html#torch.backends.cuda.sdp_kernel">torch.backends.cuda.sdp_kernel</a>.</p>
+</blockquote>
+
+<h3 id="컴파일--compilation">컴파일 / Compilation</h3>
+
+<p>컴파일은 <a href="https://pytorch.org/get-started/pytorch-2.0/#user-experience">파이토치 2.0의 새로운 기능</a>으로, 매우 간단한 사용자 경험으로 속도를 크게 높일 수 있습니다. 기본 동작을 호출하려면 파이토치 모듈이나 함수를 <code class="language-plaintext highlighter-rouge">torch.compile</code>로 래핑하기만 하면 됩니다:</p>
+<blockquote>
+  <p>Compilation is a <a href="https://pytorch.org/get-started/pytorch-2.0/#user-experience">new feature of PyTorch 2.0</a>, enabling significant speedups with a very simple user experience. To invoke the default behavior, simply wrap a PyTorch module or a function into <code class="language-plaintext highlighter-rouge">torch.compile</code>:</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>model = torch.compile(model)
+</code></pre></div></div>
+
+<p>그러면 PyTorch 컴파일러는 파이썬 코드를 파이썬 오버헤드 없이 효율적으로 실행할 수 있는 명령어 집합으로 변환합니다. 컴파일은 코드가 처음 실행될 때 동적으로 이루어집니다. 기본 동작으로 PyTorch는 내부적으로 <a href="https://pytorch.org/docs/master/dynamo/index.html">TorchDynamo</a>를 사용하여 코드를 컴파일하고 <a href="https://dev-discuss.pytorch.org/t/torchinductor-a-pytorch-native-compiler-with-define-by-run-ir-and-symbolic-shapes/747">TorchInductor</a>를 사용하여 코드를 더욱 최적화합니다. 자세한 내용은 <a href="https://tutorials.pytorch.kr/intermediate/dynamo_tutorial.html">이 튜토리얼</a>을 참조하세요.</p>
+<blockquote>
+  <p>PyTorch compiler then turns Python code into a set of instructions which can be executed efficiently without Python overhead. The compilation happens dynamically the first time the code is executed. With the default behavior, under the hood PyTorch utilized <a href="https://pytorch.org/docs/master/dynamo/index.html">TorchDynamo</a> to compile the code and <a href="https://dev-discuss.pytorch.org/t/torchinductor-a-pytorch-native-compiler-with-define-by-run-ir-and-symbolic-shapes/747">TorchInductor</a> to further optimize it. See <a href="https://pytorch.org/tutorials/intermediate/dynamo_tutorial.html">this tutorial</a> for more details.</p>
+</blockquote>
+
+<p>위의 한 줄짜리 컴파일도 충분하지만, 코드의 특정 부분을 수정하면 속도를 더 빠르게 할 수 있습니다. 특히 코드에서 파이토치가 컴파일할 수 없는 부분, 즉 소위 그래프 중단(graph break)을 피해야 합니다. 이전 PyTorch 컴파일 접근 방식(예: TorchScript)과는 달리, PyTorch 2 컴파일러는 이 경우 중단되지 않습니다. 대신 코드가 실행되기는 하지만 성능이 저하됩니다. 그래프 중단을 없애기 위해 모델 코드에 몇 가지 사소한 변경 사항을 도입했습니다. 여기에는 컴파일러에서 지원되지 않는 라이브러리(예: <code class="language-plaintext highlighter-rouge">inspect.isfunction</code> 및 <code class="language-plaintext highlighter-rouge">einops.rearrange</code>)에서 함수를 제거하는 작업이 포함되었습니다. 그래프 나누기와 그래프 나누기를 제거하는 방법에 대해 자세히 알아보려면 <a href="https://pytorch.org/docs/master/dynamo/faq.html#identifying-the-cause-of-a-graph-break">이 문서</a>를 참조하세요.</p>
+<blockquote>
+  <p>Although the one-liner above is enough for compilation, certain modifications in the code can squeeze a larger speedup. In particular, one should avoid so-called graph breaks - places in the code which PyTorch can’t compile. As opposed to previous PyTorch compilation approaches (like TorchScript), PyTorch 2 compiler doesn’t break in this case. Instead it falls back on eager execution - so the code runs, but with reduced performance. We introduced a few minor changes to the model code to get rid of graph breaks. This included eliminating functions from libraries not supported by the compiler, such as <code class="language-plaintext highlighter-rouge">inspect.isfunction</code> and <code class="language-plaintext highlighter-rouge">einops.rearrange</code>. See this <a href="https://pytorch.org/docs/master/dynamo/faq.html#identifying-the-cause-of-a-graph-break">doc</a> to learn more about graph breaks and how to eliminate them.</p>
+</blockquote>
+
+<p>이론적으로는 전체 디퓨전 샘플링 루프에 <code class="language-plaintext highlighter-rouge">torch.compile</code>을 적용할 수 있습니다. 그러나 실제로는 U-Net만을 컴파일하는 것으로도 충분합니다. 그 이유는 <code class="language-plaintext highlighter-rouge">torch.compile</code>에는 아직 루프 분석기가 없기 때문에 샘플링 루프의 각 반복에 대해 코드를 다시 컴파일해야 하기 때문입니다. 또한 컴파일된 샘플러 코드는 그래프가 끊어질 수 있으므로 컴파일된 버전에서 좋은 성능을 얻으려면 이를 조정해야 합니다.</p>
+<blockquote>
+  <p>Theoretically, one can apply <code class="language-plaintext highlighter-rouge">torch.compile </code>on the whole diffusion sampling loop. However, in practice it is enough to just compile the U-Net. The reason is that <code class="language-plaintext highlighter-rouge">torch.compile</code> doesn’t yet have a loop analyzer and would recompile the code for each iteration of the sampling loop. Moreover, compiled sampler code is likely to generate graph breaks - so one would need to adjust it if one wants to get a good performance from the compiled version.</p>
+</blockquote>
+
+<p>컴파일을 non-eager 모드에서 실행하려면 <a href="https://github.com/openai/triton/blob/b5d32896b1f89fc44a82f8df3bb010934c53f4f5/README.md?plain=1#L66-L68">GPU 컴퓨팅 성능이 SM 7.0 이상이어야</a> 합니다. 이는 P100을 제외한 벤치마크의 모든 GPU(T4, V100, A10, A100)에 적용됩니다(<a href="https://developer.nvidia.com/cuda-gpus#compute">전체 목록</a> 참조).</p>
+<blockquote>
+  <p>Note that compilation <a href="https://github.com/openai/triton/blob/b5d32896b1f89fc44a82f8df3bb010934c53f4f5/README.md?plain=1#L66-L68">requires GPU compute capability &gt;= SM 7.0</a> to run in non-eager mode. This covers all GPUs in our benchmarks - T4, V100, A10, A100 - except for P100 (see the <a href="https://developer.nvidia.com/cuda-gpus#compute">full list</a>).</p>
+</blockquote>
+
+<h3 id="기타-최적화--other-optimizations">기타 최적화 / Other optimizations</h3>
+
+<p>또한 CPU에서 텐서를 생성한 후 나중에 GPU로 이동하는 대신 GPU에서 직접 텐서를 생성하는 등 몇 가지 일반적인 함정을 제거하여 GPU 메모리 작업의 효율성을 개선했습니다. 이러한 최적화가 필요한 부분은 라인 프로파일링과 CPU/GPU 트레이스 및 <a href="https://github.com/brendangregg/FlameGraph">플레임 그래프(Flame Graph)</a>를 살펴봄으로써 결정했습니다.</p>
+<blockquote>
+  <p>In addition, we have improved efficiency of GPU memory operations by eliminating some common pitfalls, e.g. creating a tensor on GPU directly rather than creating it on CPU and later moving to GPU. The places where such optimizations were necessary were determined by line-profiling and looking at CPU/GPU traces and <a href="https://github.com/brendangregg/FlameGraph">Flame Graphs</a>.</p>
+</blockquote>
+
+<h2 id="벤치마킹-설정-및-결과-요약--benchmarking-setup-and-results-summary">벤치마킹 설정 및 결과 요약 / Benchmarking setup and results summary</h2>
+
+<p>이제 <em>원본(original)</em>과 <em>최적화된(optimized)</em> 코드 2가지 버전을 비교해보겠습니다. 이 외에도 여러 최적화 기능(xFormers, PyTorch memory efficient attention, compilation)을 켜고 끌 수 있습니다. 전반적으로 소개에서 언급했듯이 5가지 구성을 벤치마킹할 것입니다:</p>
+<blockquote>
+  <p>We have two versions of code to compare: <em>original</em> and <em>optimized</em>. On top of this, several optimization features (xFormers, PyTorch memory efficient attention, compilation) can be turned on/off. Overall, as mentioned in the introduction, we will be benchmarking 5 configurations:</p>
+</blockquote>
+
+<ul>
+  <li><em>Original code without xFormers</em></li>
+  <li><em>Original code with xFormers</em></li>
+  <li><em>Optimized code with vanilla math attention backend and no compilation</em></li>
+  <li><em>Optimized code with memory-efficient attention backend and no compilation</em></li>
+  <li><em>Optimized code with memory-efficient attention backend and compilation</em></li>
+</ul>
+
+<p><em>원본 버전(original version)</em>은 PyTorch 1.12와 사용자 정의 어텐션 구현을 사용하는 코드 버전을 사용했습니다. <em>최적화된 버전(optimized version)</em>은 <code class="language-plaintext highlighter-rouge">CrossAttention</code>의 <code class="language-plaintext highlighter-rouge">nn.MultiheadAttention</code>과 PyTorch 2.0.0.dev20230111+cu117 을 사용합니다. 또한 PyTorch 관련 코드에서 몇 가지 다른 사소한 최적화가 이루어졌습니다.</p>
+<blockquote>
+  <p>As the <em>original version</em> we took the version of the code which uses PyTorch 1.12 and a custom implementation of attention. The <em>optimized version</em> uses <code class="language-plaintext highlighter-rouge">nn.MultiheadAttention</code> in <code class="language-plaintext highlighter-rouge">CrossAttention</code> and PyTorch 2.0.0.dev20230111+cu117. It also has a few other minor optimizations in PyTorch-related code.</p>
+</blockquote>
+
+<p>아래 표는 각 버전의 코드 실행 시간(초)과 <strong>xFormers를 사용한 원본</strong>과 비교한 개선 비율을 보여줍니다. 컴파일 시간은 제외하였습니다.</p>
+<blockquote>
+  <p>The table below shows runtime of each version of the code in seconds, and the percentage improvement compared to the <strong>original with xFormers</strong>. The compilation time is excluded.</p>
+</blockquote>
+
+<p><strong>Runtimes for batch size 1. In parenthesis - relative improvement with respect to the “Original with xFormers” row</strong></p>
+
+<p><strong>배치 크기 1일 때 실행 시간 / Runtimes for batch size 1. 괄호 안은 “xFormers를 사용한 원본” 행에 대한 상대적 개선도</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Configuration</strong></th>
+      <th><strong>P100</strong></th>
+      <th><strong>T4</strong></th>
+      <th><strong>A10</strong></th>
+      <th><strong>V100</strong></th>
+      <th><strong>A100</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Original without xFormers</strong></td>
+      <td>30.4s (-19.3%)</td>
+      <td>29.8s (-77.3%)</td>
+      <td>13.0s (-83.9%)</td>
+      <td>10.9s (-33.1%)</td>
+      <td>8.0s (-19.3%)</td>
+    </tr>
+    <tr>
+      <td><strong>Original with xFormers</strong></td>
+      <td><strong>25.5s</strong> (0.0%)</td>
+      <td>16.8s (0.0%)</td>
+      <td><strong>7.1s</strong> (0.0%)</td>
+      <td>8.2s (0.0%)</td>
+      <td>6.7s (0.0%)</td>
+    </tr>
+    <tr>
+      <td><strong>Optimized with vanilla math attention, no compilation</strong></td>
+      <td>27.3s (-7.0%)</td>
+      <td>19.9s (-18.7%)</td>
+      <td>13.2s (-87.2%)</td>
+      <td>7.5s (8.7%)</td>
+      <td>5.7s (15.1%)</td>
+    </tr>
+    <tr>
+      <td><strong>Optimized with mem. efficient attention, no compilation</strong></td>
+      <td>26.5s (-3.8%)</td>
+      <td>16.8s (0.2%)</td>
+      <td><strong>7.1s</strong> (-0.8%)</td>
+      <td>6.9s (16.0%)</td>
+      <td>5.3s (20.6%)</td>
+    </tr>
+    <tr>
+      <td><strong>Optimized with mem. efficient attention and compilation</strong></td>
+      <td>-</td>
+      <td><strong>16.4s</strong> (2.1%)</td>
+      <td>7.2s (-2.3%)</td>
+      <td><strong>6.6s</strong> (18.6%)</td>
+      <td><strong>4.1s</strong> (38.5%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>배치 크기 2일 때 실행 시간 / Runtimes for batch size 2</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Configuration</strong></th>
+      <th><strong>P100</strong></th>
+      <th><strong>T4</strong></th>
+      <th><strong>A10</strong></th>
+      <th><strong>V100</strong></th>
+      <th><strong>A100</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Original without xFormers</strong></td>
+      <td>58.0s (-21.6%)</td>
+      <td>57.6s (-84.0%)</td>
+      <td>24.4s (-95.2%)</td>
+      <td>18.6s (-63.0%)</td>
+      <td>12.0s (-50.6%)</td>
+    </tr>
+    <tr>
+      <td><strong>Original with xFormers</strong></td>
+      <td>47.7s (0.0%)</td>
+      <td>31.3s (0.0%)</td>
+      <td>12.5s (0.0%)</td>
+      <td>11.4s (0.0%)</td>
+      <td>8.0s (0.0%)</td>
+    </tr>
+    <tr>
+      <td><strong>Optimized with vanilla math attention, no compilation</strong></td>
+      <td>49.3s (-3.5%)</td>
+      <td>37.9s (-21.0%)</td>
+      <td>17.8s (-42.2%)</td>
+      <td>12.7s (-10.7%)</td>
+      <td>7.8s (1.8%)</td>
+    </tr>
+    <tr>
+      <td><strong>Optimized with mem. efficient attention, no compilation</strong></td>
+      <td><strong>47.5s</strong> (0.4%)</td>
+      <td>31.2s (0.5%)</td>
+      <td>12.2s (2.6%)</td>
+      <td>11.5s (-0.7%)</td>
+      <td>7.0s (12.6%)</td>
+    </tr>
+    <tr>
+      <td><strong>Optimized with mem. efficient attention and compilation</strong></td>
+      <td>-</td>
+      <td><strong>28.0s</strong> (10.5%)</td>
+      <td><strong>11.4s</strong> (9.0%)</td>
+      <td><strong>10.7s</strong> (6.4%)</td>
+      <td><strong>6.4s</strong> (20.3%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>배치 크기 4일 때 실행 시간 / Runtimes for batch size 4</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Configuration</strong></th>
+      <th><strong>P100</strong></th>
+      <th><strong>T4</strong></th>
+      <th><strong>A10</strong></th>
+      <th><strong>V100</strong></th>
+      <th><strong>A100</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Original without xFormers</strong></td>
+      <td>117.9s (-20.0%)</td>
+      <td>112.4s (-81.8%)</td>
+      <td>47.2s (-101.7%)</td>
+      <td>35.8s (-71.9%)</td>
+      <td>22.8s (-78.9%)</td>
+    </tr>
+    <tr>
+      <td><strong>Original with xFormers</strong></td>
+      <td>98.3s (0.0%)</td>
+      <td>61.8s (0.0%)</td>
+      <td>23.4s (0.0%)</td>
+      <td>20.8s (0.0%)</td>
+      <td>12.7s (0.0%)</td>
+    </tr>
+    <tr>
+      <td><strong>Optimized with vanilla math attention, no compilation</strong></td>
+      <td>101.1s (-2.9%)</td>
+      <td>73.0s (-18.0%)</td>
+      <td>28.3s (-21.0%)</td>
+      <td>23.3s (-11.9%)</td>
+      <td>14.5s (-13.9%)</td>
+    </tr>
+    <tr>
+      <td><strong>Optimized with mem. efficient attention, no compilation</strong></td>
+      <td><strong>92.9s</strong> (5.5%)</td>
+      <td>61.1s (1.2%)</td>
+      <td>23.9s (-1.9%)</td>
+      <td>20.8s (-0.1%)</td>
+      <td>12.8s (-0.9%)</td>
+    </tr>
+    <tr>
+      <td><strong>Optimized with mem. efficient attention and compilation</strong></td>
+      <td>-</td>
+      <td><strong>53.1s</strong> (14.2%)</td>
+      <td><strong>20.9s</strong> (10.6%)</td>
+      <td><strong>18.6s</strong> (10.4%)</td>
+      <td><strong>11.2s</strong> (12.2%)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>벤치마킹한 코드의 성능에 대한 변동과 외부 영향을 최소화하기 위해 각 버전의 코드를 차례로 실행한 다음 이 순서를 10회 반복했습니다: A, B, C, D, E, A, B, … 따라서 일반적인 실행 결과는 아래 그림과 같이 나타납니다. 서로 다른 그래프 간의 절대적인 실행 시간 비교에 의존해서는 안 되지만, 벤치마킹 설정 덕분에 한 그래프 <strong>내부</strong>의 실행 시간 비교는 꽤 신뢰할 수 있습니다.</p>
+<blockquote>
+  <p>To minimize fluctuations and external influence on the performance of the benchmarked code, we ran each version of the code one after another, and then repeated this sequence 10 times: A, B, C, D, E, A, B, … So the results of a typical run would look like the one in the picture below.. Note that one shouldn’t rely on comparison of absolute run times between different graphs, but comparison of run times <strong>inside</strong> one graph is pretty reliable, thanks to our benchmarking setup.</p>
+</blockquote>
+
+<p><img src="/assets/images/2023-04-11-accelerated-generative-diffusion-models4.png" alt="노이즈 제거 디퓨전 모델 생성 벤치마크 / Denoising diffusion model generation benchmarks" style="max-height:700px" /></p>
+
+<p>텍스트-이미지(text-to-image) 생성 스크립트를 실행할 때마다 여러 개의 배치가 생성되며, 그 수는 CLI 매개변수인 <code class="language-plaintext highlighter-rouge">--n_iter</code>에 의해 조절됩니다. 벤치마크에서는 <code class="language-plaintext highlighter-rouge">n_iter = 2</code>를 사용했지만 실행 시간에 영향을 주지 않는 추가 “워밍업” 반복을 도입했습니다. 코드가 처음 실행될 때 컴파일이 이루어지기 때문에 첫 번째 반복이 이후의 모든 반복보다 훨씬 길기 때문에 컴파일이 포함된 실행에 이 기능이 필요했습니다. 비교를 공정하게 하기 위해 다른 모든 실행에도 이 추가 “워밍업” 반복을 도입했습니다.</p>
+<blockquote>
+  <p>Each run of text-to-image generation script produces several batches, the number of which is regulated by the CLI parameter <code class="language-plaintext highlighter-rouge">--n_iter</code>. In the benchmarks we used <code class="language-plaintext highlighter-rouge">n_iter = 2</code>, but introduced an additional “warm-up” iteration, which doesn’t contribute to the run time. This was necessary for the runs with compilation, because compilation happens the first time the code runs, and so the first iteration is much longer than all subsequent. To make comparison fair, we also introduced this additional “warm-up” iteration to all other runs.</p>
+</blockquote>
+
+<p>위 표의 숫자는 반복 횟수 2(‘워밍업 반복’ 추가), 프롬프트 ‘사진’, 시드 1, PLMS 샘플러 및 autocast가 켜진 상태입니다.</p>
+<blockquote>
+  <p>The numbers in the table above are for number of iterations 2 (plus a “warm-up one”), prompt ”A photo”, seed 1, PLMS sampler, and autocast turned on.</p>
+</blockquote>
+
+<p>벤치마크는 P100, V100, A100, A10 및 T4 GPU를 사용하여 수행되었습니다. T4 벤치마크는 Google Colab Pro에서 수행되었습니다. A10 벤치마크는 GPU 1개가 장착된 g5.4xlarge AWS 인스턴스에서 수행되었습니다.</p>
+<blockquote>
+  <p>Benchmarks were done using P100, V100, A100, A10 and T4 GPUs. The T4 benchmarks were done in Google Colab Pro. The A10 benchmarks were done on g5.4xlarge AWS instances with 1 GPU.</p>
+</blockquote>
+
+<h2 id="결론-및-다음-단계--conclusions-and-next-steps">결론 및 다음 단계 / Conclusions and next steps</h2>
+
+<p>파이토치 2의 새로운 기능인 컴파일러와 최적화된 어텐션 구현이 이전에는 외부 종속성(xFormers)을 설치해야 했던 것과 비슷하거나 그 이상의 성능 향상을 제공한다는 것을 보여주었습니다. 특히 파이토치는 메모리 효율이 뛰어난 xFormers의 어텐션 기능을 코드베이스에 통합함으로써 이를 달성했습니다. 최신 라이브러리인 xFormers는 많은 경우 사용자 정의 설치 프로세스와 긴 빌드가 필요하다는 점을 고려할 때 이는 사용자 경험을 크게 개선한 것입니다.</p>
+<blockquote>
+  <p>We have shown that new features of PyTorch 2 - compiler and optimized attention implementation - give performance improvements exceeding or comparable with what previously required installation of an external dependency (xFormers). PyTorch achieved this, in particular, by integrating memory efficient attention from xFormers into its codebase. This is a significant improvement for user experience, given that xFormers, being a state-of-the-art library, in many scenarios requires custom installation process and long builds.</p>
+</blockquote>
+
+<p>이 작업을 계속 진행할 수 있는 몇 가지 자연스러운 방향이 있습니다:</p>
+<blockquote>
+  <p>There are a few natural directions in which this work can be continued:</p>
+</blockquote>
+
+<ul>
+  <li>여기서 구현하고 설명한 최적화는 지금까지 텍스트-이미지(text-to-image) 추론에 대해서만 벤치마킹한 것입니다. 이러한 최적화가 학습 성능에 어떤 영향을 미치는지 보는 것은 흥미로울 것입니다. PyTorch 컴파일을 학습에 직접 적용할 수 있으며, PyTorch에 최적화된 어텐션 학습을 가능하게 하는 것은 로드맵에 있습니다.</li>
+  <li>우리는 의도적으로 원본 모델 코드의 변경을 최소화했습니다. 추가 프로파일링과 최적화를 통해 더 많은 개선이 이루어질 수 있습니다.</li>
+  <li>현재 컴파일은 샘플러 내부의 U-Net 모델에만 적용되고 있습니다. 샘플링 루프에서 직접 연산과 같이 U-Net 외부에서 많은 일이 일어나기 때문에 전체 샘플러를 컴파일하는 것이 유리할 수 있습니다. 그러나 이를 위해서는 모든 샘플링 단계에서 재컴파일을 피하기 위해 컴파일 프로세스에 대한 분석이 필요합니다.</li>
+  <li>현재 코드는 PLMS 샘플러 내에서만 컴파일을 적용하지만 다른 샘플러로 확장하는 것은 간단해야 합니다.</li>
+  <li>디퓨전 모델은 텍스트로부터의 이미지(text-to-image) 생성 외에도 이미지와 이미지간(image-to-image) 및 인페인팅(inpainting)과 같은 다른 작업에도 적용할 수 있습니다. PyTorch 2 최적화를 통해 성능이 어떻게 향상되는지 측정하는 것은 흥미로울 것입니다.
+    <blockquote>
+      <ul>
+        <li>The optimizations we implemented and described here are only benchmarked for text-to-image inference so far. It would be interesting to see how they affect training performance. PyTorch compilation can be directly applied to training; enabling training with PyTorch optimized attention is on the roadmap</li>
+        <li>We intentionally minimized changes to the original model code. Further profiling and optimization can probably bring more improvements</li>
+        <li>At the moment compilation is applied only to the U-Net model inside the sampler. Since there is a lot happening outside of U-Net (e.g. operations directly in the sampling loop), it would be beneficial to compile the whole sampler. However, this would require analysis of the compilation process to avoid recompilation at every sampling step</li>
+        <li>Current code only applies compilation within the PLMS sampler, but it should be trivial to extend it to other samplers</li>
+        <li>Besides text-to-image generation, diffusion models are also applied to other tasks - image-to-image and inpainting. It would be interesting to measure how their performance improves from PyTorch 2 optimizations</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p>설명한 방법을 사용하여 오픈 소스 디퓨전 모델의 성능을 향상시킬 수 있는지 확인하고 결과를 공유해주세요!</p>
+<blockquote>
+  <p>See if you can increase performance of open source diffusion models using the methods we described, and share the results!</p>
+</blockquote>
+
+<h2 id="리소스--resources">리소스 / Resources</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">torch.compile</code>에 대한 많은 정보가 있는 PyTorch 2.0 개요: https://pytorch.kr/get-started/pytorch-2.0</li>
+  <li><code class="language-plaintext highlighter-rouge">torch.compile</code>에 대한 튜토리얼: https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html</li>
+  <li>일반적인 컴파일 문제 해결: https://pytorch.org/docs/master/dynamo/troubleshooting.html</li>
+  <li>그래프 깨짐(graph break)에 대한 자세한 내용: https://pytorch.org/docs/master/dynamo/faq.html#identifying-the-cause-of-a-graph-break</li>
+  <li>가드(guard)에 대한 자세한 내용: https://pytorch.org/docs/master/dynamo/guards-overview.html</li>
+  <li>TorchDynamo에 대한 비디오 심층 분석: https://www.youtube.com/watch?v=egZB5Uxki0I</li>
+  <li>PyTorch 1.12의 최적화된 어텐션에 대한 튜토리얼: https://tutorials.pytorch.kr/beginner/bettertransformer_tutorial.html
+    <blockquote>
+      <ul>
+        <li>PyTorch 2.0 overview, which has a lot of information on <code class="language-plaintext highlighter-rouge">torch.compile:</code> https://pytorch.org/get-started/pytorch-2.0/</li>
+        <li>Tutorial on <code class="language-plaintext highlighter-rouge">torch.compile</code>: https://pytorch.org/tutorials/intermediate/torch_compile_tutorial.html</li>
+        <li>General compilation troubleshooting: https://pytorch.org/docs/master/dynamo/troubleshooting.html</li>
+        <li>Details on graph breaks: https://pytorch.org/docs/master/dynamo/faq.html#identifying-the-cause-of-a-graph-break</li>
+        <li>Details on guards: https://pytorch.org/docs/master/dynamo/guards-overview.html</li>
+        <li>Video deep dive on TorchDynamo https://www.youtube.com/watch?v=egZB5Uxki0I</li>
+        <li>Tutorial on optimized attention in PyTorch 1.12: https://pytorch.org/tutorials/beginner/bettertransformer_tutorial.html</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="감사의-말--acknowledgements">감사의 말 / Acknowledgements</h2>
+
+<p>본문에 대한 귀중한 조언과 초기 피드백을 제공해 주신 Geeta Chauhan, Natalia Gimelshein, Patrick Labatut, Bert Maher, Mark Saroufim, Michael Voznesensky, Francisco Massa에게 감사의 말을 전합니다.</p>
+<blockquote>
+  <p>We would like to thank Geeta Chauhan, Natalia Gimelshein, Patrick Labatut, Bert Maher, Mark Saroufim, Michael Voznesensky and Francisco Massa for their valuable advice and early feedback on the text.</p>
+</blockquote>
+
+<p>디퓨전 모델에서 PyTorch 네이티브 어텐션을 사용하는 작업을 시작한 Yudong Tao에게도 특별히 감사드립니다.</p>
+<blockquote>
+  <p>Special thanks to Yudong Tao initiating the work on using PyTorch native attention in diffusion models.</p>
+</blockquote>
+
+                    </div>
+                    <hr noshade />
+                    <p class="translation-description ad-discuss">
+                        이 주제와 관련하여  더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="https://discuss.pytorch.kr//t/1401">파이토치 한국어 커뮤니티에 참여</a>해주세요!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-comment">
+  <div class="container">
+      <div id="discourse-comments"></div>
+      <meta name="discourse-username" content="bot">
+  </div>
+</div>
+
+<script type="text/javascript">
+  DiscourseEmbed = {
+      discourseUrl: 'https://discuss.pytorch.kr/',
+      discourseEmbedUrl: 'https://pytorch.kr/blog/2023/accelerated-generative-diffusion-models/',
+      // className: 'CLASS_NAME',
+  };
+
+  (function() {
+      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+</body>
+</html>
