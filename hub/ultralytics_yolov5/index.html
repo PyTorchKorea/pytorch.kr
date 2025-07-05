@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      YOLOv5 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="hub hub-detail">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-detail-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <span class="detail-arrow">
+          
+            <a href="/hub/research-models"><</a>
+          
+        </span>
+        <h1>
+          YOLOv5
+        </h1>
+
+        <div class="row">
+          <div class="col-md-4">
+            <p class="detail-lead">By Ultralytics </p>
+          </div>
+
+          <div class="col-md-8">
+            <p class="detail-lead lead-summary">YOLOv5 in PyTorch > ONNX > CoreML > TFLite</p>
+            <div class="detail-button-container">
+              <a href="https://github.com/ultralytics/yolov5"><button class="btn btn-lg with-right-white-arrow detail-github-link">View on Github</button></a>
+              <a href="https://colab.research.google.com/github/pytorch/pytorch.github.io/blob/master/assets/hub/ultralytics_yolov5.ipynb"><button class="btn btn-lg with-right-white-arrow detail-colab-link">Open on Google Colab</button></a>
+              
+                
+                  <a href="https://huggingface.co/spaces/pytorch/YOLOv5"><button class="btn btn-lg with-right-white-arrow detail-web-demo-link">Open Model Demo</button></a>
+                
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src="/assets/images/ultralytics_yolov5_img1.jpg" data-image-name="ultralytics_yolov5_img1.jpg" class="featured-image img-fluid">
+              <img src="/assets/images/ultralytics_yolov5_img2.png" data-image-name="ultralytics_yolov5_img2.png" class="featured-image img-fluid">
+            </div>
+            <div class="col-md-8">
+              <article class="pytorch-article">
+                <h2 id="before-you-start">Before You Start</h2>
+
+<p>Start from a <strong>Python&gt;=3.8</strong> environment with <strong>PyTorch&gt;=1.7</strong> installed. To install PyTorch see <a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a>. To install YOLOv5 dependencies:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="nt">-qr</span> https://raw.githubusercontent.com/ultralytics/yolov5/master/requirements.txt  <span class="c"># install dependencies</span>
+</code></pre></div></div>
+
+<h2 id="model-description">Model Description</h2>
+
+<p><img width="800" alt="YOLOv5 Model Comparison" src="https://github.com/ultralytics/yolov5/releases/download/v1.0/model_comparison.png" />
+ </p>
+
+<p><a href="https://ultralytics.com/yolov5">YOLOv5</a> 🚀 is a family of compound-scaled object detection models trained on the COCO dataset, and includes simple functionality for Test Time Augmentation (TTA), model ensembling, hyperparameter evolution, and export to ONNX, CoreML and TFLite.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>size<br /><sup>(pixels)</sup></th>
+      <th>mAP<sup>val<br />0.5:0.95</sup></th>
+      <th>mAP<sup>test<br />0.5:0.95</sup></th>
+      <th>mAP<sup>val<br />0.5</sup></th>
+      <th>Speed<br /><sup>V100 (ms)</sup></th>
+      <th> </th>
+      <th>params<br /><sup>(M)</sup></th>
+      <th>FLOPS<br /><sup>640 (B)</sup></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/ultralytics/yolov5/releases">YOLOv5s6</a></td>
+      <td>1280</td>
+      <td>43.3</td>
+      <td>43.3</td>
+      <td>61.9</td>
+      <td><strong>4.3</strong></td>
+      <td> </td>
+      <td>12.7</td>
+      <td>17.4</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/ultralytics/yolov5/releases">YOLOv5m6</a></td>
+      <td>1280</td>
+      <td>50.5</td>
+      <td>50.5</td>
+      <td>68.7</td>
+      <td>8.4</td>
+      <td> </td>
+      <td>35.9</td>
+      <td>52.4</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/ultralytics/yolov5/releases">YOLOv5l6</a></td>
+      <td>1280</td>
+      <td>53.4</td>
+      <td>53.4</td>
+      <td>71.1</td>
+      <td>12.3</td>
+      <td> </td>
+      <td>77.2</td>
+      <td>117.7</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/ultralytics/yolov5/releases">YOLOv5x6</a></td>
+      <td>1280</td>
+      <td><strong>54.4</strong></td>
+      <td><strong>54.4</strong></td>
+      <td><strong>72.0</strong></td>
+      <td>22.4</td>
+      <td> </td>
+      <td>141.8</td>
+      <td>222.9</td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/ultralytics/yolov5/releases">YOLOv5x6</a> TTA</td>
+      <td>1280</td>
+      <td><strong>55.0</strong></td>
+      <td><strong>55.0</strong></td>
+      <td><strong>72.0</strong></td>
+      <td>70.8</td>
+      <td> </td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
+
+<details>
+  <summary>Table Notes (click to expand)</summary>
+
+  * AP<sup>test</sup> denotes COCO [test-dev2017](http://cocodataset.org/#upload) server results, all other AP results denote val2017 accuracy.
+  * AP values are for single-model single-scale unless otherwise noted. **Reproduce mAP** by `python test.py --data coco.yaml --img 640 --conf 0.001 --iou 0.65`
+  * Speed<sub>GPU</sub> averaged over 5000 COCO val2017 images using a GCP [n1-standard-16](https://cloud.google.com/compute/docs/machine-types#n1_standard_machine_types) V100 instance, and includes FP16 inference, postprocessing and NMS. **Reproduce speed** by `python test.py --data coco.yaml --img 640 --conf 0.25 --iou 0.45`
+  * All checkpoints are trained to 300 epochs with default settings and hyperparameters (no autoaugmentation).
+  * Test Time Augmentation ([TTA](https://github.com/ultralytics/yolov5/issues/303)) includes reflection and scale augmentation. **Reproduce TTA** by `python test.py --data coco.yaml --img 1536 --iou 0.7 --augment`
+
+</details>
+
+<p align="left"><img width="800" src="https://github.com/ultralytics/yolov5/releases/download/v1.0/model_plot.png" /></p>
+
+<details>
+  <summary>Figure Notes (click to expand)</summary>
+
+  * GPU Speed measures end-to-end time per image averaged over 5000 COCO val2017 images using a V100 GPU with batch size 32, and includes image preprocessing, PyTorch FP16 inference, postprocessing and NMS.
+  * EfficientDet data from [google/automl](https://github.com/google/automl) at batch size 8.
+  * **Reproduce** by `python test.py --task study --data coco.yaml --iou 0.7 --weights yolov5s6.pt yolov5m6.pt yolov5l6.pt yolov5x6.pt`
+
+</details>
+
+<h2 id="load-from-pytorch-hub">Load From PyTorch Hub</h2>
+
+<p>This example loads a pretrained <strong>YOLOv5s</strong> model and passes an image for inference. YOLOv5 accepts <strong>URL</strong>, <strong>Filename</strong>, <strong>PIL</strong>, <strong>OpenCV</strong>, <strong>Numpy</strong> and <strong>PyTorch</strong> inputs, and returns detections in <strong>torch</strong>, <strong>pandas</strong>, and <strong>JSON</strong> output formats. See our <a href="https://github.com/ultralytics/yolov5/issues/36">YOLOv5 PyTorch Hub Tutorial</a> for details.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># Model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">hub</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'ultralytics/yolov5'</span><span class="p">,</span> <span class="s">'yolov5s'</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Images
+</span><span class="n">imgs</span> <span class="o">=</span> <span class="p">[</span><span class="s">'https://ultralytics.com/images/zidane.jpg'</span><span class="p">]</span>  <span class="c1"># batch of images
+</span>
+<span class="c1"># Inference
+</span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">imgs</span><span class="p">)</span>
+
+<span class="c1"># Results
+</span><span class="n">results</span><span class="p">.</span><span class="k">print</span><span class="p">()</span>
+<span class="n">results</span><span class="p">.</span><span class="n">save</span><span class="p">()</span>  <span class="c1"># or .show()
+</span>
+<span class="n">results</span><span class="p">.</span><span class="n">xyxy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># img1 predictions (tensor)
+</span><span class="n">results</span><span class="p">.</span><span class="n">pandas</span><span class="p">().</span><span class="n">xyxy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># img1 predictions (pandas)
+#      xmin    ymin    xmax   ymax  confidence  class    name
+# 0  749.50   43.50  1148.0  704.5    0.874023      0  person
+# 1  433.50  433.50   517.5  714.5    0.687988     27     tie
+# 2  114.75  195.75  1095.0  708.0    0.624512      0  person
+# 3  986.00  304.00  1028.0  420.0    0.286865     27     tie
+</span></code></pre></div></div>
+
+<h2 id="citation">Citation</h2>
+
+<p><a href="https://zenodo.org/badge/latestdoi/264818686"><img src="https://zenodo.org/badge/264818686.svg" alt="DOI" /></a></p>
+
+<h2 id="contact">Contact</h2>
+
+<p><strong>Issues should be raised directly in https://github.com/ultralytics/yolov5.</strong> For business inquiries or professional support requests please visit <a href="https://ultralytics.com">https://ultralytics.com</a> or email Glenn Jocher at <a href="mailto:glenn.jocher@ultralytics.com">glenn.jocher@ultralytics.com</a>.</p>
+
+<p> </p>
+
+                <a href="https://github.com/PyTorchKorea/hub-kr/issues"><button class="btn btn-lg hub-feedback-button hub-flag">Not Working?</button></a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="/assets/hub-detail.js"></script>

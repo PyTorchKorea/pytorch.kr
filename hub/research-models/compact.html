@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      For Researchers | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+  <body class="hub hub-index">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="container-fluid header-holder hub-header">
+  <div class="container">
+    
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+  </div>
+</div>
+
+
+    <div class="main-background hub-background hub-index-background"></div>
+
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1>
+          <span id="hub-header">PyTorch</span> <span id="hub-sub-header"></span>Hub</span> <br>
+          For Researchers
+        </h1>
+
+        <p class="lead">Explore and extend models from the latest cutting edge research.</p>
+      </div>
+    </div>
+
+    <div class="main-content-wrapper">
+      <div class="main-content">
+        <div class="container">
+          <!-- START CONTENT -->
+          <div class="row" id="model-row">
+            <div class="col-md-12 hub-column">
+              <nav class="navbar navbar-expand-lg navbar-light research-menu">
+  <div class="hub-tags-container">
+  <div id="dropdown-filter-tags">
+    
+
+    <div class="hub-filter-menu">
+      <div class="hub-filter filter-btn all-tag-selected" data-tag="all">All</div>
+      
+        <div class="hub-filter filter-btn filter" data-tag="audio">Audio</div>
+      
+        <div class="hub-filter filter-btn filter" data-tag="generative">Generative</div>
+      
+        <div class="hub-filter filter-btn filter" data-tag="nlp">Nlp</div>
+      
+        <div class="hub-filter filter-btn filter" data-tag="scriptable">Scriptable</div>
+      
+        <div class="hub-filter filter-btn filter" data-tag="vision">Vision</div>
+      
+    </div>
+  </div>
+</div>
+
+  <div id="hub-icons" class="hub-select-container col-5">
+
+    
+
+      <a class="full-hub-icon" href="/hub/research-models"><img src="/assets/images/full-hub-icon.svg"></a>
+<a class="compact-hub-icon" href="/hub/research-models/compact"><img src="/assets/images/compact-hub-icon-selected.svg"></a>
+
+
+    
+
+    <a id="dropdownSortLeft" data-toggle="dropdown" data-target="#dropdownSortMenuLeft" >
+  정렬 <img src="/assets/images/filter-arrow.svg">
+</a>
+
+<div class="dropdown-menu sort-menu" id="dropdownSortMenuLeft">
+  <div class="hub-filter-menu">
+    <ul>
+      <li>
+        <a class="hub-filter" id="sortLowLeft">GitHub Stars <br />:: 오름차순</a>
+      </li>
+
+      <li>
+        <a class="hub-filter" id="sortHighLeft">GitHub Stars <br />:: 내림차순</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+  </div>
+
+  <!-- <div class="hub-search-wrapper" key="search">
+  <div class="hub-search-border">
+    <div id="hub-search-icon"></div>
+    <div id="hub-close-search">X</div>
+    <input
+      id="hub-search-input"
+      type="text"
+      title="Search"
+    />
+  </div>
+</div> -->
+
+
+</nav>
+
+<hr id="pagination-scroll" class="hub-divider">
+
+
+
+  <div class="compact-hub-index-cards" id="hub-cards">
+  <div class="list compact-cards cards-left">
+  
+
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="1" data-tags="vision" data-id="datvuthanh/HybridNets">
+      <div class="compact-model-card">
+        <a href="/hub/datvuthanh_hybridnets/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">HybridNets</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">HybridNets - End2End Perception Network</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="2" data-tags="vision" data-id="facebookresearch/pytorchvideo">
+      <div class="compact-model-card">
+        <a href="/hub/facebookresearch_pytorchvideo_resnet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">3D ResNet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Resnet Style Video classification networks pretrained on the Kinetics 400 dataset</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="3" data-tags="vision" data-id="facebookresearch/pytorchvideo">
+      <div class="compact-model-card">
+        <a href="/hub/facebookresearch_pytorchvideo_slowfast/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">SlowFast</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">SlowFast networks pretrained on the Kinetics 400 dataset</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="4" data-tags="vision" data-id="facebookresearch/pytorchvideo">
+      <div class="compact-model-card">
+        <a href="/hub/facebookresearch_pytorchvideo_x3d/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">X3D</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">X3D networks pretrained on the Kinetics 400 dataset</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="5" data-tags="vision" data-id="hustvl/YOLOP">
+      <div class="compact-model-card">
+        <a href="/hub/hustvl_yolop/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">YOLOP</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">YOLOP pretrained on the BDD100K dataset</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="6" data-tags="vision" data-id="intel-isl/MiDaS">
+      <div class="compact-model-card">
+        <a href="/hub/intelisl_midas_v2/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">MiDaS</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">MiDaS models for computing relative depth from a single image.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="7" data-tags="vision" data-id="nicolalandro/ntsnet-cub200">
+      <div class="compact-model-card">
+        <a href="/hub/nicolalandro_ntsnet-cub200_ntsnet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">ntsnet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">classify birds using this fine-grained image classifier</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="8" data-tags="audio,scriptable" data-id="sigsep/open-unmix-pytorch">
+      <div class="compact-model-card">
+        <a href="/hub/sigsep_open-unmix-pytorch_umx/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Open-Unmix</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Reference implementation for music source separation</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="9" data-tags="audio,scriptable" data-id="snakers4/silero-models">
+      <div class="compact-model-card">
+        <a href="/hub/snakers4_silero-models_stt/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Silero Speech-To-Text Models</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">A set of compact enterprise-grade pre-trained STT Models for multiple languages.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="10" data-tags="audio,scriptable" data-id="snakers4/silero-models">
+      <div class="compact-model-card">
+        <a href="/hub/snakers4_silero-models_tts/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Silero Text-To-Speech Models</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">A set of compact enterprise-grade pre-trained TTS Models for multiple languages</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="11" data-tags="audio,scriptable" data-id="snakers4/silero-vad">
+      <div class="compact-model-card">
+        <a href="/hub/snakers4_silero-vad_language/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Silero Language Classifier</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Pre-trained Spoken Language Classifier</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="12" data-tags="audio,scriptable" data-id="snakers4/silero-vad">
+      <div class="compact-model-card">
+        <a href="/hub/snakers4_silero-vad_number/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Silero Number Detector</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Pre-trained Spoken Number Detector</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="13" data-tags="audio,scriptable" data-id="snakers4/silero-vad">
+      <div class="compact-model-card">
+        <a href="/hub/snakers4_silero-vad_vad/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Silero Voice Activity Detector</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Pre-trained Voice Activity Detector</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="14" data-tags="vision,scriptable" data-id="ultralytics/yolov5">
+      <div class="compact-model-card">
+        <a href="/hub/ultralytics_yolov5/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">YOLOv5</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">YOLOv5 in PyTorch > ONNX > CoreML > TFLite</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="15" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_deeplabv3_resnet101/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Deeplabv3</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">DeepLabV3 models with ResNet-50, ResNet-101 and MobileNet-V3 backbones</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="16" data-tags="nlp" data-id="pytorch/fairseq">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_fairseq_translation/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Transformer (NMT)</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">영어-프랑스어 번역과 영어-독일어 번역을 위한 트랜스포머 모델</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="17" data-tags="vision" data-id="facebookresearch/WSL-Images">
+      <div class="compact-model-card">
+        <a href="/hub/facebookresearch_WSL-Images_resnext/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">ResNext WSL</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">ResNext models trained with billion scale weakly-supervised data.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="18" data-tags="vision,generative" data-id="facebookresearch/pytorch_GAN_zoo">
+      <div class="compact-model-card">
+        <a href="/hub/facebookresearch_pytorch-gan-zoo_dcgan/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">DCGAN on FashionGen</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">64x64 이미지 생성을 위한 기본 이미지 생성 모델</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="19" data-tags="vision,generative" data-id="facebookresearch/pytorch_GAN_zoo">
+      <div class="compact-model-card">
+        <a href="/hub/facebookresearch_pytorch-gan-zoo_pgan/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Progressive Growing of GANs (PGAN)</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">High-quality image generation of fashion, celebrity faces</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="20" data-tags="vision" data-id="facebookresearch/semi-supervised-ImageNet1K-models">
+      <div class="compact-model-card">
+        <a href="/hub/facebookresearch_semi-supervised-ImageNet1K-models_resnext/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Semi-supervised and semi-weakly supervised ImageNet Models</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Billion scale semi-supervised learning for image classification 에서 제안된 ResNet, ResNext 모델</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="21" data-tags="nlp" data-id="huggingface/transformers">
+      <div class="compact-model-card">
+        <a href="/hub/huggingface_pytorch-transformers/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">PyTorch-Transformers</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">PyTorch implementations of popular NLP Transformers</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="22" data-tags="vision" data-id="mateuszbuda/brain-segmentation-pytorch">
+      <div class="compact-model-card">
+        <a href="/hub/mateuszbuda_brain-segmentation-pytorch_unet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">U-Net for brain MRI</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">U-Net with batch normalization for biomedical image segmentation with pretrained weights for abnormality segmentation in brain MRI</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="23" data-tags="vision" data-id="NVIDIA/DeepLearningExamples">
+      <div class="compact-model-card">
+        <a href="/hub/nvidia_deeplearningexamples_efficientnet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">EfficientNet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">EfficientNets are a family of image classification models, which achieve state-of-the-art accuracy, being an order-of-magnitude smaller and faster. Trained with mixed precision using Tensor Cores.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="24" data-tags="vision" data-id="NVIDIA/DeepLearningExamples">
+      <div class="compact-model-card">
+        <a href="/hub/nvidia_deeplearningexamples_resnet50/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">ResNet50</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">ResNet50 model trained with mixed precision using Tensor Cores.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="25" data-tags="vision" data-id="NVIDIA/DeepLearningExamples">
+      <div class="compact-model-card">
+        <a href="/hub/nvidia_deeplearningexamples_resnext/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">ResNeXt101</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">ResNet with bottleneck 3x3 Convolutions substituted by 3x3 Grouped Convolutions, trained with mixed precision using Tensor Cores.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="26" data-tags="vision" data-id="NVIDIA/DeepLearningExamples">
+      <div class="compact-model-card">
+        <a href="/hub/nvidia_deeplearningexamples_se-resnext/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">SE-ResNeXt101</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">ResNeXt with Squeeze-and-Excitation module added, trained with mixed precision using Tensor Cores.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="27" data-tags="vision" data-id="NVIDIA/DeepLearningExamples">
+      <div class="compact-model-card">
+        <a href="/hub/nvidia_deeplearningexamples_ssd/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">SSD</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Single Shot MultiBox Detector model for object detection</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="28" data-tags="audio" data-id="NVIDIA/DeepLearningExamples">
+      <div class="compact-model-card">
+        <a href="/hub/nvidia_deeplearningexamples_tacotron2/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Tacotron 2</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">The Tacotron 2 model for generating mel spectrograms from text</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="29" data-tags="audio" data-id="NVIDIA/DeepLearningExamples">
+      <div class="compact-model-card">
+        <a href="/hub/nvidia_deeplearningexamples_waveglow/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">WaveGlow</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">WaveGlow model for generating speech from mel spectrograms (generated by Tacotron2)</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="30" data-tags="nlp" data-id="pytorch/fairseq">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_fairseq_roberta/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">RoBERTa</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">BERT를 강력하게 최적화하는 사전 학습 접근법, RoBERTa</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="31" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_alexnet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">AlexNet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">The 2012 ImageNet winner achieved a top-5 error of 15.3%, more than 10.8 percentage points lower than that of the runner up.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="32" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_densenet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Densenet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Dense Convolutional Network (DenseNet), connects each layer to every other layer in a feed-forward fashion.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="33" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_fcn_resnet101/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">FCN</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Fully-Convolutional Network model with ResNet-50 and ResNet-101 backbones</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="34" data-tags="vision,scriptable" data-id="huawei-noah/ghostnet">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_ghostnet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">GhostNet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Efficient networks by generating more features from cheap operations</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="35" data-tags="vision" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_googlenet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">GoogLeNet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">GoogLeNet was based on a deep convolutional neural network architecture codenamed "Inception" which won ImageNet 2014.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="36" data-tags="vision" data-id="PingoLH/Pytorch-HarDNet">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_hardnet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">HarDNet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Harmonic DenseNet pre-trained on ImageNet</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="37" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_inception_v3/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Inception_v3</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Also called GoogleNetv3, a famous ConvNet trained on Imagenet from 2015</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="38" data-tags="vision" data-id="szq0214/MEAL-V2">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_meal_v2/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">MEAL_V2</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Boosting Tiny and Efficient Models using Knowledge Distillation.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="39" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_mobilenet_v2/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">MobileNet v2</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">잔차 블록에 기반한 속도와 메모리에 최적화된 효율적인 네트워크</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="40" data-tags="vision" data-id="mit-han-lab/ProxylessNAS">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_proxylessnas/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">ProxylessNAS</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Proxylessly specialize CNN architectures for different hardware platforms.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="41" data-tags="vision" data-id="zhanghang1989/ResNeSt">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_resnest/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">ResNeSt</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">A new ResNet variant.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="42" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_resnet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">ResNet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Deep residual networks pre-trained on ImageNet</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="43" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_resnext/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">ResNext</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Next generation ResNets, more efficient and accurate</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="44" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_shufflenet_v2/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">ShuffleNet v2</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">An efficient ConvNet optimized for speed and memory, pre-trained on Imagenet</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="45" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_squeezenet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">SqueezeNet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Alexnet-level accuracy with 50x fewer parameters.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="46" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_vgg/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">vgg-nets</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Award winning ConvNets from 2014 Imagenet ILSVRC challenge</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+    <div class="col-md compact-hub-card-wrapper" data-item-count="47" data-tags="vision,scriptable" data-id="pytorch/vision">
+      <div class="compact-model-card">
+        <a href="/hub/pytorch_vision_wide_resnet/">
+          <div class="compact-card-body">
+            <div class="compact-card-container">
+              <div class="compact-hub-card-title-container">
+                <h4 class="compact-item-title">Wide ResNet</h4>
+                <div class="detail-stars-container col-2">
+                  <div class="github-stars-image">
+                    <img src="/assets/images/github-star.svg">
+                  </div>
+                  <div class="github-stars-count"></div>
+                  <div class="github-stars-count-whole-number"></div>
+                </div>
+              </div>
+              <p class="compact-card-summary card-summary col-6">Wide Residual Networks</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+  </body>
+</html>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+<script src="/assets/hub-search-bar.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+
+
+  <div id="filter-script" data-list-id="hub-cards" data-display-count="100" data-pagination="false"></div>
+
+
+
+<script star-count-call-date="hubStarCountCallDate" star-count-data="hubStarCountData" src="/assets/github-stars.js"></script>
