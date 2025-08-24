@@ -15,20 +15,25 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 16.13.2
+        node-version: 22.17.1
     - name: Install node dependencies
       run: |
         npm install -g yarn
         yarn install
-    - name: Set up Ruby 2.7
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libffi-dev build-essential
+    - name: Set up Ruby 3.4
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.7.4
+        ruby-version: 3.4.5
         bundler-cache: true
-    - name: Install ruby dependencies
+    - name: Verify bundler installation and install dependencies
       run: |
-        gem install bundler -v 2.3.13
-        bundle install
+        bundler --version
+        gem install rake
+        bundle check || bundle install --jobs 4 --retry 3
     - name: Initialize & update hub submodule
       run: |
         git submodule deinit -f . && git submodule update --init --recursive

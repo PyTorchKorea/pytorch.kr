@@ -1,11 +1,10 @@
 .header-holder {
   height: $mobile_header_height;
+  align-items: center;
 
   @include full-nav-menu-desktop {
     height: $desktop_header_height;
   }
-
-  align-items: center;
   display: flex;
   left: 0;
   margin-left: auto;

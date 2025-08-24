@@ -13,7 +13,7 @@ baseurl: ""
 plugins:
   - jekyll-paginate-v2
   - jekyll-redirect-from
-  - jekyll-autoprefixer
+  # - jekyll-autoprefixer  # Temporarily disabled for Ruby 3.4 compatibility
   - jekyll-feed
   - jekyll-github-metadata
   - jekyll-sitemap
@@ -21,13 +21,14 @@ sass:
   load_paths:
     - _sass
     - node_modules
+  style: compressed
 exclude: [
     vendor,
     node_modules,
     README.md,
     CODE_OF_CONDUCT.md,
     Gemfile,
-    Gemdile.lock,
+    Gemfile.lock,
     LICENSE,
     yarn.lock,
     yarn-error.log,
@@ -37,6 +38,15 @@ exclude: [
     scripts,
     docs,
     _hub/docs/template.md,
+    _hub/images,
+    _hub/scripts,
+    _hub/*.sh,
+    _hub/*.py,
+    _hub/CONTRIBUTING.md,
+    _hub/CONTRIBUTING_MODELS.md,
+    _hub/README.md,
+    _hub/TRANSLATION_GUIDE.md,
+    _hub/Window_build.md,
     install.sh,
     install_basics.sh,
     install_nightlies.sh,
@@ -88,13 +98,16 @@ collections:
     permalink: /blog/:year/:title/
   contributors:
     output: true
+  events:
+    output: true
+    permalink: /events/:path/
   features:
     output: false
   get_started:
     output: true
   hub:
     output: true
-    permalink: /hub/:title/
+    permalink: /hub/:name/
   maintainers:
     output: false
   news:
