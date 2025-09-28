@@ -21,7 +21,7 @@ gem "webrick"
 
 group :jekyll_plugins do
   gem "jekyll-paginate-v2"
-  # gem "jekyll-autoprefixer"  # Temporarily disabled for Ruby 3.4 compatibility
+  # gem "jekyll-autoprefixer"  # Not compatible with Ruby 3.4 - using alternative approach
   gem "jekyll-github-metadata"
   gem "jekyll-feed"
   gem "jekyll-sitemap"

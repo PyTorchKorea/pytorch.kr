@@ -13,7 +13,7 @@ baseurl: ""
 plugins:
   - jekyll-paginate-v2
   - jekyll-redirect-from
-  # - jekyll-autoprefixer  # Temporarily disabled for Ruby 3.4 compatibility
+  # - jekyll-autoprefixer  # Not compatible with Ruby 3.4 - using alternative approach
   - jekyll-feed
   - jekyll-github-metadata
   - jekyll-sitemap
@@ -22,6 +22,8 @@ sass:
     - _sass
     - node_modules
   style: compressed
+  sourcemap: never
+  quiet_deps: true
 exclude: [
     vendor,
     node_modules,
