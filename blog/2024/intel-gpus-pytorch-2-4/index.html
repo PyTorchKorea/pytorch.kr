@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      AI 가속하기: 이제 더 빠른 워크로드를 위해 PyTorch 2.4에서 Intel GPU를 지원합니다 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="blog">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="main-background blog-background blog-detail-background"></div>
+
+    <div class="container-fluid header-holder blog-detail-header">
+        <div class="container">
+            
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
+        <div class="container blog-detail-container">
+            <p class="featured-post">August 29, 2024</p>
+            <h1><a class="blog-title">AI 가속하기: 이제 더 빠른 워크로드를 위해 PyTorch 2.4에서 Intel GPU를 지원합니다</a></h1>
+            
+                <h4 class="blog-subtitle">Accelerate Your AI: PyTorch 2.4 Now Supports Intel GPUs for Faster Workloads</h4>
+            
+        </div>
+    </div>
+
+    <div class="main-content-wrapper blog-detail-wrapper">
+        <div class="main-content blog-detail-content">
+            <div class="container">
+                <img src="/assets/images/logo-icon.svg" class="img-fluid author-icon">
+                <article class="pytorch-article">
+                    <p class="author">
+                      
+                        
+                            작성: the PyTorch Team at Intel. <br />번역: PyTorch Korea User Group
+                        
+                      
+                    </p>
+                    
+                    <p class="translation-description">
+                        이 글은 <a href="https://pytorch.org/blog/">PyTorch 공식 블로그</a>의 글을 번역한 것입니다.
+                        번역 글은 원문을 함께 표시합니다. 원문을 읽으시려면 <a href="https://pytorch.org/blog/intel-gpus-pytorch-2-4/">여기</a>를 클릭하세요.
+                        (This article is a Korean translation of the original post on the <a href="https://pytorch.org/blog/">PyTorch official blog</a>.
+                        Below translation includes the original text. To read the original post, click <a href="https://pytorch.org/blog/intel-gpus-pytorch-2-4/">here</a>.)
+                    </p>
+                    
+                    <div class="blog-content">
+                        <p>기쁜 소식을 전해드립니다! 이제 PyTorch 2.4에서 Intel® Data Center Max 시리즈와 SYCL 소프트웨어 스택을 지원하여 학습과 추론 모두에서 AI 워크플로우의 속도를더 빠르게 할 수 있습니다. 이번 업데이트를 통해 최소한의 코딩 작업으로 일관된 프로그래밍 경험을 제공하며, 스트리밍 장치(streaming device)를 원활히 지원하기 위해 장치(device) 및 스트림(stream), 이벤트(event), 생성자(generator), 할당자(allocator), 가드(guard) 등을 포함한 PyTorch의 장치와 런타임 기능을 확장합니다. 이러한 개선 사항은 다양한 하드웨어(ubiquitous hardware)에 PyTorch를 배포하는 작업을 간소화하여, 다양한 하드웨어 백엔드를 통합하기 쉽게 만들어줍니다.</p>
+<blockquote>
+  <p>We have exciting news! PyTorch 2.4 now supports Intel® Data Center GPU Max Series and the SYCL software stack, making it easier to speed up your AI workflows for both training and inference. This update allows for you to have a consistent programming experience with minimal coding effort and extends PyTorch’s device and runtime capabilities, including device, stream, event, generator, allocator, and guard, to seamlessly support streaming devices. This enhancement simplifies deploying PyTorch on ubiquitous hardware, making it easier for you to integrate different hardware back ends.</p>
+</blockquote>
+
+<p>Intel GPU 지원 업데이트로 PyTorch의 eager 및 graph 모드 모두를 지원하며, Dynamo Hugging Face 벤치마크를 완전히 실행할 수 있습니다. Eager 모드는 이제 SYCL로 구현된 일반 Aten 연산자를 포함합니다. 가장 성능이 중요한(performance-critical) graph와 연산자는 oneAPI Deep Neural Network Library (oneDNN) 및 oneAPI Math Kernel Library (oneMKL)을 사용하여 최적화되었습니다. Graph 모드(torch.compile)는 이제 Intel GPU 백엔드가 활성화되어 Intel GPU에 대한 최적화를 구현하고 Triton을 통합할 수 있습니다. 또한, FP32, BF16, FP16 및 자동 혼합 정밀도(AMP, Automatic Mixed Precision)와 같은 데이터 타입(data type)을 지원합니다. Kineto와 oneMKL 기반으로 개발 중인 파이토치 프로파일러(PyTorch Profiler)는 곧 출시될 PyTorch 2.5 릴리스에서 제공될 예정입니다.</p>
+<blockquote>
+  <p>Intel GPU support upstreamed into PyTorch provides support for both eager and graph modes, fully running Dynamo Hugging Face benchmarks. Eager mode now includes common Aten operators implemented with SYCL. The most performance-critical graphs and operators are highly optimized by using oneAPI Deep Neural Network Library (oneDNN) and oneAPI Math Kernel Library (oneMKL). Graph mode (torch.compile) now has an enabled Intel GPU back end to implement the optimization for Intel GPUs and to integrate Triton. Furthermore, data types such as FP32, BF16, FP16, and automatic mixed precision (AMP) are supported. The PyTorch Profiler, based on Kineto and oneMKL, is being developed for the upcoming PyTorch 2.5 release.</p>
+</blockquote>
+
+<p>PyTorch에 Intel GPU를 통합하기 위한 현재와 앞으로 계획된 프론트엔드(front-end) 및 백엔드(back-end) 개선 사항을 살펴보세요.</p>
+<blockquote>
+  <p>Take a look at the current and planned front-end and back-end improvements for Intel GPU upstreamed into PyTorch.</p>
+</blockquote>
+
+<p><img src="/assets/images/intel-gpus-pytorch-2-4.jpg" alt="PyTorch에 Intel GPU를 통합하기 위한 현재와 앞으로 계획된 프론트엔드(front-end) 및 백엔드(back-end) 개선 사항 / the current and planned front-end and back-end improvements for Intel GPU upstreamed into PyTorch" style="width:100%" /></p>
+
+<p>Linux에서의 PyTorch 2.4는 다른 하드웨어와 동일한 사용자 경험을 유지하면서 학습 및 추론 시에 Intel Data Center GPU Max 시리즈를 지원합니다. CUDA에서 코드를 이전(migration)하는 경우, 장치 이름을 <code class="language-plaintext highlighter-rouge">cuda</code>에서 <code class="language-plaintext highlighter-rouge">xpu</code>로만 변경하기만 하면 최소한의 변경으로 Intel GPU에서 기존 애플리케이션을 실행할 수 있습니다. 예를 들어:</p>
+<blockquote>
+  <p>PyTorch 2.4 on Linux supports Intel Data Center GPU Max Series for training and inference while maintaining the same user experience as other hardware. If you’re migrating code from CUDA, you can run your existing application on an Intel GPU with minimal changes—just update the device name from <code class="language-plaintext highlighter-rouge">cuda</code> to <code class="language-plaintext highlighter-rouge">xpu</code>. For example:</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># CUDA 코드 / CUDA Code
+tensor = torch.tensor([1.0, 2.0]).to("cuda")
+
+# Intel GPU용 코드 / Code for Intel GPU
+tensor = torch.tensor([1.0, 2.0]).to("xpu")
+</code></pre></div></div>
+
+<h2 id="시작하기--get-started">시작하기 / Get Started</h2>
+
+<p><a href="https://cloud.intel.com/">Intel® Tiber™ Developer Cloud</a>에서 Intel Data Center GPU Max 시리즈에서 PyTorch 2.4를 사용해보세요. <a href="https://pytorch.org/docs/main/notes/get_start_xpu.html#examples">환경 설정, 소스 빌드 및 예제</a>를 살펴보세요. 무료 Standard 계정을 만드는 방법은 <a href="https://console.cloud.intel.com/docs/guides/get_started.html">시작하기</a>를 참고하시고, 다음의 단계를 수행하세요:</p>
+<blockquote>
+  <p>Try PyTorch 2.4 on the Intel Data Center GPU Max Series through the <a href="https://cloud.intel.com/">Intel® Tiber™ Developer Cloud</a>. Get a tour of the <a href="https://pytorch.org/docs/main/notes/get_start_xpu.html#examples">environment setup, source build, and examples</a>. To learn how to create a free Standard account, see <a href="https://console.cloud.intel.com/docs/guides/get_started.html">Get Started</a>, then do the following:</p>
+</blockquote>
+
+<ol>
+  <li><a href="https://console.cloud.intel.com/docs/guides/get_started.html">클라우드 콘솔(Cloud Console)</a>에 로그인하세요.</li>
+  <li><a href="https://console.cloud.intel.com/training">학습(Training)</a> 섹션에서 <strong>PyTorch 2.4 on Intel GPUs</strong> 노트북을 엽니다.</li>
+  <li>노트북에서 <strong>PyTorch 2.4</strong> 커널(kernel)이 선택되어 있는지 확인하세요.
+    <blockquote>
+      <ol>
+        <li>Sign in to the <a href="https://console.cloud.intel.com/docs/guides/get_started.html">cloud console</a>.</li>
+        <li>From the <a href="https://console.cloud.intel.com/training">Training</a> section, open the <strong>PyTorch 2.4 on Intel GPUs</strong> notebook.</li>
+        <li>Ensure that the <strong>PyTorch 2.4</strong> kernel is selected for the notebook.</li>
+      </ol>
+    </blockquote>
+  </li>
+</ol>
+
+<h2 id="요약--summary">요약 / Summary</h2>
+
+<p>PyTorch 2.4에서 Intel Data Center GPU Max 시리즈에서 AI 워크로드를 가속화하기 위한 초기 지원(initial support)을 시작합니다. Intel GPU를 사용하면 지속적인 소프트웨어 지원과 통합 배포(unified distribution), 그리고 동기화된 릴리즈 일정(synchronized release schedule)을 통해 원활한 개발 경험을 제공합니다. PyTorch 2.5에서는 이 기능을 Beta 등급(quality)이 되도록 개선할 예정입니다. 2.5에서 계획된 기능은 다음과 같습니다:</p>
+<blockquote>
+  <p>PyTorch 2.4 introduces initial support for Intel Data Center GPU Max Series to accelerate your AI workloads. With Intel GPU, you’ll get continuous software support, unified distribution, and synchronized release schedules for a smoother development experience. We’re enhancing this functionality to reach Beta quality in PyTorch 2.5. Planned features in 2.5 include:</p>
+</blockquote>
+
+<ul>
+  <li>Eager 모드에서 더 많은 Aten 연산자 및 완전한 Dynamo Torchbench 및 TIMM 지원.</li>
+  <li>torch.compile에서 완전한 Dynamo Torchbench 및 TIMM 벤치마크 지원.</li>
+  <li>torch.profile에서 Intel GPU 지원.</li>
+  <li>PyPI wheels 배포.</li>
+  <li>Windows 및 Intel Client GPU 시리즈 지원.
+    <blockquote>
+      <ul>
+        <li>More Aten operators and full Dynamo Torchbench and TIMM support in Eager Mode.</li>
+        <li>Full Dynamo Torchbench and TIMM benchmark support in torch.compile.</li>
+        <li>Intel GPU support in torch.profile.</li>
+        <li>PyPI wheels distribution.</li>
+        <li>Windows and Intel Client GPU Series support.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p><a href="https://github.com/pytorch/pytorch?tab=readme-ov-file#intel-gpu-support">PyTorch에서의 Intel GPU 지원</a>과 관련한 새로운 기여에 대해 커뮤니티에서 평가해주시기를 기대합니다.</p>
+<blockquote>
+  <p>We welcome the community to evaluate these new contributions to  <a href="https://github.com/pytorch/pytorch?tab=readme-ov-file#intel-gpu-support">Intel GPU support on PyTorch</a>. </p>
+</blockquote>
+
+<h2 id="리소스--resources">리소스 / Resources</h2>
+
+<ul>
+  <li>
+    <p><a href="https://pytorch.org/docs/main/notes/get_start_xpu.html">PyTorch 2.4: Get Started on an Intel GPU</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/pytorch/pytorch/releases">PyTorch Release Notes</a></p>
+  </li>
+</ul>
+
+<h2 id="감사의-말--acknowledgments">감사의 말 / Acknowledgments</h2>
+
+<p>기술적 토론과 인사이트를 제공해주신 PyTorch 오픈소스 커뮤니티에 감사드립니다: <a href="https://github.com/malfet">Nikita Shulga</a>와 <a href="https://github.com/jansel">Jason Ansel</a>, <a href="https://github.com/atalman">Andrey Talman</a>, <a href="https://github.com/alband">Alban Desmaison</a>, <a href="https://github.com/desertfire">Bin Bao</a>.</p>
+<blockquote>
+  <p>We want thank PyTorch open source community for their technical discussions and insights: <a href="https://github.com/malfet">Nikita Shulga</a>, <a href="https://github.com/jansel">Jason Ansel</a>, <a href="https://github.com/atalman">Andrey Talman</a>, <a href="https://github.com/alband">Alban Desmaison</a>, and <a href="https://github.com/desertfire">Bin Bao</a>.</p>
+</blockquote>
+
+<p>또한, 전문적인 지원과 안내를 제공해주신 PyTorch의 기여자(collaborator)들에게 감사드립니다.</p>
+<blockquote>
+  <p>We also thank collaborators from PyTorch for their professional support and guidance.</p>
+</blockquote>
+
+<p>1 GPU 지원을 활성화하고 성능을 향상시키기 위해 <a href="https://intel.github.io/intel-extension-for-pytorch/xpu/latest/">Intel® Extension for PyTorch</a>를 설치하는 것을 권장합니다.</p>
+<blockquote>
+  <p>1 To enable GPU support and improve performance, we suggest installing the <a href="https://intel.github.io/intel-extension-for-pytorch/xpu/latest/">Intel® Extension for PyTorch</a></p>
+</blockquote>
+
+                    </div>
+                    <hr noshade />
+                    <p class="translation-description ad-discuss">
+                         더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="https://discuss.pytorch.kr/">파이토치 한국어 커뮤니티에 참여</a>해주세요!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-comment">
+  <div class="container">
+      <div id="discourse-comments"></div>
+      <meta name="discourse-username" content="bot">
+  </div>
+</div>
+
+<script type="text/javascript">
+  DiscourseEmbed = {
+      discourseUrl: 'https://discuss.pytorch.kr/',
+      discourseEmbedUrl: 'https://pytorch.kr/blog/2024/intel-gpus-pytorch-2-4/',
+      // className: 'CLASS_NAME',
+  };
+
+  (function() {
+      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item active">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+</body>
+</html>

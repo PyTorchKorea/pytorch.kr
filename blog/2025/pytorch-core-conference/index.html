@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- Google Tag Manager -->
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-57L6X5C');</script>
+<!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?">
+  <title>
+    
+      PyTorch Core Maintainer와 함께한 기술 교류의 장 - 파이토치 한국 사용자 모임 리뷰 | 파이토치 한국 사용자 모임
+    
+  </title>
+  <meta property="og:title" content="파이토치 한국 사용자 모임 (PyTorch Korea User Group)" />
+<meta
+  name="description"
+  property="og:description"
+  content="파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다."
+/>
+<meta property="og:url" content="https://pytorch.kr" />
+<meta property="og:type" content="website" />
+<meta
+  property="og:image"
+  content="https://pytorch.kr/assets/images/pytorch-kr-logo.png"
+/>
+<meta name="robots" content="index, follow" />
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <script src="/assets/vendor/jquery.min.js"></script>
+  <script src="/assets/vendor/popper.min.js"></script>
+  <script src="/assets/vendor/bootstrap.min.js"></script>
+  <script src="/assets/vendor/anchor.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body class="blog">
+    <!-- Google Tag Manager (noscript) -->
+<noscript data-cfasync="false"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57L6X5C"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+    <div class="main-background blog-background blog-detail-background"></div>
+
+    <div class="container-fluid header-holder blog-detail-header">
+        <div class="container">
+            
+
+<div class="header-container">
+  <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorchKR"></a>
+
+  <div class="main-menu">
+  <ul>
+    <li class="main-menu-item ">
+      <a href="/get-started">시작하기</a>
+    </li>
+
+    <li class="main-menu-item active">
+      <a href="/blog">블로그</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://tutorials.pytorch.kr/" target="_self">튜토리얼</a>
+    </li>
+
+    <li class="main-menu-item ">
+      <a href="/hub">허브</a>
+    </li>
+
+    <li class="main-menu-item">
+      <a href="https://discuss.pytorch.kr/" target="_self">커뮤니티</a>
+    </li>
+  </ul>
+</div>
+
+<script src="/assets/main-menu-dropdown.js"></script>
+
+
+  <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+</div>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid blog-detail-jumbotron">
+        <div class="container blog-detail-container">
+            <p class="featured-post">March 30, 2025</p>
+            <h1><a class="blog-title">PyTorch Core Maintainer와 함께한 기술 교류의 장 - 파이토치 한국 사용자 모임 리뷰</a></h1>
+            
+        </div>
+    </div>
+
+    <div class="main-content-wrapper blog-detail-wrapper">
+        <div class="main-content blog-detail-content">
+            <div class="container">
+                <img src="/assets/images/logo-icon.svg" class="img-fluid author-icon">
+                <article class="pytorch-article">
+                    <p class="author">
+                      
+                        
+                            작성: 김지호 @ PyTorch Korea User Group
+                        
+                      
+                    </p>
+                    
+                    <div class="blog-content">
+                        <p>지난 3월 말, 파이토치 한국 사용자 모임은 특별한 연사분들을 모시고 파이토치 코어와 생태계 전반에 대한 깊이 있는 이야기를 나누는 시간을 가졌습니다. 행사 규모가 이전보다 두 배 이상 커진 만큼, 더 많은 분들과 함께 기술을 공유하고 소통할 수 있었습니다. 멋진 행사 장소를 후원해주신 <a href="https://goorm.co/">구름</a>에도 이 자리를 빌려 감사 인사를 전합니다.😄</p>
+
+<p><img src="/assets/images/pytorch_core_conference/total.png" alt="컨퍼런스 종료 후 단체 사진" /></p>
+
+<p>이번 후기는 컨퍼런스에 직접 참석하지 못하신 분들께도 의미 있는 내용을 전하고, 현장을 함께했던 분들께는 그날의 열기와 인사이트를 다시 떠올릴 수 있도록 정리한 글입니다. 컨퍼런스에서는 PyTorch Core, AI 가속기, 추론 최적화, 대규모 언어 모델 개발까지 다양한 분야의 전문가들이 함께했습니다. 그 중심이 되었던 세션들을 아래에 간략히 소개합니다.</p>
+
+<h2 id="1️⃣-이제응--pytorch-foundation">1️⃣ 이제응 | PyTorch Foundation</h2>
+
+<p>리눅스 재단 소속의 파이토치 재단은 오픈소스 생태계의 핵심 기술 발전을 이끌고 있습니다. 파이토치의 성장 배경과 함께, 전 세계에서 진행 중인 수많은 프로젝트, 그리고 연 20% 이상의 생태계 성장률 등을 통해 파이토치의 탄탄한 기반을 확인할 수 있었습니다. 재단의 운영 방식, 멤버사 참여, 향후 행사 계획 등 실무자들이 궁금해할 정보도 함께 다뤄졌습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_1.png" alt="Session 1: 이제응 - PyTorch Foundation" /></p>
+
+<h2 id="2️⃣-albandesmaison--pytorch-roadmap">2️⃣ Alban Desmaison | PyTorch Roadmap</h2>
+
+<p>PyTorch의 디자인 철학 그리고 Meta의 파이토치 컨트리뷰션 로드맵(<a href="https://dev-discuss.pytorch.org/t/meta-pytorch-team-2025-h1-roadmaps/2794">링크</a>)을 공유합니다. PyTorch가 제공하는 Eager 모드와 Compiled 모드를 비교하면서, 특히 디바이스 Eager 백엔드를 구성하는 핵심 요소에 대해 자세히 설명하였습니다. 기술적인 내용을 깊이 있게 다루었을 뿐 아니라, 메모리 프로파일러, 향상된 커스텀 연산 지원, Pinned Memory 개선 등 실용적인 기능들도 함께 소개되었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_2.png" alt="Session 2: Alban Desmaison - PyTorch Roadmap" /></p>
+
+<h2 id="3️⃣-김홍석--pytorch-on-rebellions-ai-accelerators-status">3️⃣ 김홍석 | PyTorch on Rebellions AI Accelerators: Status</h2>
+
+<p>Rebellions은 PyTorch 2.0의 구조적 진화에 발맞춰 자체 NPU 아키텍처에 최적화된 런타임 통합을 진행 중입니다. 이번 세션에서는 개발 중인 칩의 성능과 확장성, 그리고 PyTorch 런타임과의 통합을 위한 아키텍처 설계 및 Eager Mode 지원 관련 기술적 고민들을 공유했습니다. 금년도 릴리즈를 목표로 한 개발 계획도 함께 소개되었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_3.png" alt="Session 3: 김홍석 - PyTorch on Rebellions AI Accelerators: Status" /></p>
+
+<h2 id="4️⃣-조규진--backendai-모든-ai-가속기를-위한-통합-플랫폼">4️⃣ 조규진 | Backend.AI: 모든 AI 가속기를 위한 통합 플랫폼</h2>
+
+<p>Backend.AI는 다양한 종류의 AI 가속기를 추상화하고, 통합된 워크플로우를 제공하는 플랫폼입니다. AI 가속기 아키텍처가 다양해지면서, 높은 이식성과 인프라 통합의 중요성도 함께 커지고 있습니다. 이번 세션에서는 NPU 스케줄링, 리소스 할당, 모니터링 등 AI 개발과 운영 전반을 아우르는 기능들이 소개되었으며, 현재는 NVIDIA, Intel, Tenstorrent, Rebellions 등 다양한 AI 가속기를 지원하고 있음을 확인할 수 있었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_4.png" alt="Session 4: 조규진 - Backend.AI: 모든 AI 가속기를 위한 통합 플랫폼" /></p>
+
+<h2 id="5️⃣-김태호--netspresso를-이용한-다양한-모델을-다양한-칩셋에-최적화-및-배포하는-방법">5️⃣ 김태호 | NetsPresso를 이용한 다양한 모델을 다양한 칩셋에 최적화 및 배포하는 방법</h2>
+
+<p>이 세션에서는 AI 모델을 산업에 적용하는 과정에서 추론 단계의 중요성과 현실적인 어려움을 짚었습니다. 다양한 최신 SOTA 모델들이 빠르게 등장하는 가운데, 원클릭으로 디바이스별 모델 실행 가능 여부를 확인할 수 있는 환경이 이상적인 방향으로 제시되었습니다. Netspresso는 PyTorch와 호환이 가능한 정적 그래프 표현 방안을 고민하고 있으며, 모델 개발, 최적화, 테스트 전반을 효율적으로 지원하고 있습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_5.png" alt="Session 5: 김태호 - NetsPresso를 이용한 다양한 모델을 다양한 칩셋에 최적화 및 배포하는 방법" /></p>
+
+<h2 id="6️⃣-이정엽--the-journey-to-reproduce-deepseek-r1">6️⃣ 이정엽 | The Journey to Reproduce Deepseek-R1</h2>
+
+<p>대규모 언어 모델 Deepseek을 직접 재현하는 과정에서 총 201번의 실험을 거치며 얻은 시행착오와 인사이트를 생생히 공유한 세션이었습니다. 한국어 기반 학습 과정에서 발생한 문제, tokenizer 수정, 미세 조정 전략 등 실질적인 경험이 중심이었고, 이를 기반으로 한 개선 방향과 다음 단계까지 이어지는 흐름이 인상적이었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_6.png" alt="Session 6: 이정엽 - The Journey to Reproduce Deepseek-R1" /></p>
+
+<h2 id="7️⃣-김솔--a-journey-from-tcp-architecture-to-production-level-llms">7️⃣ 김솔 | A journey from TCP architecture to production-level LLMs</h2>
+
+<p>Tensor Contraction을 하드웨어 수준에서 지원하는 TCP 아키텍처를 중심으로, 대규모 모델을 프로덕션 수준에서 운용하기 위한 통합 최적화 전략이 소개되었습니다. 하드웨어 추상화 계층(HAL)을 기반으로 한 실행 최적화, PyTorch 생태계와의 bottom-up 방식 통합 작업 등, 소프트웨어와 하드웨어를 함께 고려한 복합적인 접근이 돋보였습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_7.png" alt="Session 7: 김솔 - A journey from TCP architecture to production-level LLMs" /></p>
+
+<h2 id="-qa-세션-">💡 Q&amp;A 세션 💡</h2>
+
+<p>발표 세션 종료 후 이어진 패널 토크에서는 참석자들의 적극적인 질문과 연사들의 통찰력 있는 답변이 어우러지며, 마지막까지 깊이 있는 논의가 이어졌습니다. 국내 개발자들의 파이토치에 대한 뜨거운 관심과 커뮤니티의 에너지를 더욱 생생하게 느낄 수 있었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/qna.png" alt="패널 토크 및 네트워킹의 순간들" /></p>
+
+<h2 id="마치며">마치며</h2>
+
+<p>파이토치 한국 사용자 모임은 2022년 10월 첫 오프라인 컨퍼런스를 시작으로, 벌써 다섯 번째 기술 컨퍼런스를 운영하고 있습니다. 매번 행사를 거듭할수록 파이토치 생태계의 넓이와 깊이를 새롭게 실감하고 있습니다. 사용자, 기여자, 생태계 관리자 등 다양한 시각에서 펼쳐지는 이야기는 계속해서 확장되고 있으며, 앞으로도 이를 함께 나누는 자리를 꾸준히 이어갈 계획입니다.</p>
+
+<p>다음 컨퍼런스에서도 다양한 주제의 발표로 찾아뵙겠습니다. 그때 또 만나요! 🙌</p>
+
+                    </div>
+                    <hr noshade />
+                    <p class="translation-description ad-discuss">
+                         더 궁금하시거나 나누고 싶은 이야기가 있으신가요? <a href="https://discuss.pytorch.kr/">파이토치 한국어 커뮤니티에 참여</a>해주세요!
+                    </p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-comment">
+  <div class="container">
+      <div id="discourse-comments"></div>
+      <meta name="discourse-username" content="bot">
+  </div>
+</div>
+
+<script type="text/javascript">
+  DiscourseEmbed = {
+      discourseUrl: 'https://discuss.pytorch.kr/',
+      discourseEmbedUrl: 'https://pytorch.kr/blog/2025/pytorch-core-conference/',
+      // className: 'CLASS_NAME',
+  };
+
+  (function() {
+      var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+      d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+  })();
+</script>
+
+    <div class="container-fluid docs-tutorials-resources">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h2>PyTorchKorea @ GitHub</h2>
+        <p>파이토치 한국 사용자 모임을 GitHub에서 만나보세요.</p>
+        <a class="with-right-arrow" href="https://github.com/PyTorchKorea">GitHub로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 튜토리얼</h2>
+        <p>한국어로 번역 중인 파이토치 튜토리얼을 만나보세요.</p>
+        <a class="with-right-arrow" href="https://tutorials.pytorch.kr/">튜토리얼로 이동</a>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <h2>한국어 커뮤니티</h2>
+        <p>다른 사용자들과 의견을 나누고, 도와주세요!</p>
+        <a class="with-right-arrow" href="https://discuss.pytorch.kr/">커뮤니티로 이동</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-container">
+    <div class="footer-logo-wrapper">
+      <a href="https://pytorch.kr" class="footer-logo"></a>
+    </div>
+
+    <div class="footer-links-wrapper">
+      <div class="footer-links-col">
+        <ul>
+          <li class="list-title"><a href="">파이토치 한국 사용자 모임</a></li>
+          <li><a href="/about">사용자 모임 소개</a></li>
+          <li><a href="/contributors">기여해주신 분들</a></li>
+          <li><a href="/resources">리소스</a></li>
+          <li><a href="/coc">행동 강령</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="trademark-disclaimer">
+      <ul>
+        <li>이 사이트는 독립적인 파이토치 사용자 커뮤니티로, 최신 버전이 아니거나 잘못된 내용이 포함되어 있을 수 있습니다. This site is an independent user community and may be out of date or contain incorrect information.</li>
+        <li><a href="https://pytorch.kr/coc">행동 강령</a>을 읽고 지켜주세요. PyTorch 공식 로고 사용 규정은 <a href="https://www.linuxfoundation.org/policies/">Linux Foundation의 정책</a>을 따릅니다. Please read and follow <a href="https://pytorch.kr/coc">our code of conduct</a>. All PyTorch trademark policy applicable to <a href="https://www.linuxfoundation.org/policies/">Linux Foundation's policies</a>.</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LEHG248408"></script>
+<script data-cfasync="false">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LEHG248408');   // GA4
+</script>
+
+</footer>
+
+<div class="mobile-main-menu">
+  <div class="container-fluid">
+    <div class="container">
+      <div class="mobile-main-menu-header-container">
+        <a class="header-logo" href="https://pytorch.kr" aria-label="PyTorch"></a>
+        <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-main-menu-links-container">
+
+    <div class="main-menu">
+      <ul>
+
+        <li class="main-menu-item ">
+          <a href="/get-started">시작하기</a>
+        </li>
+
+        <li class="main-menu-item active">
+          <a href="/blog">블로그</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://tutorials.pytorch.kr/">튜토리얼</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="/hub">허브</a>
+        </li>
+
+        <li class="main-menu-item">
+          <a href="https://discuss.pytorch.kr/">커뮤니티</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="/assets/mobile-menu.js"></script>
+<script src="/assets/scroll-to-anchor.js"></script>
+<script src="/assets/external-links-new-tab.js"></script>
+<!-- 
+  <script src="/assets/search-bar.js"></script>
+
+<script src="/assets/cookie-banner.js"></script> -->
+
+<script type="text/javascript">
+  mobileMenu.bind();
+  anchors.add('.pytorch-article h2, .pytorch-article h3, .pytorch-article h4, .pytorch-article h5');
+
+  // Add class to links that have code blocks, since we cannot create links in code blocks
+  $("a code.highlighter-rouge").each(function(e) {
+    $(this).closest("a").addClass("has-code");
+  });
+
+  scrollToAnchor.bind();
+
+  var hasStaticHeader = $(".blog-header, .blog-detail-header, .resources-header, .get-started-header, .features-header, .ecosystem-header, .hub-header, .mobile-header, .coc-header, .announcement-header").length > 0;
+
+  if (!hasStaticHeader) {
+    $(window).on("scroll", function() {
+      var top = $(this).scrollTop();
+      var fullPosition = $(".main-background").height() - $(".header-holder").height();
+
+      if (top <= 40) {
+        $(".header-holder").css({"backgroundColor": "rgba(0, 0, 0, 0.165)"});
+      } else if (top >= fullPosition) {
+        $(".header-holder").css({"backgroundColor": "#000000"});
+      } else {
+        var bgColor = "rgba(0, 0, 0, " + top / fullPosition + ")";
+        $(".header-holder").css({"backgroundColor": bgColor});
+      }
+    });
+  }
+</script>
+
+<script src="/assets/track-events.js"></script>
+<script>trackEvents.bind();</script>
+
+
+</body>
+</html>

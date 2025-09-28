@@ -1,0 +1,1116 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://pytorch.kr/feed.xml" rel="self" type="application/atom+xml" /><link href="https://pytorch.kr/" rel="alternate" type="text/html" hreflang="ko" /><updated>2025-09-28T17:17:27+09:00</updated><id>https://pytorch.kr/feed.xml</id><title type="html">파이토치 한국 사용자 모임 (PyTorch Korea User Group)</title><subtitle>파이토치 한국 사용자 모임에 오신 것을 환영합니다. 딥러닝 프레임워크인 파이토치(PyTorch)를 사용하는 한국어 사용자들을 위해 문서를 번역하고 정보를 공유하고 있습니다.</subtitle><author><name>PyTorch Korea User Group</name></author><entry><title type="html">PyTorch Core Maintainer와 함께한 기술 교류의 장 - 파이토치 한국 사용자 모임 리뷰</title><link href="https://pytorch.kr/blog/2025/pytorch-core-conference/" rel="alternate" type="text/html" title="PyTorch Core Maintainer와 함께한 기술 교류의 장 - 파이토치 한국 사용자 모임 리뷰" /><published>2025-03-30T00:00:00+09:00</published><updated>2025-03-30T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2025/pytorch-core-conference</id><content type="html" xml:base="https://pytorch.kr/blog/2025/pytorch-core-conference/"><![CDATA[<p>지난 3월 말, 파이토치 한국 사용자 모임은 특별한 연사분들을 모시고 파이토치 코어와 생태계 전반에 대한 깊이 있는 이야기를 나누는 시간을 가졌습니다. 행사 규모가 이전보다 두 배 이상 커진 만큼, 더 많은 분들과 함께 기술을 공유하고 소통할 수 있었습니다. 멋진 행사 장소를 후원해주신 <a href="https://goorm.co/">구름</a>에도 이 자리를 빌려 감사 인사를 전합니다.😄</p>
+
+<p><img src="/assets/images/pytorch_core_conference/total.png" alt="컨퍼런스 종료 후 단체 사진" /></p>
+
+<p>이번 후기는 컨퍼런스에 직접 참석하지 못하신 분들께도 의미 있는 내용을 전하고, 현장을 함께했던 분들께는 그날의 열기와 인사이트를 다시 떠올릴 수 있도록 정리한 글입니다. 컨퍼런스에서는 PyTorch Core, AI 가속기, 추론 최적화, 대규모 언어 모델 개발까지 다양한 분야의 전문가들이 함께했습니다. 그 중심이 되었던 세션들을 아래에 간략히 소개합니다.</p>
+
+<h2 id="1️⃣-이제응--pytorch-foundation">1️⃣ 이제응 | PyTorch Foundation</h2>
+
+<p>리눅스 재단 소속의 파이토치 재단은 오픈소스 생태계의 핵심 기술 발전을 이끌고 있습니다. 파이토치의 성장 배경과 함께, 전 세계에서 진행 중인 수많은 프로젝트, 그리고 연 20% 이상의 생태계 성장률 등을 통해 파이토치의 탄탄한 기반을 확인할 수 있었습니다. 재단의 운영 방식, 멤버사 참여, 향후 행사 계획 등 실무자들이 궁금해할 정보도 함께 다뤄졌습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_1.png" alt="Session 1: 이제응 - PyTorch Foundation" /></p>
+
+<h2 id="2️⃣-albandesmaison--pytorch-roadmap">2️⃣ Alban Desmaison | PyTorch Roadmap</h2>
+
+<p>PyTorch의 디자인 철학 그리고 Meta의 파이토치 컨트리뷰션 로드맵(<a href="https://dev-discuss.pytorch.org/t/meta-pytorch-team-2025-h1-roadmaps/2794">링크</a>)을 공유합니다. PyTorch가 제공하는 Eager 모드와 Compiled 모드를 비교하면서, 특히 디바이스 Eager 백엔드를 구성하는 핵심 요소에 대해 자세히 설명하였습니다. 기술적인 내용을 깊이 있게 다루었을 뿐 아니라, 메모리 프로파일러, 향상된 커스텀 연산 지원, Pinned Memory 개선 등 실용적인 기능들도 함께 소개되었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_2.png" alt="Session 2: Alban Desmaison - PyTorch Roadmap" /></p>
+
+<h2 id="3️⃣-김홍석--pytorch-on-rebellions-ai-accelerators-status">3️⃣ 김홍석 | PyTorch on Rebellions AI Accelerators: Status</h2>
+
+<p>Rebellions은 PyTorch 2.0의 구조적 진화에 발맞춰 자체 NPU 아키텍처에 최적화된 런타임 통합을 진행 중입니다. 이번 세션에서는 개발 중인 칩의 성능과 확장성, 그리고 PyTorch 런타임과의 통합을 위한 아키텍처 설계 및 Eager Mode 지원 관련 기술적 고민들을 공유했습니다. 금년도 릴리즈를 목표로 한 개발 계획도 함께 소개되었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_3.png" alt="Session 3: 김홍석 - PyTorch on Rebellions AI Accelerators: Status" /></p>
+
+<h2 id="4️⃣-조규진--backendai-모든-ai-가속기를-위한-통합-플랫폼">4️⃣ 조규진 | Backend.AI: 모든 AI 가속기를 위한 통합 플랫폼</h2>
+
+<p>Backend.AI는 다양한 종류의 AI 가속기를 추상화하고, 통합된 워크플로우를 제공하는 플랫폼입니다. AI 가속기 아키텍처가 다양해지면서, 높은 이식성과 인프라 통합의 중요성도 함께 커지고 있습니다. 이번 세션에서는 NPU 스케줄링, 리소스 할당, 모니터링 등 AI 개발과 운영 전반을 아우르는 기능들이 소개되었으며, 현재는 NVIDIA, Intel, Tenstorrent, Rebellions 등 다양한 AI 가속기를 지원하고 있음을 확인할 수 있었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_4.png" alt="Session 4: 조규진 - Backend.AI: 모든 AI 가속기를 위한 통합 플랫폼" /></p>
+
+<h2 id="5️⃣-김태호--netspresso를-이용한-다양한-모델을-다양한-칩셋에-최적화-및-배포하는-방법">5️⃣ 김태호 | NetsPresso를 이용한 다양한 모델을 다양한 칩셋에 최적화 및 배포하는 방법</h2>
+
+<p>이 세션에서는 AI 모델을 산업에 적용하는 과정에서 추론 단계의 중요성과 현실적인 어려움을 짚었습니다. 다양한 최신 SOTA 모델들이 빠르게 등장하는 가운데, 원클릭으로 디바이스별 모델 실행 가능 여부를 확인할 수 있는 환경이 이상적인 방향으로 제시되었습니다. Netspresso는 PyTorch와 호환이 가능한 정적 그래프 표현 방안을 고민하고 있으며, 모델 개발, 최적화, 테스트 전반을 효율적으로 지원하고 있습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_5.png" alt="Session 5: 김태호 - NetsPresso를 이용한 다양한 모델을 다양한 칩셋에 최적화 및 배포하는 방법" /></p>
+
+<h2 id="6️⃣-이정엽--the-journey-to-reproduce-deepseek-r1">6️⃣ 이정엽 | The Journey to Reproduce Deepseek-R1</h2>
+
+<p>대규모 언어 모델 Deepseek을 직접 재현하는 과정에서 총 201번의 실험을 거치며 얻은 시행착오와 인사이트를 생생히 공유한 세션이었습니다. 한국어 기반 학습 과정에서 발생한 문제, tokenizer 수정, 미세 조정 전략 등 실질적인 경험이 중심이었고, 이를 기반으로 한 개선 방향과 다음 단계까지 이어지는 흐름이 인상적이었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_6.png" alt="Session 6: 이정엽 - The Journey to Reproduce Deepseek-R1" /></p>
+
+<h2 id="7️⃣-김솔--a-journey-from-tcp-architecture-to-production-level-llms">7️⃣ 김솔 | A journey from TCP architecture to production-level LLMs</h2>
+
+<p>Tensor Contraction을 하드웨어 수준에서 지원하는 TCP 아키텍처를 중심으로, 대규모 모델을 프로덕션 수준에서 운용하기 위한 통합 최적화 전략이 소개되었습니다. 하드웨어 추상화 계층(HAL)을 기반으로 한 실행 최적화, PyTorch 생태계와의 bottom-up 방식 통합 작업 등, 소프트웨어와 하드웨어를 함께 고려한 복합적인 접근이 돋보였습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/session_7.png" alt="Session 7: 김솔 - A journey from TCP architecture to production-level LLMs" /></p>
+
+<h2 id="-qa-세션-">💡 Q&amp;A 세션 💡</h2>
+
+<p>발표 세션 종료 후 이어진 패널 토크에서는 참석자들의 적극적인 질문과 연사들의 통찰력 있는 답변이 어우러지며, 마지막까지 깊이 있는 논의가 이어졌습니다. 국내 개발자들의 파이토치에 대한 뜨거운 관심과 커뮤니티의 에너지를 더욱 생생하게 느낄 수 있었습니다.</p>
+
+<p><img src="/assets/images/pytorch_core_conference/qna.png" alt="패널 토크 및 네트워킹의 순간들" /></p>
+
+<h2 id="마치며">마치며</h2>
+
+<p>파이토치 한국 사용자 모임은 2022년 10월 첫 오프라인 컨퍼런스를 시작으로, 벌써 다섯 번째 기술 컨퍼런스를 운영하고 있습니다. 매번 행사를 거듭할수록 파이토치 생태계의 넓이와 깊이를 새롭게 실감하고 있습니다. 사용자, 기여자, 생태계 관리자 등 다양한 시각에서 펼쳐지는 이야기는 계속해서 확장되고 있으며, 앞으로도 이를 함께 나누는 자리를 꾸준히 이어갈 계획입니다.</p>
+
+<p>다음 컨퍼런스에서도 다양한 주제의 발표로 찾아뵙겠습니다. 그때 또 만나요! 🙌</p>]]></content><author><name>김지호</name></author><summary type="html"><![CDATA[지난 3월 말, 파이토치 한국 사용자 모임은 특별한 연사분들을 모시고 파이토치 코어와 생태계 전반에 대한 깊이 있는 이야기를 나누는 시간을 가졌습니다. 행사 규모가 이전보다 두 배 이상 커진 만큼, 더 많은 분들과 함께 기술을 공유하고 소통할 수 있었습니다. 멋진 행사 장소를 후원해주신 구름에도 이 자리를 빌려 감사 인사를 전합니다.😄]]></summary></entry><entry><title type="html">파이토치 한국 사용자 모임이 주최한 네 번째 기술 세미나 돌아보기</title><link href="https://pytorch.kr/blog/2024/pytorch-4th-seminar/" rel="alternate" type="text/html" title="파이토치 한국 사용자 모임이 주최한 네 번째 기술 세미나 돌아보기" /><published>2024-11-30T00:00:00+09:00</published><updated>2024-11-30T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2024/pytorch-4th-seminar</id><content type="html" xml:base="https://pytorch.kr/blog/2024/pytorch-4th-seminar/"><![CDATA[<p>파이토치 한국 사용자 모임은 2018년 중순부터 PyTorch 튜토리얼 문서를 한국어로 번역하면서 시작한 PyTorch 사용자 커뮤니티입니다. 한국어 사용자들에게 PyTorch를 소개하고 함께 배우며 성장하는 것을 목표로 하고 있습니다. 더 많은 분들과 기술 트렌드를 공유하고 서로의 이야기를 나누기 위해, 2022년부터 파이토치 한국 사용자 모임 테크 세미나를 개최해 왔습니다. 2024년 11월 30일에 열린 네 번째 기술 세미나는 다섯 분의 연사가 준비한 발표와 마흔 분의 열정적인 참여가 어우러져 성공적으로 마무리되었습니다. 이번 글에서는 각 발표의 주요 내용을 함께 살펴보겠습니다. 생생한 발표 영상은 각 섹션의 다시 보기 링크를 통해 확인하실 수 있습니다.</p>
+
+<p><img src="/assets/images/pytorch_4th_seminar_total.png" alt="세미나 단체 사진" /></p>
+
+<h2 id="pytorch-재단-및-글로벌-현황-소개"><strong>PyTorch 재단 및 글로벌 현황 소개</strong></h2>
+
+<p><img src="/assets/images/pytorch_4th_seminar_1.jpg" alt="이제응 연사" /></p>
+
+<p>리눅스 재단과 다양한 오픈 소스 프로젝트의 구조, 기술 표준화, 그리고 이를 활용한 글로벌 협업에 대해 소개합니다. 한국과 중국의 오픈 소스 커뮤니티 상황, 특히 PyTorch의 AI 생태계에서의 역할과 기여를 언급하며, 국내 기업의 참여 확대를 독려합니다. 클라우드 네이티브 기술과 AI 생태계의 긴밀한 연결성, 오픈 소스 기술의 성장성과 글로벌 트렌드에 대해 설명합니다.</p>
+
+<p><a href="https://youtu.be/n61j8IHkdg8?si=sZ9gQGjGcilt9UPP">영상 다시 보기</a></p>
+
+<h2 id="왜-ai-백엔드-개발자인가">왜 AI 백엔드 개발자인가?</h2>
+
+<p><img src="/assets/images/pytorch_4th_seminar_2.jpeg" alt="최남규 연사" /></p>
+
+<p>LLM(Large Language Model)과 NLP(Natural Language Processing)를 중심으로 AI 시대에서 백엔드 개발자의 역할 변화와 확장, 그리고 그 필요성을 다룹니다. 백엔드 개발이 AI 기반 서비스 개발의 핵심적인 기술 토대를 제공한다는 점을 강조하며, 주요 내용으로는 LLM 시대의 기술 스택, AI 백엔드와 일반 백엔드의 역할 비교, 성공적인 AI 서비스 개발 조건과 실패 요인 분석, PyTorch 활용 사례 등을 포함합니다.</p>
+
+<p><a href="https://youtu.be/1DKqGSi7Re4?si=68dYsmiG_9mpTnMw">영상 다시 보기</a></p>
+
+<h2 id="극-저조도-환경에서의-행동-인식-문제-해결-연구">극 저조도 환경에서의 행동 인식 문제 해결 연구</h2>
+
+<p><img src="/assets/images/pytorch_4th_seminar_3.jpg" alt="하민세 연사" /></p>
+
+<p>모바일 순찰 로봇의 발전으로, 저조도 상황에서의 행동인식은 매우 중요한 문제로 대두되고 있습니다. 기존 데이터셋이 극도로 어두운 조건을 충분히 제공하지 못한다는 한계를 극복하기 위해 ELLAR 데이터셋을 새롭게 수집 및 공개했습니다. 또한 적응적인 감마 보정을 위한 Mixture of Experts 방식의 DGAM(Dual Gamma Adaptive Modulation) 모델을 제안하여 top-1 정확도를 3.39% 향상시킨 연구 결과를 공유합니다.</p>
+
+<p><a href="https://youtu.be/U46e_hRLT1M?si=td8cX24_W8AjNudP">영상 다시 보기</a></p>
+
+<h2 id="multimodal-llm-학습기-강력한-m-llm-학습에-어떤-점들이-고려되어야-하는가">Multimodal LLM 학습기: 강력한 M-LLM 학습에 어떤 점들이 고려되어야 하는가?</h2>
+
+<p><img src="/assets/images/pytorch_4th_seminar_4.jpg" alt="강우영 연사" /></p>
+
+<p>멀티모달 LLM(Large Language Model)의 필요성과 구조, 그리고 학습 방법에 대해 논의합니다. 멀티모달 LLM은 텍스트뿐만 아니라 이미지, 오디오 등 다양한 데이터 형식을 처리하며, 실생활에서의 응용 가능성을 확대하는 데 중점을 둡니다. 발표에서는 시각 데이터에 대한 정확한 이해, 데이터 전처리, 효율적인 학습 방법 개발의 중요성을 다뤘으며, 현재 연구 성과와 한계점, 그리고 향후 과제를 제시합니다.</p>
+
+<p><a href="https://youtu.be/jLjepyam628?si=hhfignUQX0usFtUT">영상 다시 보기</a></p>
+
+<h2 id="pytorch-2024-conference-참석-후기">PyTorch 2024 Conference 참석 후기</h2>
+
+<p><img src="/assets/images/pytorch_4th_seminar_5.jpg" alt="장영 연사" /></p>
+
+<p>2024년 9월, 샌프란시스코에서 개최한 PyTorch 컨퍼런스 참석 후기를 공유합니다. 다양한 기술 주제와 사례 연구 소개가 포함되어 있으며, 오픈 소스 프로젝트의 글로벌 성장과 커뮤니티의 역할, 그리고 이를 통해 기술적, 전략적 가치를 창출하는 방법에 대해 논의합니다. 한국 사용자 모임의 활성화 및 글로벌 커뮤니티와의 연계를 통해 더 많은 기여를 목표로 하는 방향성을 제시합니다.</p>
+
+<p><a href="https://youtu.be/6Uhb69K0u-A?si=ze7VOs1OtvD-hCr3">영상 다시 보기</a></p>
+
+<hr />
+
+<p>이번 네 번째 PyTorch 기술 세미나를 통해 AI 기술 트렌드에 대한 깊이 있는 논의를 나눌 수 있어 감사한 시간이었습니다. 연사자분들과 참여자분들의 열정 덕분에 파이토치 한국 사용자 모임이 더욱 성장할 수 있었습니다. 앞으로도 파이토치 한국 사용자 모임은 기술 공유와 협업의 장을 지속적으로 만들어가겠습니다. 다음 세미나에서도 더 많은 분들과 만나 뵙기를 기대합니다!</p>]]></content><author><name>김지호, 송채영</name></author><summary type="html"><![CDATA[파이토치 한국 사용자 모임은 2018년 중순부터 PyTorch 튜토리얼 문서를 한국어로 번역하면서 시작한 PyTorch 사용자 커뮤니티입니다. 한국어 사용자들에게 PyTorch를 소개하고 함께 배우며 성장하는 것을 목표로 하고 있습니다. 더 많은 분들과 기술 트렌드를 공유하고 서로의 이야기를 나누기 위해, 2022년부터 파이토치 한국 사용자 모임 테크 세미나를 개최해 왔습니다. 2024년 11월 30일에 열린 네 번째 기술 세미나는 다섯 분의 연사가 준비한 발표와 마흔 분의 열정적인 참여가 어우러져 성공적으로 마무리되었습니다. 이번 글에서는 각 발표의 주요 내용을 함께 살펴보겠습니다. 생생한 발표 영상은 각 섹션의 다시 보기 링크를 통해 확인하실 수 있습니다.]]></summary></entry><entry><title type="html">리벨리온이 파이토치 재단에 일반 멤버로 합류했습니다</title><link href="https://pytorch.kr/blog/2024/rebellions/" rel="alternate" type="text/html" title="리벨리온이 파이토치 재단에 일반 멤버로 합류했습니다" /><published>2024-11-21T00:00:00+09:00</published><updated>2024-11-21T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2024/rebellions</id><content type="html" xml:base="https://pytorch.kr/blog/2024/rebellions/"><![CDATA[<p><img src="/assets/images/rebellions-logo.svg" alt="Rebellions logo" style="max-width:350px;width:100%;float:right;margin: 20px;" /></p>
+
+<p>딥러닝 커뮤니티가 오픈소스 파이토치(PyTorch) 프레임워크와 그 생태계에서 협업할 수 있는 중립적인 공간인 파이토치 재단(PyTorch Foundation)에 리벨리온(Rebellions)이 일반 멤버(General Member)로 합류했다는 소식을 전합니다.</p>
+<blockquote>
+  <p>The PyTorch Foundation, a neutral home for the deep learning community to collaborate on the open source PyTorch framework and ecosystem, is announcing today that Rebellions has joined as a general member.</p>
+</blockquote>
+
+<p>리벨리온(Rebellions)은 한국을 기반으로 한 반도체 기업으로 데이터센터 및 엣지 디바이스용 AI 반도체의 설계 및 개발에 특화되어 있습니다. 혁신적인 하드웨어 및 소프트웨어 솔루션을 통해 고효율 및 성능에 중점을 둔 생성적 AI 및 머신러닝 워크로드를 가속화하고 있습니다. 리벨리온은 2023년 데이터센터용 AI 가속기 ‘ATOM’을 성공적으로 출시하고 배포했으며, 다음 세대 AI 가속기 ‘REBEL’을 개발 중입니다.</p>
+<blockquote>
+  <p>Rebellions is a South Korea-based semiconductor company specializing in the design and development of AI chips for data centers and edge devices. Their innovative hardware and software solutions aim to accelerate generative AI and machine learning workloads, focusing on high energy efficiency and performance. The company successfully launched and deployed its AI chip ‘ATOM’ targeting data centers in 2023 and is developing its next-generation AI accelerator ‘REBEL’.</p>
+</blockquote>
+
+<p>파이토치 재단 총괄 이사(Executive Director) Matt White는 “파이토치 재단의 일반 멤버로 리베일리온을 맞이하여 매우 기쁩니다”라며 “리벨리온은 파이토치 생태계에서 AI 가속을 위한 NPU 아키텍처와 파이토치의 통합을 발전시키는데 중점을 두는 독특한 위치에 있습니다. 리벨리온의 전문성은 최신 AI 워크로드의 다양한 요구사항을 수용하는 다목적 프레임워크인 파이토치가 계속 발전하도록 하는데 중요한 역할을 할 것입니다. 리벨리온과 협력하여 혁신을 추진하고 전세계의 개발자를 위한 파이토치 생태계를 강화하기를 기대합니다”라고 말했습니다.</p>
+<blockquote>
+  <p>“We’re thrilled to welcome Rebellions as a new general member of the PyTorch Foundation,” said Matt White, Executive Director of the PyTorch Foundation. “Rebellions brings a unique perspective to the PyTorch ecosystem with their focus on advancing the integration of NPU architectures for AI acceleration with PyTorch. Their expertise will play a vital role in ensuring PyTorch continues to evolve as a versatile framework, accommodating the diverse needs of modern AI workloads. We look forward to collaborating with Rebellions to drive innovation and strengthen the PyTorch ecosystem for developers worldwide.”</p>
+</blockquote>
+
+<p>리벨리온은 자사의 RBLN SDK에서 파이토치 2.0의 네이티브 지원을 시작했습니다. 이러한 통합은 모델 성능을 향상시키는 PyTorch 2.0의 중요한 기능인 torch.compile과 호환되며, 개발자들이 AI 가속기 라인업의 전체 잠재력을 원활하게 활용할 수 있도록 합니다.</p>
+<blockquote>
+  <p>Rebellions has introduced native support for PyTorch 2.0 in their RBLN SDK. This integration includes compatibility with torch.compile, a pivotal feature of PyTorch 2.0 that enhances model performance. Through this development, Rebellions has empowered developers to seamlessly harness the full potential of their AI accelerator lineup within the environment.</p>
+</blockquote>
+
+<p>리벨리온은 또한 한국에서 시작된 협업을 통한 혁신을 통해 파이토치 생태계를 발전시키기 위해 많은 노력을 기울이고 있습니다. 파이토치 한국 커뮤니티 내에 PyTorch Core에 초점을 둔 Special Interest Group (SIG)을 설립하였으며, MODULABS라는 오픈 리서치 연구소를 통해 모집한 지원자들과 함께 PyTorch의 네이티브 지원을 자사의 Neural Processing Unit(NPU)에 통합하는 작업을 진행하고 있습니다.</p>
+<blockquote>
+  <p>Rebellions is also deeply committed to advancing the PyTorch ecosystem through collaborative innovation starting in Korea. The company has established a Special Interest Group (SIG) focusing on Pytorch Core within the PyTorch Korea community and is actively working with volunteers recruited through MODULABS, an open research institute, to integrate native support for the deep learning framework into their Neural Processing Unit (NPU).</p>
+</blockquote>
+
+<p>이에 더해, 리벨리온은 연세대학교, 한양대학교, 한국과학기술원(UST) 등 학술 기관 및 ETRI(전자통신연구원) 등 국가 기관들과 협력하여 파이토치에 대한 학부 및 대학원 과정을 제공하고, 학생들이 연구 플랫폼으로 파이토치를 활용할 수 있도록 지원하고 있습니다.</p>
+<blockquote>
+  <p>In addition, Rebellions is collaborating with academic institutions, such as Yonsei University, Hanyang University, University of Science &amp; Technology (UST)  and national agencies, such as the Electronics and Telecommunications Research Institute (ETRI), to offer undergraduate and graduate courses on PyTorch and enable them to leverage Pytorch as their research platform.</p>
+</blockquote>
+
+<p>이러한 노력은 개발자와 연구자 모두를 위한 파이토치 경험을 최적화하고, 동시에 분야에서의 교육과 혁신을 촉진하는 리벨리온의 헌신을 강조합니다.</p>
+<blockquote>
+  <p>These initiatives highlight Rebellions’ dedication to optimizing the PyTorch experience for developers and researchers alike, while also fostering education and innovation in the field.</p>
+</blockquote>
+
+<p>리벨리온의 김홍석 CSA(Chief Software Architect)는 “하드웨어 혁신을 파이토치와 통합함으로써, 다양한 AI 워크로드를 가속화하기 위한 네이티브 NPU 지원을 구축하고 있습니다.”라며, “리벨리온은 커뮤니티 주도의 노력과 파트너십을 통해 파이토치 생태계(PyTorch Community)에 기여하고, 차세대 AI 솔루션에 대한 NPU 아키텍처 지원을 함께할 수 있어 기쁩니다. 파이토치 커뮤니티와 함께, 우리는 AI 가속화 분야에서 새로운 가능성을 개척하고, 효율적인 컴퓨팅 솔루션으로 전세계 개발자들의 역량을 강화하기 위해 노력할 것입니다.”라고 말했습니다.</p>
+<blockquote>
+  <p>“By integrating our hardware innovations with PyTorch, we’re building Native NPU support to accelerate diverse AI workloads.” said Hong-seok Kim, the Chief Software Architect at Rebellions. “We’re excited to contribute to the PyTorch community by community-driven initiatives and partnerships, advancing NPU architecture support for next-generation AI solutions. Together with the PyTorch community, we aim to pioneer new possibilities in AI acceleration and empower developers worldwide with efficient computing solutions.”</p>
+</blockquote>
+
+<p>파이토치 재단과 함께 하는 방법에 대해 알아보시려면 <a href="https://pytorch.org/join">홈페이지</a>를 방문해주세요.</p>
+<blockquote>
+  <p>To learn more about how your organization can be a part of the PyTorch Foundation, visit our <a href="https://pytorch.org/join">website</a>.</p>
+</blockquote>
+
+<h2 id="리벨리온-소개--about-rebellions">리벨리온 소개 / About Rebellions</h2>
+
+<p>리벨리온(Rebellions)은 한국에 기반을 둔 반도체 회사로, 데이터센터 및 엣지 디바이스용 AI 반도체 설계 및 개발에 특화되어 있습니다. 높은 에너지 효율과 고성능에 중점을 두고 있는 리벨리온의 혁신적인 하드웨어 및 소프트웨어 솔루션은 생성형 AI와 머신러닝 워크로드를 가속화하는 것을 목표로 합니다. 2023년 데이터센터용 AI 가속기 ‘ATOM’을 성공적으로 출시하였으며, 다음 세대 AI 가속기 ‘REBEL’은 확장 가능한 칩렛(Chiplet) 아키텍처와 고대역폭 메모리(HBM)를 채용하고 있습니다.</p>
+<blockquote>
+  <p>Rebellions is a South Korea-based semiconductor company specializing in the design and development of AI chips for data centers and edge devices. Their innovative hardware and software solutions aim to accelerate generative AI and machine learning workloads, focusing on high energy efficiency and performance. The company successfully launched and deployed its AI chip ‘ATOM’ targeting data centers in 2023 and is developing its next-generation AI accelerator ‘REBEL’ incorporating a scalable chiplet architecture and high-bandwidth memory.</p>
+</blockquote>
+
+<h2 id="파이토치-재단-소개--about-pytorch-foundation">파이토치 재단 소개 / About PyTorch Foundation</h2>
+
+<p>파이토치 재단(PyTorch Foundation)은 딥러닝 커뮤니티가 오픈소스 파이토치(PyTorch) 프레임워크와 그 생태계에서 협업할 수 있는 중립적인 공간입니다. 파이토치 재단은 오픈소스 프로젝트인 파이토치 프로젝트에 기여하고 있는 멤버사들 및 주요 기여자들의 지원을 받고 있습니다. 파이토치 재단은 멤버와 기여자들이 제공하는 리소스를 활용하여 커뮤니티 토론과 협업을 활성화하도록 돕습니다.</p>
+<blockquote>
+  <p>The PyTorch Foundation is a neutral home for the deep learning community to collaborate on the open source PyTorch framework and ecosystem. The PyTorch Foundation is supported by its members and leading contributors to the PyTorch open source project. The Foundation leverages resources provided by members and contributors to enable community discussions and collaboration.</p>
+</blockquote>
+
+<h2 id="리눅스-재단-소개--about-the-linux-foundation">리눅스 재단 소개 / About The Linux Foundation</h2>
+
+<p>리눅스 재단(Linux Foundation)은 오픈소스 소프트웨어 및 하드웨어, 표준(Standard), 데이터에 대한 세계 최고의 협업의 장입니다. 리눅스 재단의 프로젝트로는 세계적인 인프라를 구성하는 주요한 프로젝트들인 리눅스(Linux), 쿠버네티스(Kubernetes), 노드(Node.js), ONAP, 파이토치(PyTorch), RISC-V, SPDX, 오픈체인(OpenChain) 등이 있습니다. 리눅스 재단은 모범 사례를 활용하는 것에 중점을 두고 있으며, 기여자, 사용자, 솔루션 제공자의 요구를 해결하여 열린 협업(Open Collaboration)을 위한 지속 가능한 모델을 만들기 위해 노력하고 있습니다. 자세한 정보는 <a href="https://linuxfoundation.org">리눅스 재단 홈페이지</a>를 참고해주세요.</p>
+<blockquote>
+  <p>The Linux Foundation is the world’s leading home for collaboration on open source software, hardware, standards, and data. Linux Foundation projects are critical to the world’s infrastructure including Linux, Kubernetes, Node.js, ONAP, PyTorch, RISC-V, SPDX, OpenChain, and more. The Linux Foundation focuses on leveraging best practices and addressing the needs of contributors, users, and solution providers to create sustainable models for open collaboration. For more information, please visit us at linuxfoundation.org.</p>
+</blockquote>]]></content><author><name>PyTorch Korea User Group</name></author><category term="[&quot;pytorch.org&quot;, &quot;translation&quot;]" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">AI 가속하기: 이제 더 빠른 워크로드를 위해 PyTorch 2.4에서 Intel GPU를 지원합니다</title><link href="https://pytorch.kr/blog/2024/intel-gpus-pytorch-2-4/" rel="alternate" type="text/html" title="AI 가속하기: 이제 더 빠른 워크로드를 위해 PyTorch 2.4에서 Intel GPU를 지원합니다" /><published>2024-08-29T00:00:00+09:00</published><updated>2024-08-29T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2024/intel-gpus-pytorch-2-4</id><content type="html" xml:base="https://pytorch.kr/blog/2024/intel-gpus-pytorch-2-4/"><![CDATA[<p>기쁜 소식을 전해드립니다! 이제 PyTorch 2.4에서 Intel® Data Center Max 시리즈와 SYCL 소프트웨어 스택을 지원하여 학습과 추론 모두에서 AI 워크플로우의 속도를더 빠르게 할 수 있습니다. 이번 업데이트를 통해 최소한의 코딩 작업으로 일관된 프로그래밍 경험을 제공하며, 스트리밍 장치(streaming device)를 원활히 지원하기 위해 장치(device) 및 스트림(stream), 이벤트(event), 생성자(generator), 할당자(allocator), 가드(guard) 등을 포함한 PyTorch의 장치와 런타임 기능을 확장합니다. 이러한 개선 사항은 다양한 하드웨어(ubiquitous hardware)에 PyTorch를 배포하는 작업을 간소화하여, 다양한 하드웨어 백엔드를 통합하기 쉽게 만들어줍니다.</p>
+<blockquote>
+  <p>We have exciting news! PyTorch 2.4 now supports Intel® Data Center GPU Max Series and the SYCL software stack, making it easier to speed up your AI workflows for both training and inference. This update allows for you to have a consistent programming experience with minimal coding effort and extends PyTorch’s device and runtime capabilities, including device, stream, event, generator, allocator, and guard, to seamlessly support streaming devices. This enhancement simplifies deploying PyTorch on ubiquitous hardware, making it easier for you to integrate different hardware back ends.</p>
+</blockquote>
+
+<p>Intel GPU 지원 업데이트로 PyTorch의 eager 및 graph 모드 모두를 지원하며, Dynamo Hugging Face 벤치마크를 완전히 실행할 수 있습니다. Eager 모드는 이제 SYCL로 구현된 일반 Aten 연산자를 포함합니다. 가장 성능이 중요한(performance-critical) graph와 연산자는 oneAPI Deep Neural Network Library (oneDNN) 및 oneAPI Math Kernel Library (oneMKL)을 사용하여 최적화되었습니다. Graph 모드(torch.compile)는 이제 Intel GPU 백엔드가 활성화되어 Intel GPU에 대한 최적화를 구현하고 Triton을 통합할 수 있습니다. 또한, FP32, BF16, FP16 및 자동 혼합 정밀도(AMP, Automatic Mixed Precision)와 같은 데이터 타입(data type)을 지원합니다. Kineto와 oneMKL 기반으로 개발 중인 파이토치 프로파일러(PyTorch Profiler)는 곧 출시될 PyTorch 2.5 릴리스에서 제공될 예정입니다.</p>
+<blockquote>
+  <p>Intel GPU support upstreamed into PyTorch provides support for both eager and graph modes, fully running Dynamo Hugging Face benchmarks. Eager mode now includes common Aten operators implemented with SYCL. The most performance-critical graphs and operators are highly optimized by using oneAPI Deep Neural Network Library (oneDNN) and oneAPI Math Kernel Library (oneMKL). Graph mode (torch.compile) now has an enabled Intel GPU back end to implement the optimization for Intel GPUs and to integrate Triton. Furthermore, data types such as FP32, BF16, FP16, and automatic mixed precision (AMP) are supported. The PyTorch Profiler, based on Kineto and oneMKL, is being developed for the upcoming PyTorch 2.5 release.</p>
+</blockquote>
+
+<p>PyTorch에 Intel GPU를 통합하기 위한 현재와 앞으로 계획된 프론트엔드(front-end) 및 백엔드(back-end) 개선 사항을 살펴보세요.</p>
+<blockquote>
+  <p>Take a look at the current and planned front-end and back-end improvements for Intel GPU upstreamed into PyTorch.</p>
+</blockquote>
+
+<p><img src="/assets/images/intel-gpus-pytorch-2-4.jpg" alt="PyTorch에 Intel GPU를 통합하기 위한 현재와 앞으로 계획된 프론트엔드(front-end) 및 백엔드(back-end) 개선 사항 / the current and planned front-end and back-end improvements for Intel GPU upstreamed into PyTorch" style="width:100%" /></p>
+
+<p>Linux에서의 PyTorch 2.4는 다른 하드웨어와 동일한 사용자 경험을 유지하면서 학습 및 추론 시에 Intel Data Center GPU Max 시리즈를 지원합니다. CUDA에서 코드를 이전(migration)하는 경우, 장치 이름을 <code class="language-plaintext highlighter-rouge">cuda</code>에서 <code class="language-plaintext highlighter-rouge">xpu</code>로만 변경하기만 하면 최소한의 변경으로 Intel GPU에서 기존 애플리케이션을 실행할 수 있습니다. 예를 들어:</p>
+<blockquote>
+  <p>PyTorch 2.4 on Linux supports Intel Data Center GPU Max Series for training and inference while maintaining the same user experience as other hardware. If you’re migrating code from CUDA, you can run your existing application on an Intel GPU with minimal changes—just update the device name from <code class="language-plaintext highlighter-rouge">cuda</code> to <code class="language-plaintext highlighter-rouge">xpu</code>. For example:</p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># CUDA 코드 / CUDA Code
+tensor = torch.tensor([1.0, 2.0]).to("cuda")
+
+# Intel GPU용 코드 / Code for Intel GPU
+tensor = torch.tensor([1.0, 2.0]).to("xpu")
+</code></pre></div></div>
+
+<h2 id="시작하기--get-started">시작하기 / Get Started</h2>
+
+<p><a href="https://cloud.intel.com/">Intel® Tiber™ Developer Cloud</a>에서 Intel Data Center GPU Max 시리즈에서 PyTorch 2.4를 사용해보세요. <a href="https://pytorch.org/docs/main/notes/get_start_xpu.html#examples">환경 설정, 소스 빌드 및 예제</a>를 살펴보세요. 무료 Standard 계정을 만드는 방법은 <a href="https://console.cloud.intel.com/docs/guides/get_started.html">시작하기</a>를 참고하시고, 다음의 단계를 수행하세요:</p>
+<blockquote>
+  <p>Try PyTorch 2.4 on the Intel Data Center GPU Max Series through the <a href="https://cloud.intel.com/">Intel® Tiber™ Developer Cloud</a>. Get a tour of the <a href="https://pytorch.org/docs/main/notes/get_start_xpu.html#examples">environment setup, source build, and examples</a>. To learn how to create a free Standard account, see <a href="https://console.cloud.intel.com/docs/guides/get_started.html">Get Started</a>, then do the following:</p>
+</blockquote>
+
+<ol>
+  <li><a href="https://console.cloud.intel.com/docs/guides/get_started.html">클라우드 콘솔(Cloud Console)</a>에 로그인하세요.</li>
+  <li><a href="https://console.cloud.intel.com/training">학습(Training)</a> 섹션에서 <strong>PyTorch 2.4 on Intel GPUs</strong> 노트북을 엽니다.</li>
+  <li>노트북에서 <strong>PyTorch 2.4</strong> 커널(kernel)이 선택되어 있는지 확인하세요.
+    <blockquote>
+      <ol>
+        <li>Sign in to the <a href="https://console.cloud.intel.com/docs/guides/get_started.html">cloud console</a>.</li>
+        <li>From the <a href="https://console.cloud.intel.com/training">Training</a> section, open the <strong>PyTorch 2.4 on Intel GPUs</strong> notebook.</li>
+        <li>Ensure that the <strong>PyTorch 2.4</strong> kernel is selected for the notebook.</li>
+      </ol>
+    </blockquote>
+  </li>
+</ol>
+
+<h2 id="요약--summary">요약 / Summary</h2>
+
+<p>PyTorch 2.4에서 Intel Data Center GPU Max 시리즈에서 AI 워크로드를 가속화하기 위한 초기 지원(initial support)을 시작합니다. Intel GPU를 사용하면 지속적인 소프트웨어 지원과 통합 배포(unified distribution), 그리고 동기화된 릴리즈 일정(synchronized release schedule)을 통해 원활한 개발 경험을 제공합니다. PyTorch 2.5에서는 이 기능을 Beta 등급(quality)이 되도록 개선할 예정입니다. 2.5에서 계획된 기능은 다음과 같습니다:</p>
+<blockquote>
+  <p>PyTorch 2.4 introduces initial support for Intel Data Center GPU Max Series to accelerate your AI workloads. With Intel GPU, you’ll get continuous software support, unified distribution, and synchronized release schedules for a smoother development experience. We’re enhancing this functionality to reach Beta quality in PyTorch 2.5. Planned features in 2.5 include:</p>
+</blockquote>
+
+<ul>
+  <li>Eager 모드에서 더 많은 Aten 연산자 및 완전한 Dynamo Torchbench 및 TIMM 지원.</li>
+  <li>torch.compile에서 완전한 Dynamo Torchbench 및 TIMM 벤치마크 지원.</li>
+  <li>torch.profile에서 Intel GPU 지원.</li>
+  <li>PyPI wheels 배포.</li>
+  <li>Windows 및 Intel Client GPU 시리즈 지원.
+    <blockquote>
+      <ul>
+        <li>More Aten operators and full Dynamo Torchbench and TIMM support in Eager Mode.</li>
+        <li>Full Dynamo Torchbench and TIMM benchmark support in torch.compile.</li>
+        <li>Intel GPU support in torch.profile.</li>
+        <li>PyPI wheels distribution.</li>
+        <li>Windows and Intel Client GPU Series support.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p><a href="https://github.com/pytorch/pytorch?tab=readme-ov-file#intel-gpu-support">PyTorch에서의 Intel GPU 지원</a>과 관련한 새로운 기여에 대해 커뮤니티에서 평가해주시기를 기대합니다.</p>
+<blockquote>
+  <p>We welcome the community to evaluate these new contributions to  <a href="https://github.com/pytorch/pytorch?tab=readme-ov-file#intel-gpu-support">Intel GPU support on PyTorch</a>. </p>
+</blockquote>
+
+<h2 id="리소스--resources">리소스 / Resources</h2>
+
+<ul>
+  <li>
+    <p><a href="https://pytorch.org/docs/main/notes/get_start_xpu.html">PyTorch 2.4: Get Started on an Intel GPU</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/pytorch/pytorch/releases">PyTorch Release Notes</a></p>
+  </li>
+</ul>
+
+<h2 id="감사의-말--acknowledgments">감사의 말 / Acknowledgments</h2>
+
+<p>기술적 토론과 인사이트를 제공해주신 PyTorch 오픈소스 커뮤니티에 감사드립니다: <a href="https://github.com/malfet">Nikita Shulga</a>와 <a href="https://github.com/jansel">Jason Ansel</a>, <a href="https://github.com/atalman">Andrey Talman</a>, <a href="https://github.com/alband">Alban Desmaison</a>, <a href="https://github.com/desertfire">Bin Bao</a>.</p>
+<blockquote>
+  <p>We want thank PyTorch open source community for their technical discussions and insights: <a href="https://github.com/malfet">Nikita Shulga</a>, <a href="https://github.com/jansel">Jason Ansel</a>, <a href="https://github.com/atalman">Andrey Talman</a>, <a href="https://github.com/alband">Alban Desmaison</a>, and <a href="https://github.com/desertfire">Bin Bao</a>.</p>
+</blockquote>
+
+<p>또한, 전문적인 지원과 안내를 제공해주신 PyTorch의 기여자(collaborator)들에게 감사드립니다.</p>
+<blockquote>
+  <p>We also thank collaborators from PyTorch for their professional support and guidance.</p>
+</blockquote>
+
+<p>1 GPU 지원을 활성화하고 성능을 향상시키기 위해 <a href="https://intel.github.io/intel-extension-for-pytorch/xpu/latest/">Intel® Extension for PyTorch</a>를 설치하는 것을 권장합니다.</p>
+<blockquote>
+  <p>1 To enable GPU support and improve performance, we suggest installing the <a href="https://intel.github.io/intel-extension-for-pytorch/xpu/latest/">Intel® Extension for PyTorch</a></p>
+</blockquote>]]></content><author><name>the PyTorch Team at Intel</name></author><category term="[&quot;pytorch.org&quot;, &quot;translation&quot;]" /><summary type="html"><![CDATA[기쁜 소식을 전해드립니다! 이제 PyTorch 2.4에서 Intel® Data Center Max 시리즈와 SYCL 소프트웨어 스택을 지원하여 학습과 추론 모두에서 AI 워크플로우의 속도를더 빠르게 할 수 있습니다. 이번 업데이트를 통해 최소한의 코딩 작업으로 일관된 프로그래밍 경험을 제공하며, 스트리밍 장치(streaming device)를 원활히 지원하기 위해 장치(device) 및 스트림(stream), 이벤트(event), 생성자(generator), 할당자(allocator), 가드(guard) 등을 포함한 PyTorch의 장치와 런타임 기능을 확장합니다. 이러한 개선 사항은 다양한 하드웨어(ubiquitous hardware)에 PyTorch를 배포하는 작업을 간소화하여, 다양한 하드웨어 백엔드를 통합하기 쉽게 만들어줍니다. We have exciting news! PyTorch 2.4 now supports Intel® Data Center GPU Max Series and the SYCL software stack, making it easier to speed up your AI workflows for both training and inference. This update allows for you to have a consistent programming experience with minimal coding effort and extends PyTorch’s device and runtime capabilities, including device, stream, event, generator, allocator, and guard, to seamlessly support streaming devices. This enhancement simplifies deploying PyTorch on ubiquitous hardware, making it easier for you to integrate different hardware back ends.]]></summary></entry><entry><title type="html">토치챗(torchchat) 소개: 노트북, 데스크탑 및 모바일에서 로컬 LLM 추론 가속화하기</title><link href="https://pytorch.kr/blog/2024/torchchat-local-llm-inference/" rel="alternate" type="text/html" title="토치챗(torchchat) 소개: 노트북, 데스크탑 및 모바일에서 로컬 LLM 추론 가속화하기" /><published>2024-07-30T00:00:00+09:00</published><updated>2024-07-30T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2024/torchchat-local-llm-inference</id><content type="html" xml:base="https://pytorch.kr/blog/2024/torchchat-local-llm-inference/"><![CDATA[<p>오늘 노트북과 데스크탑, 모바일에서 Llama 3와 3.1, 그리고 다른 대규모 언어 모델(LLM, Large Language Model)을 원활하고 고성능으로 실행하는 방법을 보여주는 라이브러리인 <a href="https://github.com/pytorch/torchchat">torchchat</a>을 출시했습니다.</p>
+<blockquote>
+  <p>Today, we’re releasing <a href="https://github.com/pytorch/torchchat">torchchat</a>, a library showcasing how to seamlessly and performantly run Llama 3, 3.1, and other large language models across laptop, desktop, and mobile.</p>
+</blockquote>
+
+<p>이전 블로그 게시물에서는 네이티브 PyTorch 2에서 CUDA를 활용하여 LLM을 뛰어난 성능으로 실행하는 것을 <a href="https://pytorch.org/blog/accelerating-generative-ai-2/">보여드렸었습니다</a>. Torchchat은 이를 더 많은 대상 환경과 모델, 실행 모드에서 확장했습니다. 또한, 내보내기(export)나 양자화(quantization), 평가(eval)와 같은 주요 기능들을 이해하기 쉬운 방식으로 제공하여 로컬 추론 솔루션을 구축하려는 사람들에게 시작부터 끝까지 알려(E2E story)드립니다.</p>
+<blockquote>
+  <p>In our previous blog posts, we <a href="https://pytorch.org/blog/accelerating-generative-ai-2/">showed</a> how to use native PyTorch 2 to run LLMs with great performance using CUDA. Torchchat expands on this with more target environments, models and execution modes. Additionally it provides important functions such as export, quantization and eval in a way that’s easy to understand providing an E2E story for those who want to build a local inference solution.</p>
+</blockquote>
+
+<p>Torchchat은 3가지 영역으로 구성되어 있습니다:</p>
+<blockquote>
+  <p>You will find the project organized into three areas:</p>
+</blockquote>
+
+<ul>
+  <li>Python: Torchchat은 Python CLI를 통해 호춣하거나 브라우저로 접근할 수 있는 <a href="https://github.com/pytorch/torchchat?tab=readme-ov-file#server">REST API</a>를 제공합니다.
+    <blockquote>
+      <ul>
+        <li>Python: Torchchat provides a <a href="https://github.com/pytorch/torchchat?tab=readme-ov-file#server">REST API</a> that is called via a Python CLI or can be accessed via the browser</li>
+      </ul>
+    </blockquote>
+  </li>
+  <li>C++: 파이토치(PyTorch)의 <a href="https://pytorch-dev-podcast.simplecast.com/episodes/aotinductor">AOTInductor</a> 백엔드를 사용하여 데스크탑용 바이너리(desktop-friendly binary)를 생성합니다.
+    <blockquote>
+      <ul>
+        <li>C++: Torchchat produces a desktop-friendly binary using PyTorch’s <a href="https://pytorch-dev-podcast.simplecast.com/episodes/aotinductor">AOTInductor</a> backend</li>
+      </ul>
+    </blockquote>
+  </li>
+  <li>모바일 기기: Torchchat은 <a href="https://pytorch.org/executorch/stable/index.html">ExecuTorch</a> 를 사용하여 온디바이스 추론을 위한 .pte 바이너리 파일을 내보냅니다.
+    <blockquote>
+      <ul>
+        <li>Mobile devices: Torchchat uses <a href="https://pytorch.org/executorch/stable/index.html">ExecuTorch</a> to export a .pte binary file for on-device inference</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="/assets/images/torchchat.png" alt="토치챗 구조 / torchchat schema" style="width:100%" /></p>
+
+<h2 id="성능--performance">성능 / Performance</h2>
+
+<p>다음 표는 다양한 구성에서의 Llama 3의 torchchat 성능을 살펴봅니다.
+<em>Llama 3.1에서의 수치들은 곧 공개 예정입니다.</em></p>
+<blockquote>
+  <p>The following table tracks the performance of torchchat for Llama 3 for a variety of configurations.<br />
+<em>Numbers for Llama 3.1 are coming soon.</em></p>
+</blockquote>
+
+<p><strong>애플 맥북 M1 Max 64GB 노트북에서 Llama3 8B Instruct 성능 / Llama 3 8B Instruct on Apple MacBook Pro M1 Max 64GB Laptop</strong></p>
+
+<table class="table table-bordered">
+  <tr>
+   <td><strong>Mode</strong>
+   </td>
+   <td><strong>DType</strong>
+   </td>
+   <td><strong>Llama 3 8B Tokens/Sec</strong>
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="3">Arm Compile
+   </td>
+   <td>float16
+   </td>
+   <td>5.84
+   </td>
+  </tr>
+  <tr>
+   <td>int8
+   </td>
+   <td>1.63
+   </td>
+  </tr>
+  <tr>
+   <td>int4
+   </td>
+   <td>3.99
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="3">Arm AOTI
+   </td>
+   <td>float16
+   </td>
+   <td>4.05
+   </td>
+  </tr>
+  <tr>
+   <td>int8
+   </td>
+   <td>1.05
+   </td>
+  </tr>
+  <tr>
+   <td>int4
+   </td>
+   <td>3.28
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="3">MPS Eager
+   </td>
+   <td>float16
+   </td>
+   <td>12.63
+   </td>
+  </tr>
+  <tr>
+   <td>int8
+   </td>
+   <td>16.9
+   </td>
+  </tr>
+  <tr>
+   <td>int4
+   </td>
+   <td>17.15
+   </td>
+  </tr>
+</table>
+
+<p><strong>CUDA 및 Linux x86에서 Llama3 8B Instruct 성능 / Llama 3 8B Instruct on Linux x86 and CUDA</strong><br />
+<em>Intel(R) Xeon(R) Platinum 8339HC CPU @ 1.80GHz with 180GB Ram + A100 (80GB)</em></p>
+
+<table class="table table-bordered">
+  <tr>
+   <td>
+<strong>Mode</strong>
+   </td>
+   <td><strong>DType</strong>
+   </td>
+   <td><strong>Llama 3 8B Tokens/Sec</strong>
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="3">x86 Compile
+   </td>
+   <td>bfloat16
+   </td>
+   <td>2.76
+   </td>
+  </tr>
+  <tr>
+   <td>int8
+   </td>
+   <td>3.15
+   </td>
+  </tr>
+  <tr>
+   <td>int4
+   </td>
+   <td>5.33
+   </td>
+  </tr>
+  <tr>
+   <td rowspan="3">CUDA Compile
+   </td>
+   <td>bfloat16
+   </td>
+   <td>83.23
+   </td>
+  </tr>
+  <tr>
+   <td>int8
+   </td>
+   <td>118.17
+   </td>
+  </tr>
+  <tr>
+   <td>int4
+   </td>
+   <td>135.16
+   </td>
+  </tr>
+</table>
+
+<p><strong>모바일에서 Llama3 8B Instruct 성능 / Llama3 8B Instruct on Mobile</strong><br />
+Torchchat은 ExecuTorch를 통해 4-bit GPTQ를 사용하여 삼성 갤럭시 S23 및 아이폰에서 초당 8T 이상의 속도를 달성했습니다.</p>
+<blockquote>
+  <p>Torchchat achieves &gt; 8T/s on the Samsung Galaxy S23 and iPhone using 4-bit GPTQ via ExecuTorch.</p>
+</blockquote>
+
+<h2 id="결론--conclusion">결론 / Conclusion</h2>
+
+<p><strong><a href="https://github.com/pytorch/torchchat">torchchat 저장소를 복제하여 사용해보시기</a></strong>를 권해드립니다. torchchat의 기능을 살펴보고, 파이토치 커뮤니티(PyTorch community)가 로컬 및 제약이 있는 기기(constrained device)에서 LLM을 실행할 수 있도록 역량을 강화하는 과정에 대한 여러분의 피드백을 공유해주시기 바랍니다. 생성형 AI와 LLM의 잠재력을 모든 기기에서 발휘할 수 있도록 함께 해주세요! 빠르게 반복하는 과정 중에 있으므로, 발견하시는 내용들은 <a href="https://github.com/pytorch/torchat/issues">이슈</a>로 남겨주세요. 또한, 모델 추가를 비롯하여 지원하는 하드웨어, 새로운 양자화 기법, 성능 개선 등의 광범위한 범위에 걸친 커뮤니티의 기여를 기다리고 있습니다. 즐거운 실험되시길 바랍니다!</p>
+<blockquote>
+  <p>We encourage you to <strong><a href="https://github.com/pytorch/torchchat">clone the torchchat repo and give it a spin</a></strong>, explore its capabilities, and share your feedback as we continue to empower the PyTorch community to run LLMs locally and on constrained devices. Together, let’s unlock the full potential of generative AI and LLMs on any device. Please submit <a href="https://github.com/pytorch/torchat/issues">issues</a> as you see them, since we are still iterating quickly. We’re also inviting community contributions across a broad range of areas, from additional models, target hardware support, new quantization schemes, or performance improvements.  Happy experimenting!</p>
+</blockquote>]]></content><author><name>PyTorch Korea User Group</name></author><category term="[&quot;pytorch.org&quot;, &quot;translation&quot;]" /><summary type="html"><![CDATA[오늘 노트북과 데스크탑, 모바일에서 Llama 3와 3.1, 그리고 다른 대규모 언어 모델(LLM, Large Language Model)을 원활하고 고성능으로 실행하는 방법을 보여주는 라이브러리인 torchchat을 출시했습니다. Today, we’re releasing torchchat, a library showcasing how to seamlessly and performantly run Llama 3, 3.1, and other large language models across laptop, desktop, and mobile.]]></summary></entry><entry><title type="html">FlashAttention-3: 비동기 및 저정밀도에서의 빠르고 정확한 어텐션 제공</title><link href="https://pytorch.kr/blog/2024/flashattention-3/" rel="alternate" type="text/html" title="FlashAttention-3: 비동기 및 저정밀도에서의 빠르고 정확한 어텐션 제공" /><published>2024-07-11T00:00:00+09:00</published><updated>2024-07-11T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2024/flashattention-3</id><content type="html" xml:base="https://pytorch.kr/blog/2024/flashattention-3/"><![CDATA[<p>어텐션(Attention)은 트랜스포머(Transformer) 구조의 핵심 계층(layer)이지만, 대규모 언어 모델(LLM, Large Language Model)과 긴-컨텍스트 애플리케이션(long-context application)의 병목(bottleneck)이기도 합니다. FlashAttention (및 FlashAttention-2)은 메모리 읽기/쓰기를 최소화하여 GPU에서 어텐션 연산을 가속화하는 방법을 개척했으며, 이제 대부분의 <a href="https://pytorch.org/docs/stable/generated/torch.nn.functional.scaled_dot_product_attention.html">라이브러리</a>에서 트랜스포머(Transformer) 학습 및 추론을 가속화하는데 사용되고 있습니다. 이 덕분에 지난 2년 동안 LLM 컨텍스트 길이가 2-4K(GPT-3, OPT)부터 128K(GPT-4) 및 1M(<a href="https://huggingface.co/gradientai/Llama-3-8B-Instruct-Gradient-1048k">Llama 3</a>)까지 급격히 할 수 있었습니다. 그러나 이러한 성공에도 불구하고, FlashAttention(플래시어텐션)은 최신 하드웨어의 새로운 기능을 아직 활용하지 못했습니다. FlashAttention-2는 H100 GPU에서 이론적 최대 FLOPS(FLoating-point Operations Per Second)의 35%만 활용했습니다. 이 블로그 글에서는 Hopper(호퍼, H100) GPU에서 어텐션 연산을 가속화하기 위한 세 가지 주요 기술을 설명합니다: (1) 워프 특수화(warp-specialization)를 통해 전체 연산과 데이터 이동을 중첩(overlap)하고, (2) 블록-단위 MatMul(Block-wise MatMul) 및 Softmax 연산을 교차로 수행하며, (3) 저정밀도(low-precision) FP8을 위한 하드웨어 지원을 활용하는 비일관적 처리(incoherent processing)입니다.</p>
+<blockquote>
+  <p>Attention, as a core layer of the ubiquitous Transformer architecture, is a bottleneck for large language models and long-context applications. FlashAttention (and FlashAttention-2) pioneered an approach to speed up attention on GPUs by minimizing memory reads/writes, and is now used by most <a href="https://pytorch.org/docs/stable/generated/torch.nn.functional.scaled_dot_product_attention.html">libraries</a> to accelerate Transformer training and inference. This has contributed to a massive increase in LLM context length in the last two years, from 2-4K (GPT-3, OPT) to 128K (GPT-4), or even 1M (<a href="https://huggingface.co/gradientai/Llama-3-8B-Instruct-Gradient-1048k">Llama 3</a>). However, despite its success, FlashAttention has yet to take advantage of new capabilities in modern hardware, with FlashAttention-2 achieving only 35% utilization of theoretical max FLOPs on the H100 GPU. In this blogpost, we describe three main techniques to speed up attention on Hopper GPUs: exploiting asynchrony of the Tensor Cores and TMA to (1) overlap overall computation and data movement via warp-specialization and (2) interleave block-wise matmul and softmax operations, and (3) incoherent processing that leverages hardware support for FP8 low-precision.</p>
+</blockquote>
+
+<p>이러한 기법들을 활용한 FlashAttention-3을 발표하게 되어 기쁩니다. FlashAttention-3은 FP16에서 FlashAttention-2보다 1.5-2.0배 빠르며, 최대 740 TFLOPS(TeraFLOPS)를 달성합니다. 즉, H100의 이론적 최대 FLOPS의 75%까지 활용할 수 있습니다. FP8에서 FlashAttention-3은 기존(baseline) FP8 어텐션 연산보다 오차가 2.6배 작으며 1.2 PFLOPS(PetaFLOPS)에 가까운 성능을 달성합니다.</p>
+<blockquote>
+  <p>We’re excited to release FlashAttention-3 that incorporates these techniques. It’s 1.5-2.0x faster than FlashAttention-2 with FP16, up to 740 TFLOPS, i.e., 75% utilization of H100 theoretical max FLOPS. With FP8, FlashAttention-3 reaches close to 1.2 PFLOPS, with 2.6x smaller error than baseline FP8 attention.</p>
+</blockquote>
+
+<p>FlashAttention-3는 <a href="https://github.com/Dao-AILab/flash-attention">https://github.com/Dao-AILab/flash-attention</a>에서 확인하실 수 있으며, 논문은 <a href="https://tridao.me/publications/flash3/flash3.pdf">여기</a>에서 확인하실 수 있습니다.</p>
+<blockquote>
+  <p>FlashAttention-3 is available at: <a href="https://github.com/Dao-AILab/flash-attention">https://github.com/Dao-AILab/flash-attention</a></p>
+
+  <p><a href="https://tridao.me/publications/flash3/flash3.pdf">Paper</a></p>
+</blockquote>
+
+<h2 id="flashattention-돌아보기--flashattention-recap">FlashAttention 돌아보기 / FlashAttention Recap</h2>
+
+<p><a href="https://arxiv.org/abs/2205.14135">FlashAttention/플래시어텐션</a>은 어텐션 연산을 재배치(reorder)하고 타일링(tiling) 및 재계산(recomputation)을 활용하여 시퀀스 길이에 따른 메모리 사용량을 제곱(quadratic)에서 선형(linear)으로 줄여 속도를 크게 향상시키는 알고리즘입니다. 우리는 타일링을 사용하여 HBM(GPU 메모리)에서 SRAM(빠른 캐시)으로 입력 블록을 불러오고 해당 블록에 대한 어텐션 연산을 수행하며 출력을 HBM에 갱신합니다. 중간 단계의 어텐션 행렬을 HBM에 쓰지 않음으로써 메모리 읽기/쓰기 양을 줄여 연산 시간(wallclock time)을 2-4배 빠르게 하였습니다.</p>
+<blockquote>
+  <p><a href="https://arxiv.org/abs/2205.14135">FlashAttention</a> is an algorithm that reorders the attention computation and leverages tiling and recomputation to significantly speed it up and reduce memory usage from quadratic to linear in sequence length. We use tiling to load blocks of inputs from HBM (GPU memory) to SRAM (fast cache), perform attention with respect to that block, and update the output in HBM. By not writing the large intermediate attention matrices to HBM, we reduce the amount of memory reads/writes, which brings 2-4x wallclock time speedup.</p>
+</blockquote>
+
+<p>다음은 FlashAttention의 순전파(forward) 연산을 보여주는 다이어그램입니다: 타일링(tiling) 및 softmax 재설계(rescaling)를 함으로써 블록별로 연산을 처리하고 HBM에 읽기/쓰기를 피함으로써 근사치가 아닌 정확한 출력을 얻을 수 있습니다.</p>
+<blockquote>
+  <p>Here we show a diagram of FlashAttention forward pass: with tiling and softmax rescaling, we operate by blocks and avoid having to read/write from HBM, while obtaining the correct output with no approximation.</p>
+</blockquote>
+
+<p><img src="/assets/images/flashattention-3/fg1.png" alt="FlashAttention의 순전파(forward) 연산 수식을 표현한 그림 / math equations" style="width:100%" /></p>
+
+<h2 id="hopper-gpu에서의-새로운-하드웨어-기능---wgmma-tma-fp8--new-hardware-features-on-hopper-gpus---wgmma-tma-fp8">Hopper GPU에서의 새로운 하드웨어 기능 - WGMMA, TMA, FP8 / New hardware features on Hopper GPUs - WGMMA, TMA, FP8</h2>
+
+<p>FlashAttention2가 Ampere(암페어, A100) GPU의 이론상 최대 FLOPS의 70%까지 달성할 수 있었지만, Hopper GPU의 새로운 기능을 최대한 활용하여 성능을 극대화하지 못했습니다. 여기에서는 새로운 Hopper-전용 기능 중 일부를 설명하고, 왜 이러한 기능이 중요한지를 설명하겠습니다.</p>
+<blockquote>
+  <p>While FlashAttention-2 can achieve up to 70% theoretical max FLOPS on Ampere (A100) GPUs, it does not yet take advantage of new features on Hopper GPUs to maximize performance. We describe some of the new Hopper-specific features here, and why they are important.</p>
+</blockquote>
+
+<p>1. WGMMA(Warpgroup Matrix Multiply-Accumulate)는 Hopper의 새로운 텐서 코어(Tensor Core)를 활용하여 Ampere의 이전 <code class="language-plaintext highlighter-rouge">mma.sync</code> 명령보다 훨씬 높은 처리량<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup>을 제공합니다. (이미지는 <a href="https://resources.nvidia.com/en-us-tensor-core/gtc22-whitepaper-hopper?ncid=no-ncid">H100 백서(whitepaper)</a>에서 가져왔습니다.)</p>
+<blockquote>
+  <p>1. WGMMA (Warpgroup Matrix Multiply-Accumulate). This new feature makes use of the new Tensor Cores on Hopper, with much higher throughput<sup id="fnref:1:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> than the older mma.sync instruction in Ampere (image from the <a href="https://resources.nvidia.com/en-us-tensor-core/gtc22-whitepaper-hopper?ncid=no-ncid">H100 white paper</a>).</p>
+</blockquote>
+
+<p><img src="/assets/images/flashattention-3/fg2.png" alt="Hopper GPU에서의 새로운 기능: WGMMA(Warpgroup Matrix Multiply-Accumulate), H100 백서에서 가져온 이미지 / image from the H100 white paper" style="width:100%" /></p>
+
+<p>2. TMA(Tensor Memory Accelerator)는 전역 메모리(Global Memory)와 공유 메모리(Shared Memory) 간의 데이터 전송을 가속화하는 특수 하드웨어 장치(special hardware unit)로, 모든 인덱스 연산과 범위-밖(out-of-bound)의 예측을 처리합니다. 이를 통해 레지스터를 확보할 수 있으며, 타일 크기와 효율성을 높이는 데 중요한 리소스를 제공합니다.</p>
+<blockquote>
+  <p>2. TMA (Tensor Memory Accelerator). This is a special hardware unit that accelerates the transfer of data between global memory and shared memory, taking care of all index calculation and out-of-bound predication. This frees up registers, which is a valuable resource to increase tile size and efficiency.</p>
+</blockquote>
+
+<p><img src="/assets/images/flashattention-3/fg3.png" alt="Hopper GPU에서의 새로운 기능: TMA(Tensor Memory Accelerator) 소개 그림 / block diagram" style="width:100%" /></p>
+
+<p>3. FP8의 낮은 정밀도(Low-precision with FP8)에서의 연산은 FP16에서의 연산과 비교하여 텐서 코어 처리량(Tensor Core throughput)을 두 배로 높일 수 있습니다(예: FP16에서 989 TFLOPS, FP8에서 1978 TFLOPS). 그러나 더 적은 비트로 부동 소수점 수(floating point number)를 표현하기 때문에 정확도가 떨어집니다.</p>
+<blockquote>
+  <p>3. Low-precision with FP8. This doubles the Tensor Core throughput (e.g. 989 TFLOPS with FP16 and 1978 TFLOPS with FP8), but trades off accuracy by using fewer bits to represent floating point numbers.</p>
+</blockquote>
+
+<p><img src="/assets/images/flashattention-3/fg4.png" alt="H100 GPU에서 FP8의 낮은 정밀도 사용 시 A100 FP16 대비 6배의 처리량 / 6x throughput" style="width:100%" /></p>
+
+<p>FlashAttention-3는 <a href="https://github.com/NVIDIA/cutlass">NVIDIA의 CUTLASS</a> 라이브러리의 강력한 추상화(abstraction)를 활용하여 Hopper의 이러한 기능들을 모두 활용합니다.<br />
+<br />
+이러한 새로운 기능들을 사용하도록 FlashAttention을 다시 작성함으로써 이미 FlashAttention-2 FP16 순전파(forward pass)에서 350 TFLOPS에서 540-570 TFLOPS로 성능을 크게 향상시킬 수 있습니다. 그러나 Hopper의 새로운 명령어(WGMMA 및 TMA)의 비동기적 특성(asynchronous nature)은 연산을 중첩(overlap)하고 성능을 더욱 향상시킬 수 있는 추가적인 알고리즘적 기회를 제공합니다. 이 블로그 글에서는 어텐션 연산에 특화된 두 가지 기법을 설명하겠습니다. 별도의 생성자(producer)와 소비자(consumer) 워프(warp)로 TMA와 WGMMA를 수행하는 워프 특수화(Warp Specialization) 기법은 GEMM의 문맥에서 <a href="https://github.com/NVIDIA/cutlass/blob/main/media/docs/efficient_gemm.md#warp-specialization">잘 설명해둔 것이 있으며</a>,  여기에서도 동일하게 동작합니다.</p>
+<blockquote>
+  <p>FlashAttention-3 makes use of all of these new features of Hopper, using powerful abstractions from <a href="https://github.com/NVIDIA/cutlass">NVIDIA’s CUTLASS</a> library. <br />
+<br />
+By rewriting FlashAttention to use these new features, we can already significantly speed it up (e.g., from 350 TFLOPS in FlashAttention-2 FP16 forward pass to around 540-570 TFLOPS). However, the asynchronous nature of the new instructions on Hopper (WGMMA and TMA) opens up additional algorithmic opportunities to overlap operations and thereby extract even greater performance. For this blogpost, we’ll explain two such techniques specific to attention. The generic technique of warp specialization, with separate producer and consumer warps doing TMA and WGMMA, is <a href="https://github.com/NVIDIA/cutlass/blob/main/media/docs/efficient_gemm.md#warp-specialization">well-covered elsewhere</a> in the context of GEMM and works the same here.</p>
+</blockquote>
+
+<h2 id="비동기성-gemm과-softmax-중첩하기--asynchrony-overlapping-gemm-and-softmax">비동기성: GEMM과 Softmax 중첩하기 / Asynchrony: Overlapping GEMM and Softmax</h2>
+
+<p>왜 중첩을 해야 할까요?</p>
+<blockquote>
+  <p>Why overlap?</p>
+</blockquote>
+
+<p>어텐션의 주요 연산은 GEMM(GEneral Matrix Multiplication / 일반적인 행렬 곱셈 연산, Q와 K 사이의 MatMul 연산 및 어텐션 확률 P와 V 사이의 matmul)과 Softmax입니다. 왜 중첩을 해야 할까요? 대부분의 FLOPS가 이미 GEMM에 있는데도요? GEMM이 (WGMMA 명령어를 사용하여 연산하여) 빠르다면, <a href="https://horace.io/brrr_intro.html">GPU가 부르르르 돌아가야</a> 하지 않을까요?</p>
+<blockquote>
+  <p>Attention has GEMMs (those matmuls between Q and K and between attention probability P and V) and softmax as its two main operations. Why do we need to overlap them? Isn’t most of the FLOPS in the GEMMs anyway? As long as the GEMMs are fast (e.g., computed using WGMMA instructions), shouldn’t the <a href="https://horace.io/brrr_intro.html">GPU be going brrrr</a>?</p>
+</blockquote>
+
+<p>문제는 최신 가속기들에서 비-행렬곱(non-matmul) 연산이 행렬곱(matmul) 연산보다 매우 느리다는 것입니다. (Softmax의 경우) 지수(Exponential) 연산과 같은 특수 함수는 부동 소수점 곱셈보다 처리량이 매우 낮으며, 부동 소수점 곱하기-더하기(floating point multiply-add) 연산이나 행렬 곱하기-더하기(matrix multiply-add) 연산과 다른 장치(unit)인 다중 함수 장치(multi-function unit)에서 처리(evaluate)됩니다. 예를 들어, H100 GPU SXM5의 FP16 행렬곱 연산은 989 TPLOPS지만, 특수 함수<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>의 경우에는 (256배 적은 처리량인) 3.9 TFLOPS에 불과합니다! 헤드 차원(head dimension)이 128일 때, 지수 연산보다 행렬 연산의 FLOPS가 512배 더 많으며, 이는 지수 연산이 행렬 연산과 비교했을 때 절반 가량의 시간이 소요될 수 있음을 뜻합니다. FP8의 경우 상황은 더욱 악화되어 행렬곱(matmul) 연산 FLOPS는 2배 빠르지만 지수 연산 FLOPS는 동일한 속도를 유지합니다. 이상적으로는 행렬곱(matmul)과 Softmax가 병렬로 동작하는 것이 좋습니다. 텐서 코어(Tensor Core)가 행렬곱 연산으로 바쁜 사이에 다중 함수 장치는 지수 연산을 처리해야 합니다!</p>
+<blockquote>
+  <p>The problem is that non-matmul operations are much slower than matmul operations on modern accelerators. Special functions such as exponential (for the softmax) have even lower throughput than floating point multiply-add; they are evaluated by the multi-function unit, a unit separate from floating point multiply-add or matrix multiply-add. As an example, the H100 GPU SXM5 has 989 TFLOPS of FP16 matrix multiply, but only 3.9 TFLOPS (256x less throughput) for special functions<sup id="fnref:2:1"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>! For head dimension 128, there are 512x more matmul FLOPS than exponential, which means that exponential can take 50% of the time compared to matmul. The situation is even worse for FP8, where the matmul FLOPS are twice as fast yet exponential FLOPS stay the same speed. Ideally we want matmul and softmax to operate in parallel. While the Tensor Cores are busy with matmul, the multi-function units should be calculating exponential!</p>
+</blockquote>
+
+<h3 id="핑퐁-스케쥴링으로-워프그룹-간-중첩--inter-warpgroup-overlapping-with-pingpong-scheduling">핑퐁 스케쥴링으로 워프그룹 간 중첩 / Inter-warpgroup overlapping with pingpong scheduling</h3>
+
+<p>GEMM과 Softmax를 중첩하는 가장 쉬운 첫번째 방법은 아무것도 하지 않는 것입니다! 워프 스케줄러(Warp Scheduler)는 이미 일부 워프(warp)가 차단되는 경우(예. GEMM 결과를 기다리는 경우) 다른 워프(warp)가 실행될 수 있도록 스케줄링합니다. 즉, 아무것도 하지 않아도 워프 스케줄러는 이미 일부 중첩을 수행하고 있습니다.</p>
+<blockquote>
+  <p>The first and easiest way to overlap GEMM and softmax is to do nothing at all! The warp schedulers already try to schedule warps so that if some warps are blocked (e.g., waiting for GEMM results), other warps can run. That is, the warp schedulers do some of this overlapping for us, for free.</p>
+</blockquote>
+
+<p>하지만 일부 스케줄링을 수동으로 수행하여 이를 개선할 수 있습니다. 예를 들어 아래 그림의 Warpgroup 1과 2처럼 (각 4개의 워프로 구성된) 2개의 워프그룹(warpgroup)이 있을 때, 동기화 배리어(synchronization barrier, <code class="language-plaintext highlighter-rouge">bar.sync</code>)를 사용하여 워프그룹1이 먼저 GEMM 연산들(예. 첫번째 반복의 GEMM1과 그 다음 반복의 GEMM0)을 수행한 다음, 워프그룹1이 Softmax 연산을 수행하는 동안 워프그룹2가 GEMM 연산을 수행하도록 할 수 있습니다. 이러한 “핑퐁(pingpong)” 스케줄은 아래 그림에 설명되어 있으며, 동일한 색상은 동일한 반복(iteration)을 나타냅니다.</p>
+<blockquote>
+  <p>However, we can improve on this by doing some of the scheduling manually. As an example, if we have 2 warpgroups (labeled 1 and 2 – each warpgroup is a group of 4 warps), we can use synchronization barriers (bar.sync) so that warpgroup 1 first does its GEMMs (e.g., GEMM1 of one iteration and GEMM0 of the next iteration), and then warpgroup 2 does its GEMMs while warpgroup 1 does its softmax, and so on. This “pingpong” schedule is illustrated in the figure below, where the same color denotes the same iteration.</p>
+</blockquote>
+
+<p><img src="/assets/images/flashattention-3/fg5.png" alt="핑퐁 스케쥴링으로 워프그룹 간 중첩 설명 그림 / block chart" style="width:100%" /></p>
+
+<p>이렇게 하면 다른 워프그룹의 GEMM 연산의 그림자 안에서 Softmax를 수행할 수 있습니다. 물론 이 그림은 대략적인 것으로, 실제 스케줄링은 이렇게 깔끔하지 않습니다. 그러나 핑퐁 스케줄링을 사용하면 (헤드 차원이 128이고 시퀀스 길이가 8K인 경우에) FP16 어텐션의 순전파 성능을 약 570 TFLOPS에서 620 TFLOPS로 향상시킬 수 있습니다.</p>
+<blockquote>
+  <p>This would allow us to perform the softmax in the shadow of the GEMMs of the other warpgroup. Of course, this figure is just a caricature; in practice the scheduling is not really this clean. Nevertheless, pingpong scheduling can improve FP16 attention forward pass from around 570 TFLOPS to 620 TFLOPS (head dim 128, seqlen 8K).</p>
+</blockquote>
+
+<h3 id="gemm-및-softmax-연산의-워프그룹-내-중첩--intra-warpgroup-overlapping-of-gemm-and-softmax">GEMM 및 Softmax 연산의 워프그룹 내 중첩 / Intra-warpgroup overlapping of GEMM and Softmax</h3>
+
+<p>하나의 워프그룹 내에서도 GEMM과 Softmax의 일부를 중첩할 수 있습니다. 아래 그림에서와 같이, 동일한 색상은 동일한 반복(iteration)을 나타냅니다.</p>
+<blockquote>
+  <p>Even within one warpgroup, we can have some part of softmax running while the GEMMs of that warpgroup is running. This is illustrated in this figure, where the same color denotes the same iteration.</p>
+</blockquote>
+
+<p><img src="/assets/images/flashattention-3/fg6.png" alt="GEMM 및 Softmax 연산의 워프그룹 내 중첩 설명 그림 / block chart" style="width:100%" /></p>
+
+<p>이러한 파이프라인은 FP16 어텐션 순전파 시 처리량을 620TFLOPS에서 640-660TFLOPS로 증가시키지만 레지스터 압력(register pressure)이 높아지는 대가를 치릅니다. GEMM의 누산기(accumulator)와 Softmax의 입/출력을 모두 수용하려면 더 많은 레지스터가 필요합니다. 전체적으로 이 기법이 더 나은 트레이드-오프(favorable trade-off)를 제공한다는 것을 알 수 있습니다.</p>
+<blockquote>
+  <p>This pipelining increases throughput from around 620 TFLOPS to around 640-660 TFLOPS for FP16 attention forward, at the cost of higher register pressure. We need more registers to hold both accumulators of the GEMMs, and the input/output of softmax. Overall, we find this technique to offer a favorable tradeoff.</p>
+</blockquote>
+
+<h2 id="낮은-정밀도-비일관적-처리로-양자화-오차-줄이기--low-precision-reduce-quantization-error-with-incoherent-processing">낮은 정밀도: 비일관적 처리로 양자화 오차 줄이기 / Low-precision: reduce quantization error with incoherent processing</h2>
+
+<p>LLM 활성화(activation)에는 다른 특징(feature)들보다 훨씬 큰 크기의 <a href="https://arxiv.org/abs/2208.07339">이상치(outlier)들</a>이 있을 수 있습니다. 이러한 이상치는 훨씬 큰 양자화 오류(quantization error)를 만들어서 양자화(quantize)를 어렵게 합니다. 양자화 분야(quantization literature)에서 사용하는, Query와 Key에 임의의 직교 행렬(random orthogonal matrix)를 곱하여 이상치를 “퍼뜨려(spread out)” 양자화 오류를 줄이는 비일관적 처리(incoherent processing)를 활용합니다. (예. <a href="https://arxiv.org/abs/2307.13304">QuIP</a>) 그 중에서도 (임의의 부호를 사용하는) 하다마드 변환(Hadamad transform)을 사용하는데, 이 방법으로 헤드 차원 $d$에 대해서 어텐션 헤드당 $O(d^2)$ 대신 $O(dlogd)$ 시간에 수행할 수 있습니다. 하다마드 변환은 메모리 대역폭(memory-bandwidth)에 제한이 있으므로, (역시 메모리 대역폭에 제한이 있는) 로터리 임베딩(rotary embedding)과 같은 이전 연산과 “곧바로(for free)” 병합(fuse)할 수 있습니다.</p>
+<blockquote>
+  <p>LLM activation can have <a href="https://arxiv.org/abs/2208.07339">outliers</a> with much larger magnitude than the rest of the features. These outliers make it difficult to quantize, producing much larger quantization errors. We leverage incoherent processing, a technique used in the quantization literature (e.g. from <a href="https://arxiv.org/abs/2307.13304">QuIP</a>) that multiplies the query and key with a random orthogonal matrix to “spread out” the outliers and reduce quantization error. In particular, we use the Hadamard transform (with random signs), which can be done per attention head in $O(d logd)$ instead of $O(d^2)$ time, where $d$ is the head dimension. Since the Hadamard transform is memory-bandwidth bound, it can be fused with previous operations such as rotary embedding (also memory-bandwidth bound) “for free”.</p>
+</blockquote>
+
+<p>실험을 통해 표준 정규 분포(Standard Normal Distribution)에서 Q, K, V를 생성하면서 (이상치를 나타내기 위해) 0.1%의 항목들이 큰 값을 가지도록 한 경우, 비일관적 처리 시에 양자화 오류를 2.6배 낮출 수 있음을 확인하였습니다. 아래 표에서 수치 오류 비교해두었습니다. 자세한 내용은 논문을 참고해주세요.</p>
+<blockquote>
+  <p>In our experiment where Q, K, V are generated from a standard normal distribution but 0.1% of the entries have large magnitudes (to simulate outliers), we found that incoherent processing can reduce the quantization error by 2.6x. We show numerical error comparison in the table below. Please see the paper for details.</p>
+</blockquote>
+
+<p><img src="/assets/images/flashattention-3/fg6a.png" alt="FP8의 낮은 정밀도에서 비일관적 처리 시의 양자화 오류 비교표 / text diagram" style="width:100%" /></p>
+
+<h2 id="어텐션-벤치마크--attention-benchmark">어텐션 벤치마크 / Attention benchmark</h2>
+
+<p>FlashAttention-3 사용 시의 결과를 FlashAttention-2 및 (이미 Hopper GPU의 새로운 하드웨어 기능을 사용 중인) Triton, cuDNN의 구현과 비교해보겠습니다.</p>
+<blockquote>
+  <p>We show some results with FlashAttention-3, and compare it to FlashAttention-2, as well as the implementation in Triton and cuDNN (both of which already use new hardware features of Hopper GPUs).</p>
+</blockquote>
+
+<p>FP16에서, FlashAttention-2 대비 1.6-1.8배의 속도 개선을 확인할 수 있었습니다.</p>
+<blockquote>
+  <p>For FP16, we see about 1.6x-1.8x speedup over FlashAttention-2</p>
+</blockquote>
+
+<p><img src="/assets/images/flashattention-3/fg7.png" alt="FlashAttention-3의 순전파시 속도 개선 비교: FlashAttention-2, Triton, cuDNN과의 비교 차트 / speed charts" style="width:100%" /></p>
+
+<p><img src="/assets/images/flashattention-3/fg8.png" alt="FlashAttention-3의 역전파시 속도 개선 비교: FlashAttention-2, Triton, cuDNN과의 비교 차트 / speed charts" style="width:100%" /></p>
+
+<p>FP8에서는 1.2PFLOPS(PetaFLOPS)에 가까운 속도를 보였습니다!</p>
+<blockquote>
+  <p>For FP8, we can reach close to 1.2 PFLOPS!</p>
+</blockquote>
+
+<p><img src="/assets/images/flashattention-3/fg9.png" alt="FlashAttention-3의 FP8에서의 속도 개선 비교: Triton, cuDNN과의 비교 차트 / speed charts" style="width:100%" /></p>
+
+<h2 id="토의--discussion">토의 / Discussion</h2>
+
+<p>이번 블로그 글은 Hopper GPU에서 사용할 수 있는 FlashAttention의 최적화 기능 중 일부를 중점적으로 설명했습니다. 가변 길이 시퀀스(variable length sequence)나 영속적인 커널(persistent kernel), FP8에서의 커널 내 전치(in-kernel transpose for FP8)과 같은 다른 최적화들에 대해서는 논문에서 다루었습니다.</p>
+<blockquote>
+  <p>This blogpost highlights some of the optimizations for FlashAttention available on Hopper GPUs. Other optimizations (e.g., variable length sequences, persistent kernel, and in-kernel transpose for FP8) are covered in the paper.</p>
+</blockquote>
+
+<p>지금까지 실행되는 하드웨어를 활용하는 알고리즘을 설계하여 효율성을 크게 향상시키고 긴 컨텍스트와 같은 새로운 모델 기능을 활용할 수 있음을 확인하였습니다. 향후 LLM 추론에서의 최적화 작업과 같은 추가 연구를 기대하며, 이러한 기법이 일반화되어 다른 하드웨어 구조에도 적용될 수 있기를 기대합니다.</p>
+<blockquote>
+  <p>We have seen that designing algorithms that take advantage of the hardware they run on can bring significant efficiency gains and unlock new model capabilities such as long context. We look forward to future work on optimization for LLM inference, as well as generalizing our techniques to other hardware architectures.</p>
+</blockquote>
+
+<p>또한 향후 PyTorch의 릴리즈에 FlashAttention-3가 반영되기를 기대합니다.</p>
+<blockquote>
+  <p>We also look forward to FlashAttention-3 being integrated in a future release of PyTorch.</p>
+</blockquote>
+
+<!-- Footnotes themselves at the bottom. -->
+<h2 id="각주--notes">각주 / Notes</h2>
+
+<!-- MathJAX 설정 추가 -->
+<script type="text/x-mathjax-config">
+<!--
+MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$'] ],
+    processEscapes: true,
+  }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+     alert("Math Processing Error: "+message[1]);
+});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+     alert("Math Processing Error: "+message[1]);
+});
+-->
+</script>
+
+<script type="text/javascript" async="" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>WGMMA 명령어가 없는 경우, 이전의 <code class="language-plaintext highlighter-rouge">mma.sync</code> 명령어는 Hopper 텐서 코어 최대 처리량의 약 2/3에 불과합니다: <a href="https://arxiv.org/abs/2402.13499v1">https://arxiv.org/abs/2402.13499v1</a></p>
+      <blockquote>
+        <p>Without the wgmma instruction, the older mma.sync instruction can only reach about ⅔ the peak throughput of Hopper Tensor Cores: https://arxiv.org/abs/2402.13499v1</p>
+      </blockquote>
+      <p><a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:1:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>CUDA 프로그래밍 가이드에 따르면 특수 함수의 처리량은 각 스트리밍 멀티프로세서(SM)의 클럭 주기(clock cycle)당 16개의 연산입니다. 스트리밍 멀티프로세서(SM) 132개에 16을 곱하고 (FP16 행렬곱의 989 TFLOPS를 클럭 속도(clock speed)로 계산한) 1830 Mhz를 곱하여 3.9TFLOPS를 얻습니다.</p>
+      <blockquote>
+        <p>The CUDA programming guide specifies that the throughput for special functions is 16 operations per streaming multiprocessor (SM) per clock cycle. We multiply 16 by 132 SMs and 1830 Mhz (clock speed used to calculate 989 TFLOPS of FP16 matmul) to get 3.9 TFLOPS</p>
+      </blockquote>
+      <p><a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a> <a href="#fnref:2:1" class="reversefootnote" role="doc-backlink">&#8617;<sup>2</sup></a></p>
+    </li>
+  </ol>
+</div>]]></content><author><name>Jay Shah and Ganesh Bikshandi, Colfax Research, Ying Zhang, Meta, Vijay Thakkar and Pradeep Ramani, NVIDIA, Tri Dao, TogetherAI and Princeton University</name></author><category term="[&quot;pytorch.org&quot;, &quot;translation&quot;]" /><summary type="html"><![CDATA[어텐션(Attention)은 트랜스포머(Transformer) 구조의 핵심 계층(layer)이지만, 대규모 언어 모델(LLM, Large Language Model)과 긴-컨텍스트 애플리케이션(long-context application)의 병목(bottleneck)이기도 합니다. FlashAttention (및 FlashAttention-2)은 메모리 읽기/쓰기를 최소화하여 GPU에서 어텐션 연산을 가속화하는 방법을 개척했으며, 이제 대부분의 라이브러리에서 트랜스포머(Transformer) 학습 및 추론을 가속화하는데 사용되고 있습니다. 이 덕분에 지난 2년 동안 LLM 컨텍스트 길이가 2-4K(GPT-3, OPT)부터 128K(GPT-4) 및 1M(Llama 3)까지 급격히 할 수 있었습니다. 그러나 이러한 성공에도 불구하고, FlashAttention(플래시어텐션)은 최신 하드웨어의 새로운 기능을 아직 활용하지 못했습니다. FlashAttention-2는 H100 GPU에서 이론적 최대 FLOPS(FLoating-point Operations Per Second)의 35%만 활용했습니다. 이 블로그 글에서는 Hopper(호퍼, H100) GPU에서 어텐션 연산을 가속화하기 위한 세 가지 주요 기술을 설명합니다: (1) 워프 특수화(warp-specialization)를 통해 전체 연산과 데이터 이동을 중첩(overlap)하고, (2) 블록-단위 MatMul(Block-wise MatMul) 및 Softmax 연산을 교차로 수행하며, (3) 저정밀도(low-precision) FP8을 위한 하드웨어 지원을 활용하는 비일관적 처리(incoherent processing)입니다. Attention, as a core layer of the ubiquitous Transformer architecture, is a bottleneck for large language models and long-context applications. FlashAttention (and FlashAttention-2) pioneered an approach to speed up attention on GPUs by minimizing memory reads/writes, and is now used by most libraries to accelerate Transformer training and inference. This has contributed to a massive increase in LLM context length in the last two years, from 2-4K (GPT-3, OPT) to 128K (GPT-4), or even 1M (Llama 3). However, despite its success, FlashAttention has yet to take advantage of new capabilities in modern hardware, with FlashAttention-2 achieving only 35% utilization of theoretical max FLOPs on the H100 GPU. In this blogpost, we describe three main techniques to speed up attention on Hopper GPUs: exploiting asynchrony of the Tensor Cores and TMA to (1) overlap overall computation and data movement via warp-specialization and (2) interleave block-wise matmul and softmax operations, and (3) incoherent processing that leverages hardware support for FP8 low-precision.]]></summary></entry><entry><title type="html">PyTorch로 전문가 혼합(MoE) 모델 학습 확장하기</title><link href="https://pytorch.kr/blog/2024/training-moes/" rel="alternate" type="text/html" title="PyTorch로 전문가 혼합(MoE) 모델 학습 확장하기" /><published>2024-06-23T00:00:00+09:00</published><updated>2024-06-23T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2024/training-moes</id><content type="html" xml:base="https://pytorch.kr/blog/2024/training-moes/"><![CDATA[<p>최근 1년간 전문가 혼합(MoE, Mixture-of-Experts) 모델들의 인기가 급증했습니다. 이러한 인기는 <a href="https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm">DBRX</a>, <a href="https://mistral.ai/news/mixtral-of-experts/">Mixtral</a>, <a href="https://github.com/deepseek-ai/DeepSeek-V2">DeepSeek</a>를 비롯하여 다양하고 강력한 오픈소스 모델들로부터 비롯된 것입니다. Databricks에서는 PyTorch 팀과 협력하여 MoE 모델의 학습을 확장했습니다. 이번 글에서는 <a href="https://pytorch.org/tutorials/beginner/dist_overview.html">PyTorch Distributed</a> 및 PyTorch로 구현한 효율적인 오픈소스 MoE 구현체인 <a href="https://github.com/databricks/megablocks">MegaBlocks</a>를 사용하여 학습을 3천개 이상의 GPU들로 확장하는 방법에 대해 이야기해보겠습니다.</p>
+<blockquote>
+  <p>Over the past year, Mixture of Experts (MoE) models have surged in popularity, fueled by powerful open-source models like <a href="https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm">DBRX</a>, <a href="https://mistral.ai/news/mixtral-of-experts/">Mixtral</a>, <a href="https://github.com/deepseek-ai/DeepSeek-V2">DeepSeek</a>, and many more. At Databricks, we’ve worked closely with the PyTorch team to scale training of MoE models. In this blog post, we’ll talk about how we scale to over three thousand GPUs using <a href="https://pytorch.org/tutorials/beginner/dist_overview.html">PyTorch Distributed</a> and <a href="https://github.com/databricks/megablocks">MegaBlocks</a>, an efficient open-source MoE implementation in PyTorch.</p>
+</blockquote>
+
+<h2 id="전문가-혼합moe이-무엇인가요--what-is-a-moe">전문가 혼합(MoE)이 무엇인가요? / What is a MoE?</h2>
+
+<p>전문가 혼합(MoE, Mixture-of-Experts) 모델은 여러 전문가 네트워크들을 사용하여 예측을 수행하는 모델 구조입니다. 게이팅(gating) 네트워크는 전문가 네트워크들의 출력을 라우팅하고 결합하는데 사용하며, 각 전문가가 서로 다른 토큰들의 분포(specialized distribution of tokens)로 학습되도록 합니다. 트랜스포머 기반의 대규모 언어 모델(LLM, Large Language Model)은 일반적으로 임베딩 레이어 뒤에 여러 개의 트랜스포머 블록들로 구성됩니다. (그림 1, 제일 왼쪽 A) 각 트랜스포머 블록에는 어텐션 블록(attention block)과 덴스 피드 포워드 네트워크(dense feed forward network)가 포함되어 있습니다. (그림 1, 왼쪽 두번째 B) 이러한 트랜스포머 블록들은 하나의 블록의 출력이 다음 블록의 입력으로 이어지도록 쌓여 있습니다. 최종 출력은 완전 연결된 레이어(fully connected layer)와 소프트맥스(softmax)를 거쳐 다음에 출력할 토큰에 대한 확률을 얻습니다.</p>
+<blockquote>
+  <p>A MoE model is a model architecture that uses multiple expert networks to make predictions. A gating network is used to route and combine the outputs of experts, ensuring each expert is trained on a different, specialized distribution of tokens. The architecture of a transformer-based large language model typically consists of an embedding layer that leads into multiple transformer blocks (Figure 1, Subfigure A). Each transformer block contains an attention block and a dense feed forward network (Figure 1, Subfigure B). These transformer blocks are stacked such that the output of one transformer block leads to the input of the next block. The final output goes through a fully connected layer and softmax to obtain probabilities for the next token to output.</p>
+</blockquote>
+
+<p>LLM에 MoE를 적용할 때는, 덴스 피드 포워드 레이어(dense feed forward layer)가 MoE 레이어로 대체됩니다. MoE 레이어는 게이팅 네트워크와 여러 전문가들로 구성됩니다. (그림 1, 오른쪽 D) 게이팅 네트워크는 일반적으로 선형 피드 포워드 네트워크(linear feed forward network)로, 각 토큰을 받아 어떤 토큰이 어떤 전문가로 라우팅되어야 하는지 결정하도록 하는 가중치 세트(set of weights)를 생성합니다. 전문가 네트워크들 자체도 일반적으로 피드 포워드 네트워크로 구현합니다. 학습 중에는 게이팅 네트워크는 입력을 전문가들에게 할당하여, 모델이 특화되고 성능이 향상되도록 합니다. 이후, 라우터 출력을 전문가 출력을 더하여(weigh) MoE 레이어의 최종 출력으로 제공합니다.</p>
+<blockquote>
+  <p>When using a MoE in LLMs, the dense feed forward layer is replaced by a MoE layer which consists of a gating network and a number of experts (Figure 1, Subfigure D). The gating network, typically a linear feed forward network, takes in each token and produces a set of weights that determine which tokens are routed to which experts. The experts themselves are typically implemented as a feed forward network as well. During training, the gating network adapts to assign inputs to the experts, enabling the model to specialize and improve its performance. The router outputs are then used to weigh expert outputs to give the final output of the MoE layer.</p>
+</blockquote>
+
+<p><img src="/assets/images/training-moes/fg1.png" alt="그림 1: 트랜스포머 블록에서 전문가 혼합(MoE) 사용하기" style="width:100%" /></p>
+
+<p><em>그림 1: 트랜스포머 블록에서 전문가 혼합(MoE) 사용하기 / Figure 1: Using Mixture of Experts in a transformer block</em></p>
+
+<p>더 큰 밀집된 모델(dense model)들에 비해, MoE 모델은 주어진 연산 한도(compute budget)로 더 효율적으로 학습할 수 있습니다. 이는 게이팅 네트워크가 토큰을 전문가들 중 일부에게만 보내어 연산 부하를 줄이기 때문입니다. 결과적으로, 모델의 용량(= 전체 매개변수의 수)을 늘리면서도 이에 비례하여 연산 요구 사항(computational requirements)을 늘리지 않아도 됩니다. 추론 시에는 전문가들 중 일부만 사용하므로 MoE는 더 큰 밀집된 모델(dense model)에 비해 더 빠르게 추론을 수행할 수 있습니다. 그러나, 메모리에는 사용 중인 전문가들만이 아니라 전체 모델을 불러와야(loaded) 합니다.</p>
+<blockquote>
+  <p>Compared to dense models, MoEs provide more efficient training for a given compute budget. This is because the gating network only sends tokens to a subset of experts, reducing the computational load. As a result, the capacity of a model (its total number of parameters) can be increased without proportionally increasing the computational requirements. During inference, only some of the experts are used, so a MoE is able to perform faster inference than a dense model. However, the entire model needs to be loaded in memory, not just the experts being used.</p>
+</blockquote>
+
+<p>MoE의 희소성(sparsity)은 특정 토큰이 일부 전문가들에게만 라우팅되도록 하여 연산 효율을 높여줍니다. 전문가의 수와 전문가를 선택하는 방법은 게이팅 네트워크의 구현에 따라 다르지만, 상위 k개(top-k)가 일반적인 방법입니다. 게이팅 네트워크는 먼저 각 전문가들에 대한 확률 값을 예측한 다음, 상위 k개의 전문가들(top k experts)에게 토큰을 전달(route)하여 출력을 얻습니다. 하지만, 모든 토큰들이 항상 동일한 일부 전문가들에게만 전달되면, 학습이 비효율적으로 되고 다른 전문가들은 학습이 잘 되지 않게 됩니다. 이러한 문제를 완화하기 위해 모든 전문가들에게 고르게(even) 라우팅되도록 하는 로드 밸런싱 손실(load balancing loss)이 도입되었습니다.</p>
+<blockquote>
+  <p>The sparsity in MoEs that allows for greater computational efficiency comes from the fact that a particular token will only be routed to a subset of experts. The number of experts and how experts are chosen depends on the implementation of the gating network, but a common method is top k. The gating network first predicts a probability value for each expert, then routes the token to the top k experts to obtain the output. However, if all tokens always go to the same subset of experts, training becomes inefficient and the other experts end up undertrained. To alleviate this problem, a load balancing loss is introduced that encourages even routing to all experts.</p>
+</blockquote>
+
+<p>전문가의 수와 상위 k개의 전문가를 고르는 것은 MoE 모델 설계 시의 중요한 요소입니다. 전문가의 수가 많을수록 연산 비용을 늘리지 않으면서도 더 큰 모델로 확장할 수 있습니다. 이는 모델이 더 많은 학습을 할 수 있는 능력(capacity)을 갖춤을 뜻하지만, 일정 수준 이상으로 전문가의 수를 늘리면 성능 향상이 줄어드는(diminish) 경향이 있습니다. 전체 모델을 메모리에 불러와야 하므로 몇 개의 전문가를 선택할지는 모델 서빙 시의 추론 비용과 균형을 맞춰야 합니다. 상위 k개(top-k)를 선택할 때도 마찬가지로, 학습 중에 더 작은 k개를 선택하면 행렬 곱 연산(matrix multiplication)을 적게 수행하게 되어, 통신 비용이 큰 경우 연산 자원이 남게(leaving free computation on the table) 됩니다. 하지만 더 큰 k개를 선택하면 추론 속도가 일반적으로 느려지게 됩니다.</p>
+<blockquote>
+  <p>The number of experts and choosing the top k experts is an important factor in designing MoEs. A higher number of experts allows scaling up to larger models without increasing computational cost. This means that the model has a higher capacity for learning, however, past a certain point the performance gains tend to diminish. The number of experts chosen needs to be balanced with the inference costs of serving the model since the entire model needs to be loaded in memory. Similarly, when choosing top k, a lower top k during training results in smaller matrix multiplications, leaving free computation on the table if communication costs are large enough. During inference, however, a higher top k generally leads to slower inference speed.</p>
+</blockquote>
+
+<h2 id="메가블록--megablocks">메가블록 / MegaBlocks</h2>
+
+<p><a href="https://github.com/databricks/megablocks">MegaBlocks</a>은 희소 행렬 곱(sparse matrix multiplication)을 사용하여 토큰 할당이 불균형(uneven)하더라도 전문가 출력을 병렬로 연산하는 효율적인 MoE 구현체입니다. MegaBlocks는 GPU 커널을 사용하는 동안 토큰을 버리지 않으므로(avoid dropping tokens) 효율적인 학습을 유지하는 Dropless MoE를 구현합니다. MegaBlocks 이전에는 연산 시 토큰을 버리거나 패딩(padding)에 연산 자원과 메모리를 낭비하는 등, 모델 품질(model quality)과 하드웨어 효율성(hardware efficiency) 사이에서 절충점(trade-offs)을 찾아야 하는 동적 라우팅 공식(dynamic routing dormulation)을 사용했습니다. 전문가 네트워크들은 다양한 수의 토큰들(variable number of tokens)을 받을 수 있으며, 전문가 연산(expert computation)은 블록 희소 행렬 곱(block sparse matrix multiplication)을 사용하여 효율적으로 수행할 수 있습니다. 우리는 <a href="https://www.databricks.com/blog/bringing-megablocks-databricks">LLM Foundry에 MegaBlocks를 통합(integrate)</a>하여 MoE 학습을 수천개의 GPU로 확장할 수 있도록 했습니다.</p>
+<blockquote>
+  <p><a href="https://github.com/databricks/megablocks">MegaBlocks</a> is an efficient MoE implementation that uses sparse matrix multiplication to compute expert outputs in parallel despite uneven token assignment. MegaBlocks implements a dropless MoE that avoids dropping tokens while using GPU kernels that maintain efficient training. Prior to MegaBlocks, dynamic routing formulations forced a tradeoff between model quality and hardware efficiency. Previously, users had to either drop tokens from computation or waste computation and memory on padding. Experts can receive a variable number of tokens and the expert computation can be performed efficiently using block sparse matrix multiplication. We’ve <a href="https://www.databricks.com/blog/bringing-megablocks-databricks">integrated MegaBlocks into LLM Foundry</a> to enable scaling MoE training to thousands of GPUs.</p>
+</blockquote>
+
+<p><img src="/assets/images/training-moes/fg2.png" alt="그림 2: 전문가 연산(expert computation) 시의 행렬 곱 연산" style="width:100%" /></p>
+
+<p><em>그림 2: 전문가 연산 시의 행렬 곱 연산 / Figure 2: Matrix multiplication for expert computations</em></p>
+
+<h3 id="전문가-병렬화--expert-parallelism">전문가 병렬화 / Expert Parallelism</h3>
+
+<p>모델이 더 큰 크기로 확장되어 하나의 GPU에 올라가지 않는다면, 더 고급 형태의 병렬 처리(advanced forms of parallelism)가 필요합니다. 전문가 병렬화(Expert Parallelism)는 모델 병렬화(Model Parallelism)의 일종으로, 성능 향상을 위해 서로 다른 GPU에 서로 다른 전문가를 배치하는 형태입니다. 전문가 네트워크의 가중치들을 모든 GPU들 간에 공유(communicate)하는 대신, 토큰들이 각 전문가를 포함하고 있는 장치로 전송됩니다. 가중치 대신 데이터를 이동함으로써, 여러 기기들(multiple machines)에서 단일 전문가 네트워크를 위한 데이터를 집계(aggregate)할 수 있습니다. 라우터(router)는 입력 시퀀스(input sequence)에서 어떤 토큰을 어떠한 전문가에게 보낼지를 결정합니다. 이는 일반적으로 각 토큰-전문가 쌍(token-expert pair)에서 게이팅 점수(gating score)를 계산한 다음, 각 토큰을 최고 점수를 받은 전문가쪽으로 전달(route)하는 식으로 이뤄집니다. 토큰별 전문가 할당(token-to-expert assignment)이 결정되고 나면, 전체-대-전체(all-to-all) 통신 단계를 수행하여 해당 전문가를 호스팅하는 장치로 토큰을 전송합니다. 이 단계에는 각 디바이스들이 해당 장치의 전문가에게 할당된 토큰을 받는 동시에 다른 디바이스의 전문가에게 할당된 토큰을 보내는 과정이 포함됩니다.</p>
+<blockquote>
+  <p>As models scale to larger sizes and fail to fit on a single GPU, we require more advanced forms of parallelism. Expert parallelism is a form of model parallelism where we place different experts on different GPUs for better performance. Instead of expert weights being communicated across all GPUs, tokens are sent to the device that contains the expert. By moving data instead of weights, we can aggregate data across multiple machines for a single expert. The router determines which tokens from the input sequence should be sent to which experts. This is typically done by computing a gating score for each token-expert pair, and then routing each token to the top-scoring experts. Once the token-to-expert assignments are determined, an all-to-all communication step is performed to dispatch the tokens to the devices hosting the relevant experts. This involves each device sending the tokens assigned to experts on other devices, while receiving tokens assigned to its local experts.</p>
+</blockquote>
+
+<p>전문가 병렬화의 주요 장점은 여러 개의 작은 행렬 곱셈(matrix multiplication) 대신, 몇 개의 더 큰 행렬 곱셈을 처리할 수 있다는 것입니다. 각 GPU는 전문가의 일부만을 가지고 있기 때문에, 해당 전문가에 대한 연산만 수행하면 됩니다. 따라서 여러 GPU들 간의 토큰을 집계하면 각 행렬의 크기도 비례해서 커집니다. GPU는 대규모 병렬 연산에 최적화되어 있으므로, 대규모 작업일수록 그러한 기능들을 더 잘 활용할 수 있어 활용도(utilization)와 효율성(efficiency)이 높아집니다. 더 큰 행렬 곱셈의 이점에 대한 보다 자세한 설명은 <a href="https://www.thonking.ai/p/what-shapes-do-matrix-multiplications">여기</a>에서 확인할 수 있습니다. 연산이 완료되고 나면 전문가의 출력을 원래 장치로 보내기 위해 다시 전체-대-전체(all-to-all) 통신 단계가 수행됩니다.</p>
+<blockquote>
+  <p>The key advantage of expert parallelism is processing a few, larger matrix multiplications instead of several small matrix multiplications. As each GPU only has a subset of experts, it only has to do computation for those experts. Correspondly, as we aggregate tokens across multiple GPUs, the size of each matrix is proportionally larger. As GPUs are optimized for large-scale parallel computations, larger operations can better exploit their capabilities, leading to higher utilization and efficiency. A more in depth explanation of the benefits of larger matrix multiplications can be found <a href="https://www.thonking.ai/p/what-shapes-do-matrix-multiplications">here</a>. Once the computation is complete, another all-to-all communication step is performed to send the expert outputs back to their original devices.</p>
+</blockquote>
+
+<p><img src="/assets/images/training-moes/fg3.png" alt="그림 3: 전문가 병렬화에서의 토큰 라우팅" style="width:100%" /></p>
+
+<p><em>그림 3: 전문가 병렬화에서의 토큰 라우팅 / Figure 3: Token routing in expert parallelism</em></p>
+
+<p>우리는 텐서가 어떻게 샤딩(shard)되고 복제(replicate)되는지를 설명하는 저수준(low-level)의 추상화된 PyTorch의 <a href="https://github.com/pytorch/pytorch/blob/main/torch/distributed/_tensor/README.md">DTensor</a>를 활용하여 전문가 병렬화를 효과적으로 구현하였습니다. 먼저 전문가를 서로 다른 GPU들에 수동으로 배치한 뒤, 노드 전체에 걸쳐 샤딩하여 토큰 라우팅 시에 빠른 GPU 통신을 위해 NVLink를 활용할 수 있도록 합니다. 그런 다음 전체 클러스터에 걸쳐 병렬화를 간결하게(succinctly) 설명할 수 있는 <a href="https://pytorch.org/tutorials/recipes/distributed_device_mesh.html">디바이스 메쉬(device mesh)</a>를 이러한 구성(layout) 위에 구축할 수 있습니다. 디바이스 메쉬를 사용하여 다른 형태의 병렬화(alternate forms of parallelism)에 필요한 쉽게 전문가들을 저장(checkpoint)하거나 재배치(rearrange)할 수 있습니다.</p>
+<blockquote>
+  <p>We leverage PyTorch’s <a href="https://github.com/pytorch/pytorch/blob/main/torch/distributed/_tensor/README.md">DTensor</a>, a low-level abstraction for describing how tensors are sharded and replicated, to effectively implement expert parallelism. We first manually place experts on different GPUs, typically sharding across a node to ensure we can leverage NVLink for fast GPU communication when we route tokens. We can then build a <a href="https://pytorch.org/tutorials/recipes/distributed_device_mesh.html">device mesh</a> on top of this layout, which lets us succinctly describe the parallelism across the entire cluster. We can use this device mesh to easily checkpoint or rearrange experts when we need alternate forms of parallelism.</p>
+</blockquote>
+
+<h3 id="pytorch-fsdp로-zero-3-확장하기--scaling-zero-3-with-pytorch-fsdp">PyTorch FSDP로 ZeRO-3 확장하기 / Scaling ZeRO-3 with PyTorch FSDP</h3>
+
+<p>전문가 병렬화와 결합하여, 다른 모든 레이어들에 대해 데이터 병렬화(Data Parallelism)을 사용합니다. 각 GPU에 모델과 옵티마이저(optimizer)의 복사본을 저장하고 데이터의 서로 다른 부분(chunk)을 처리합니다. 각 GPU가 순전파(forward) 및 역전파(backward)를 완료한 뒤, 전체 모델(global model)의 업데이트를 위해 GPU들에서 변화도(gradient)를 집계(accumulate)합니다.</p>
+<blockquote>
+  <p>In conjunction with expert parallelism, we use data parallelism for all other layers, where each GPU stores a copy of the model and optimizer and processes a different chunk of data. After each GPU has completed a forward and backward pass, gradients are accumulated across GPUs for a global model update.</p>
+</blockquote>
+
+<p>ZeRO-3는 가중치(weight)와 옵티마이저(optimizer)를 각 GPU에 복제하는 대신 분산(shard)하는 데이터 병렬화의 한 형태입니다. 이렇게 하면 각 GPU에는 전체 모델의 일부만 저장하므로 메모리의 부담(memory pressure)를 극적(dramatically)으로 줄일 수 있습니다. 연산 시 모델의 일부가 필요할 때는 다른 GPU들로부터 수집한 다음, 연산이 완료되면 수집했던 가중치를 제거(discard)합니다. 우리는 ZeRO-3의 PyTorch 구현인 <a href="https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/">Fully Sharded Data Parallel (FSDP)</a>를 사용합니다.</p>
+<blockquote>
+  <p>ZeRO-3 is a form of data parallelism where weights and optimizers are sharded across each GPU instead of being replicated. Each GPU now only stores a subset of the full model, dramatically reducing memory pressure. When a part of the model is needed for computation, it is gathered across all the GPUs, and after the computation is complete, the gathered weights are discarded. We use PyTorch’s implementation of ZeRO-3, called <a href="https://pytorch.org/blog/introducing-pytorch-fully-sharded-data-parallel-api/">Fully Sharded Data Parallel (FSDP)</a>.</p>
+</blockquote>
+
+<p>수천개의 GPU로 확장 시에는 장치들 간의 통신 비용이 증가하여 학습 속도가 느려지게 됩니다. 통신이 증가하는 것은 모든 GPU들 간에 모델 매개변수와 변화도(gradient), 옵티마이저 상태(Optimizer state)들을 동기화하고 공유하기 때문이며, 여기에는 올게더(all-gather) 및 리듀스-스캐터(reduce-scatter) 연산이 포함됩니다. 이러한 문제를 완화하는 동시에 FSDP의 이점을 유지하기 위해 우리는 전문가 병렬화와 결합하여 Hybrid Sharded Data Parallel (HSDP)을 사용하여 모델과 옵티마이저를 일정한 개수의 GPU들의 묶음(a set number of GPUs)에 분산한 뒤, 이를 여러번 복제하여 클러스터를 완전히 활용할 수 있도록 합니다. HSDP를 사용하면 모든 복제본(replica)들 간의 변화도(gradient)를 동기화하기 위해 역전파 단계에서 올-리듀스(all-reduce) 연산이 추가로 필요합니다. 이 접근법을 사용하여 대규모 분산 학습 시에 메모리 효율성과 통신 비용 간의 균형을 맞출 수 있습니다. HSDP를 사용하기 위해서는 이전의 전문가 병렬화에서의 디바이스 메쉬(device mesh)를 확장하여 필요할 때 실제로 분산(shard)과 수집(gather)의 무거운 작업을 PyTorch가 수행하도록 합니다.</p>
+<blockquote>
+  <p>As we scale to thousands of GPUs, the cost of communication across devices increases, slowing down training. Communication increases due to the need to synchronize and share model parameters, gradients, and optimizer states across all GPUs which involves all-gather and reduce-scatter operations. To mitigate this issue while keeping the benefits of FSDP, we utilize Hybrid Sharded Data Parallel (HSDP) to shard the model and optimizer across a set number of GPUs and replicate this multiple times to fully utilize the cluster. With HSDP, an additional all reduce operation is needed in the backward pass to sync gradients across replicas. This approach allows us to balance memory efficiency and communication cost during large scale distributed training. To use HSDP we can extend our previous device mesh from expert parallelism and let PyTorch do the heavy lifting of actually sharding and gathering when needed.</p>
+</blockquote>
+
+<p><img src="/assets/images/training-moes/fg4.png" alt="그림 4: FSDP와 HSDP" style="width:100%" /></p>
+
+<p><em>그림 4: FSDP와 HSDP / Figure 4: FSDP and HSDP</em></p>
+
+<p>PyTorch를 사용하면 이 두 가지 유형의 병렬화를 효과적으로 결합하여, 전문가 병렬화와 같은 변형(something custom)을 구현할 때 저수준의 <a href="https://github.com/pytorch/pytorch/blob/main/torch/distributed/_tensor/README.md">DTensor</a> 추상화를 사용하면서도 FSDP의 더 고수준의 API를 활용할 수 있습니다. 이렇게 전문가 병렬화 샤드 차원과 ZeRO-3 샤드 차원, 그리고 순수 데이터 병렬화를 위한 복제 차원으로 구성된 3D 디바이스 메시를 구축할 수 있습니다. 이러한 기법들을 결합하여 매우 큰 클러스터에서 거의 선형적인 확장을 실현할 수 있으며, MFU 수치 40% 이상을 달성할 수 있게 됩니다.</p>
+<blockquote>
+  <p>With PyTorch, we can effectively combine these two types of parallelism, leveraging FSDP’s higher level API while using the lower-level <a href="https://github.com/pytorch/pytorch/blob/main/torch/distributed/_tensor/README.md">DTensor</a> abstraction when we want to implement something custom like expert parallelism. We now have a 3D device mesh with expert parallel shard dimension, ZeRO-3 shard dimension, and a replicate dimension for pure data parallelism. Together, these techniques deliver near linear scaling across very large clusters, allowing us to achieve MFU numbers over 40%.</p>
+</blockquote>
+
+<h3 id="torch-distributed를-사용한-탄력적인-체크포인팅--elastic-checkpointing-with-torch-distributed">Torch Distributed를 사용한 탄력적인 체크포인팅 / Elastic Checkpointing with Torch Distributed</h3>
+
+<p>내결함성(fault tolerance)는 특히 노드 장애가 일반적으로 발생할 수 있는 분산 환경에서 장기간(extended period)에 걸쳐 LLM을 안정적으로 학습시키는데 매우 중요합니다. 작업 중 불가피한 장애가 발생했을 때 진행 상황을 잃지 않기 위해, 매개변수와 옵티마이저 상태, 그리고 다른 필요한 메타데이터를 포함한 모델의 상태를 저장(checkpoint)합니다. 장애가 발생하는 경우, 시스템은 처음부터 다시 시작하지 않고 마지막으로 저장했던 상태에서 다시 시작할 수 있습니다. 장애 시의 견고성(robustness)를 보장하기 위해, 중단 시간(downtime)을 최소화할 수 있는 가장 성능이 좋은 방법으로 체크포인트를 자주 확인하고 저장 및 불러오기를 해야 합니다. 또한, 너무 많은 GPU들에서 장애가 발생하게 되면 클러스터의 크기가 변할 수 있으므로, 다른 수의 GPU에서 탄력적으로 다시 시작할 수 있는 기능이 필요합니다.</p>
+<blockquote>
+  <p>Fault tolerance is crucial for ensuring that LLMs can be trained reliably over extended periods, especially in distributed environments where node failures are common. To avoid losing progress when jobs inevitably encounter failures, we checkpoint the state of the model, which includes parameters, optimizer states, and other necessary metadata. When a failure occurs, the system can resume from the last saved state rather than starting over. To ensure robustness to failures, we need to checkpoint often and save and load checkpoints in the most performant way possible to minimize downtime. Additionally, if too many GPUs fail, our cluster size may change. Accordingly, we need the ability to elastically resume on a different number of GPUs.</p>
+</blockquote>
+
+<p>파이토치(PyTorch)는 다양한 클러스터 구성에서 체크포인트를 저장하고 불러오기 위한 기능(utility)들을 포함하고 있는 분산 학습 프레임워크를 통해 탄력적인 체크포인팅 기능을 지원합니다. 파이토치 분산 체크포인트(PyTorch Distributed Checkpoint)는 노드 장애나 추가로 인한 클러스터 구성이 변경되는 것과 관계없이, 모델의 상태를 학습 클러스터의 모든 노드에서 정확하게 저장하고 복원할 수 있도록 합니다.</p>
+<blockquote>
+  <p>PyTorch supports elastic checkpointing through its distributed training framework, which includes utilities for both saving and loading checkpoints across different cluster configurations. PyTorch Distributed Checkpoint ensures the model’s state can be saved and restored accurately across all nodes in the training cluster in parallel, regardless of any changes in the cluster’s composition due to node failures or additions.</p>
+</blockquote>
+
+<p>또한 매우 큰 모델을 학습할 때, 체크포인트의 크기가 매우 커져서 체크포인트 업로드와 다운로드 시간이 매우 느려질 수 있습니다. 파이토치 분산 체크포인트(PyTorch Distributed Checkpoint)는 분산 체크포인트를 지원하여 각 GPU가 모델의 해당 부분만 저장하고 불러올 수 있도록 합니다. 분산된 체크포인트(sharded checkpoint)를 탄력적 학습(elastic training)과 결합하면 각 GPU는 메타데이터 파일을 읽어 재시작(resumption) 시에 어떠한 부분(shard)을 다운로드할지 결정할 수 있습니다. 메타데이터 파일에는 각 텐서의 어떤 부분이 어떤 샤드(shard)에 저장되어 있는지에 대한 정보가 포함되어 있습니다. 그러면 GPU는 모델의 해당 부분에 대한 샤드를 다운로드하고 체크포인트의 그 부분을 불러올 수 있습니다.</p>
+<blockquote>
+  <p>Additionally, when training very large models, the size of checkpoints may be very large, leading to very slow checkpoint upload and download times. PyTorch Distributed Checkpoint supports sharded checkpoints, which enables each GPU to save and load only its portion of the model. When combining sharded checkpointing with elastic training, each GPU reads the metadata file to determine which shards to download on resumption. The metadata file contains information on what parts of each tensor are stored in each shard. The GPU can then download the shards for its part of the model and load that part of the checkpoint.</p>
+</blockquote>
+
+<p><img src="/assets/images/training-moes/fg5.png" alt="그림 5: 체크포인트 저장하고 추가된 GPU들에서 재개하기" style="width:100%" /></p>
+
+<p><em>그림 5: 체크포인트 저장하고 추가된 GPU들에서 재개하기 / Figure 5: Checkpointing saving and resumption resharded on additional GPUs</em></p>
+
+<p>GPU들 간의 체크포인트를 병렬화함으로써 네트워크 부하를 분산시키고 견고성(robustness)과 속도를 향상시킬 수 있습니다. 3000개 이상의 GPU를 사용하여 모델을 학습할 때, 네트워크 대역폭(bandwidth)이 빠르게 병목(bottleneck)이 됩니다. 우리는 먼저 한 복제(replica)에서 체크포인트를 다운로드한 다음, 다른 복제본들에 필요한 부분(shard)들을 보내는 식으로 HSDP의 복제 기능을 활용합니다. <a href="https://github.com/mosaicml/composer">Composer</a>와의 통합을 통해 30분 간격으로 체크포인트를 클라우드 저장소에 안정적으로 업로드하고, 노드 장애 발생 시 자동으로 최신 체크포인트로부터 5분 이내로 재개(resume)할 수 있게 됩니다.</p>
+<blockquote>
+  <p>By parallelizing checkpointing across GPUs, we can spread out network load, improving robustness and speed. When training a model with 3000+ GPUs, network bandwidth quickly becomes a bottleneck. We take advantage of the replication in HSDP to first download checkpoints on one replica and then send the necessary shards to other replicas. With our integration in <a href="https://github.com/mosaicml/composer">Composer</a>, we can reliably upload checkpoints to cloud storage as frequently as every 30 minutes and automatically resume from the latest checkpoint in the event of a node failure in less than 5 minutes.</p>
+</blockquote>
+
+<h2 id="결론--conclusion">결론 / Conclusion</h2>
+
+<p>파이토치(PyTorch)가 뛰어난 성능으로 최첨단(state-of-the-art) LLM을 학습할 수 있게된 것을 매우 기쁘게 생각합니다. 이번 글에서는 PyTorch Distributed와 MegaBlocks on Foundry를 사용하여 효율적으로 전문가 혼합(MoE) 학습을 구현하는 방법을 보여드렸습니다. 또한, 파이토치(PyTorch) 탄력적 체크포인팅(Elastic Checkpointing)을 사용하여 노드 장애 발생 시 다른 수의 GPU에서 빠르게 학습을 재개할 수 있었습니다. PyTorch HSDP를 사용하여 학습을 효율적으로 확장하고 체크포인트 재개 시간을 개선할 수 있었습니다. 우리는 강력하고 활기찬 오픈소스 커뮤니티를 통해 훌륭한 AI 모델을 모두에게 제공할 수 있기를 기대합니다. <a href="https://github.com/mosaicml/llm-foundry">LLM Foundry</a>와 <a href="https://github.com/pytorch/pytorch">PyTorch</a> 저장소를 방문하여 훌륭한 모델을 구축하는데 동참해주세요.</p>
+<blockquote>
+  <p>We’re very excited to see how PyTorch is enabling training state-of-the-art LLMs with great performance. In our post, we’ve shown how we implemented efficient MoE training through PyTorch Distributed and MegaBlocks on Foundry. Furthermore, PyTorch elastic checkpointing allowed us to quickly resume training on a different number of GPUs when node failures occurred. Using PyTorch HSDP has allowed us to scale training efficiently as well as improve checkpointing resumption times. We look forward to continuing building on a strong and vibrant open-source community to help bring great AI models to everyone. Come join us in building great models at <a href="https://github.com/mosaicml/llm-foundry">LLM Foundry</a> and <a href="https://github.com/pytorch/pytorch">PyTorch</a>.</p>
+</blockquote>]]></content><author><name>Brian Chu, Mihir Patel, Less Wright, Vitaliy Chiley, Evan Racah, Wanchao Liang, Iris Zhang, Andrew Gu</name></author><category term="[&quot;pytorch.org&quot;, &quot;translation&quot;]" /><summary type="html"><![CDATA[최근 1년간 전문가 혼합(MoE, Mixture-of-Experts) 모델들의 인기가 급증했습니다. 이러한 인기는 DBRX, Mixtral, DeepSeek를 비롯하여 다양하고 강력한 오픈소스 모델들로부터 비롯된 것입니다. Databricks에서는 PyTorch 팀과 협력하여 MoE 모델의 학습을 확장했습니다. 이번 글에서는 PyTorch Distributed 및 PyTorch로 구현한 효율적인 오픈소스 MoE 구현체인 MegaBlocks를 사용하여 학습을 3천개 이상의 GPU들로 확장하는 방법에 대해 이야기해보겠습니다. Over the past year, Mixture of Experts (MoE) models have surged in popularity, fueled by powerful open-source models like DBRX, Mixtral, DeepSeek, and many more. At Databricks, we’ve worked closely with the PyTorch team to scale training of MoE models. In this blog post, we’ll talk about how we scale to over three thousand GPUs using PyTorch Distributed and MegaBlocks, an efficient open-source MoE implementation in PyTorch.]]></summary></entry><entry><title type="html">PyTorch 2.3 출시 공지</title><link href="https://pytorch.kr/blog/2024/pytorch2-3/" rel="alternate" type="text/html" title="PyTorch 2.3 출시 공지" /><published>2024-04-24T00:00:00+09:00</published><updated>2024-04-24T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2024/pytorch2-3</id><content type="html" xml:base="https://pytorch.kr/blog/2024/pytorch2-3/"><![CDATA[<p>PyTorch® 2.3(<a href="https://github.com/pytorch/pytorch/releases/tag/v2.3.0">릴리즈 노트</a>)의 출시를 발표하게 되어 기쁩니다! PyTorch 2.3은 torch.compile()에서 사용자 정의(user-defined) Triton 커널을 지원합니다. 사용자들은 성능 저하나 연산 그래프의 문제 없이 자체 트리톤 커널을 eager 모드에서 torch.compile()로 이전(migration)할 수 있습니다. Tensor Parallelism(텐서 병렬 처리)은 PyTorch 네이티브 함수를 사용하여 대규모 언어 모델(LLM, Large Language Models)을 학습하는 환경을 개선하였으며, 이는 1000억개 규모의 매개변수(100B parameter) 모델 학습을 통해 검증되었습니다. 또한, 반-구조적 희소성(Semi-structured sparsity)은 이를 Tensor 하위클래스(subclass)로 구현되어 밀집 행렬 곱셈(dense matrix multiplication) 대비 최대 1.6배의 속도 향상을 보입니다.</p>
+<blockquote>
+  <p>We are excited to announce the release of PyTorch® 2.3 (<a href="https://github.com/pytorch/pytorch/releases/tag/v2.3.0">release note</a>)! PyTorch 2.3 offers support for user-defined Triton kernels in torch.compile, allowing for users to migrate their own Triton kernels from eager without experiencing performance regressions or graph breaks. Tensor Parallelism improves the experience for training Large Language Models using native PyTorch functions, which has been validated on training runs for 100B parameter models. As well, semi-structured sparsity implements semi-structured sparsity as a Tensor subclass, with observed speedups of up to 1.6 over dense matrix multiplication.</p>
+</blockquote>
+
+<p>이번 릴리즈는 PyTorch 2.2 이후 426명의 기여자들로부터 3,393회의 커밋으로 구성되었습니다. 헌신적인 커뮤니티의 기여에 진심으로 감사드립니다. 언제나 그렇듯, 새로운 버전을 사용하시며 생기는 문제를 보고해주시면 PyTorch 2.3을 개선하는 데 도움이 됩니다. PyTorch 2 시리즈를 시작하는 방법에 대한 자세한 정보는 <a href="https://pytorch.kr/get-started/pytorch-2.0/">시작하기</a> 페이지에서 확인할 수 있습니다.</p>
+<blockquote>
+  <p>This release is composed of 3393 commits and 426 contributors since PyTorch 2.2. We want to sincerely thank our dedicated community for your contributions. As always, we encourage you to try these out and report any issues as we improve 2.3. More information about how to get started with the PyTorch 2-series can be found at our <a href="https://pytorch.org/get-started/pytorch-2.0/">Getting Started</a> page.</p>
+</blockquote>
+
+<table class="table table-bordered">
+  <tr>
+   <td><strong>Beta</strong></td>
+   <td><strong>Prototype</strong></td>
+   <td><strong>Performance Improvements</strong></td>
+  </tr>
+  <tr>
+   <td>
+      torch.compile에서 사용자 정의 Triton 커널 지원<br />
+      <blockquote>User-defined Triton kernels in torch.compile</blockquote>
+   </td>
+   <td>
+      torch.export에 dynamic_shape을 지정할 수 있는 새로운 API 추가<br />
+      <blockquote>torch.export adds new API to specify dynamic_shapes</blockquote>
+   </td>
+   <td>
+      Inductor CPU 백엔드에 가중치-전용-양자화 도입<br />
+      <blockquote>Weight-Only-Quantization introduced into Inductor CPU backend</blockquote>
+   </td>
+  </tr>
+  <tr>
+   <td>
+      PyTorch Distributed 내에서 텐서 병렬 처리<br />
+      <blockquote>Tensor parallelism within PyTorch Distributed</blockquote>
+   </td>
+   <td>
+      비동기 체크포인트 생성<br />
+      <blockquote>Asynchronous checkpoint generation</blockquote>
+   </td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>반-구조적 희소성(Semi-structured sparsity) 지원<br />
+      <blockquote>Support for semi-structured sparsity</blockquote>
+   </td>
+   <td></td>
+   <td></td>
+  </tr>
+</table>
+
+<ul>
+  <li>공개된 기능 제출 목록은 <a href="https://docs.google.com/spreadsheets/d/1TzGkWuUMF1yTe88adz1dt2mzbIsZLd3PBasy588VWgk/edit?usp=sharing">여기</a>에서 확인할 수 있습니다.
+    <blockquote>
+      <ul>
+        <li>To see a full list of public feature submissions click <a href="https://docs.google.com/spreadsheets/d/1TzGkWuUMF1yTe88adz1dt2mzbIsZLd3PBasy588VWgk/edit?usp=sharing">here</a>.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="베타-기능--beta-features">베타 기능 / Beta Features</h2>
+
+<h3 id="베타-사용자-정의-triton-커널에-대한-torchcompile-지원--beta-support-for-user-defined-triton-kernels-in-torchcompile">[베타] 사용자 정의 Triton 커널에 대한 torch.compile 지원 / [Beta] Support for User-defined Triton kernels in <em>torch.compile</em></h3>
+
+<p>torch.compile을 사용하여 Triton 커널이 포함된 PyTorch 코드를 네이티브로 실행할 수 있습니다. 이를 통해 Triton 커널이 포함된 코드를 eager PyTorch에서 <em>torch.compile</em> 로 성능 저하나 연산 그래프 문제 없이 이전할 수 있습니다. 네이티브 지원은 Torch Inductor가 사용자 정의 Triton 커널을 미리 컴파일(precomile)하여 Triton 커널 주변의 코드를 보다 효율적으로 구성함으로써 추가적인 최적화가 가능하게 합니다.</p>
+<blockquote>
+  <p>Allows for PyTorch code that contains triton kernels to be executed natively using torch.compile. This enables users to migrate code containing triton kernels from eager PyTorch to <em>torch.compile</em> without running into performance regressions or graph breaks. Native support also creates an opportunity for Torch Inductor to precompile the user-defined Triton kernel as well as better organize code around the Triton kernel allowing for further optimizations.</p>
+</blockquote>
+
+<p>torch.compile에서 사용자 정의 Triton 커널을 활용하는 방법에 대한 자세한 내용은 <a href="https://pytorch.org/tutorials/recipes/torch_compile_user_defined_triton_kernel_tutorial.html">이 튜토리얼</a>에서 확인하세요.</p>
+<blockquote>
+  <p>You can find more information about how to utilize user defined Triton kernels in torch.compile within <a href="https://pytorch.org/tutorials/recipes/torch_compile_user_defined_triton_kernel_tutorial.html">this tutorial</a>.</p>
+</blockquote>
+
+<h3 id="베타-텐서-병렬-처리를-통한-llm-학습-효율-향상--beta-tensor-parallelism-introduces-more-efficient-ways-to-train-llms">[베타] 텐서 병렬 처리를 통한 LLM 학습 효율 향상 / [Beta] Tensor Parallelism introduces more efficient ways to train LLMs</h3>
+
+<p>텐서 병렬 처리(Tensor Parallel) API는 GPU와 호스트 간의 다양한 텐서 조작을 용이하게 하며, 2D 병렬 처리를 위해 FSDP와 통합되어 있습니다(장치 간 텐서 병렬 처리 + 호스트 간 데이터 병렬 처리). 또한, 고수준(higher-level)의 텐서 병렬 API 구성을 위해 저수준(low-level)의 API들을 제공합니다. 이 API는 1000억 개의 매개변수(100 billion parameters)를 가진 트랜스포머 모델의 학습을 지원함으로써 검증되었습니다.</p>
+<blockquote>
+  <p>The Tensor Parallel API facilitates various tensor manipulations across GPUs/hosts and integrates with FSDP for 2D Parallelism (Tensor parallelism across devices + Data Parallelism across hosts). It also offers a low-level API for constructing higher-level Tensor parallel APIs. This API has been validated to support the training of transformer models with over 100 billion parameters.</p>
+</blockquote>
+
+<p>이 API를 워크플로우 내에서 활용하는 방법에 대한 자세한 내용은 <a href="https://pytorch.org/tutorials/intermediate/TP_tutorial.html">이 튜토리얼</a>에서 확인하실 수 있습니다.</p>
+<blockquote>
+  <p>You can find more information on how to utilize this within your workflows within <a href="https://pytorch.org/tutorials/intermediate/TP_tutorial.html">this tutorial</a>.</p>
+</blockquote>
+
+<h3 id="베타-반-구조적-희소성으로-가속화된-희소-추론-및-메모리-절약--beta-semi-structured-sparsity-provides-users-with-a-way-to-take-advantage-of-accelerated-sparse-inference-and-memory-savings">[베타] 반-구조적 희소성으로 가속화된 희소 추론 및 메모리 절약 / [Beta] Semi-structured sparsity provides users with a way to take advantage of accelerated sparse inference and memory savings</h3>
+
+<p>반구조적 희소성을 Tensor의 하위클래스인 <em>torch.sparse.SparseSemiStructuredTensor</em> 로 구현하였으며 밀집 행렬 곱셈(dense matrix multiplication) 대비 최대 1.6배의 속도 향상을 보였습니다.</p>
+<blockquote>
+  <p><em>torch.sparse.SparseSemiStructuredTensor</em> implements semi-structured sparsity as a Tensor subclass, which have observed speedups of up to 1.6 over dense matrix multiplication.</p>
+</blockquote>
+
+<p>특히, 다음과 같은 추가적인 기능을 제공합니다:</p>
+
+<ul>
+  <li>양자화 조합 기능(Quantization composability)을 위한 지원(mixed dtype, dequant fusion)</li>
+  <li>업데이트된 cuSPARSELt 및 CUTLASS 커널</li>
+  <li>torch.compile 지원</li>
+</ul>
+
+<blockquote>
+  <p>In particular it adds:</p>
+
+  <ul>
+    <li>Additional support for quantization composability (mixed dtype, dequant fusion)</li>
+    <li>Updated cuSPARSELt and CUTLASS kernels</li>
+    <li>torch.compile support</li>
+  </ul>
+</blockquote>
+
+<p>반-구조적 희소성 활용 시 이점에 대한 자세한 내용은 <a href="https://pytorch.org/tutorials/advanced/semi_structured_sparse.html">여기</a>에서 확인하실 수 있습니다.</p>
+<blockquote>
+  <p>You can find more information on how to take advantage of semi-structured sparsity <a href="https://pytorch.org/tutorials/advanced/semi_structured_sparse.html">here</a>.</p>
+</blockquote>
+
+<h2 id="프로토타입-기능--prototype-features">프로토타입 기능 / Prototype Features</h2>
+
+<h3 id="프로토타입-torchexport_에-_dynamic_shapes-을-지정하는-api-추가--prototype-torchexport-adds-new-api-to-specify-dynamic_shapes">[프로토타입] <em>torch.export_에 _dynamic_shapes</em> 을 지정하는 API 추가 / [PROTOTYPE] <em>torch.export</em> adds new API to specify <em>dynamic_shapes</em></h3>
+
+<p><em>torch.export.Dim</em> 을 사용하여 동적 형태(dynamic shapes)를 더 잘 표현할 수 있게 되었습니다. 이를 통해 개발자들은 동일하게 유지되어야 하는 서로 다른 입력 차원들 간의 범위(최소 및 최대 값)를 지정하여 재사용할 수 있게 되었습니다.</p>
+<blockquote>
+  <p>You can now use <em>torch.export.Dim</em> to better represent dynamic shapes by enabling developers to specify ranges (min and max values) that can be reused across different input dimensions that are constrained to be equal.</p>
+</blockquote>
+
+<p><em>torch.export.Dim</em> 에 대한 자세한 내용 및 이를 사용하여 선형 산술 표현식(linear arithmetic expressions)과 같은 더 흥미로운 관계를 표현하는 방법에 대해 더 알아보려면 <a href="https://pytorch.org/tutorials/intermediate/torch_export_tutorial.html#constraints-dynamic-shapes">여기</a>에서 튜토리얼을 확인하실 수 있습니다.</p>
+<blockquote>
+  <p>To learn more about <em>torch.export.Dim</em> as well as how it can be used to express more interesting relationships (such as linear arithmetic expressions) check out the tutorial <a href="https://pytorch.org/tutorials/intermediate/torch_export_tutorial.html#constraints-dynamic-shapes">here</a>.</p>
+</blockquote>
+
+<h3 id="프로토타입-비동기-체크포인트-생성--prototype-asynchronous-checkpoint-generation">[프로토타입] 비동기 체크포인트 생성 / [PROTOTYPE] Asynchronous checkpoint generation</h3>
+
+<p>비동기 체크포인트 생성 기능은 체크포인트가 생성되는 동안 학습 루프를 계속할 수 있도록 하여, 체크포인트 생성 비용의 대부분을 절감(offload)할 수 있습니다.</p>
+<blockquote>
+  <p>Asynchronous checkpoint generation allows users to continue their training loops while checkpoints are being generated, essentially offloading much of the checkpointing cost.</p>
+</blockquote>
+
+<p>이 <a href="https://github.com/pytorch/pytorch/blob/release/2.3/torch/distributed/checkpoint/examples/async_checkpointing_example.py">예제</a>를 통해 이 기능을 워크플로우에서 활용하는 방법을 알아볼 수 있습니다.</p>
+<blockquote>
+  <p>You can find out how to utilize this within your own workflows with this <a href="https://github.com/pytorch/pytorch/blob/release/2.3/torch/distributed/checkpoint/examples/async_checkpointing_example.py">example</a>.</p>
+</blockquote>
+
+<h2 id="성능-개선--performance-improvements">성능 개선 / Performance Improvements</h2>
+
+<h3 id="프로토타입-inductor-cpu-백엔드에-가중치-전용-양자화-도입--prototype-weight-only-quantization-introduced-into-inductor-cpu-backend">[프로토타입] Inductor CPU 백엔드에 가중치-전용-양자화 도입 / [PROTOTYPE] Weight-Only-Quantization introduced into Inductor CPU backend</h3>
+
+<p>PyTorch 2.3에서는 torch inductor CPU 백엔드에서 LLM 추론 성능을 향상시켰습니다. <a href="https://github.com/pytorch-labs/gpt-fast">gpt-fast</a> 프로젝트는 <em>torch.compile</em> 을 사용하여 트랜스포머 텍스트 생성을 위해 간단하고 효율적인 PyTorch 네이티브 가속 기능을 지원합니다. 2.3 이전에는 CUDA 장치에서만 지원되었던 기능으로, int4 및 int8 가중치 전용 양자화 Linear에 대해 고도로 최적화된 커널을 제공함으로써 CPU 버전을 지원합니다.</p>
+<blockquote>
+  <p>PyTorch 2.3 enhances LLM inference performance on torch inductor CPU backend. The project <a href="https://github.com/pytorch-labs/gpt-fast">gpt-fast</a> offers a simple and efficient PyTorch native acceleration for transformer text generation with <em>torch.compile</em>. Prior to 2.3 only CUDA devices were supported and this feature enables the CPU counterpart by providing highly optimized kernels for the int4 and int8 weight only quantization Linear.</p>
+</blockquote>
+
+<p>이 기능을 활용하는 방법에 대한 자세한 정보는 <a href="https://github.com/pytorch-labs/gpt-fast#quantization">gpt-fast README</a>를 참고해주세요.</p>
+<blockquote>
+  <p>For more information / how to utilize this feature please refer to the <a href="https://github.com/pytorch-labs/gpt-fast#quantization">gpt-fast README</a>.</p>
+</blockquote>]]></content><author><name>PyTorch Korea User Group</name></author><category term="[&quot;pytorch.org&quot;, &quot;translation&quot;]" /><summary type="html"><![CDATA[PyTorch® 2.3(릴리즈 노트)의 출시를 발표하게 되어 기쁩니다! PyTorch 2.3은 torch.compile()에서 사용자 정의(user-defined) Triton 커널을 지원합니다. 사용자들은 성능 저하나 연산 그래프의 문제 없이 자체 트리톤 커널을 eager 모드에서 torch.compile()로 이전(migration)할 수 있습니다. Tensor Parallelism(텐서 병렬 처리)은 PyTorch 네이티브 함수를 사용하여 대규모 언어 모델(LLM, Large Language Models)을 학습하는 환경을 개선하였으며, 이는 1000억개 규모의 매개변수(100B parameter) 모델 학습을 통해 검증되었습니다. 또한, 반-구조적 희소성(Semi-structured sparsity)은 이를 Tensor 하위클래스(subclass)로 구현되어 밀집 행렬 곱셈(dense matrix multiplication) 대비 최대 1.6배의 속도 향상을 보입니다. We are excited to announce the release of PyTorch® 2.3 (release note)! PyTorch 2.3 offers support for user-defined Triton kernels in torch.compile, allowing for users to migrate their own Triton kernels from eager without experiencing performance regressions or graph breaks. Tensor Parallelism improves the experience for training Large Language Models using native PyTorch functions, which has been validated on training runs for 100B parameter models. As well, semi-structured sparsity implements semi-structured sparsity as a Tensor subclass, with observed speedups of up to 1.6 over dense matrix multiplication.]]></summary></entry><entry><title type="html">torchtune: PyTorch를 사용한 쉬운 LLM 파인튜닝</title><link href="https://pytorch.kr/blog/2024/torchtune-fine-tune-llms/" rel="alternate" type="text/html" title="torchtune: PyTorch를 사용한 쉬운 LLM 파인튜닝" /><published>2024-04-16T00:00:00+09:00</published><updated>2024-04-16T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2024/torchtune-fine-tune-llms</id><content type="html" xml:base="https://pytorch.kr/blog/2024/torchtune-fine-tune-llms/"><![CDATA[<p>대규모 언어 모델(LLM)을 손쉽게 파인튜닝(미세조정)할 수 있는 PyTorch 네이티브 라이브러리인 torchtune의 알파 릴리즈를 발표하게 되어 기쁩니다.</p>
+<blockquote>
+  <p>We’re pleased to announce the alpha release of torchtune, a PyTorch-native library for easily fine-tuning large language models.</p>
+</blockquote>
+
+<p>torchtune은 파이토치(PyTorch)의 설계 원칙을 충실히 따랐으며, 다양한 소비자급 및 전문가용 GPU에서 인기있는 LLM들을 파인튜닝할 수 있도록 모듈식 블록 구성과 확장이 쉬운 학습 예시(training recipe)들을 제공합니다.</p>
+<blockquote>
+  <p>Staying true to PyTorch’s design principles, torchtune provides composable and modular building blocks along with easy-to-extend training recipes to fine-tune popular LLMs on a variety of consumer-grade and professional GPUs.</p>
+</blockquote>
+
+<p>torchtune은 다음과 같은 시작부터 끝까지의 파인튜닝 워크플로우를 전반을 지원합니다:</p>
+<blockquote>
+  <p>torchtune supports the full fine-tuning workflow from start to finish, including</p>
+</blockquote>
+
+<ul>
+  <li>데이터셋 및 모델 체크포인트 다운로드 및 준비.</li>
+  <li>다양한 모델 아키텍처와 매개변수 효율적 미세 조정(PEFT) 기술 등을 지원하는 빌딩 블록 구성으로 학습 과정의 커스터마이징.</li>
+  <li>학습 과정에서의 진행 상황 및 지표(metric)을 기록하여 인사이트 확보.</li>
+  <li>파인튜닝 후 모델 양자화(quantization).</li>
+  <li>파인튜닝된 모델을 인기 있는 벤치마크들로 평가.</li>
+  <li>파인튜닝된 모델 테스트를 위한 로컬 추론 실행.</li>
+  <li>(파인튜닝한 모델의) 체크포인트와 주로 사용되는 주요 프로덕션 추론 시스템과 호환성.
+    <blockquote>
+      <ul>
+        <li>Downloading and preparing datasets and model checkpoints.</li>
+        <li>Customizing the training with composable building blocks that support different model architectures, parameter-efficient fine-tuning (PEFT) techniques, and more.</li>
+        <li>Logging progress and metrics to gain insight into the training process.</li>
+        <li>Quantizing the model post-tuning.</li>
+        <li>Evaluating the fine-tuned model on popular benchmarks.</li>
+        <li>Running local inference for testing fine-tuned models.</li>
+        <li>Checkpoint compatibility with popular production inference systems.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p>시작하려면 <a href="https://www.github.com/pytorch/torchtune">코드</a>나다양한 <a href="https://pytorch.org/torchtune/main/">튜토리얼</a>을 살펴보세요!</p>
+<blockquote>
+  <p>To get started, jump right into the <a href="https://www.github.com/pytorch/torchtune">code</a> or walk through our many <a href="https://pytorch.org/torchtune/main/">tutorials</a>!</p>
+</blockquote>
+
+<h2 id="왜-torchtune을-사용해야-하나요--why-torchtune">왜 torchtune을 사용해야 하나요? / Why torchtune?</h2>
+
+<p>지난 한 해 동안 개방형 LLM(Open LLM)에 대한 관심이 폭발적으로 증가했습니다. 최신 모델(SotA, State-of-the-Art)들을 특정한 사용 사례에 맞춰 파인튜닝하는 것이 중요한 기술로 부상했으며, 이러한 적응은 데이터셋 및 모델 선택부터 양자화(Quantization), 평가(Evaluation) 및 추론(Inference)까지 광범위한 사용자 정의를 필요로 하기도 합니다. 게다가 이러한 모델의 크기는 메모리가 제한된 소비자급 GPU에서 파인튜닝을 시도할 때 상당한 어려움을 야기합니다.</p>
+<blockquote>
+  <p>Over the past year there has been an explosion of interest in open LLMs. Fine-tuning these state of the art models has emerged as a critical technique for adapting them to specific use cases. This adaptation can require extensive customization from dataset and model selection all the way through to quantization, evaluation and inference. Moreover, the size of these models poses a significant challenge when trying to fine-tune them on consumer-level GPUs with limited memory.</p>
+</blockquote>
+
+<p>기존 솔루션들은 사용자 정의(customization)나 최적화(optimization)에 필요한 부분들을 추상화된 계층 뒤에 숨겨놓아, 이러한 기능들을 추가하기 어렵게 만듭니다. 서로 다른 구성 요소가 어떻게 상호 작용하며 새로운 기능을 추가하려면 어떤 부분을 업데이트해야 하는지가 분명하지 않습니다. torchtune은 개발자들에게 완전한 제어와 가시성을 제공하여 특정한 요구 사항과 제약 조건에 맞춰 LLM을 쉽게 적응하고 제어할 수 있도록 지원합니다.</p>
+<blockquote>
+  <p>Existing solutions make it hard to add these customizations or optimizations by hiding the necessary pieces behind layers of abstractions. It’s unclear how different components interact with each other and which of these need to be updated to add new functionality. torchtune empowers developers to adapt LLMs to their specific needs and constraints with full control and visibility.</p>
+</blockquote>
+
+<h2 id="torchtune의-설계--torchtunes-design">torchtune의 설계 / torchtune’s Design</h2>
+
+<p>torchtune은 다음과 같은 원칙을 바탕으로 설계되었습니다:</p>
+<blockquote>
+  <p>torchtune was built with the following principles in mind</p>
+</blockquote>
+
+<ul>
+  <li><strong>손쉬운 확장</strong> - 새로운 기법들이 끊임없이 등장하고 있으며, 모든 파인튜닝 사례는 서로 다릅니다. torchtune의 학습 예시(recipe)는 쉽게 조합(composable)할 수 있는 구성요소들과 변경 가능한(hackable) 학습 루프로 설계되어 있어, 파인튜닝을 어렵게 하는 추상화를 최소화하였습니다. 각 <a href="https://github.com/pytorch/torchtune/tree/main/recipes">학습 예시(recipe)들</a>은 별도의 학습기(trainer)나 프레임워크 없이 독립적으로 구성되어 있으며, 600줄 미만의 코드로 쉽게 읽을 수 있도록 설계되었습니다!</li>
+  <li><strong>파인튜닝의 민주화</strong> - 모든 사용자들이 지식 수준과 상관없이 torchtune을 사용할 수 있도록 하였습니다. 설정(config)을 복제하고 변경하거나 코드를 직접 바꿔보세요! 또한, 데이터센터에 있는 고성능의 GPU가 필요하지 않습니다. 메모리 효율적인 학습 예시들은 24GB 게이밍 GPU를 단지 하나만 장착한 기기에서 테스트되었습니다.</li>
+  <li><strong>오픈소스 LLM 생태계와의 상호 운용성</strong> - 오픈소스 LLM 생태계는 엄청나게 번창하고 있으며, torchtune은 이를 활용하여 다양한 제품군과 상호 운용할 수 있도록 지원합니다. 이러한 유연성을 통해 사용자가 모델을 어떻게 학습하고, 파인튜닝된 모델을 사용할지를 확실하게 제어할 수 있습니다.
+    <blockquote>
+      <ul>
+        <li><strong>Easy extensibility</strong> - New techniques emerge all the time and everyone’s fine-tuning use case is different. torchtune’s recipes are designed around easily composable components and hackable training loops, with minimal abstraction getting in the way of fine-tuning your fine-tuning. Each <a href="https://github.com/pytorch/torchtune/tree/main/recipes">recipe</a> is self-contained - no trainers or frameworks, and is designed to be easy to read - less than 600 lines of code!</li>
+        <li><strong>Democratize fine-tuning</strong> - Users, regardless of their level of expertise, should be able to use torchtune. Clone and modify configs, or get your hands dirty with some code! You also don’t need beefy data center GPUs. Our memory efficient recipes have been tested on machines with a single 24GB gaming GPU.</li>
+        <li><strong>Interoperability with the OSS LLM ecosystem</strong> - The open source LLM ecosystem is absolutely thriving, and torchtune takes advantage of this to provide interoperability with a wide range of offerings. This flexibility puts you firmly in control of how you train and use your fine-tuned models.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<p>내년에는 개방형 LLM(Open LLM)이 더 많은 언어(다국어)와 더 많은 모달리티(멀티모달), 그리고 더 많은 작업들을 지원하며 강력해질 것입니다. 이러한 모델의 복잡성이 증가함에 따라, 우리는 제공되는 기능이나 학습 실행 시의 성능뿐만 아니라 라이브러리를 ‘어떻게’ 설계할지에 대해서도 마찬가지로 주의를 기울여야 합니다. 커뮤니티가 현재의 혁신 속도를 유지하기 위해서는 유연성(flexibility)이 핵심 요소가 될 것이며, 다양한 사용 사례를 지원하기 위해 수많은 라이브러리와 도구들이 서로 잘 동작해야 할 것입니다. torchtune은 처음부터 이러한 미래를 염두에 두고 설계되었습니다.</p>
+<blockquote>
+  <p>Over the next year, open LLMs will become even more powerful, with support for more languages (multilingual), more modalities (multimodal) and more tasks. As the complexity of these models increases, we need to pay the same attention to “how” we design our libraries as we do to the features provided or performance of a training run. Flexibility will be key to ensuring the community can maintain the current pace of innovation, and many libraries/tools will need to play well with each other to power the full spectrum of use cases. torchtune is built from the ground up with this future in mind.</p>
+</blockquote>
+
+<p>진정한 파이토치 정신(True PyTorch Spirit)에 따라, torchtune은 LLM 작업에 주로 사용되는 도구들과의 통합을 제공하여 쉽게 시작할 수 있도록 합니다.</p>
+<blockquote>
+  <p>In the true PyTorch spirit, torchtune makes it easy to get started by providing integrations with some of the most popular tools for working with LLMs.</p>
+</blockquote>
+
+<ul>
+  <li><strong><a href="https://huggingface.co/docs/hub/en/index">허깅페이스 허브</a></strong> - 허깅페이스는 파인튜닝을 위한 방대한 오픈소스 모델과 데이터셋을 제공합니다. torchtune은 <code class="language-plaintext highlighter-rouge">tune download</code> CLI 명령을 통해 쉽게 시작할 수 있도록 허깅페이스 허브를 통합하여 파인튜닝을 바로 시작할 수 있도록 지원합니다.</li>
+  <li><strong><a href="https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html">PyTorch FSDP</a></strong> - PyTorch FSDP를 사용하여 학습을 확장할 수 있습니다. 일반적으로 NVIDIA의 3090/4090과 같은 소비자급 GPU를 장착한 기기들을 많이 사용하고 있습니다. torchtune은 FSDP 기반의 분산 학습 예시를 제공하여 이러한 설정을 활용할 수 있도록 지원합니다.</li>
+  <li><strong><a href="https://wandb.ai/site">Weights &amp; Biases</a></strong> - torchtune은 Weights &amp; Biases의 AI 플랫폼을 사용하여 학습 중 지표(metric)들과 모델의 체크포인트를 기록합니다. 파인튜닝 실행 중, 설정과 메트릭 및 모델 등을 한 곳에서 한꺼번에 추적할 수 있습니다!</li>
+  <li><strong><a href="https://github.com/EleutherAI/lm-evaluation-harness">EleutherAI의 언어모델 평가도구</a></strong> - 파인튜닝을 통해 원하는 결과를 얻을 수 있는지 여부를 이해하기 위해서는 파인튜닝된 모델의 평가(Evaluation)가 중요합니다. torchtune은 EleutherAI의 언어모델(LM) 평가도구(Evaluation Harness)를 활용하여 일반적으로 많이 사용하는 LLM 벤치마크 모음에 쉽게 접근할 수 있는 간단한 평가 학습 예시를 제공합니다. 평가 과정의 중요성을 고려하여, 앞으로 몇 달 동안 EleutherAI와 밀접하게 협력하여 더 깊고 더 “네이티브(native)”하게 통합할 예정입니다.</li>
+  <li><strong><a href="https://pytorch.org/executorch-overview">ExecuTorch</a></strong> - torchtune으로 파인튜닝된 모델은 ExecuTorch로 <a href="https://github.com/pytorch/executorch/tree/main/examples/models/llama2#optional-finetuning">쉽게 내보내기(export)</a>할 수 있어, 다양한 모바일 및 엣지 장치(Edge Device)에서 효율적인 추론을 실행할 수 있습니다.</li>
+  <li><strong><a href="https://github.com/pytorch-labs/ao">torchao</a></strong> - torchao의 양자화 API(Quantization API)를 활용한 간단한 <a href="https://github.com/pytorch/torchtune/blob/main/recipes/quantize.py">학습 후 양자화 예시(Post-training recipe)</a>를 통해 파인튜닝된 모델을 4비트 또는 8비트로 쉽게 양자화할 수 있습니다.
+    <blockquote>
+      <ul>
+        <li><strong><a href="https://huggingface.co/docs/hub/en/index">Hugging Face Hub</a></strong> - Hugging Face provides an expansive repository of open source models and datasets for fine-tuning. torchtune seamlessly integrates through the <code class="language-plaintext highlighter-rouge">tune download</code> CLI command so you can get started right away with fine-tuning your first model.</li>
+        <li><strong><a href="https://pytorch.org/tutorials/intermediate/FSDP_tutorial.html">PyTorch FSDP</a></strong> - Scale your training using PyTorch FSDP. It is very common for people to invest in machines with multiple consumer level cards like the 3090/4090 by NVidia. torchtune allows you to take advantage of these setups by providing distributed recipes powered by FSDP.</li>
+        <li><strong><a href="https://wandb.ai/site">Weights &amp; Biases</a></strong> - torchtune uses the Weights &amp; Biases AI platform to log metrics and model checkpoints during training. Track your configs, metrics and models from your fine-tuning runs all in one place!</li>
+        <li><strong><a href="https://github.com/EleutherAI/lm-evaluation-harness">EleutherAI’s LM Evaluation Harness</a></strong> - Evaluating fine-tuned models is critical to understanding whether fine-tuning is giving you the results you need. torchtune includes a simple evaluation recipe powered by EleutherAI’s LM Evaluation Harness to provide easy access to a comprehensive suite of standard LLM benchmarks. Given the importance of evaluation, we will be working with EleutherAI very closely in the next few months to build an even deeper and more “native” integration.</li>
+        <li><strong><a href="https://pytorch.org/executorch-overview">ExecuTorch</a></strong> - Models fine-tuned with torchtune can be <a href="https://github.com/pytorch/executorch/tree/main/examples/models/llama2#optional-finetuning">easily exported</a> to ExecuTorch, enabling efficient inference to be run on a wide variety of mobile and edge devices.</li>
+        <li><strong><a href="https://github.com/pytorch-labs/ao">torchao</a></strong> - Easily and efficiently quantize your fine-tuned models into 4-bit or 8-bit using a simple <a href="https://github.com/pytorch/torchtune/blob/main/recipes/quantize.py">post-training recipe</a> powered by the quantization APIs from torchao.</li>
+      </ul>
+    </blockquote>
+  </li>
+</ul>
+
+<h2 id="다음-단게는-무엇인가요--whats-next">다음 단게는 무엇인가요? / What’s Next?</h2>
+
+<p>이것은 시작에 불과하며 활기차고 에너지가 넘치는 커뮤니티에 이번 알파 버전을 제공하게 되어 매우 기쁩니다. 앞으로 몇 주 동안, 더 많은 모델과 기능 및 파인튜닝 기법들을 추가할 예정입니다. 피드백이나 의견, 기능 요청은 GitHub 저장소의 이슈(issue)나 <a href="https://discord.com/invite/4Xsdn8Rr9Q">Discord 채널</a>로 보내주시기 바랍니다. 언제나 그렇듯, 이 멋진 커뮤니티로부터의 모든 기여를 환영합니다. 즐거운 파인튜닝하세요!</p>
+<blockquote>
+  <p>This is just the beginning and we’re really excited to put this alpha version in front of a vibrant and energetic community. In the coming weeks, we’ll continue to augment the library with more models, features and fine-tuning techniques. We’d love to hear any feedback, comments or feature requests in the form of GitHub issues on our repository, or on our <a href="https://discord.com/invite/4Xsdn8Rr9Q">Discord channel</a>. As always, we’d love any contributions from this awesome community. Happy Tuning!</p>
+</blockquote>]]></content><author><name>PyTorch Korea User Group</name></author><category term="[&quot;pytorch.org&quot;, &quot;translation&quot;]" /><summary type="html"><![CDATA[대규모 언어 모델(LLM)을 손쉽게 파인튜닝(미세조정)할 수 있는 PyTorch 네이티브 라이브러리인 torchtune의 알파 릴리즈를 발표하게 되어 기쁩니다. We’re pleased to announce the alpha release of torchtune, a PyTorch-native library for easily fine-tuning large language models.]]></summary></entry><entry><title type="html">PyTorch 2 논문 및 튜토리얼 @ ASPLOS 2024</title><link href="https://pytorch.kr/blog/2024/pytorch-2-paper-tutorial/" rel="alternate" type="text/html" title="PyTorch 2 논문 및 튜토리얼 @ ASPLOS 2024" /><published>2024-02-06T00:00:00+09:00</published><updated>2024-02-06T00:00:00+09:00</updated><id>https://pytorch.kr/blog/2024/pytorch-2-paper-tutorial</id><content type="html" xml:base="https://pytorch.kr/blog/2024/pytorch-2-paper-tutorial/"><![CDATA[<p>2024년 4월 27일부터 5월 1일까지 미국 캘리포니아주 샌디에이고에서 열릴 예정인 ACM 국제 컨퍼런스 ASPLOS(Architectural Support for Programming Languages and Operating Systems)에서 PyTorch 2에 대한 논문이 선정되어 발표하게 되었다는 소식을 전할 수 있어 기쁘게 생각합니다.</p>
+<blockquote>
+  <p>The PyTorch team is excited to share that our paper on PyTorch 2 has been accepted for presentation at the ACM International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS), scheduled to take place from April 27 to May 1, 2024, in San Diego, CA, USA.</p>
+</blockquote>
+
+<p>이 논문에서는 torch.compile의 구현에 대해 자세히 살펴보며, 특히 이를 위한 주요 기술들인 TorchDynamo(그래프 캡처), TorchInductor(백엔드 컴파일러) 및 Dynamic Shape 지원 등을 중점적으로 다루고 있습니다.</p>
+<blockquote>
+  <p>The paper delves into the implementation of torch.compile and highlights the key technologies driving it, including TorchDynamo (graph capture), TorchInductor (backend compiler), and Dynamic Shape support.</p>
+</blockquote>
+
+<p>ASPLOS 컨퍼런스 기간 중인 4월 27일(토)에 시스템 연구자들을 위해 PyTorch 2의 내부 동작 방식과 이를 활용하고 구축할 수 있는 방법에 초점을 맞춘 튜토리얼을 진행할 예정입니다. 행사 일정에 맞춰 세부적인 내용이 확정되는대로 공유드리도록 하겠습니다. 많은 참여 기대합니다!</p>
+<blockquote>
+  <p>During the ASPLOS conference, we’ll be conducting a tutorial on Saturday, April 27, focusing on the inner workings of PyTorch 2 and how systems researchers can leverage and build upon it. Stay tuned for more details as the event approaches – we look forward to your participation!</p>
+</blockquote>
+
+<p>논문의 미리보기는 아래 첨부하였습니다:</p>
+<blockquote>
+  <p>A preview of the paper is attached below:</p>
+</blockquote>
+
+<p>제목:  <strong>PyTorch 2: 동적 Python 바이트코드 변환과 그래프 컴파일을 통한 더 빠른 머신 러닝</strong> <a href="/assets/pytorch2-2.pdf"><strong>논문 전문 PDF</strong></a></p>
+<blockquote>
+  <p>Title: <strong>PyTorch 2: Faster Machine Learning Through Dynamic Python Bytecode Transformation and Graph Compilation.</strong> <a href="/assets/pytorch2-2.pdf"><strong>Full Paper PDF</strong></a></p>
+</blockquote>
+
+<h3 id="논문-초록-abstract">논문 초록 (Abstract)</h3>
+
+<p>이 논문에서는 인기있는 파이토치(PyTorch) 머신러닝 프레임워크의 두 가지 확장 기능인 TorchDynamo와 TorchInductor를 소개합니다. 이 두 확장 기능은 PyTorch 2에서 발표된 torch.compile 기능을 구현하기 위한 것입니다. TorchDynamo는 Python 수준의 JIT(Just-in-Time) 컴파일러로, Python의 유연성을 희생하지 않으면서 PyTorch 프로그램에서 그래프 컴파일(graph compilation)을 가능하게 합니다. 이를 위해 TorchDynamo는 Python 바이트코드(bytecode)를 실행 전 동적으로 수정하고 PyTorch 연산 시퀀스를 FX 그래프로 추출한 다음, 확장 가능한 다양한 백엔드 중 하나를 사용하여 JIT 컴파일을 수행합니다. TorchInductor는 TorchDynamo의 기본 컴파일 백엔드로, PyTorch 프로그램을 OpenAI의 Triton 및 CPU용 C++ 코드로 변환(translate)합니다. 실험 결과, TorchDynamo는 최소한의 오버헤드만으로 이전의 접근 방식보다 더 견고(robust)하게 그래프를 캡쳐할 수 있으며, TorchInductor는 MVIDIA A100 GPU에서 180개 이상의 실제 사용 모델(180+ real-world models)에 대해서 학습 시 1.14배와 추론 시 2.27배의 평균적 속도 향상(기하 평균, geometric mean)을 보이는 것으로 나타났습니다. 이러한 확장 기능들은 PyTorch와 같은 Eager 방식의 프레임워크에서 컴파일러를 통해 최적화를 적용하는 새로운 방법을 제공합니다.</p>
+<blockquote>
+  <p>This paper introduces two extensions to the popular PyTorch machine learning framework, TorchDynamo and TorchInductor, which implement the torch.compile feature released in PyTorch 2. TorchDynamo is a Python-level just-in-time (JIT) compiler that enables graph compilation in PyTorch programs without sacrificing the flexibility of Python. It achieves this by dynamically modifying Python bytecode before execution and extracting sequences of PyTorch operations into an FX graph, which is then JIT compiled using one of many extensible backends. TorchInductor is the default compiler backend for TorchDynamo, which translates PyTorch programs into OpenAI’s Triton for GPUs and C++ for CPUs. Results show that TorchDynamo is able to capture graphs more robustly than prior approaches while adding minimal overhead, and TorchInductor is able to provide a 2.27x inference and 1.41x training geometric mean speedup on an NVIDIA A100 GPU across 180+ real-world models, which outperforms six other compilers. These extensions provide a new way to apply optimizations through compilers in eager mode frameworks like PyTorch.</p>
+</blockquote>
+
+<h3 id="논문-저자-authors">논문 저자 (Authors)</h3>
+
+<p>Jason Ansel (Meta); Edward Yang (Meta); Horace He (Meta); Natalia Gimelshein (OpenAI); Animesh Jain (Meta); Michael Voznesensky (Meta); Bin Bao (Meta); Peter Bell (Quansight); David Berard (Meta); Evgeni Burovski Quansight; Geeta Chauhan (Meta); Anjali Chourdia (Meta); Will Constable (Meta); Alban Desmaison (Meta); Zachary DeVito (Meta); Elias Ellison (Meta); Will Feng (Meta); Jiong Gong (Intel); Michael Gschwind (Meta); Brian Hirsh (Meta); Sherlock Huang (Meta); Kshiteej Kalambarkar (Quansight); Laurent Kirsch (Meta); Michael Lazos (Meta); Mario Lezcano (Quansight); Yanbo Liang (Meta); Jason Liang (Meta); Yinghai Lu (Meta); CK Luk (Meta); Bert Maher (Meta); Yunjie Pan (University of Michigan); Christian Puhrsch (Meta); Matthias Reso (Meta); Mark Saroufim (Meta); Marcos Yukio Siraichi (Quansight); Helen Suk (Meta); Michael Suo (Meta); Phil Tillet (OpenAI); Eikan Wang (Intel); Xiaodong Wang (Meta); William Wen (Meta); Shunting Zhang (Meta); Xu Zhao (Meta); Keren Zhou (OpenAI &amp; George Mason University); Richard Zou (Meta); Ajit Mathews (Meta); Gregory Chanan (Meta); Peng Wu (Meta); Soumith Chintala (Meta)</p>
+
+<h3 id="asplos24---full-day-tutorial-schedule">ASPLOS’24 - Full Day Tutorial Schedule</h3>
+
+<p>ASPLOS’24의 파이토치 2(PyTorch 2) 튜토리얼은 4월 27일, 토요일에 진행됩니다. 자세한 일정은 <a href="https://github.com/pytorch/workshops/tree/master/ASPLOS_2024">여기</a>를 참고해 주세요.</p>
+<blockquote>
+  <p>Full schedule for the ASPLOS’24 PyTorch 2 Tutoral on Saturday, April 27th is available <a href="https://github.com/pytorch/workshops/tree/master/ASPLOS_2024">here</a></p>
+</blockquote>]]></content><author><name>PyTorch Korea User Group</name></author><category term="[&quot;pytorch.org&quot;, &quot;translation&quot;]" /><summary type="html"><![CDATA[2024년 4월 27일부터 5월 1일까지 미국 캘리포니아주 샌디에이고에서 열릴 예정인 ACM 국제 컨퍼런스 ASPLOS(Architectural Support for Programming Languages and Operating Systems)에서 PyTorch 2에 대한 논문이 선정되어 발표하게 되었다는 소식을 전할 수 있어 기쁘게 생각합니다. The PyTorch team is excited to share that our paper on PyTorch 2 has been accepted for presentation at the ACM International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS), scheduled to take place from April 27 to May 1, 2024, in San Diego, CA, USA.]]></summary></entry></feed>
