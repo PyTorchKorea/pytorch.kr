@@ -12,16 +12,16 @@
   }
 
   .main-background {
-    height: 290px;
+    height: 275px;
     @include desktop {
-      height: 485px;
+      height: 380px;
     }
   }
 
   .blog-detail-background {
-    height: 300px;
+    height: 220px;
     @include desktop {
-      height: 312px;
+      height: 280px;
     }
   }
 
@@ -81,22 +81,64 @@
       display: block;
       max-width: 100%;
       margin: auto;
+
       .col-md-4 {
         display: initial;
       }
+
       .btn {
-        float: left;
+        color: #ee4c2c;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+        display: inline-block;
+        margin-top: rem(16px);
+        background: none;
+        border: none;
+        padding: 0;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #d63916;
+          text-decoration: none;
+        }
+      }
+
+      p {
+        font-size: rem(16px);
+        line-height: rem(26px);
+        color: #555;
+        margin-bottom: rem(20px);
+        letter-spacing: 0.2px;
       }
     }
     .vertical-blog-container {
-      border-bottom: 1px solid #E2E2E2;
-      padding-bottom: 3rem;
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-radius: 8px;
+      padding: rem(32px);
+      margin-bottom: rem(24px);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border-color: #e0e0e0;
+      }
+
       &:last-of-type {
-        margin-bottom: 2rem;
+        margin-bottom: rem(32px);
+      }
+
+      @include desktop {
+        padding: rem(40px);
+        margin-bottom: rem(32px);
       }
     }
     @include desktop {
-      margin-top: 380px + $desktop_header_height;
+      margin-top: 260px + $desktop_header_height;
       .row.blog-index
         [class*="col-"]:not(:first-child):not(:last-child):not(:nth-child(3n)) {
         padding-right: rem(35px);
@@ -117,21 +159,68 @@
     }
 
     h4 {
+      margin-bottom: rem(16px);
+      margin-top: rem(8px);
+
       a {
         font-family: FreightSans;
         font-size: rem(24px);
         color: $black;
-        letter-spacing: 0;
+        letter-spacing: -0.3px;
         line-height: rem(32px);
-        font-weight: 400;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: block;
+
+        &:hover {
+          color: $orange;
+          text-decoration: none;
+        }
+
+        @include desktop {
+          font-size: rem(28px);
+          line-height: rem(36px);
+        }
       }
     }
 
     .author {
       color: $orange;
-      font-size: rem(16px);
+      font-size: rem(14px);
+      font-weight: 500;
       letter-spacing: 0.25px;
-      line-height: rem(30px);
+      line-height: rem(20px);
+      margin-bottom: rem(8px);
+    }
+
+    .author-icon {
+      position: relative;
+      top: rem(26px);
+      height: rem(17px);
+      width: rem(19px);
+      left: rem(20px);
+    }
+  }
+
+  .blog-detail-content {
+    padding-bottom: 2.8rem;
+
+    .author {
+      background-color: #f8f9fa;
+      padding: rem(16px) rem(20px);
+      border-radius: 8px;
+      border-left: 4px solid $orange;
+      margin-bottom: rem(24px);
+      font-size: rem(14px);
+      line-height: rem(20px);
+      color: #555;
+
+      @include desktop {
+        padding: rem(20px) rem(24px);
+        font-size: rem(15px);
+        line-height: rem(22px);
+      }
     }
 
     .author-icon {
@@ -140,27 +229,84 @@
       height: rem(17px);
       width: rem(19px);
     }
-  }
 
-  .blog-detail-content {
-    padding-bottom: 2.8rem;
+    .translation-description {
+      background-color: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 6px;
+      padding: rem(16px);
+      margin-bottom: rem(24px);
+      font-size: rem(14px);
+      line-height: rem(20px);
+      color: #856404;
+
+      @include desktop {
+        padding: rem(20px);
+        font-size: rem(15px);
+        line-height: rem(22px);
+      }
+
+      a {
+        color: #856404;
+        font-weight: 500;
+        &:hover {
+          color: #533104;
+        }
+      }
+    }
+
+    .ad-discuss {
+      background-color: #e8f4fd;
+      border: 1px solid #bee5eb;
+      border-radius: 6px;
+      padding: rem(20px);
+      margin-top: rem(32px);
+      font-size: rem(16px);
+      line-height: rem(24px);
+      color: #0c5460;
+      text-align: center;
+
+      a {
+        color: $orange;
+        font-weight: 600;
+        &:hover {
+          color: #d63916;
+        }
+      }
+    }
   }
 
   .blog-detail-wrapper {
+    margin-top: 180px;
     @include desktop {
-      margin-top: 234px + $desktop_header_height;
+      margin-top: 200px + $desktop_header_height;
     }
   }
 
   .jumbotron {
+    height: 190px;
     top: rem(105px);
     @include desktop {
-      height: rem(405px);
+      height: 260px;
     }
 
     .container {
       @include desktop {
         padding-bottom: rem(45px);
+      }
+    }
+
+    h1 {
+      margin-top: rem(40px);
+      // font-size: rem(32px);
+      // letter-spacing: 1.78px;
+      // line-height: rem(40px);
+      // text-transform: uppercase;
+      // margin-bottom: rem(24px);
+      color: $white;
+      a {
+        color: $white;
+        word-wrap: break-word;
       }
     }
 
@@ -175,18 +321,6 @@
         text-overflow: unset;
       }
     }
-
-    h1 {
-      letter-spacing: -1.65px;
-      font-size: rem(48px);
-      line-height: rem(60px);
-      text-transform: none;
-      a {
-        color: $white;
-        word-wrap: break-word;
-      }
-    }
-
     .blog-title {
       display: inline-flex;
       &:hover {
@@ -231,16 +365,80 @@
   }
 
   .blog-detail-jumbotron {
+    height: 160px;
     top: 45px;
     @include desktop {
-      height: 107px;
+      height: 200px;
       top: 75px;
+    }
+
+    .container {
+      padding-top: rem(20px);
+      @include desktop {
+        padding-top: rem(40px);
+      }
+    }
+
+    h1 {
+      font-size: rem(24px);
+      letter-spacing: 0.5px;
+      line-height: rem(32px);
+      text-transform: none;
+      margin-bottom: rem(12px);
+      color: $white;
+      font-weight: 600;
+
+      @include desktop {
+        font-size: rem(32px);
+        line-height: rem(40px);
+        margin-bottom: rem(16px);
+      }
+
+      a {
+        color: $white;
+        text-decoration: none;
+        word-wrap: break-word;
+
+        &:hover {
+          color: rgba(255, 255, 255, 0.9);
+        }
+      }
+    }
+
+    p.featured-post {
+      font-size: rem(14px);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: rem(8px);
+      letter-spacing: 0.5px;
+
+      @include desktop {
+        font-size: rem(16px);
+        margin-bottom: rem(12px);
+      }
+    }
+
+    .blog-subtitle {
+      font-size: rem(18px);
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: rem(8px);
+      font-weight: 400;
+
+      @include desktop {
+        font-size: rem(20px);
+        margin-top: rem(12px);
+      }
     }
   }
 
   p.blog-date {
     @include blog_date_and_feature;
-    color: $dark_grey;
+    color: #8c8c8c;
+    font-size: rem(14px);
+    font-weight: 400;
+    margin-bottom: rem(12px);
+    letter-spacing: 0.25px;
   }
 
   p.featured-post {

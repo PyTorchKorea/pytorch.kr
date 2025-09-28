@@ -5,6 +5,81 @@
       margin-top: 539px;
     }
   }
+
+  // Recent Blog Section
+  .recent-blog-section {
+    padding: rem(20px) 0 rem(20px) 0;
+    background-color: #ffffff;
+
+    @include desktop {
+      padding: rem(60px) 0 rem(40px) 0;
+    }
+
+    .blog-post-card {
+      border: none;
+      background: #ffffff;
+      height: 100%;
+      transition: all 0.3s ease;
+      border-radius: 0;
+
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-body {
+        padding: rem(20px);
+      }
+
+      .blog-meta {
+        font-size: 0.875rem;
+        color: #6c757d;
+        margin-bottom: rem(12px);
+      }
+
+      .blog-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+
+        a {
+          color: #333;
+          text-decoration: none;
+
+          &:hover {
+            color: #ee4c2c;
+          }
+        }
+      }
+
+      .blog-excerpt {
+        line-height: 1.6;
+        color: #6c757d;
+        font-size: rem(16px);
+        margin-bottom: rem(20px);
+      }
+
+      .read-more-link {
+        color: #ee4c2c;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+
+        &:hover {
+          color: #d63916;
+          text-decoration: underline;
+        }
+
+        i {
+          margin-left: 8px;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
   h2 {
     margin-bottom: rem(25px);
     text-transform: uppercase;
@@ -56,6 +131,66 @@
 
   .homepage-header {
     background-color: rgba(0, 0, 0, 0.165);
+  }
+}
+
+.community-cta-section {
+  background-color: #f3f4f7;
+  padding: rem(30px) 0;
+  color: #333;
+
+  @include desktop {
+    padding: rem(40px) 0;
+  }
+
+  h2 {
+    color: #333;
+    margin-bottom: rem(8px);
+    font-size: rem(20px);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1.78px;
+    line-height: rem(30px);
+
+    @include desktop {
+      font-size: rem(24px);
+      margin-bottom: rem(10px);
+      line-height: rem(36px);
+    }
+  }
+
+  p {
+    font-size: rem(16px);
+    line-height: 1.5;
+    margin-bottom: 0;
+    color: #A0A0A1;
+
+    @include desktop {
+      font-size: rem(16px);
+      line-height: 1.6;
+    }
+  }
+
+  .btn {
+    background-color: $orange;
+    color: $white;
+    border: none;
+    font-weight: 400;
+    letter-spacing: 0.25px;
+    margin-top: rem(5px);
+    padding: rem(8px) 1rem;
+    font-size: rem(14px);
+
+    @include desktop {
+      margin-top: 0;
+      padding: rem(10px) rem(20px);
+      font-size: rem(16px);
+    }
+
+    &:hover {
+      background-color: #d63916;
+      color: $white;
+    }
   }
 }
 

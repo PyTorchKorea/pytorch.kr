@@ -656,3 +656,28 @@ body.general .main-content-wrapper {
     margin-top: 100px;
   }
 }
+
+
+
+.wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 10;
+  overflow: hidden;
+
+  @include desktop {
+    height: 120px;
+  }
+
+  svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(1px);
+  }
+}

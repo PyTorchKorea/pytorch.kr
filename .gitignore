@@ -8,6 +8,7 @@
 .bundle
 .sass_cache
 yarn.lock
+/_coc/
 /_site/
 /.idea/
 /.jekyll-metadata
@@ -15,3 +16,5 @@ yarn.lock
 /.netlify/
 /assets/hub
 *.old
+.jekyll-cache
+.playwright-mcp
