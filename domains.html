@@ -1,0 +1,55 @@
+---
+layout: default
+title: Domain APIs | PyTorchKR
+permalink: domains/
+body-class: domains
+---
+{% assign domains = site.domains | sort: 'order' %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>도메인 API(Domain API)</h1>
+
+    <p class="lead">파이토치 생태계(PyTorch Ecosystem)의 다양한 Domain Library를 만나보세요!<br />
+    특정 영역에 최적화된 도구들과 사전 학습된 모델 등을 제공하고 있습니다.</p>
+  </div>
+</div>
+
+<div class="main-content-wrapper">
+  <div class="main-content">
+    <div class="container">
+      <div class="row domains">
+
+        {% for domain in domains %}
+        <div class="col-md-4">
+          <div class="card domain-card">
+            <a href="{{ domain.link }}" target="_blank">
+              <div class="card-body">
+                <h4>
+                  {% if domain.title_prefix and domain.title_suffix %}
+                    {% if domain.title == 'PyTorch on XLA Devices' %}
+                      <span class="domain-suffix">{{ domain.title_prefix }}</span> <span class="domain-prefix">{{ domain.title_suffix }}</span>
+                    {% elsif domain.title == 'Functorch' %}
+                      <span class="domain-suffix">{{ domain.title_prefix }}</span><span class="domain-prefix">{{ domain.title_suffix }}</span>
+                    {% else %}
+                      <span class="domain-prefix">{{ domain.title_prefix }}</span><span class="domain-suffix">{{ domain.title_suffix }}</span>
+                    {% endif %}
+                  {% else %}
+                    {{ domain.title }}
+                  {% endif %}
+                </h4>
+                {% unless resource.link contains 'pytorch.kr' %}
+                <i class="fa fa-external-link external-link-icon"></i>
+                {% endunless %}
+                <p class="card-summary">{{ domain.summary }}</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

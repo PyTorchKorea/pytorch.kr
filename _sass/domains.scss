@@ -1,8 +1,9 @@
-.resources .main-background {
+
+.domains .main-background {
   display: none;
 }
 
-.resources .jumbotron {
+.domains .jumbotron {
   height: 145px;
   align-items: flex-end;
 
@@ -15,7 +16,7 @@
   }
 }
 
-.resources .main-content-wrapper {
+.domains .main-content-wrapper {
   margin-top: 230px;
   margin-bottom: 0.75rem;
   @include desktop {
@@ -23,14 +24,14 @@
   }
 }
 
-.resources .resource-card {
+.domains .domain-card {
   border: 1px solid #e2e2e2;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  width: 100%;
+  margin-bottom: 1.5rem;
+  height: 100%;
   background-color: #f8f9fa;
-  position: relative;
 
   &:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -42,41 +43,42 @@
     text-decoration: none;
     color: inherit;
     display: block;
-    padding: 0px;
-    margin: 0px;
+    height: 100%;
   }
 
   .card-body {
-    padding: 1.5rem 1.5rem 0 1.5rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 0.5rem;
-    height: auto;
+    justify-content: space-between;
+    height: 100%;
 
     @include desktop {
-      top: 0px;
-      margin: 0px;
+      padding: 2rem;
     }
   }
 
   h4 {
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 1rem;
     line-height: 1.3;
+
+    .domain-prefix {
+      color: #6c757d;
+    }
+
+    .domain-suffix {
+      color: $orange;
+    }
   }
 
   .card-summary {
-    display: block;
     font-size: 0.95rem;
     line-height: 1.6;
     color: #6c757d;
     margin-bottom: 0;
-    padding-bottom: 0;
-    flex-grow: 0;
-    overflow: hidden;
-
+    flex-grow: 1;
   }
 
   .external-link-icon {
@@ -94,19 +96,19 @@
   }
 }
 
-.resources .row.resources {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-left: 0;
-  margin-right: 0;
+.domains .row.domains {
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: 2rem;
 
   .col-md-4 {
-    display: block;
-    box-sizing: border-box;
-    flex: 0 0 calc((100% - 2 * 1.5rem) / 3);
-    max-width: calc((100% - 2 * 1.5rem) / 3);
-    margin: 0;
-    padding: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+      margin-bottom: 1.5rem;
+    }
   }
 }

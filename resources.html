@@ -9,10 +9,10 @@ redirect_from: /support/
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1>리소스(Resources)</h1>
+    <h1>개발자 정보(Resources)</h1>
 
-    <p class="lead">PyTorch 공식 홈페이지/저장소를 비롯하여 도움이 되는 링크들을 모아두었습니다. <br />
-    더 많은 정보들은 <a href="https://discuss.pytorch.kr/c/share-stuff/8" target="_blank">커뮤니티의 정보 공유 게시판</a>을 참고해보세요!</p>
+    <p class="lead">공식 홈페이지/저장소를 비롯하여 도움이 되는 링크들을 모아두었습니다. <br />
+    더 많은 정보들은 <a href="https://discuss.pytorch.kr/c/14" target="_blank">한국어 커뮤니티의 정보 공유 게시판</a>을 방문해주세요!</p>
   </div>
 </div>
 
@@ -22,34 +22,21 @@ redirect_from: /support/
       <div class="row resources">
 
         {% for resource in resources %}
-          {% assign card_title = resource.title | split: ' ' %}
-
-          {% if resource.show-pytorch-logo == true %}
-            {% assign resource_class = "pytorch-resource" %}
-          {% else %}
-            {% assign resource_class = resource.class %}
-          {% endif %}
-
         <div class="col-md-4">
-          <div class="card resource-card {{ resource_class }}">
-            <!-- Cards with the pytorch-resource class also have a pytorch-discuss class.
-              These two classes along with the discuss class allow us to stylize the second word in the card header so that it features orange text.
-             -->
-            {% if resource.class == "pytorch-resource" %}
-            <a href="{{ resource.link }}" class="pytorch-discuss" target="_blank">
-              <div class="card-body">
-                <h4>{{ card_title[0] }}<span class="discuss">{{ card_title[1] }}</span></h4>
-            {% else %}
-            <a href="{{ resource.link }}" target="_blank">
+          <div class="card resource-card">
+            <a href="{{ resource.link }}" {% unless resource.link contains 'pytorch.kr' %}target="_blank"{% endunless %}>
               <div class="card-body">
                 <h4>{{ resource.title }}</h4>
-            {% endif %}
+                {% unless resource.link contains 'pytorch.kr' %}
+                <i class="fa fa-external-link external-link-icon"></i>
+                {% endunless %}
                 <p class="card-summary">{{ resource.summary }}</p>
-                </div>
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
+        </div>
         {% endfor %}
+
         </div>
       </div>
     </div>

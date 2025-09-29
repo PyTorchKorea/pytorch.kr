@@ -12,6 +12,15 @@ var mobileMenu = {
       e.preventDefault();
       mobileMenu.close();
     });
+
+    // 모바일에서 드롭다운 토글 (동적 처리)
+    $("[class$='-mobile-toggle']").on('click', function(e) {
+      e.preventDefault();
+      var $this = $(this);
+      var className = $this.attr('class').replace('-mobile-toggle', '-mobile-menu');
+      var menu = $this.siblings('.' + className);
+      menu.slideToggle();
+    });
   },
 
   listenForResize: function() {

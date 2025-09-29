@@ -28,6 +28,11 @@
     background-color: $white;
     border-bottom: 1px solid #e2e2e2;
   }
+
+  &.domains-header {
+    background-color: #545454;
+    border-bottom: 1px solid #e2e2e2;
+  }
 }
 
 .header-container {
@@ -260,12 +265,35 @@
   }
 }
 
+.domains-header {
+  .header-logo {
+    background-image: url($baseurl + "/assets/images/logo-ko-dark.svg");
+    background-size: 200px 52px;
+
+    @include desktop {
+      background-size: 200px 52px;
+      height: 52px;
+      width: 200px;
+      margin-bottom: 0;
+      top: -10px;
+    }
+  }
+
+  .main-menu ul li a {
+    color: $white;
+  }
+
+  .main-menu-open-button {
+    background-image: url($baseurl + "/assets/images/icon-menu-dots.svg");
+  }
+}
+
 .main-menu ul li {
-  .ecosystem-dropdown, .resources-dropdown a {
+  .ecosystem-dropdown, .resources-dropdown, .get-started-dropdown, .docs-dropdown, .community-dropdown a {
     cursor: pointer;
   }
 
-  .ecosystem-dropdown, .resources-dropdown {
+  .ecosystem-dropdown, .resources-dropdown, .get-started-dropdown, .docs-dropdown, .community-dropdown {
     .with-down-orange-arrow {
       padding-right: rem(32px);
       position: relative;
@@ -332,7 +360,7 @@
   }
 }
 
-.ecosystem-dropdown-menu, .resources-dropdown-menu {
+.ecosystem-dropdown-menu, .resources-dropdown-menu, .get-started-dropdown-menu, .docs-dropdown-menu, .community-dropdown-menu {
   left: -75px;
   width: 226px;
   display: none;
@@ -352,21 +380,21 @@
   border-radius: 0.25rem;
 }
 
-.ecosystem-dropdown:hover, .resources-dropdown:hover, .resources-active:hover {
-  .ecosystem-dropdown-menu, .resources-dropdown-menu {
+.ecosystem-dropdown:hover, .resources-dropdown:hover, .resources-active:hover, .get-started-dropdown:hover, .docs-dropdown:hover, .community-dropdown:hover {
+  .ecosystem-dropdown-menu, .resources-dropdown-menu, .get-started-dropdown-menu, .docs-dropdown-menu, .community-dropdown-menu {
     display: block;
   }
 }
 
 .main-menu ul li {
-  .ecosystem-dropdown-menu, .resources-dropdown-menu {
+  .ecosystem-dropdown-menu, .resources-dropdown-menu, .get-started-dropdown-menu, .docs-dropdown-menu, .community-dropdown-menu {
     border-radius: 0;
     padding: 0;
   }
 }
 
 .main-menu ul li {
-  .ecosystem-dropdown-menu, .resources-dropdown-menu {
+  .ecosystem-dropdown-menu, .resources-dropdown-menu, .get-started-dropdown-menu, .docs-dropdown-menu, .community-dropdown-menu {
     .dropdown-item {
       color: #6c6c6d;
       border-bottom: 1px solid #e2e2e2;

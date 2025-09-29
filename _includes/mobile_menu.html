@@ -12,27 +12,39 @@
 
     <div class="main-menu">
       <ul>
-
-        <li class="main-menu-item {% if current[1] == 'get-started' %}active{% endif %}">
-          <a href="{{ site.baseurl }}/get-started">시작하기</a>
-        </li>
-
-        <li class="main-menu-item {% if current[1] == 'blog' %}active{% endif %}">
-          <a href="{{ site.baseurl }}/blog">블로그</a>
-        </li>
-
-        <li class="main-menu-item">
-          <a href="{{ site.external_urls.site_tutorials }}">튜토리얼</a>
-        </li>
-
-        <li class="main-menu-item">
-          <a href="{{ site.baseurl }}/hub">허브</a>
-        </li>
-
-        <li class="main-menu-item">
-          <a href="{{ site.external_urls.site_community }}">커뮤니티</a>
-        </li>
-
+        {% for item in site.data.navigation.main_menu %}
+          <li class="main-menu-item {% if item.key and (current[1] == item.key or (item.key == 'blog' and page.url contains '/blog')) %}active{% endif %}{% if item.has_dropdown %} {{ item.key }}-mobile-dropdown{% endif %}">
+            {% if item.has_dropdown %}
+              <a href="#" class="{{ item.key }}-mobile-toggle">{{ item.title }}</a>
+              <ul class="{{ item.key }}-mobile-menu" style="display: none;">
+                {% for dropdown_item in item.dropdown_items %}
+                  {% if dropdown_item.url_type == "baseurl" %}
+                    {% assign final_url = site.baseurl | append: dropdown_item.url %}
+                  {% else %}
+                    {% assign final_url = dropdown_item.url %}
+                  {% endif %}
+                  <li>
+                    <a href="{{ final_url }}"{% if dropdown_item.target %} target="{{ dropdown_item.target }}"{% endif %}>
+                      {{ dropdown_item.title }}
+                      {% if dropdown_item.external %}
+                        <i class="fa fa-external-link" style="margin-left: 6px; font-size: 10px;"></i>
+                      {% endif %}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              {% if item.url_type == "baseurl" %}
+                {% assign final_url = site.baseurl | append: item.url %}
+              {% elsif item.url_type == "external_urls" %}
+                {% assign final_url = site.external_urls[item.url_key] %}
+              {% else %}
+                {% assign final_url = item.url %}
+              {% endif %}
+              <a href="{{ final_url }}"{% if item.target %} target="{{ item.target }}"{% endif %}>{{ item.title }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
       </ul>
     </div>
 
