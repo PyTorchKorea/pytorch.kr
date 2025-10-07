@@ -16,6 +16,56 @@ redirect_from: /previous-versions.html
 
 ## 1.0.0 이상 버전 설치하기
 
+### v2.7.1
+
+#### Wheel
+
+##### OSX
+
+```
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1
+```
+
+##### Linux and Windows
+
+```
+# ROCM 6.3 (Linux only)
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/rocm6.3
+# CUDA 11.8
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu118
+# CUDA 12.6
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
+# CUDA 12.8
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu128
+# CPU only
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+```
+
+### v2.7.0
+
+#### Wheel
+
+##### OSX
+
+```
+pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0
+```
+
+##### Linux and Windows
+
+```
+# ROCM 6.3 (Linux only)
+pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/rocm6.3
+# CUDA 11.8
+pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu118
+# CUDA 12.6
+pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu126
+# CUDA 12.8
+pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu128
+# CPU only
+pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cpu
+```
+
 ### v2.6.0
 
 #### Wheel

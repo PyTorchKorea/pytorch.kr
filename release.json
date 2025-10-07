@@ -2,96 +2,6 @@
   "nightly": {
     "linux": [
       {
-        "python_version": "3.9",
-        "gpu_arch_type": "cpu",
-        "gpu_arch_version": "",
-        "desired_cuda": "cpu",
-        "container_image": "pytorch/manylinux2_28-builder:cpu",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_9-cpu",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_9-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "12.6",
-        "desired_cuda": "cu126",
-        "container_image": "pytorch/manylinux2_28-builder:cuda12.6",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_9-cuda12_6",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "12.8",
-        "desired_cuda": "cu128",
-        "container_image": "pytorch/manylinux2_28-builder:cuda12.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_9-cuda12_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.3",
-        "desired_cuda": "rocm6.3",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.3",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_9-rocm6_3",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.3",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.4",
-        "desired_cuda": "rocm6.4",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.4",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_9-rocm6_4",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
         "python_version": "3.10",
         "gpu_arch_type": "cpu",
         "gpu_arch_version": "",
@@ -100,26 +10,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_10-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.10",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_10-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -130,11 +24,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_10-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -145,26 +38,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_10-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.3",
-        "desired_cuda": "rocm6.3",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.3",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_10-rocm6_3",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.3",
+        "build_name": "manywheel-py3_10-cuda13_0",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -175,11 +66,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_10-rocm6_4",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.10",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "7.0",
+        "desired_cuda": "rocm7.0",
+        "container_image": "pytorch/manylinux2_28-builder:rocm7.0",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_10-rocm7_0",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm7.0",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -190,26 +94,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_11-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.11",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_11-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -220,11 +108,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_11-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -235,26 +122,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_11-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.3",
-        "desired_cuda": "rocm6.3",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.3",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_11-rocm6_3",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.3",
+        "build_name": "manywheel-py3_11-cuda13_0",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -265,11 +150,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_11-rocm6_4",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.11",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "7.0",
+        "desired_cuda": "rocm7.0",
+        "container_image": "pytorch/manylinux2_28-builder:rocm7.0",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_11-rocm7_0",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm7.0",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -280,26 +178,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_12-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.12",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_12-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -310,11 +192,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_12-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -325,26 +206,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_12-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.3",
-        "desired_cuda": "rocm6.3",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.3",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_12-rocm6_3",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.3",
+        "build_name": "manywheel-py3_12-cuda13_0",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -355,11 +234,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_12-rocm6_4",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.12",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "7.0",
+        "desired_cuda": "rocm7.0",
+        "container_image": "pytorch/manylinux2_28-builder:rocm7.0",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_12-rocm7_0",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm7.0",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -370,26 +262,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.13",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_13-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -400,11 +276,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -415,26 +290,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.3",
-        "desired_cuda": "rocm6.3",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.3",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_13-rocm6_3",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.3",
+        "build_name": "manywheel-py3_13-cuda13_0",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -445,11 +318,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13-rocm6_4",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.13",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "7.0",
+        "desired_cuda": "rocm7.0",
+        "container_image": "pytorch/manylinux2_28-builder:rocm7.0",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_13-rocm7_0",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm7.0",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -460,26 +346,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13t-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.13t",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_13t-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -490,11 +360,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13t-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -505,26 +374,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13t-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.3",
-        "desired_cuda": "rocm6.3",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.3",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_13t-rocm6_3",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.3",
+        "build_name": "manywheel-py3_13t-cuda13_0",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -535,11 +402,192 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13t-rocm6_4",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.13t",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "7.0",
+        "desired_cuda": "rocm7.0",
+        "container_image": "pytorch/manylinux2_28-builder:rocm7.0",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_13t-rocm7_0",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm7.0",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "cpu",
+        "gpu_arch_version": "",
+        "desired_cuda": "cpu",
+        "container_image": "pytorch/manylinux2_28-builder:cpu",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14-cpu",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.6",
+        "desired_cuda": "cu126",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.6",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14-cuda12_6",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.8",
+        "desired_cuda": "cu128",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.8",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14-cuda12_8",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14-cuda13_0",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "6.4",
+        "desired_cuda": "rocm6.4",
+        "container_image": "pytorch/manylinux2_28-builder:rocm6.4",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14-rocm6_4",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "7.0",
+        "desired_cuda": "rocm7.0",
+        "container_image": "pytorch/manylinux2_28-builder:rocm7.0",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14-rocm7_0",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm7.0",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "cpu",
+        "gpu_arch_version": "",
+        "desired_cuda": "cpu",
+        "container_image": "pytorch/manylinux2_28-builder:cpu",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14t-cpu",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.6",
+        "desired_cuda": "cu126",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.6",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14t-cuda12_6",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.8",
+        "desired_cuda": "cu128",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.8",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14t-cuda12_8",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14t-cuda13_0",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "6.4",
+        "desired_cuda": "rocm6.4",
+        "container_image": "pytorch/manylinux2_28-builder:rocm6.4",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14t-rocm6_4",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm6.4",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "7.0",
+        "desired_cuda": "rocm7.0",
+        "container_image": "pytorch/manylinux2_28-builder:rocm7.0",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_14t-rocm7_0",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/rocm7.0",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cpu",
@@ -552,24 +600,9 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cpu-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/nightly/cpu/libtorch-cxx11-abi-shared-with-deps-latest.zip",
+        "installation": "https://download.pytorch.org/libtorch/nightly/cpu/libtorch-shared-with-deps-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
-      },
-      {
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "libtorch_variant": "shared-with-deps",
-        "libtorch_config": "",
-        "devtoolset": "cxx11-abi",
-        "container_image": "pytorch/libtorch-cxx11-builder:cuda11.8",
-        "package_type": "libtorch",
-        "build_name": "libtorch-cuda11_8-shared-with-deps-cxx11-abi",
-        "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/nightly/cu118/libtorch-cxx11-abi-shared-with-deps-latest.zip",
-        "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -582,9 +615,9 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cuda12_6-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/nightly/cu126/libtorch-cxx11-abi-shared-with-deps-latest.zip",
+        "installation": "https://download.pytorch.org/libtorch/nightly/cu126/libtorch-shared-with-deps-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -597,24 +630,24 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cuda12_8-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/nightly/cu128/libtorch-cxx11-abi-shared-with-deps-latest.zip",
+        "installation": "https://download.pytorch.org/libtorch/nightly/cu128/libtorch-shared-with-deps-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.3",
-        "desired_cuda": "rocm6.3",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
         "libtorch_variant": "shared-with-deps",
         "libtorch_config": "",
         "devtoolset": "cxx11-abi",
-        "container_image": "pytorch/libtorch-cxx11-builder:rocm6.3",
+        "container_image": "pytorch/libtorch-cxx11-builder:cuda13.0",
         "package_type": "libtorch",
-        "build_name": "libtorch-rocm6_3-shared-with-deps-cxx11-abi",
+        "build_name": "libtorch-cuda13_0-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/nightly/rocm6.3/libtorch-cxx11-abi-shared-with-deps-latest.zip",
+        "installation": "https://download.pytorch.org/libtorch/nightly/cu130/libtorch-shared-with-deps-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "rocm",
@@ -627,72 +660,27 @@
         "package_type": "libtorch",
         "build_name": "libtorch-rocm6_4-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/nightly/rocm6.4/libtorch-cxx11-abi-shared-with-deps-latest.zip",
+        "installation": "https://download.pytorch.org/libtorch/nightly/rocm6.4/libtorch-shared-with-deps-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
+      },
+      {
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "7.0",
+        "desired_cuda": "rocm7.0",
+        "libtorch_variant": "shared-with-deps",
+        "libtorch_config": "",
+        "devtoolset": "cxx11-abi",
+        "container_image": "pytorch/libtorch-cxx11-builder:rocm7.0",
+        "package_type": "libtorch",
+        "build_name": "libtorch-rocm7_0-shared-with-deps-cxx11-abi",
+        "validation_runner": "linux.2xlarge",
+        "installation": "https://download.pytorch.org/libtorch/nightly/rocm7.0/libtorch-shared-with-deps-latest.zip",
+        "channel": "nightly",
+        "stable_version": "2.8.0"
       }
     ],
     "windows": [
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cpu",
-        "gpu_arch_version": "",
-        "desired_cuda": "cpu",
-        "container_image": "pytorch/manylinux2_28-builder:cpu",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_9-cpu",
-        "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_9-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "12.6",
-        "desired_cuda": "cu126",
-        "container_image": "pytorch/manylinux2_28-builder:cuda12.6",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_9-cuda12_6",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "12.8",
-        "desired_cuda": "cu128",
-        "container_image": "pytorch/manylinux2_28-builder:cuda12.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_9-cuda12_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
       {
         "python_version": "3.10",
         "gpu_arch_type": "cpu",
@@ -702,26 +690,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_10-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.10",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_10-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -732,11 +704,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_10-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -747,11 +718,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_10-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.10",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_10-cuda13_0",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -762,26 +746,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_11-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.11",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_11-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -792,11 +760,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_11-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -807,11 +774,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_11-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.11",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_11-cuda13_0",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -822,26 +802,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_12-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.12",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_12-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -852,11 +816,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_12-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -867,11 +830,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_12-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.12",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_12-cuda13_0",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -882,26 +858,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.13",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_13-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -912,11 +872,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -927,11 +886,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.13",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_13-cuda13_0",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -942,26 +914,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13t-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.13t",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_13t-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu118",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -972,11 +928,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13t-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -987,11 +942,136 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13t-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.13t",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_13t-cuda13_0",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "cpu",
+        "gpu_arch_version": "",
+        "desired_cuda": "cpu",
+        "container_image": "pytorch/manylinux2_28-builder:cpu",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14-cpu",
+        "validation_runner": "windows.4xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.6",
+        "desired_cuda": "cu126",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.6",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14-cuda12_6",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.8",
+        "desired_cuda": "cu128",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.8",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14-cuda12_8",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14-cuda13_0",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "cpu",
+        "gpu_arch_version": "",
+        "desired_cuda": "cpu",
+        "container_image": "pytorch/manylinux2_28-builder:cpu",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14t-cpu",
+        "validation_runner": "windows.4xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.6",
+        "desired_cuda": "cu126",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.6",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14t-cuda12_6",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu126",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.8",
+        "desired_cuda": "cu128",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.8",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14t-cuda12_8",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu128",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "container_image": "pytorch/manylinux2_28-builder:cuda13.0",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14t-cuda13_0",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cu130",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cpu",
@@ -1006,22 +1086,7 @@
         "validation_runner": "windows.4xlarge",
         "installation": "https://download.pytorch.org/libtorch/nightly/cpu/libtorch-win-shared-with-deps-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
-      },
-      {
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "libtorch_variant": "shared-with-deps",
-        "libtorch_config": "release",
-        "devtoolset": "",
-        "container_image": "",
-        "package_type": "libtorch",
-        "build_name": "libtorch-cuda11_8-shared-with-deps-release",
-        "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/nightly/cu118/libtorch-win-shared-with-deps-latest.zip",
-        "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -1036,7 +1101,7 @@
         "validation_runner": "windows.4xlarge",
         "installation": "https://download.pytorch.org/libtorch/nightly/cu126/libtorch-win-shared-with-deps-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -1051,7 +1116,22 @@
         "validation_runner": "windows.4xlarge",
         "installation": "https://download.pytorch.org/libtorch/nightly/cu128/libtorch-win-shared-with-deps-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
+      },
+      {
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "libtorch_variant": "shared-with-deps",
+        "libtorch_config": "release",
+        "devtoolset": "",
+        "container_image": "",
+        "package_type": "libtorch",
+        "build_name": "libtorch-cuda13_0-shared-with-deps-release",
+        "validation_runner": "windows.4xlarge",
+        "installation": "https://download.pytorch.org/libtorch/nightly/cu130/libtorch-win-shared-with-deps-latest.zip",
+        "channel": "nightly",
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cpu",
@@ -1066,22 +1146,7 @@
         "validation_runner": "windows.4xlarge",
         "installation": "https://download.pytorch.org/libtorch/nightly/cpu/libtorch-win-shared-with-deps-debug-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
-      },
-      {
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "libtorch_variant": "shared-with-deps",
-        "libtorch_config": "debug",
-        "devtoolset": "",
-        "container_image": "",
-        "package_type": "libtorch",
-        "build_name": "libtorch-cuda11_8-shared-with-deps-debug",
-        "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/nightly/cu118/libtorch-win-shared-with-deps-debug-latest.zip",
-        "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -1096,7 +1161,7 @@
         "validation_runner": "windows.4xlarge",
         "installation": "https://download.pytorch.org/libtorch/nightly/cu126/libtorch-win-shared-with-deps-debug-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -1111,25 +1176,25 @@
         "validation_runner": "windows.4xlarge",
         "installation": "https://download.pytorch.org/libtorch/nightly/cu128/libtorch-win-shared-with-deps-debug-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
+      },
+      {
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "13.0",
+        "desired_cuda": "cu130",
+        "libtorch_variant": "shared-with-deps",
+        "libtorch_config": "debug",
+        "devtoolset": "",
+        "container_image": "",
+        "package_type": "libtorch",
+        "build_name": "libtorch-cuda13_0-shared-with-deps-debug",
+        "validation_runner": "windows.4xlarge",
+        "installation": "https://download.pytorch.org/libtorch/nightly/cu130/libtorch-win-shared-with-deps-debug-latest.zip",
+        "channel": "nightly",
+        "stable_version": "2.8.0"
       }
     ],
     "macos": [
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cpu",
-        "gpu_arch_version": "",
-        "desired_cuda": "cpu",
-        "container_image": "pytorch/manylinux2_28-builder:cpu",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_9-cpu",
-        "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
-        "channel": "nightly",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
       {
         "python_version": "3.10",
         "gpu_arch_type": "cpu",
@@ -1139,11 +1204,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_10-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -1154,11 +1218,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_11-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -1169,11 +1232,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_12-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -1184,11 +1246,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -1199,11 +1260,38 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13t-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
         "channel": "nightly",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14",
+        "gpu_arch_type": "cpu",
+        "gpu_arch_version": "",
+        "desired_cuda": "cpu",
+        "container_image": "pytorch/manylinux2_28-builder:cpu",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14-cpu",
+        "validation_runner": "macos-m1-stable",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.14t",
+        "gpu_arch_type": "cpu",
+        "gpu_arch_version": "",
+        "desired_cuda": "cpu",
+        "container_image": "pytorch/manylinux2_28-builder:cpu",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_14t-cpu",
+        "validation_runner": "macos-m1-stable",
+        "installation": "pip3 install --pre torch torchvision --index-url https://download.pytorch.org/whl/nightly/cpu",
+        "channel": "nightly",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cpu",
@@ -1218,7 +1306,7 @@
         "validation_runner": "macos-m1-stable",
         "installation": "https://download.pytorch.org/libtorch/nightly/cpu/libtorch-macos-arm64-latest.zip",
         "channel": "nightly",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       }
     ]
   },
@@ -1233,26 +1321,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_9-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_9-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.9",
@@ -1263,11 +1335,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_9-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.9",
@@ -1278,26 +1349,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_9-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.9",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.2.4",
-        "desired_cuda": "rocm6.2.4",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.2.4",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_9-rocm6_2_4",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4",
+        "build_name": "manywheel-py3_9-cuda12_9",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.9",
@@ -1308,11 +1377,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_9-rocm6_3",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.3",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.3",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.9",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "6.4",
+        "desired_cuda": "rocm6.4",
+        "container_image": "pytorch/manylinux2_28-builder:rocm6.4",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_9-rocm6_4",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -1323,26 +1405,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_10-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.10",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_10-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -1353,11 +1419,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_10-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -1368,26 +1433,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_10-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.2.4",
-        "desired_cuda": "rocm6.2.4",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.2.4",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_10-rocm6_2_4",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4",
+        "build_name": "manywheel-py3_10-cuda12_9",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -1398,11 +1461,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_10-rocm6_3",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.3",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.3",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.10",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "6.4",
+        "desired_cuda": "rocm6.4",
+        "container_image": "pytorch/manylinux2_28-builder:rocm6.4",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_10-rocm6_4",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -1413,26 +1489,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_11-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.11",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_11-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -1443,11 +1503,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_11-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -1458,26 +1517,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_11-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.2.4",
-        "desired_cuda": "rocm6.2.4",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.2.4",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_11-rocm6_2_4",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4",
+        "build_name": "manywheel-py3_11-cuda12_9",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -1488,11 +1545,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_11-rocm6_3",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.3",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.3",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.11",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "6.4",
+        "desired_cuda": "rocm6.4",
+        "container_image": "pytorch/manylinux2_28-builder:rocm6.4",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_11-rocm6_4",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -1503,26 +1573,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_12-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.12",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_12-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -1533,11 +1587,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_12-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -1548,26 +1601,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_12-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.2.4",
-        "desired_cuda": "rocm6.2.4",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.2.4",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_12-rocm6_2_4",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4",
+        "build_name": "manywheel-py3_12-cuda12_9",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -1578,11 +1629,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_12-rocm6_3",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.3",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.3",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.12",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "6.4",
+        "desired_cuda": "rocm6.4",
+        "container_image": "pytorch/manylinux2_28-builder:rocm6.4",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_12-rocm6_4",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -1593,26 +1657,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.13",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_13-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -1623,11 +1671,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -1638,26 +1685,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.2.4",
-        "desired_cuda": "rocm6.2.4",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.2.4",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_13-rocm6_2_4",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4",
+        "build_name": "manywheel-py3_13-cuda12_9",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -1668,11 +1713,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13-rocm6_3",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.3",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.3",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.13",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "6.4",
+        "desired_cuda": "rocm6.4",
+        "container_image": "pytorch/manylinux2_28-builder:rocm6.4",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_13-rocm6_4",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -1683,26 +1741,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13t-cpu",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cpu",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.13t",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "manywheel",
-        "build_name": "manywheel-py3_13t-cuda11_8",
-        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -1713,11 +1755,10 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13t-cuda12_6",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -1728,26 +1769,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13t-cuda12_8",
         "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.2.4",
-        "desired_cuda": "rocm6.2.4",
-        "container_image": "pytorch/manylinux2_28-builder:rocm6.2.4",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
         "package_type": "manywheel",
-        "build_name": "manywheel-py3_13t-rocm6_2_4",
-        "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.2.4",
+        "build_name": "manywheel-py3_13t-cuda12_9",
+        "validation_runner": "linux.g5.4xlarge.nvidia.gpu",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -1758,11 +1797,24 @@
         "package_type": "manywheel",
         "build_name": "manywheel-py3_13t-rocm6_3",
         "validation_runner": "linux.2xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.3",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.3",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.13t",
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "6.4",
+        "desired_cuda": "rocm6.4",
+        "container_image": "pytorch/manylinux2_28-builder:rocm6.4",
+        "package_type": "manywheel",
+        "build_name": "manywheel-py3_13t-rocm6_4",
+        "validation_runner": "linux.2xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/rocm6.4",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cpu",
@@ -1775,24 +1827,9 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cpu-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-2.7.0%2Bcpu.zip",
+        "installation": "https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-2.8.0%2Bcpu.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
-      },
-      {
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "libtorch_variant": "shared-with-deps",
-        "libtorch_config": "",
-        "devtoolset": "cxx11-abi",
-        "container_image": "pytorch/libtorch-cxx11-builder:cuda11.8",
-        "package_type": "libtorch",
-        "build_name": "libtorch-cuda11_8-shared-with-deps-cxx11-abi",
-        "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cu118/libtorch-cxx11-abi-shared-with-deps-2.7.0%2Bcu118.zip",
-        "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -1805,9 +1842,9 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cuda12_6-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cu126/libtorch-cxx11-abi-shared-with-deps-2.7.0%2Bcu126.zip",
+        "installation": "https://download.pytorch.org/libtorch/cu126/libtorch-shared-with-deps-2.8.0%2Bcu126.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -1820,24 +1857,24 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cuda12_8-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cu128/libtorch-cxx11-abi-shared-with-deps-2.7.0%2Bcu128.zip",
+        "installation": "https://download.pytorch.org/libtorch/cu128/libtorch-shared-with-deps-2.8.0%2Bcu128.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
-        "gpu_arch_type": "rocm",
-        "gpu_arch_version": "6.2.4",
-        "desired_cuda": "rocm6.2.4",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
         "libtorch_variant": "shared-with-deps",
         "libtorch_config": "",
         "devtoolset": "cxx11-abi",
-        "container_image": "pytorch/libtorch-cxx11-builder:rocm6.2.4",
+        "container_image": "pytorch/libtorch-cxx11-builder:cuda12.9",
         "package_type": "libtorch",
-        "build_name": "libtorch-rocm6_2_4-shared-with-deps-cxx11-abi",
+        "build_name": "libtorch-cuda12_9-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/rocm6.2.4/libtorch-cxx11-abi-shared-with-deps-2.7.0%2Brocm6.2.4.zip",
+        "installation": "https://download.pytorch.org/libtorch/cu129/libtorch-shared-with-deps-2.8.0%2Bcu129.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "rocm",
@@ -1850,9 +1887,24 @@
         "package_type": "libtorch",
         "build_name": "libtorch-rocm6_3-shared-with-deps-cxx11-abi",
         "validation_runner": "linux.2xlarge",
-        "installation": "https://download.pytorch.org/libtorch/rocm6.3/libtorch-cxx11-abi-shared-with-deps-2.7.0%2Brocm6.3.zip",
+        "installation": "https://download.pytorch.org/libtorch/rocm6.3/libtorch-shared-with-deps-2.8.0%2Brocm6.3.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
+      },
+      {
+        "gpu_arch_type": "rocm",
+        "gpu_arch_version": "6.4",
+        "desired_cuda": "rocm6.4",
+        "libtorch_variant": "shared-with-deps",
+        "libtorch_config": "",
+        "devtoolset": "cxx11-abi",
+        "container_image": "pytorch/libtorch-cxx11-builder:rocm6.4",
+        "package_type": "libtorch",
+        "build_name": "libtorch-rocm6_4-shared-with-deps-cxx11-abi",
+        "validation_runner": "linux.2xlarge",
+        "installation": "https://download.pytorch.org/libtorch/rocm6.4/libtorch-shared-with-deps-2.8.0%2Brocm6.4.zip",
+        "channel": "release",
+        "stable_version": "2.8.0"
       }
     ],
     "windows": [
@@ -1865,26 +1917,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_9-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.9",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_9-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.9",
@@ -1895,11 +1931,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_9-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.9",
@@ -1910,11 +1945,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_9-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.9",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_9-cuda12_9",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -1925,26 +1973,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_10-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.10",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_10-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -1955,11 +1987,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_10-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -1970,11 +2001,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_10-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.10",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_10-cuda12_9",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -1985,26 +2029,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_11-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.11",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_11-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -2015,11 +2043,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_11-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -2030,11 +2057,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_11-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.11",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_11-cuda12_9",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -2045,26 +2085,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_12-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.12",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_12-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -2075,11 +2099,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_12-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -2090,11 +2113,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_12-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.12",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_12-cuda12_9",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -2105,26 +2141,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.13",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_13-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -2135,11 +2155,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -2150,11 +2169,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.13",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_13-cuda12_9",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -2165,26 +2197,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13t-cpu",
         "validation_runner": "windows.4xlarge",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
-      },
-      {
-        "python_version": "3.13t",
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "container_image": "pytorch/manylinux2_28-builder:cuda11.8",
-        "package_type": "wheel",
-        "build_name": "wheel-py3_13t-cuda11_8",
-        "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118",
-        "channel": "release",
-        "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -2195,11 +2211,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13t-cuda12_6",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -2210,11 +2225,24 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13t-cuda12_8",
         "validation_runner": "windows.g4dn.xlarge",
-        "installation": "pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
+      },
+      {
+        "python_version": "3.13t",
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "container_image": "pytorch/manylinux2_28-builder:cuda12.9",
+        "package_type": "wheel",
+        "build_name": "wheel-py3_13t-cuda12_9",
+        "validation_runner": "windows.g4dn.xlarge",
+        "installation": "pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu129",
+        "channel": "release",
+        "upload_to_base_bucket": "no",
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cpu",
@@ -2227,24 +2255,9 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cpu-shared-with-deps-release",
         "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cpu/libtorch-win-shared-with-deps-2.7.0%2Bcpu.zip",
+        "installation": "https://download.pytorch.org/libtorch/cpu/libtorch-win-shared-with-deps-2.8.0%2Bcpu.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
-      },
-      {
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "libtorch_variant": "shared-with-deps",
-        "libtorch_config": "release",
-        "devtoolset": "",
-        "container_image": "",
-        "package_type": "libtorch",
-        "build_name": "libtorch-cuda11_8-shared-with-deps-release",
-        "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cu118/libtorch-win-shared-with-deps-2.7.0%2Bcu118.zip",
-        "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -2257,9 +2270,9 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cuda12_6-shared-with-deps-release",
         "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cu126/libtorch-win-shared-with-deps-2.7.0%2Bcu126.zip",
+        "installation": "https://download.pytorch.org/libtorch/cu126/libtorch-win-shared-with-deps-2.8.0%2Bcu126.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -2272,9 +2285,24 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cuda12_8-shared-with-deps-release",
         "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cu128/libtorch-win-shared-with-deps-2.7.0%2Bcu128.zip",
+        "installation": "https://download.pytorch.org/libtorch/cu128/libtorch-win-shared-with-deps-2.8.0%2Bcu128.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
+      },
+      {
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "libtorch_variant": "shared-with-deps",
+        "libtorch_config": "release",
+        "devtoolset": "",
+        "container_image": "",
+        "package_type": "libtorch",
+        "build_name": "libtorch-cuda12_9-shared-with-deps-release",
+        "validation_runner": "windows.4xlarge",
+        "installation": "https://download.pytorch.org/libtorch/cu129/libtorch-win-shared-with-deps-2.8.0%2Bcu129.zip",
+        "channel": "release",
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cpu",
@@ -2287,24 +2315,9 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cpu-shared-with-deps-debug",
         "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cpu/libtorch-win-shared-with-deps-debug-2.7.0%2Bcpu.zip",
+        "installation": "https://download.pytorch.org/libtorch/cpu/libtorch-win-shared-with-deps-debug-2.8.0%2Bcpu.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
-      },
-      {
-        "gpu_arch_type": "cuda",
-        "gpu_arch_version": "11.8",
-        "desired_cuda": "cu118",
-        "libtorch_variant": "shared-with-deps",
-        "libtorch_config": "debug",
-        "devtoolset": "",
-        "container_image": "",
-        "package_type": "libtorch",
-        "build_name": "libtorch-cuda11_8-shared-with-deps-debug",
-        "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cu118/libtorch-win-shared-with-deps-debug-2.7.0%2Bcu118.zip",
-        "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -2317,9 +2330,9 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cuda12_6-shared-with-deps-debug",
         "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cu126/libtorch-win-shared-with-deps-debug-2.7.0%2Bcu126.zip",
+        "installation": "https://download.pytorch.org/libtorch/cu126/libtorch-win-shared-with-deps-debug-2.8.0%2Bcu126.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cuda",
@@ -2332,9 +2345,24 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cuda12_8-shared-with-deps-debug",
         "validation_runner": "windows.4xlarge",
-        "installation": "https://download.pytorch.org/libtorch/cu128/libtorch-win-shared-with-deps-debug-2.7.0%2Bcu128.zip",
+        "installation": "https://download.pytorch.org/libtorch/cu128/libtorch-win-shared-with-deps-debug-2.8.0%2Bcu128.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
+      },
+      {
+        "gpu_arch_type": "cuda",
+        "gpu_arch_version": "12.9",
+        "desired_cuda": "cu129",
+        "libtorch_variant": "shared-with-deps",
+        "libtorch_config": "debug",
+        "devtoolset": "",
+        "container_image": "",
+        "package_type": "libtorch",
+        "build_name": "libtorch-cuda12_9-shared-with-deps-debug",
+        "validation_runner": "windows.4xlarge",
+        "installation": "https://download.pytorch.org/libtorch/cu129/libtorch-win-shared-with-deps-debug-2.8.0%2Bcu129.zip",
+        "channel": "release",
+        "stable_version": "2.8.0"
       }
     ],
     "macos": [
@@ -2347,11 +2375,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_9-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.10",
@@ -2362,11 +2389,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_10-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.11",
@@ -2377,11 +2403,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_11-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.12",
@@ -2392,11 +2417,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_12-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13",
@@ -2407,11 +2431,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "python_version": "3.13t",
@@ -2422,11 +2445,10 @@
         "package_type": "wheel",
         "build_name": "wheel-py3_13t-cpu",
         "validation_runner": "macos-m1-stable",
-        "installation": "pip3 install torch torchvision torchaudio",
+        "installation": "pip3 install torch torchvision",
         "channel": "release",
         "upload_to_base_bucket": "no",
-        "stable_version": "2.7.0",
-        "use_split_build": false
+        "stable_version": "2.8.0"
       },
       {
         "gpu_arch_type": "cpu",
@@ -2439,9 +2461,9 @@
         "package_type": "libtorch",
         "build_name": "libtorch-cpu-shared-with-deps-cxx11-abi",
         "validation_runner": "macos-m1-stable",
-        "installation": "https://download.pytorch.org/libtorch/cpu/libtorch-macos-arm64-2.7.0.zip",
+        "installation": "https://download.pytorch.org/libtorch/cpu/libtorch-macos-arm64-2.8.0.zip",
         "channel": "release",
-        "stable_version": "2.7.0"
+        "stable_version": "2.8.0"
       }
     ]
   }
