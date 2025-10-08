@@ -1,6 +1,6 @@
 ---
 layout: get_started
-title: PyTorch 2.0
+title: PyTorch 2.x
 permalink: /get-started/pytorch-2.0/
 featured-img: "assets/images/featured-img-pytorch-2.png"
 background-class: get-started-background
@@ -369,7 +369,7 @@ We are super excited about the direction that we’ve taken for PyTorch 2.0 and 
 - [Developer Discussions](https://dev-discuss.pytorch.org)
 
 <script page-id="pytorch" src="{{ site.baseurl }}/assets/menu-tab-selection.js"></script>
-<script src="{{ site.baseurl }}/assets/quick-start-module.js"></script>
+<!-- <script src="{{ site.baseurl }}/assets/quick-start-module.js"></script> -->
 <script src="{{ site.baseurl }}/assets/show-screencast.js"></script>
 
 ## Accelerating Hugging Face and TIMM models with PyTorch 2.0
@@ -664,5 +664,3 @@ Disclaimer: Please do not share your personal information, last name, company wh
 - [TorchInductor](https://www.youtube.com/watch?v=vbtGZL7IrAw)
 - [Dynamic Shapes](https://www.youtube.com/watch?v=vbtGZL7IrAw)
 - [Export Path](https://www.youtube.com/watch?v=vbtGZL7IrAw)
-
-<script src="{{ site.baseurl }}/assets/get-started-sidebar.js"></script>

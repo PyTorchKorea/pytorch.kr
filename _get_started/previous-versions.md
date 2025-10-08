@@ -12,7 +12,8 @@ redirect_from: /previous-versions.html
 ## 이전 버전의 PyTorch 설치하기
 
 [최신 버전](/get-started/locally)을 설치하시기를 권해드리지만,
-편의를 위해 아래와 같이 이전 버전의 설치 파일과 방법을 제공하고 있습니다.
+편의를 위해 아래와 같이 이전 버전의 설치 파일과 방법을 제공하고 있습니다. \
+이전 버전의 PyTorch와 호환되는 Domain API의 버전 정보는 [PyTorch 버전 호환성](/get-started/compatibility/)을 참고해주세요.
 
 ## 1.0.0 이상 버전 설치하기
 
@@ -1151,6 +1152,61 @@ pip install torch==1.9.0+cu102 torchvision==0.10.0+cu102 torchaudio==0.9.0 -f ht
 
 # CPU only
 pip install torch==1.9.0+cpu torchvision==0.10.0+cpu torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
+```
+
+### v1.8.2 with LTS support
+
+#### Conda
+
+##### OSX
+
+macOS is currently not supported for LTS.
+
+##### Linux and Windows
+
+```
+# CUDA 10.2
+# NOTE: PyTorch LTS version 1.8.2 is only supported for Python <= 3.8.
+conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch-lts
+
+# CUDA 11.1 (Linux)
+# NOTE: 'nvidia' channel is required for cudatoolkit 11.1 <br> <b>NOTE:</b> Pytorch LTS version 1.8.2 is only supported for Python <= 3.8.
+conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch-lts -c nvidia
+
+# CUDA 11.1 (Windows)
+# 'conda-forge' channel is required for cudatoolkit 11.1 <br> <b>NOTE:</b> Pytorch LTS version 1.8.2 is only supported for Python <= 3.8.
+conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch-lts -c conda-forge
+
+# CPU Only
+# Pytorch LTS version 1.8.2 is only supported for Python <= 3.8.
+conda install pytorch torchvision torchaudio cpuonly -c pytorch-lts
+
+# ROCM5.x
+
+Not supported in LTS.
+```
+
+#### Wheel
+
+##### OSX
+
+macOS is currently not supported in LTS.
+
+##### Linux and Windows
+
+```
+# CUDA 10.2
+pip3 install torch==1.8.2 torchvision==0.9.2 torchaudio==0.8.2 --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu102
+
+# CUDA 11.1
+pip3 install torch==1.8.2 torchvision==0.9.2 torchaudio==0.8.2 --extra-index-url https://download.pytorch.org/whl/lts/1.8/cu111
+
+# CPU Only
+pip3 install torch==1.8.2 torchvision==0.9.2 torchaudio==0.8.2 --extra-index-url https://download.pytorch.org/whl/lts/1.8/cpu
+
+# ROCM5.x
+
+Not supported in LTS.
 ```
 
 ### v1.8.1

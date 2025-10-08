@@ -64,7 +64,7 @@ article.pytorch-article {
   table tr,
   table td {
     color: $content_text_color;
-    font-size: rem(16px);
+    font-size: 1.125rem;
     line-height: rem(36px);
     letter-spacing: -0.17px;
   }
@@ -72,6 +72,7 @@ article.pytorch-article {
   table th {
     padding: rem(10px);
     color: $not_quite_black;
+    font-weight: bold;
   }
 
 

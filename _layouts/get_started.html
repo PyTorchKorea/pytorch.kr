@@ -24,7 +24,7 @@
             <nav class="navbar navbar-expand-lg navbar-light main-content-menu">
               <ul class="navbar-nav">
                 {% for item in items %}
-                  <li class="nav-item nav-select">
+                  <li class="nav-item {% if page.permalink == item.permalink %}nav-select{% endif %}">
                     <a class="nav-link get-started-nav-link" data-id="{{ item.slug }}" href="{{ site.baseurl }}{{ item.permalink }}">{{ item.title }}</a>
                   </li>
                 {% endfor %}

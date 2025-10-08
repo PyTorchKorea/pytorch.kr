@@ -1,21 +1,39 @@
 ---
 layout: get_started
-title: 모바일
-permalink: /get-started/mobile/
+title: PyTorch for Edge
+permalink: /get-started/executorch/
 background-class: get-started-background
 body-class: get-started
-order: 5
+order: 6
 published: true
 ---
 
-## PyTorch 모바일로 시작하기
+## Get Started with PyTorch ExecuTorch
 
-PyTorch 1.3부터, PyTorch는 Python으로 iOS 및 Android 배포에 이르기까지 종단 간 워크플로우(end-to-end workflow)를 지원합니다.
-현재는 초기의, 실험적인 릴리즈로 앞으로 여러 영역에서 만들어나갈 예정입니다.
+PyTorch’s edge specific library is [ExecuTorch](https://github.com/pytorch/executorch/) and is designed to be lightweight, very performant even on devices with constrained hardware such as mobile phones, embedded systems and microcontrollers.
 
-[Android]({{ site.external_urls.org_www }}/mobile/android)에서 시작하기
+ExecuTorch relies heavily on PyTorch core technologies such as [torch.compile](https://pytorch.org/docs/stable/torch.compiler.html) and [torch.export](https://pytorch.org/docs/stable/export.html), and should be very familiar to anyone who has used PyTorch in the past.
 
-[iOS]({{ site.external_urls.org_www }}/mobile/ios)에서 시작하기
+### Getting Started
+You can get started by following the [general getting started guide](https://pytorch.org/executorch/stable/getting-started.html#) or jump to the specific steps for your target device.
+
+* [Using ExecuTorch on Android](https://pytorch.org/executorch/stable/using-executorch-android.html)
+* [Using ExecuTorch on iOS](https://pytorch.org/executorch/stable/using-executorch-ios.html)
+* [Using ExecuTorch with C++](https://pytorch.org/executorch/stable/using-executorch-cpp.html)
+
+### Hardware Acceleration
+ExecuTorch provides out of the box hardware acceleration for a growing number of chip manufacturers. See the following resources to learn more about how to leverage them:
+
+* [Backend Overview](https://pytorch.org/executorch/stable/backends-overview.html)
+* [XNNPACK](https://pytorch.org/executorch/stable/backends-xnnpack.html)
+* [Core ML](https://pytorch.org/executorch/stable/backends-coreml.html)
+* [MPS](https://pytorch.org/executorch/stable/backends-mps.html)
+* [Vulkan](https://pytorch.org/executorch/stable/backends-vulkan.html)
+* [ARM Ethos-U](https://pytorch.org/executorch/stable/backends-arm-ethos-u.html)
+* [Qualcomm AI Engine](https://pytorch.org/executorch/stable/backends-qualcomm.html)
+* [MediaTek](https://pytorch.org/executorch/stable/backends-mediatek.html)
+* [Cadence Xtensa](https://pytorch.org/executorch/stable/backends-cadence.html)
+
 
 <script page-id="mobile" src="{{ site.baseurl }}/assets/menu-tab-selection.js"></script>
 <script src="{{ site.baseurl }}/assets/get-started-sidebar.js"></script>
