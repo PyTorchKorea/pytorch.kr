@@ -33,6 +33,18 @@ PyTorch 및 Domain APIs의 버전 호환성을 정리하였습니다. \
   </thead>
   <tbody>
     <tr>
+      <th scope="row"><a href="https://github.com/pytorch/pytorch/releases/tag/v2.9.0" target="_blank">2.9.0</a></th>
+      <td>2025/10/15</td>
+      <td><a href="https://github.com/pytorch/vision/releases/tag/v0.24.0" target="_blank">0.24.0</a></td>
+      <td><a href="https://github.com/pytorch/audio/releases/tag/v2.9.0" target="_blank">2.9.0</a></td>
+      <td><em>—</em></td>
+      <td><em>—</em></td>
+      <td><a href="https://github.com/meta-pytorch/torchcodec/releases/tag/v0.8.0" target="_blank">0.8.0</a></td>
+      <td><a href="https://pypi.org/project/torch/2.8.0/" target="_blank">>=3.10, <=3.14</a></td>
+      <td>12.9; 12.8; 12.6; 11.8</td>
+      <td>6.4</td>
+    </tr>
+    <tr>
       <th scope="row"><a href="https://github.com/pytorch/pytorch/releases/tag/v2.8.0" target="_blank">2.8.0</a></th>
       <td>2025/08/06</td>
       <td><a href="https://github.com/pytorch/vision/releases/tag/v0.23.0" target="_blank">0.23.0</a></td>
@@ -41,7 +53,7 @@ PyTorch 및 Domain APIs의 버전 호환성을 정리하였습니다. \
       <td><em>—</em></td>
       <td><a href="https://github.com/meta-pytorch/torchcodec/releases/tag/v0.7.0" target="_blank">0.7.0</a></td>
       <td><a href="https://pypi.org/project/torch/2.8.0/" target="_blank">>=3.9, <=3.13</a></td>
-      <td>12.9; 12.8; 11.8</td>
+      <td>12.9; 12.8; 12.6; 11.8</td>
       <td>6.3</td>
     </tr>
     <tr>

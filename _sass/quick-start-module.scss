@@ -164,6 +164,7 @@
   .command-container {
     display: table;
     width: 100%;
+    padding: 0px;
     @include desktop {
       min-height: rem(84px);
     }
