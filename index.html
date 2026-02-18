@@ -28,12 +28,12 @@ display-news-banner: true
             <div class="card-body d-flex flex-column">
               <div class="blog-meta mb-2">
                 <span class="text-muted small">
-                  {{ post.date | date: "%B %-d, %Y" }} in Blog
+                  블로그, {{ post.date | date: "%B %-d, %Y" }}
                   {% if post.categories and post.categories.size > 0 %}
-                    {% assign display_categories = post.categories | slice: 0, 2 %}
-                    {% for category in display_categories %}
-                      #{{ category }}
-                    {% endfor %}
+                  {% assign display_categories = post.categories | slice: 0, 2 %}
+                  {% for category in display_categories %}
+                  #{{ category }}
+                  {% endfor %}
                   {% endif %}
                 </span>
               </div>
@@ -43,13 +43,9 @@ display-news-banner: true
                 </a>
               </h5>
               <p class="blog-excerpt text-muted mt-2 flex-grow-1">
-                {% if post.excerpt %}
-                  <!-- {{ post.excerpt | strip_html | truncatewords: 30 }} -->
-                  {{ post.excerpt | strip_html | strip | truncate: 100 | escape }}
-                {% else %}
-                  <!-- {{ post.content | strip_html | truncatewords: 30 }} -->
-                  {{ post.content | strip_html | strip | truncate: 100 | escape }}
-                {% endif %}
+                <a href="{{ post.url | relative_url }}" class="text-muted text-decoration-none">
+                  {{ post.content | remove: '### ' | remove: '## ' | strip_html | strip | truncatewords: 25 | escape }}
+                </a>
               </p>
               <div class="blog-footer mt-3">
                 <a href="{{ post.url | relative_url }}" class="read-more-link">
@@ -86,7 +82,8 @@ display-news-banner: true
       <div class="col-md-12 position-relative">
         <h2>주요 기능 및 성능</h2>
 
-        <a href="{{ site.baseurl }}/features" class="btn btn-lg with-right-arrow module-button position-absolute top-0 end-0">
+        <a href="{{ site.baseurl }}/features"
+          class="btn btn-lg with-right-arrow module-button position-absolute top-0 end-0">
           모든 기능 보기
         </a>
       </div>
@@ -96,10 +93,10 @@ display-news-banner: true
       {% assign features = site.features | where: "featured-home", true | sort: 'order' %}
 
       {% for feature in features %}
-        <div class="col-md-3 key-feature-box">
-          <h5>{{ feature.title }}</h5>
-          <p>{{ feature.summary-home }}</p>
-        </div>
+      <div class="col-md-3 key-feature-box">
+        <h5>{{ feature.title }}</h5>
+        <p>{{ feature.summary-home }}</p>
+      </div>
       {% endfor %}
     </div>
   </div>
@@ -107,13 +104,14 @@ display-news-banner: true
   {% include quick_start_module.html %}
 
   <div class="homepage-feature-module community-module container-fluid">
-      <div class="container">
+    <div class="container">
       <div class="row">
         <div class="col-md-12 position-relative">
           <h2>Ecosystem </h2>
           <h5>Feature Projects</h5>
 
-          <a href="{{ site.external_urls.org_landscape }}" class="btn btn-lg with-right-arrow module-button position-absolute top-0 end-0" >
+          <a href="{{ site.external_urls.org_landscape }}"
+            class="btn btn-lg with-right-arrow module-button position-absolute top-0 end-0">
             모든 프로젝트 보기
           </a>
 
@@ -126,37 +124,38 @@ display-news-banner: true
       <div class="row ecosystem-row">
         <div class="col-md-4">
           <div class="card ecosystem-card">
-              <a href="{{ site.external_urls.org_landscape }}/guide">
+            <a href="{{ site.external_urls.org_landscape }}/guide">
               <div class="card-body  ">
                 <h4>Captum</h4>
-                <p class="card-summary">Captum (“comprehension” in Latin) is an open source, extensible library for model interpretability built on PyTorch.</p>
+                <p class="card-summary">Captum (“comprehension” in Latin) is an open source, extensible library for
+                  model interpretability built on PyTorch.</p>
               </div>
             </a>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card ecosystem-card">
-              <a href="{{ site.external_urls.org_landscape }}/guide">
+            <a href="{{ site.external_urls.org_landscape }}/guide">
               <div class="card-body  ">
                 <h4>PyTorch Geometric</h4>
-                <p class="card-summary">PyTorch Geometric is a library for deep learning on irregular input data such as graphs, point clouds, and manifolds.</p>
+                <p class="card-summary">PyTorch Geometric is a library for deep learning on irregular input data such as
+                  graphs, point clouds, and manifolds.</p>
               </div>
             </a>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card ecosystem-card">
-              <a href="{{ site.external_urls.org_landscape }}/guide">
+            <a href="{{ site.external_urls.org_landscape }}/guide">
               <div class="card-body  ">
                 <h4>skorch</h4>
-                <p class="card-summary">skorch is a high-level library for PyTorch that provides full scikit-learn compatibility.</p>
+                <p class="card-summary">skorch is a high-level library for PyTorch that provides full scikit-learn
+                  compatibility.</p>
               </div>
             </a>
           </div>
         </div>
       </div>
 
+    </div>
   </div>
-</div>
-
-

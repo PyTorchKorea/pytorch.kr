@@ -33,8 +33,7 @@
                 <h4>
                   <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
                 </h4>
-                <!-- <p>{{ post.excerpt | remove: '<h1>' | remove: '</h1>' | remove: '<img>' | remove: '<p>' | remove: '</p>' | truncate: 500}}</p> -->
-                <p>{{ post.excerpt | strip_html | strip | truncate: 250 | escape }}</p>
+                <p>{{ post.content | strip_html | strip | truncatewords: 50 | escape }}</p>
                 <!-- <img src="{{ post.image }}" class="img-fluid"> -->
               </div>
               <a href="{{ site.baseurl }}{{ post.url }}" class="btn">
