@@ -72,14 +72,14 @@ jobs:
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       run: |
         npm install -g surge
-        surge ./_site pytorch-kr-pr-${{ env.PR_NUMBER }}-preview.surge.sh
+        surge ./_site pytorchkr-pr-preview-${{ env.PR_NUMBER }}.surge.sh
     - name: Comment preview URL on PR
       if: success() && (github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository)
       uses: actions/github-script@v7
       with:
         script: |
           const prNumber = process.env.PR_NUMBER;
-          const previewUrl = `https://pytorch-kr-pr-${prNumber}-preview.surge.sh`;
+          const previewUrl = `https://pytorchkr-pr-preview-${prNumber}.surge.sh`;
           const body = [
             '## PR Preview',
             '',
@@ -158,7 +158,7 @@ jobs:
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       run: |
         npm install -g surge
-        surge teardown pytorch-kr-pr-${{ github.event.pull_request.number }}-preview.surge.sh
+        surge teardown pytorchkr-pr-preview-${{ github.event.pull_request.number }}.surge.sh
     - name: Comment cleanup on PR
       uses: actions/github-script@v7
       with:
@@ -226,6 +226,6 @@ jobs:
       run: |
         npm install -g surge
         for pr in $STALE_PRS; do
-          echo "Tearing down pytorch-kr-pr-${pr}-preview.surge.sh..."
-          surge teardown "pytorch-kr-pr-${pr}-preview.surge.sh" || true
+          echo "Tearing down pytorchkr-pr-preview-${pr}.surge.sh..."
+          surge teardown "pytorchkr-pr-preview-${pr}.surge.sh" || true
         done
