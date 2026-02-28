@@ -3,21 +3,34 @@ name: PR Preview
 on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number to build preview for'
+        required: true
+        type: number
+  schedule:
+    - cron: '0 0 * * 0'  # 매주 일요일 자정 (UTC)
 
 permissions:
   contents: read
   pull-requests: write
 
 concurrency:
-  group: pr-preview-${{ github.event.pull_request.number }}
+  group: pr-preview-${{ github.event.pull_request.number || github.event.inputs.pr_number || 'cleanup' }}
   cancel-in-progress: true
 
 jobs:
   build-and-deploy:
-    if: github.event.action != 'closed'
+    if: github.event_name == 'pull_request' && github.event.action != 'closed' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number || github.event.inputs.pr_number }}
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout PR branch
+      uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event_name == 'workflow_dispatch' && format('refs/pull/{0}/head', github.event.inputs.pr_number) || '' }}
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -53,19 +66,19 @@ jobs:
       run: |
         JEKYLL_ENV=preview bundle exec jekyll build
     - name: Deploy to surge.sh
-      if: github.event.pull_request.head.repo.full_name == github.repository
+      if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
       env:
         SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
         SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
       run: |
         npm install -g surge
-        surge ./_site pr-${{ github.event.pull_request.number }}-pytorch-kr.surge.sh
+        surge ./_site pr-${{ env.PR_NUMBER }}-pytorch-kr.surge.sh
     - name: Comment preview URL on PR
-      if: success() && github.event.pull_request.head.repo.full_name == github.repository
+      if: success() && (github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository)
       uses: actions/github-script@v7
       with:
         script: |
-          const prNumber = context.payload.pull_request.number;
+          const prNumber = process.env.PR_NUMBER;
           const previewUrl = `https://pr-${prNumber}-pytorch-kr.surge.sh`;
           const body = [
             '## PR Preview',
@@ -104,7 +117,7 @@ jobs:
       uses: actions/github-script@v7
       with:
         script: |
-          const prNumber = context.payload.pull_request.number;
+          const prNumber = process.env.PR_NUMBER;
           const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
           const body = [
             '## PR Preview - Build Failed',
@@ -136,7 +149,7 @@ jobs:
           }
 
   cleanup:
-    if: github.event.action == 'closed'
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     steps:
     - name: Teardown surge.sh preview
@@ -173,3 +186,46 @@ jobs:
               body,
             });
           }
+
+  stale-cleanup:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/github-script@v7
+      env:
+        SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+        SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+      with:
+        script: |
+          const { data: pulls } = await github.rest.pulls.list({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'closed',
+            sort: 'updated',
+            direction: 'desc',
+            per_page: 100,
+          });
+
+          const now = new Date();
+          const threeDaysAgo = new Date(now - 3 * 24 * 60 * 60 * 1000);
+          const stale = pulls.filter(pr => new Date(pr.closed_at) < threeDaysAgo);
+
+          if (stale.length === 0) {
+            console.log('No stale previews to clean up.');
+            return;
+          }
+
+          const prNumbers = stale.map(pr => pr.number);
+          console.log(`Cleaning up previews for ${prNumbers.length} closed PRs: ${prNumbers.join(', ')}`);
+          core.exportVariable('STALE_PRS', prNumbers.join(' '));
+    - name: Teardown stale surge.sh previews
+      if: env.STALE_PRS != ''
+      env:
+        SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+        SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+      run: |
+        npm install -g surge
+        for pr in $STALE_PRS; do
+          echo "Tearing down pr-${pr}-pytorch-kr.surge.sh..."
+          surge teardown "pr-${pr}-pytorch-kr.surge.sh" || true
+        done
