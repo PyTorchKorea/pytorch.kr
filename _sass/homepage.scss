@@ -171,7 +171,7 @@
     }
   }
 
-  .btn {
+  .community-btn {
     background-color: $orange;
     color: $white;
     border: none;
@@ -190,6 +190,65 @@
     &:hover {
       background-color: #d63916;
       color: $white;
+    }
+  }
+
+  .community-topics-list {
+    .community-topic-item {
+      display: block;
+      padding: rem(14px) rem(16px);
+      margin-bottom: rem(6px);
+      background: $white;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: translateX(4px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .topic-title {
+        color: #333;
+        font-size: rem(15px);
+        font-weight: 500;
+        line-height: 1.4;
+        margin-bottom: rem(4px);
+
+        @include desktop {
+          font-size: rem(16px);
+        }
+      }
+
+      .topic-meta {
+        font-size: rem(13px);
+        color: #999;
+
+        .topic-date {
+          margin-right: rem(12px);
+        }
+
+        .topic-stat {
+          margin-right: rem(10px);
+        }
+      }
+    }
+
+    .community-loading {
+      text-align: center;
+      padding: rem(20px);
+      color: #999;
+      font-size: rem(14px);
+    }
+
+    .community-fallback {
+      text-align: center;
+      padding: rem(20px);
+
+      p {
+        margin-bottom: rem(12px);
+        color: #666;
+      }
     }
   }
 }
