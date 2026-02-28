@@ -62,7 +62,6 @@ a.btn {
 }
 
 html {
-  position: relative;
   min-height: 100%;
   font-size: 12px;
 
@@ -72,10 +71,6 @@ html {
 }
 
 body {
-  @include desktop {
-    margin: 0 0 $desktop_footer_height;
-  }
-
   &.no-scroll {
     height: 100%;
     overflow: hidden;

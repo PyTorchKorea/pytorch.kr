@@ -9,10 +9,6 @@
 
   @include desktop {
     padding-top: rem(80px);
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: $desktop_footer_height;
   }
 
   p {
