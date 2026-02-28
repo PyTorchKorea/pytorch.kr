@@ -18,7 +18,7 @@
     {% endif %}
   </title>
   {% include open_graph_and_meta.html %}
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/main.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/main.css?v={{ site.time | date: '%s' }}">
   <script src="{{ site.baseurl }}/assets/vendor/jquery.min.js"></script>
   <script src="{{ site.baseurl }}/assets/vendor/popper.min.js"></script>
   <script src="{{ site.baseurl }}/assets/vendor/bootstrap.min.js"></script>
