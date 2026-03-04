@@ -46,7 +46,7 @@ jobs:
     - name: Initialize & update hub submodule
       run: |
         git submodule deinit -f . && git submodule update --init --recursive
-        git submodule update --remote
+        git submodule update --remote _hub
         ./_devel/update_hub_submodule.sh
     - name: Build Jekyll site
       env:
