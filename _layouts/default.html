@@ -5,7 +5,7 @@
     {% include tag_manager_script.html %}
     {% include header.html %}
 
-    <div class="main-background {{ page.background-class }}">
+    <div class="main-background {{ page.background-class }}"{% if page.hero_image %} style="background-image: url('{{ site.baseurl }}{{ page.hero_image }}')"{% endif %}>
       {% if page.background-class == 'home-page-background' %}
       <div class="wave-divider">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,11 +1,15 @@
 ---
 layout: default
 ---
-{% if page.hero_image %}
-<div class="project-hero">
-  <img src="{{ site.baseurl }}{{ page.hero_image }}" alt="{{ page.title }}" class="project-hero-image">
+<div class="jumbotron jumbotron-fluid on-dark-background">
+  <div class="container">
+    <h1>{{ page.project_name }}</h1>
+    {% if page.project_description %}
+    <p class="lead">{{ page.project_description }}</p>
+    {% endif %}
+  </div>
 </div>
-{% endif %}
+
 <div class="main-content-wrapper">
   <div class="main-content">
     <div class="container">
