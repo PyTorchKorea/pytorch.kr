@@ -55,20 +55,16 @@ main_menu:
     key: "projects"
     has_dropdown: true
     dropdown_items:
-      - title: "프로젝트 목록"
-        url: "/projects/"
-        url_type: "baseurl"
-        external: false
-      - title: "튜토리얼 번역"
+      - title: "번역 프로젝트"
         url: "/projects/tutorials-kr/"
         url_type: "baseurl"
         external: false
-      - title: "모델 허브 번역"
-        url: "/projects/hub-kr/"
+      - title: "AI OSS Landscape"
+        url: "/projects/oss-landscape/"
         url_type: "baseurl"
         external: false
-      - title: "블로그 번역"
-        url: "/projects/blog-kr/"
+      - title: "AI/ML 한국어 용어집"
+        url: "/projects/terms-kr/"
         url_type: "baseurl"
         external: false
 
