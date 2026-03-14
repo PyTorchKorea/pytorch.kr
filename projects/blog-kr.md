@@ -3,7 +3,7 @@ layout: project
 title: 블로그 번역 | PyTorchKR
 permalink: /projects/blog-kr/
 body-class: projects
-hero_image: /assets/images/projects/blog-kr-hero.png
+hero_image: /assets/images/projects/blog-kr-hero.jpg
 ---
 
 # PyTorch 블로그 번역

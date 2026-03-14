@@ -3,7 +3,7 @@ layout: project
 title: 튜토리얼 번역 | PyTorchKR
 permalink: /projects/tutorials-kr/
 body-class: projects
-hero_image: /assets/images/projects/tutorials-kr-hero.png
+hero_image: /assets/images/projects/tutorials-kr-hero.jpg
 ---
 
 # PyTorch 한국어 튜토리얼 번역

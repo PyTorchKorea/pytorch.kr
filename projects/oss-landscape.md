@@ -3,7 +3,7 @@ layout: project
 title: AI OSS Landscape | PyTorchKR
 permalink: /projects/oss-landscape/
 body-class: projects
-hero_image: /assets/images/projects/oss-landscape-hero.png
+hero_image: /assets/images/projects/oss-landscape-hero.jpg
 ---
 
 # AI OSS Landscape

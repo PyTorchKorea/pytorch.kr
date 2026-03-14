@@ -3,7 +3,7 @@ layout: project
 title: AI/ML 한국어 용어집 | PyTorchKR
 permalink: /projects/terms-kr/
 body-class: projects
-hero_image: /assets/images/projects/terms-kr-hero.png
+hero_image: /assets/images/projects/terms-kr-hero.jpg
 ---
 
 # AI/ML 한국어 용어집

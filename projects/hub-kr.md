@@ -3,7 +3,7 @@ layout: project
 title: 모델 허브 번역 | PyTorchKR
 permalink: /projects/hub-kr/
 body-class: projects
-hero_image: /assets/images/projects/hub-kr-hero.png
+hero_image: /assets/images/projects/hub-kr-hero.jpg
 ---
 
 # PyTorch 한국어 모델 허브
