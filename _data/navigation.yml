@@ -51,6 +51,19 @@ main_menu:
         external: true
         target: "_blank"
 
+  - title: "프로젝트"
+    key: "projects"
+    has_dropdown: true
+    dropdown_items:
+      - title: "프로젝트 목록"
+        url: "/projects/"
+        url_type: "baseurl"
+        external: false
+      - title: "튜토리얼 번역"
+        url: "/projects/tutorials-kr/"
+        url_type: "baseurl"
+        external: false
+
   - title: "커뮤니티"
     key: "community"
     has_dropdown: true

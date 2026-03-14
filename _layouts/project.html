@@ -1,0 +1,17 @@
+---
+layout: default
+---
+{% if page.hero_image %}
+<div class="project-hero">
+  <img src="{{ site.baseurl }}{{ page.hero_image }}" alt="{{ page.title }}" class="project-hero-image">
+</div>
+{% endif %}
+<div class="main-content-wrapper">
+  <div class="main-content">
+    <div class="container">
+      <article class="pytorch-article">
+        {{ content }}
+      </article>
+    </div>
+  </div>
+</div>

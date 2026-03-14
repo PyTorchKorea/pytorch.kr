@@ -1,0 +1,49 @@
+- title: "튜토리얼 번역"
+  slug: "tutorials-kr"
+  summary: "PyTorch 공식 튜토리얼을 한국어로 번역하는 프로젝트입니다. 누구나 참여할 수 있습니다."
+  status: "활발히 진행 중"
+  github_url: "https://github.com/PyTorchKorea/tutorials-kr"
+  website_url: "https://tutorials.pytorch.kr"
+  page_url: "/projects/tutorials-kr/"
+  icon: "fa-book"
+  order: 1
+
+- title: "모델 허브 번역"
+  slug: "hub-kr"
+  summary: "PyTorch Hub에 등록된 모델들의 한국어 문서를 제공하는 프로젝트입니다."
+  status: "진행 중"
+  github_url: "https://github.com/PyTorchKorea/hub-kr"
+  website_url: "https://pytorch.kr/hub"
+  page_url: "/projects/hub-kr/"
+  icon: "fa-cubes"
+  order: 2
+
+- title: "블로그 번역"
+  slug: "blog-kr"
+  summary: "PyTorch 공식 블로그 글을 한국어로 번역하여 최신 소식을 전달하는 프로젝트입니다."
+  status: "진행 중"
+  github_url: "https://github.com/PyTorchKorea/pytorch.kr"
+  website_url: "https://pytorch.kr/blog"
+  page_url: "/projects/blog-kr/"
+  icon: "fa-pencil"
+  order: 3
+
+- title: "AI OSS Landscape"
+  slug: "oss-landscape"
+  summary: "AI/ML 생태계의 오픈소스 프로젝트들을 카테고리별로 한눈에 볼 수 있는 랜드스케이프 사이트입니다."
+  status: "활발히 진행 중"
+  github_url: "https://github.com/pytorchkorea/oss-landscape"
+  website_url: "https://oss-landscape.pytorch.kr"
+  page_url: "/projects/oss-landscape/"
+  icon: "fa-map"
+  order: 4
+
+- title: "AI/ML 한국어 용어집"
+  slug: "terms-kr"
+  summary: "AI/ML 분야의 용어를 한국어로 표준화하는 커뮤니티 기반 오픈소스 용어 사전 프로젝트입니다."
+  status: "진행 중"
+  github_url: "https://github.com/PyTorchKorea/kr-terms-poc"
+  website_url: "https://poc.terms.kr"
+  page_url: "/projects/terms-kr/"
+  icon: "fa-book"
+  order: 5

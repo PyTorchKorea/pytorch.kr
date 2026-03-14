@@ -1,0 +1,58 @@
+---
+layout: default
+title: 프로젝트 | PyTorchKR
+permalink: projects/
+body-class: projects
+---
+{% assign projects = site.data.projects | sort: 'order' %}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>프로젝트(Projects)</h1>
+
+    <p class="lead">파이토치 한국 사용자 모임에서 진행하고 있는 프로젝트들입니다. <br />
+    프로젝트에 참여하고 싶으시다면 각 프로젝트의 GitHub 저장소를 방문해주세요!</p>
+  </div>
+</div>
+
+<div class="main-content-wrapper">
+  <div class="main-content">
+    <div class="container">
+      <div class="row resources">
+
+        {% for project in projects %}
+        <div class="col-md-4">
+          <div class="card resource-card">
+            <div class="card-body">
+              <h4>
+                <i class="fa {{ project.icon }}"></i>
+                {{ project.title }}
+              </h4>
+              <p class="card-summary">{{ project.summary }}</p>
+              <p>
+                <span class="badge badge-primary">{{ project.status }}</span>
+              </p>
+              <div class="mt-2">
+                {% if project.page_url %}
+                <a href="{{ site.baseurl }}{{ project.page_url }}" class="btn btn-sm btn-primary mr-1 mb-1">자세히 보기</a>
+                {% endif %}
+                {% if project.website_url %}
+                <a href="{{ project.website_url }}" target="_blank" class="btn btn-sm btn-outline-secondary mr-1 mb-1">
+                  <i class="fa fa-globe"></i> 웹사이트
+                </a>
+                {% endif %}
+                {% if project.github_url %}
+                <a href="{{ project.github_url }}" target="_blank" class="btn btn-sm btn-outline-secondary mr-1 mb-1">
+                  <i class="fa fa-github"></i> GitHub
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
