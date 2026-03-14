@@ -63,6 +63,14 @@ main_menu:
         url: "/projects/tutorials-kr/"
         url_type: "baseurl"
         external: false
+      - title: "모델 허브 번역"
+        url: "/projects/hub-kr/"
+        url_type: "baseurl"
+        external: false
+      - title: "블로그 번역"
+        url: "/projects/blog-kr/"
+        url_type: "baseurl"
+        external: false
 
   - title: "커뮤니티"
     key: "community"
