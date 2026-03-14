@@ -1,10 +1,11 @@
 ---
+role: alumni
 joined: 202404
-_id: jih0-kim
-name: 김지호
-title: Maintainer
+_id: convin305
+name: 박수민
+title: Inactive Maintainer
 team: Contributor2024
-link_github: https://github.com/jih0-kim
+link_github: https://github.com/convin305
 link_linkedin:
 link_twitter:
 link_facebook:

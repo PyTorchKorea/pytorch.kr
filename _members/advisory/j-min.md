@@ -1,10 +1,11 @@
 ---
-joined: 2018
-_id: bongmo
-name: 김봉모
+role: advisory
+joined: 202301
+_id: j-min
+name: 조재민
 title: Maintainer
 team: Advisory
-link_github: https://github.com/bongmo
+link_github: https://github.com/j-min
 link_linkedin:
 link_twitter:
 link_facebook:

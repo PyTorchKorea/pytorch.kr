@@ -1,8 +1,9 @@
 ---
+role: alumni
 joined: 202408
 _id: falconlee236
 name: 이상윤
-title: Maintainer
+title: Inactive Maintainer
 team: Contributor2024
 link_github: https://github.com/falconlee236
 link_linkedin:

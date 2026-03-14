@@ -1,8 +1,9 @@
 ---
+role: alumni
 joined: 2021
 _id: des00
 name: 김현길
-title: Maintainer
+title: Inactive Maintainer
 team: tutorials-kr
 link_github: https://github.com/des00
 link_linkedin:

@@ -1,8 +1,9 @@
 ---
+role: alumni
 joined: 202404
 _id: jenner9212
 name: 박재윤
-title: Maintainer
+title: Inactive Maintainer
 team: Contributor2024
 link_github: https://github.com/jenner9212
 link_linkedin:
