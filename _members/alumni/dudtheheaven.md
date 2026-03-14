@@ -1,10 +1,11 @@
 ---
+role: alumni
 joined: 202404
-_id: convin305
-name: 박수민
-title: Maintainer
+_id: dudtheheaven
+name: 송채영
+title: Inactive Maintainer
 team: Contributor2024
-link_github: https://github.com/convin305
+link_github: https://github.com/dudtheheaven
 link_linkedin:
 link_twitter:
 link_facebook:

@@ -1,10 +1,11 @@
 ---
-joined: 202301
-_id: j-min
-name: 조재민
+role: advisory
+joined: 201802
+_id: adonisues
+name: 황성수
 title: Maintainer
 team: Advisory
-link_github: https://github.com/j-min
+link_github: https://github.com/adonisues
 link_linkedin:
 link_twitter:
 link_facebook:

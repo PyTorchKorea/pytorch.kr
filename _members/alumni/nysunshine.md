@@ -1,4 +1,5 @@
 ---
+role: alumni
 joined: 202301
 _id: nysunshine
 name: 조형주

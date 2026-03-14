@@ -1,4 +1,5 @@
 ---
+role: alumni
 joined: 2020
 _id: creduo
 name: 박주혁

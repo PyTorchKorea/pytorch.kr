@@ -20,7 +20,7 @@ body-class: features
 </div>
 
 {% assign about_blocks = site.about | sort: 'order' %}
-{% assign maintainers = site.maintainers | sort: 'joined' %}
+{% assign members = site.members | sort: 'joined' %}
 
 <div class="main-content-wrapper">
   <div class="main-content">
@@ -71,39 +71,38 @@ body-class: features
           <p class="features">파이토치 한국 사용자 모임을 함께 만들어가고 계신 분들을 소개합니다.</p>
           <div class="container">
             <div class="row">
-              {% for maintainer in maintainers %}
-              {% if maintainer.team == "Alumni" %}
+              {% for member in members %}
+              {% if member.role == "alumni" %}
                 {% continue %}
-              {% else %}
-                {% assign active_class = "active" %}
               {% endif %}
+              {% assign active_class = "active" %}
               <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
                 <div class="maintainer">
-                  <a class="{{ active_class }}" href="{{ maintainer.link_github }}"><img src="{{ site.base_url }}/assets/images/maintainers/{{ maintainer._id }}.png" alt="{{ maintainer._id }}"></a>
+                  <a class="{{ active_class }}" href="{{ member.link_github }}"><img src="{{ site.base_url }}/assets/images/maintainers/{{ member._id }}.png" alt="{{ member._id }}"></a>
                   <div class="member-info">
-                    <h3>{{ maintainer.name }}</h3>
-                    <p class="title">{{ maintainer.title }}</p>
-                    <p class="team">@{{ maintainer.team | split: ", " | join: ", @"}}</p>
-                    {% if maintainer.link_github %}
-                    <a href="{{ maintainer.link_github }}"><i class="fa fa-2x fa-github"></i></a>
+                    <h3>{{ member.name }}</h3>
+                    <p class="title">{{ member.title }}</p>
+                    <p class="team">@{{ member.team | split: ", " | join: ", @"}}</p>
+                    {% if member.link_github %}
+                    <a href="{{ member.link_github }}"><i class="fa fa-2x fa-github"></i></a>
                     {% endif %}
-                    {% if maintainer.link_twitter %}
-                    <a href="{{ maintainer.link_twitter }}"><i class="fa fa-2x fa-twitter"></i></a>
+                    {% if member.link_twitter %}
+                    <a href="{{ member.link_twitter }}"><i class="fa fa-2x fa-twitter"></i></a>
                     {% endif %}
-                    {% if maintainer.link_instagram %}
-                    <a href="{{ maintainer.link_instagram }}"><i class="fa fa-2x fa-instagram"></i></a>
+                    {% if member.link_instagram %}
+                    <a href="{{ member.link_instagram }}"><i class="fa fa-2x fa-instagram"></i></a>
                     {% endif %}
-                    {% if maintainer.link_facebook %}
-                    <a href="{{ maintainer.link_facebook }}"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    {% if member.link_facebook %}
+                    <a href="{{ member.link_facebook }}"><i class="fa fa-2x fa-facebook-square"></i></a>
                     {% endif %}
-                    {% if maintainer.link_linkedin %}
-                    <a href="{{ maintainer.link_linkedin }}"><i class="fa fa-2x fa-linkedin"></i></a>
+                    {% if member.link_linkedin %}
+                    <a href="{{ member.link_linkedin }}"><i class="fa fa-2x fa-linkedin"></i></a>
                     {% endif %}
-                    {% if maintainer.link_youtube %}
-                    <a href="{{ maintainer.link_youtube }}"><i class="fa fa-2x fa-youtube-play"></i></a>
+                    {% if member.link_youtube %}
+                    <a href="{{ member.link_youtube }}"><i class="fa fa-2x fa-youtube-play"></i></a>
                     {% endif %}
-                    {% if maintainer.link_homepage %}
-                    <a href="{{ maintainer.link_homepage }}"><i class="fa fa-2x fa-home"></i></a>
+                    {% if member.link_homepage %}
+                    <a href="{{ member.link_homepage }}"><i class="fa fa-2x fa-home"></i></a>
                     {% endif %}
                   </div>
                 </div>
@@ -121,39 +120,39 @@ body-class: features
           <p class="features">파이토치 한국 사용자 모임과 함께 하셨던 분들을 소개합니다.</p>
           <div class="container">
             <div class="row">
-              {% for maintainer in maintainers %}
-              {% if maintainer.team == "Alumni" %}
+              {% for member in members %}
+              {% if member.role == "alumni" %}
                 {% assign active_class = "inactive" %}
               {% else %}
                 {% continue %}
               {% endif %}
               <div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
                 <div class="maintainer">
-                  <a class="{{ active_class }}" href="{{ maintainer.link_github }}"><img src="{{ site.base_url }}/assets/images/maintainers/{{ maintainer._id }}.png" alt="{{ maintainer._id }}"></a>
+                  <a class="{{ active_class }}" href="{{ member.link_github }}"><img src="{{ site.base_url }}/assets/images/maintainers/{{ member._id }}.png" alt="{{ member._id }}"></a>
                   <div class="member-info">
-                    <h3>{{ maintainer.name }}</h3>
-                    <p class="title">{{ maintainer.title }}</p>
-                    <p class="team">@{{ maintainer.team | split: ", " | join: ", @"}}</p>
-                    {% if maintainer.link_github %}
-                    <a href="{{ maintainer.link_github }}"><i class="fa fa-2x fa-github"></i></a>
+                    <h3>{{ member.name }}</h3>
+                    <p class="title">{{ member.title }}</p>
+                    <p class="team">@{{ member.team | split: ", " | join: ", @"}}</p>
+                    {% if member.link_github %}
+                    <a href="{{ member.link_github }}"><i class="fa fa-2x fa-github"></i></a>
                     {% endif %}
-                    {% if maintainer.link_twitter %}
-                    <a href="{{ maintainer.link_twitter }}"><i class="fa fa-2x fa-twitter"></i></a>
+                    {% if member.link_twitter %}
+                    <a href="{{ member.link_twitter }}"><i class="fa fa-2x fa-twitter"></i></a>
                     {% endif %}
-                    {% if maintainer.link_instagram %}
-                    <a href="{{ maintainer.link_instagram }}"><i class="fa fa-2x fa-instagram"></i></a>
+                    {% if member.link_instagram %}
+                    <a href="{{ member.link_instagram }}"><i class="fa fa-2x fa-instagram"></i></a>
                     {% endif %}
-                    {% if maintainer.link_facebook %}
-                    <a href="{{ maintainer.link_facebook }}"><i class="fa fa-2x fa-facebook-square"></i></a>
+                    {% if member.link_facebook %}
+                    <a href="{{ member.link_facebook }}"><i class="fa fa-2x fa-facebook-square"></i></a>
                     {% endif %}
-                    {% if maintainer.link_linkedin %}
-                    <a href="{{ maintainer.link_linkedin }}"><i class="fa fa-2x fa-linkedin"></i></a>
+                    {% if member.link_linkedin %}
+                    <a href="{{ member.link_linkedin }}"><i class="fa fa-2x fa-linkedin"></i></a>
                     {% endif %}
-                    {% if maintainer.link_youtube %}
-                    <a href="{{ maintainer.link_youtube }}"><i class="fa fa-2x fa-youtube-play"></i></a>
+                    {% if member.link_youtube %}
+                    <a href="{{ member.link_youtube }}"><i class="fa fa-2x fa-youtube-play"></i></a>
                     {% endif %}
-                    {% if maintainer.link_homepage %}
-                    <a href="{{ maintainer.link_homepage }}"><i class="fa fa-2x fa-home"></i></a>
+                    {% if member.link_homepage %}
+                    <a href="{{ member.link_homepage }}"><i class="fa fa-2x fa-home"></i></a>
                     {% endif %}
                   </div>
                 </div>

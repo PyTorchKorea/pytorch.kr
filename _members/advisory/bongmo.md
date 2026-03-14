@@ -1,10 +1,11 @@
 ---
-joined: 2018
-_id: adonisues
-name: 황성수
+role: advisory
+joined: 201803
+_id: bongmo
+name: 김봉모
 title: Maintainer
 team: Advisory
-link_github: https://github.com/adonisues
+link_github: https://github.com/bongmo
 link_linkedin:
 link_twitter:
 link_facebook:

@@ -1,4 +1,5 @@
 ---
+role: advisory
 joined: 202410
 _id: hkim15
 name: 김홍석

@@ -95,7 +95,7 @@ collections:
   hub:
     output: true
     permalink: /hub/:name/
-  maintainers:
+  members:
     output: false
   news:
     output: true

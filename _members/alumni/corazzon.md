@@ -1,8 +1,9 @@
 ---
+role: alumni
 joined: 202208
 _id: corazzon
 name: 박조은
-title: Maintainer
+title: Inactive Maintainer
 team: Coc, discuss
 link_github: https://github.com/corazzon
 link_linkedin:
