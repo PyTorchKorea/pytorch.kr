@@ -4,15 +4,15 @@ title: 블로그 번역 | PyTorchKR
 permalink: /projects/blog-kr/
 body-class: projects
 hero_image: /assets/images/projects/blog-kr-hero.jpg
+project_name: "블로그 번역"
+project_description: "PyTorch 공식 블로그 글을 한국어로 번역하여 최신 소식을 전달합니다."
 ---
 
-# PyTorch 블로그 번역
-
+<a href="https://pytorch.kr/blog" target="_blank" class="btn btn-primary btn-sm mr-1">
+  <i class="fa fa-globe"></i> pytorch.kr/blog
+</a>
 <a href="https://github.com/PyTorchKorea/pytorch.kr" target="_blank" class="btn btn-outline-secondary btn-sm">
   <i class="fa fa-github"></i> GitHub
-</a>
-<a href="https://pytorch.kr/blog" target="_blank" class="btn btn-primary btn-sm">
-  <i class="fa fa-globe"></i> pytorch.kr/blog
 </a>
 
 ## 프로젝트 소개

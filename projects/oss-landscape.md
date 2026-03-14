@@ -4,15 +4,15 @@ title: AI OSS Landscape | PyTorchKR
 permalink: /projects/oss-landscape/
 body-class: projects
 hero_image: /assets/images/projects/oss-landscape-hero.jpg
+project_name: "AI OSS Landscape"
+project_description: "AI/ML 생태계의 오픈소스 프로젝트들을 카테고리별로 한눈에 볼 수 있는 랜드스케이프 사이트입니다."
 ---
 
-# AI OSS Landscape
-
+<a href="https://oss-landscape.pytorch.kr" target="_blank" class="btn btn-primary btn-sm mr-1">
+  <i class="fa fa-globe"></i> oss-landscape.pytorch.kr
+</a>
 <a href="https://github.com/pytorchkorea/oss-landscape" target="_blank" class="btn btn-outline-secondary btn-sm">
   <i class="fa fa-github"></i> GitHub
-</a>
-<a href="https://oss-landscape.pytorch.kr" target="_blank" class="btn btn-primary btn-sm">
-  <i class="fa fa-globe"></i> oss-landscape.pytorch.kr
 </a>
 
 ## 프로젝트 소개

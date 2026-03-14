@@ -4,15 +4,15 @@ title: AI/ML 한국어 용어집 | PyTorchKR
 permalink: /projects/terms-kr/
 body-class: projects
 hero_image: /assets/images/projects/terms-kr-hero.jpg
+project_name: "AI/ML 한국어 용어집"
+project_description: "AI/ML 분야의 용어를 한국어로 표준화하는 커뮤니티 기반 오픈소스 프로젝트입니다."
 ---
 
-# AI/ML 한국어 용어집
-
+<a href="https://poc.terms.kr" target="_blank" class="btn btn-primary btn-sm mr-1">
+  <i class="fa fa-globe"></i> poc.terms.kr
+</a>
 <a href="https://github.com/PyTorchKorea/kr-terms-poc" target="_blank" class="btn btn-outline-secondary btn-sm">
   <i class="fa fa-github"></i> GitHub
-</a>
-<a href="https://poc.terms.kr" target="_blank" class="btn btn-primary btn-sm">
-  <i class="fa fa-globe"></i> poc.terms.kr
 </a>
 
 ## 프로젝트 소개

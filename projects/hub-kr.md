@@ -4,15 +4,15 @@ title: 모델 허브 번역 | PyTorchKR
 permalink: /projects/hub-kr/
 body-class: projects
 hero_image: /assets/images/projects/hub-kr-hero.jpg
+project_name: "모델 허브 번역"
+project_description: "PyTorch Hub에 등록된 모델들의 한국어 문서를 제공하는 프로젝트입니다."
 ---
 
-# PyTorch 한국어 모델 허브
-
+<a href="https://pytorch.kr/hub" target="_blank" class="btn btn-primary btn-sm mr-1">
+  <i class="fa fa-globe"></i> pytorch.kr/hub
+</a>
 <a href="https://github.com/PyTorchKorea/hub-kr" target="_blank" class="btn btn-outline-secondary btn-sm">
   <i class="fa fa-github"></i> GitHub
-</a>
-<a href="https://pytorch.kr/hub" target="_blank" class="btn btn-primary btn-sm">
-  <i class="fa fa-globe"></i> pytorch.kr/hub
 </a>
 
 ## 프로젝트 소개
