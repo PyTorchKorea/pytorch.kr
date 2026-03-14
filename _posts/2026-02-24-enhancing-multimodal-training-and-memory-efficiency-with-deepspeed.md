@@ -9,10 +9,10 @@ org_link: https://pytorch.org/blog/enhancing-multimodal-training-and-memory-effi
 
 ## 개요 / Overview
 
-이번 글에서는 [DeepSpeed](https://github.com/deepspeedai/DeepSpeed)의 두 가지 중요한 업데이트를 소개합니다: (1) 멀티모달, 다중 구성요소 모델의 효율적인 학습을 가능하게 하는 PyTorch 동일 backward API(스칼라가 아닌(non-scalar) backward 호출 포함)와, (2) 최대 메모리 사용량을 크게 줄이는 낮은 정밀도(low-precision) 모델 학습입니다.
+이번 글에서는 [DeepSpeed](https://github.com/deepspeedai/DeepSpeed)의 두 가지 중요한 업데이트를 소개합니다: (1) 멀티모달, 다중 구성요소 모델의 효율적인 학습을 가능하게 하는 PyTorch 네이티브 backward API(스칼라가 아닌(non-scalar) backward 호출 포함)와, (2) 최대 메모리 사용량을 크게 줄이는 낮은 정밀도(low-precision) 모델 학습입니다.
 > This blog walks through two crucial [DeepSpeed](https://github.com/deepspeedai/DeepSpeed) updates: (1) a PyTorch-identical backward API that enables efficient training of multimodal, multi-component models (including non-scalar backward calls), and (2) low-precision model training that significantly reduces peak memory, especially.
 
-비전 인코더와 LLM을 결합하는 것과 같은 멀티모달 워크로드의 경우, 학습 루프가 복잡하고 다중 구성요소로 이루어질 수 있습니다. 첫 번째 업데이트는 이러한 루프 작성을 간단하게 만드는 PyTorch 동일 backward API를 도입하여, DeepSpeed가 다양한 성능 최적화를 투명하게 관리하면서도 간단하고 깔끔한 코드로 정교한 병렬처리 방식을 구현할 수 있게 합니다. 한 가지 예로, 이 API의 유연성을 통해 [분리 하이브리드 병렬처리(disaggregated hybrid parallelism)](https://www.anyscale.com/blog/30-faster-multimodal-ai-training-with-ray-and-disaggregated-hybrid)가 가능해졌으며, 멀티모달 AI 모델 학습에서 30%의 속도 향상을 달성하는 동시에 DeepSpeed를 사용한 모델 개발이 "기본적인 PyTorch(vanilla PyTorch)"에 더 가깝게 느껴지도록 했습니다.
+비전 인코더와 LLM을 결합하는 것과 같은 멀티모달 워크로드의 경우, 학습 루프가 복잡하고 다중 구성요소로 이루어질 수 있습니다. 첫 번째 업데이트는 이러한 루프 작성을 간단하게 만드는 PyTorch 네이티브 backward API를 도입하여, DeepSpeed가 다양한 성능 최적화를 투명하게 관리하면서도 간단하고 깔끔한 코드로 정교한 병렬처리 방식을 구현할 수 있게 합니다. 한 가지 예로, 이 API의 유연성을 통해 [분리 하이브리드 병렬처리(disaggregated hybrid parallelism)](https://www.anyscale.com/blog/30-faster-multimodal-ai-training-with-ray-and-disaggregated-hybrid)가 가능해졌으며, 멀티모달 AI 모델 학습에서 30%의 속도 향상을 달성하는 동시에 DeepSpeed를 사용한 모델 개발이 "기본적인 PyTorch(vanilla PyTorch)"에 더 가깝게 느껴지도록 했습니다.
 > For multimodal workloads, like combining a vision encoder with an LLM, training loops can become complex and multi-component. The first update introduces a PyTorch-identical backward API that makes writing such loops straightforward, enabling sophisticated parallelism schemes with simple, clean code, while DeepSpeed transparently manages various performance optimizations. As one example, the flexibility of the API enabled [disaggregated hybrid parallelism](https://www.anyscale.com/blog/30-faster-multimodal-ai-training-with-ray-and-disaggregated-hybrid), achieving a 30% speedup for multimodal AI model training while making model development with DeepSpeed feel closer to "vanilla PyTorch".
 
 한편, LLM 미세 조정의 경우, 모든 모델 상태(매개변수, 변화도(gradient), 옵티마이저 상태)를 BF16이나 FP16과 같은 낮은 정밀도(low-precision)로 유지하는 새로운 옵션이 메모리 사용량을 대폭 줄여, 제한된 하드웨어에서 더 큰 모델을 학습할 수 있게 합니다. 낮은 정밀도 학습은 지도 미세 조정(SFT), 강화 학습(RL), 멀티모달 학습 등 다양한 응용 분야에서 매우 유용합니다. 실험 결과, 수치 안정성을 유지하면서 최대 메모리 사용량을 40% 줄일 수 있었습니다([벤치마킹 스크립트](https://github.com/deepspeedai/DeepSpeedExamples/tree/master/training/bf16_master_weight)). 수치 안정성은 `torch.autocast`와의 통합을 통해 달성되며, 이를 통해 모델의 품질이 유지됩니다.
@@ -21,7 +21,7 @@ org_link: https://pytorch.org/blog/enhancing-multimodal-training-and-memory-effi
 이번 글의 나머지 부분에서는 이러한 업데이트가 최첨단 학습 워크로드 개발을 어떻게 직접적으로 촉진하는지 자세히 설명합니다.
 > The remainder of this blog will elaborate on how these updates directly facilitate the development of cutting-edge training workloads.
 
-## 1. PyTorch 동일 backward API / PyTorch-identical backward API
+## 1. PyTorch 네이티브 backward API / PyTorch-identical backward API
 
 DeepSpeed는 이제 모든 최적화를 유지하면서 PyTorch의 네이티브 `backward()` 구문을 지원합니다. 기존에 DeepSpeed의 학습 루프는 엔진의 backward API에 의존했습니다:
 > DeepSpeed now supports PyTorch's native `backward()` syntax while preserving all its optimizations. Traditionally, DeepSpeed's training loop relied on the engine's backward API:
@@ -61,10 +61,10 @@ output = model(batch)
 output.backward(grad)
 ```
 
-DeepSpeed 엔진은 내부 API를 사용하여 이러한 사용 사례를 처리할 수 있었지만, 상당한 코드 변경이 필요했고 버그가 쉽게 발생할 수 있었습니다. PyTorch 동일 backward API가 추가됨에 따라, 이제 ZeRO와 오프로딩을 포함한 DeepSpeed의 강력한 최적화를 유지하면서 네이티브 PyTorch와 동일한 코드를 사용할 수 있습니다.
+DeepSpeed 엔진은 내부 API를 사용하여 이러한 사용 사례를 처리할 수 있었지만, 상당한 코드 변경이 필요했고 버그가 쉽게 발생할 수 있었습니다. PyTorch 네이티브 backward API가 추가됨에 따라, 이제 ZeRO와 오프로딩을 포함한 DeepSpeed의 강력한 최적화를 유지하면서 네이티브 PyTorch와 동일한 코드를 사용할 수 있습니다.
 > DeepSpeed Engine was able to handle these use cases using internal APIs; however, that required significant code changes and could easily introduce bugs. With the addition of PyTorch-identical backward API, we can now use the same code as native PyTorch while keeping DeepSpeed's powerful optimizations, including ZeRO and offloading.
 
-PyTorch 동일 backward API의 한 가지 사용 사례는 [Ray](https://github.com/ray-project/ray)를 사용한 멀티모달 모델의 [분리 하이브리드 병렬처리](https://www.anyscale.com/blog/30-faster-multimodal-ai-training-with-ray-and-disaggregated-hybrid)입니다. 이 학습 파이프라인에서는 두 개의 Ray Actor 그룹이 비전 인코더와 LLM을 각각 처리합니다. Backward 패스에서 LLM이 비전 인코더에 변화도를 전달하고, 비전 인코더는 해당 변화도로 backward 함수를 호출합니다. 그러나 변화도가 스칼라가 아닌 Tensor이기 때문에, 이러한 사용 사례는 DeepSpeed API에서 공식적으로 지원되지 않았습니다. 분리 하이브리드 병렬처리는 backward API의 유연성과 DeepSpeed의 최적화, 그리고 [DeepSpeed-Ulysses](https://arxiv.org/abs/2309.14509)(고효율 시퀀스 병렬처리)를 결합하여 학습에서 30%의 속도 향상을 달성함을 보여줍니다.
+PyTorch 네이티브 backward API의 한 가지 사용 사례는 [Ray](https://github.com/ray-project/ray)를 사용한 멀티모달 모델의 [분리 하이브리드 병렬처리](https://www.anyscale.com/blog/30-faster-multimodal-ai-training-with-ray-and-disaggregated-hybrid)입니다. 이 학습 파이프라인에서는 두 개의 Ray Actor 그룹이 비전 인코더와 LLM을 각각 처리합니다. Backward 패스에서 LLM이 비전 인코더에 변화도를 전달하고, 비전 인코더는 해당 변화도로 backward 함수를 호출합니다. 그러나 변화도가 스칼라가 아닌 Tensor이기 때문에, 이러한 사용 사례는 DeepSpeed API에서 공식적으로 지원되지 않았습니다. 분리 하이브리드 병렬처리는 backward API의 유연성과 DeepSpeed의 최적화, 그리고 [DeepSpeed-Ulysses](https://arxiv.org/abs/2309.14509)(고효율 시퀀스 병렬처리)를 결합하여 학습에서 30%의 속도 향상을 달성함을 보여줍니다.
 > One example use case for the PyTorch-identical backward API is [disaggregated hybrid parallelism](https://www.anyscale.com/blog/30-faster-multimodal-ai-training-with-ray-and-disaggregated-hybrid) for multimodal models using [Ray](https://github.com/ray-project/ray). In this training pipeline, two Ray Actor groups handle the vision encoder and the LLM separately. On a backward pass, the LLM passes a gradient to the vision encoder, and the vision encoder calls the backward function with that gradient. However, because the gradient is a non-scalar tensor, such a use case wasn't officially supported by DeepSpeed APIs. The disaggregated hybrid parallelism demonstrates that the flexibility of the backward API combined with DeepSpeed's optimization and [DeepSpeed-Ulysses](https://arxiv.org/abs/2309.14509) (highly efficient sequence parallelism), achieves 30% speedup in training.
 
 아래는 서로 다른 Actor에서 실행되는 두 모델의 의사 코드(pseudo-code)입니다. 서로 다른 프로세스에서 실행되므로, Ray Actor 통신을 통해 변화도를 전달합니다. 여기서 볼 수 있듯이, 비전 임베딩의 변화도는 스칼라가 아닌 Tensor입니다. 이 코드는 PyTorch API와 동일하지만, 설정에 따라 다양한 DeepSpeed 최적화를 활성화합니다.
@@ -93,7 +93,7 @@ def vision_backward_step(self, vision_embedding_grad):
 기존 DeepSpeed의 혼합 정밀도 방식은 FP32 마스터 매개변수, 변화도, 옵티마이저 상태를 유지했는데, 이는 기술적으로 더 안전하지만 메모리를 많이 사용합니다. DeepSpeed는 설정을 통해 `torch.autocast`를 지원해왔지만(API 문서 참조), FP32 상태 생성을 우회하는 옵션이 없어 제한된 하드웨어에서 대규모 모델의 학습 가능성이 제한되었습니다. 실제로 많은 학습 워크로드는 FP32 상태 없이도 안정적으로 수렴합니다.
 > Traditionally, DeepSpeed's mixed precision keeps FP32 master parameters, gradients, and optimizer states, which is technically safer but memory-intensive. While DeepSpeed has supported `torch.autocast` via configuration (see the API documentation), the lack of an option to bypass creating FP32 states limited the trainability of large models on constrained hardware. In practice, many training workloads converge stably without FP32 states.
 
-낮은 정밀도 모델 상태 옵션을 사용하면, FP32 상태 생성을 쉽게 건너뛰고 낮은 정밀도 옵션을 `torch.autocast` 지원과 결합할 수 있습니다(설정 세부 사항은 문서와 예제를 참조하세요). 이 조합은 수렴성을 희생하지 않으면서 메모리 효율성을 크게 향상시킵니다.
+낮은 정밀도 모델 상태 옵션을 사용하면, FP32 상태 생성을 쉽게 건너뛰고 낮은 정밀도 옵션을 `torch.autocast` 지원과 결합할 수 있습니다(설정 세부 사항은 문서와 예제를 참조하세요). 이 조합은 수렴 특성을 유지하면서 메모리 효율성을 크게 향상시킵니다.
 > With the low-precision model states option, you can easily skip creating FP32 states and combine the low-precision option with `torch.autocast` support (see the document and example for configuration details). This combination drastically improves memory efficiency without sacrificing convergence.
 
 ```json
@@ -148,10 +148,10 @@ def vision_backward_step(self, vision_embedding_grad):
 이번 DeepSpeed 업데이트는 핵심적인 발전을 제공합니다:
 > This DeepSpeed update delivers key advancements:
 
-- **복잡한 멀티모달 워크로드 지원**: 새로운 PyTorch 동일 backward API는 멀티모달 모델에 필요한 정교한 다중 구성요소 학습 루프를 간단하고 깔끔한 코드로 구현할 수 있게 합니다. 한 가지 예로, PyTorch 동일 backward API를 통해 분리 하이브리드 병렬처리에서 30%의 속도 향상을 달성했습니다.
+- **복잡한 멀티모달 워크로드 지원**: 새로운 PyTorch 네이티브 backward API는 멀티모달 모델에 필요한 정교한 다중 구성요소 학습 루프를 간단하고 깔끔한 코드로 구현할 수 있게 합니다. 한 가지 예로, PyTorch 네이티브 backward API를 통해 분리 하이브리드 병렬처리에서 30%의 속도 향상을 달성했습니다.
 > - **Enabling Complex Multimodal Workloads**: The new PyTorch-identical backward API enables sophisticated multi-component training loops, such as those required for multimodal models, with simple, clean code. As one example, the PyTorch-identical backward API has enabled a 30% speedup for disaggregated hybrid parallelism.
 
-- **더 큰 모델로의 확장**: 낮은 정밀도 모델 상태와 `torch.autocast`를 결합하면 수렴성을 희생하지 않으면서 최대 메모리 사용량을 최대 40%까지 줄여, 동일한 하드웨어에서 더 큰 모델을 학습할 수 있습니다.
+- **더 큰 모델로의 확장**: 낮은 정밀도 모델 상태와 `torch.autocast`를 결합하면 수렴 특성을 유지하면서 최대 메모리 사용량을 최대 40%까지 줄여, 동일한 하드웨어에서 더 큰 모델을 학습할 수 있습니다.
 > - **Scaling to Larger Models:** Low-precision model states combined with `torch.autocast` reduce peak memory by up to 40% without sacrificing convergence, allowing you to train larger models with the same hardware.
 
 이번 글에서 설명한 새로운 API와 기능을 여러분의 학습 환경에서 어떻게 활용하시는지 기대됩니다. 사용해보시면서 [GitHub](https://github.com/deepspeedai/DeepSpeed)에 피드백과 이슈를 남겨주시기 바랍니다.
