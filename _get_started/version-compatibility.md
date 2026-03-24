@@ -33,6 +33,18 @@ PyTorch 및 Domain APIs의 버전 호환성을 정리하였습니다. \
   </thead>
   <tbody>
     <tr>
+      <th scope="row"><a href="https://github.com/pytorch/pytorch/releases/tag/v2.11.0" target="_blank">2.11.0</a></th>
+      <td>2026/03/23</td>
+      <td><a href="https://github.com/pytorch/vision/releases/tag/v0.26.0" target="_blank">0.26.0</a></td>
+      <td><a href="https://github.com/pytorch/audio/releases/tag/v2.11.0" target="_blank">2.11.0</a></td>
+      <td><em>—</em></td>
+      <td><em>—</em></td>
+      <td><em>—</em></td>
+      <td><a href="https://pypi.org/project/torch/2.11.0/" target="_blank">>=3.10, <=3.14</a></td>
+      <td>13.0; 12.8; 12.6</td>
+      <td>7.2</td>
+    </tr>
+    <tr>
       <th scope="row"><a href="https://github.com/pytorch/pytorch/releases/tag/v2.10.0" target="_blank">2.10.0</a></th>
       <td>2026/01/21</td>
       <td><a href="https://github.com/pytorch/vision/releases/tag/v0.25.0" target="_blank">0.25.0</a></td>
@@ -792,6 +804,196 @@ PyTorch 및 Domain APIs의 버전 호환성을 정리하였습니다. \
 </table>
 
 
+## Release Compatibility Matrix
+
+PyTorch 릴리즈별 지원 환경(Python, C++, CUDA, ROCm) 호환성 매트릭스입니다.
+
+<table class="table table-striped table-hover version-table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"><strong>PyTorch</strong></th>
+      <th scope="col"><strong>Python</strong></th>
+      <th scope="col"><strong>C++</strong></th>
+      <th scope="col"><strong>Stable CUDA</strong></th>
+      <th scope="col"><strong>Experimental CUDA</strong></th>
+      <th scope="col"><strong>Stable ROCm</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">2.11</th>
+      <td>>=3.10, <=(3.14, 3.14t experimental)</td>
+      <td>C++17</td>
+      <td>CUDA 12.6 (CUDNN 9.10.2.21), CUDA 12.8 (CUDNN 9.17.1.4), CUDA 13.0 (CUDNN 9.17.1.4)</td>
+      <td>—</td>
+      <td>ROCm 7.2</td>
+    </tr>
+    <tr>
+      <th scope="row">2.10</th>
+      <td>>=3.10, <=(3.14, 3.14t experimental)</td>
+      <td>C++17</td>
+      <td>CUDA 12.6 (CUDNN 9.10.2.21), CUDA 12.8 (CUDNN 9.10.2.21)</td>
+      <td>CUDA 13.0 (CUDNN 9.15.1.9)</td>
+      <td>ROCm 7.1</td>
+    </tr>
+    <tr>
+      <th scope="row">2.9</th>
+      <td>>=3.10, <=(3.14, 3.14t experimental)</td>
+      <td>C++17</td>
+      <td>CUDA 12.6 (CUDNN 9.10.2.21), CUDA 12.8 (CUDNN 9.10.2.21)</td>
+      <td>CUDA 13.0 (CUDNN 9.13.0.50)</td>
+      <td>ROCm 6.4</td>
+    </tr>
+    <tr>
+      <th scope="row">2.8</th>
+      <td>>=3.9, <=3.13, (3.13t experimental)</td>
+      <td>C++17</td>
+      <td>CUDA 12.6 (CUDNN 9.10.2.21), CUDA 12.8 (CUDNN 9.10.2.21)</td>
+      <td>CUDA 12.9 (CUDNN 9.10.2.21)</td>
+      <td>ROCm 6.4</td>
+    </tr>
+    <tr>
+      <th scope="row">2.7</th>
+      <td>>=3.9, <=3.13, (3.13t experimental)</td>
+      <td>C++17</td>
+      <td>CUDA 11.8 (CUDNN 9.1.0.70), CUDA 12.6 (CUDNN 9.5.1.17)</td>
+      <td>CUDA 12.8 (CUDNN 9.7.1.26)</td>
+      <td>ROCm 6.3</td>
+    </tr>
+    <tr>
+      <th scope="row">2.6</th>
+      <td>>=3.9, <=3.13, (3.13t experimental)</td>
+      <td>C++17</td>
+      <td>CUDA 11.8, CUDA 12.4 (CUDNN 9.1.0.70)</td>
+      <td>CUDA 12.6 (CUDNN 9.5.1.17)</td>
+      <td>ROCm 6.2.4</td>
+    </tr>
+    <tr>
+      <th scope="row">2.5</th>
+      <td>>=3.9, <=3.12, (3.13 experimental)</td>
+      <td>C++17</td>
+      <td>CUDA 11.8, CUDA 12.1, CUDA 12.4, CUDNN 9.1.0.70</td>
+      <td>—</td>
+      <td>ROCm 6.2</td>
+    </tr>
+    <tr>
+      <th scope="row">2.4</th>
+      <td>>=3.8, <=3.12</td>
+      <td>C++17</td>
+      <td>CUDA 11.8, CUDA 12.1, CUDNN 9.1.0.70</td>
+      <td>CUDA 12.4, CUDNN 9.1.0.70</td>
+      <td>ROCm 6.1</td>
+    </tr>
+    <tr>
+      <th scope="row">2.3</th>
+      <td>>=3.8, <=3.11, (3.12 experimental)</td>
+      <td>C++17</td>
+      <td>CUDA 11.8, CUDNN 8.7.0.84</td>
+      <td>CUDA 12.1, CUDNN 8.9.2.26</td>
+      <td>ROCm 6.0</td>
+    </tr>
+    <tr>
+      <th scope="row">2.2</th>
+      <td>>=3.8, <=3.11, (3.12 experimental)</td>
+      <td>C++17</td>
+      <td>CUDA 11.8, CUDNN 8.7.0.84</td>
+      <td>CUDA 12.1, CUDNN 8.9.2.26</td>
+      <td>ROCm 5.7</td>
+    </tr>
+    <tr>
+      <th scope="row">2.1</th>
+      <td>>=3.8, <=3.11</td>
+      <td>C++17</td>
+      <td>CUDA 11.8, CUDNN 8.7.0.84</td>
+      <td>CUDA 12.1, CUDNN 8.9.2.26</td>
+      <td>ROCm 5.6</td>
+    </tr>
+    <tr>
+      <th scope="row">2.0</th>
+      <td>>=3.8, <=3.11</td>
+      <td>C++14</td>
+      <td>CUDA 11.7, CUDNN 8.5.0.96</td>
+      <td>CUDA 11.8, CUDNN 8.7.0.84</td>
+      <td>ROCm 5.4</td>
+    </tr>
+    <tr>
+      <th scope="row">1.13</th>
+      <td>>=3.7, <=3.10</td>
+      <td>C++14</td>
+      <td>CUDA 11.6, CUDNN 8.3.2.44</td>
+      <td>CUDA 11.7, CUDNN 8.5.0.96</td>
+      <td>ROCm 5.2</td>
+    </tr>
+    <tr>
+      <th scope="row">1.12</th>
+      <td>>=3.7, <=3.10</td>
+      <td>C++14</td>
+      <td>CUDA 11.3, CUDNN 8.3.2.44</td>
+      <td>CUDA 11.6, CUDNN 8.3.2.44</td>
+      <td>ROCm 5.0</td>
+    </tr>
+  </tbody>
+</table>
+
+
+## PyTorch CUDA Support Matrix
+
+PyTorch 2.11 릴리즈에서 지원하는 CUDA 아키텍처 정보입니다.
+
+### Linux x86 및 Windows
+
+<table class="table table-striped table-hover version-table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"><strong>CUDA</strong></th>
+      <th scope="col"><strong>지원 아키텍처</strong></th>
+      <th scope="col"><strong>비고</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>12.6.3</td>
+      <td>Maxwell(5.0), Pascal(6.0), Volta(7.0), Turing(7.5), Ampere(8.0, 8.6), Hopper(9.0)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>12.8.1</td>
+      <td>Turing(7.5), Ampere(8.0, 8.6), Hopper(9.0), Blackwell(10.0, 12.0)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>13.0.2</td>
+      <td>Turing(7.5), Ampere(8.0, 8.6), Hopper(9.0), Blackwell(10.0, 12.0+PTX)</td>
+      <td>+PTX는 Linux 빌드에서만 사용 가능</td>
+    </tr>
+  </tbody>
+</table>
+
+### Linux aarch64
+
+<table class="table table-striped table-hover version-table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"><strong>CUDA</strong></th>
+      <th scope="col"><strong>지원 아키텍처</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>12.6.3</td>
+      <td>Ampere(8.0), Hopper(9.0)</td>
+    </tr>
+    <tr>
+      <td>12.8.1</td>
+      <td>Ampere(8.0), Hopper(9.0), Blackwell(10.0, 12.0)</td>
+    </tr>
+    <tr>
+      <td>13.0.2</td>
+      <td>Ampere(8.0), Hopper(9.0), Blackwell(10.0, 11.0, 12.0+PTX)</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ## 참고 (Notes)
 
@@ -835,5 +1037,5 @@ PyTorch 및 Domain APIs의 버전 호환성을 정리하였습니다. \
 </div>
 
 <p class="text-muted text-right mb-0">
-  <small><strong>Last Update:</strong> 2026-02-28</small>
+  <small><strong>Last Update:</strong> 2026-03-24</small>
 </p>
