@@ -17,6 +17,31 @@ redirect_from: /previous-versions.html
 
 ## 1.0.0 이상 버전 설치하기
 
+### v2.10.0
+
+#### Wheel
+
+##### OSX
+
+```
+pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0
+```
+
+##### Linux and Windows
+
+```
+# ROCM 7.1 (Linux only)
+pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/rocm7.1
+# CUDA 12.6
+pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu126
+# CUDA 12.8
+pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu128
+# CUDA 13.0
+pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cu130
+# CPU only
+pip install torch==2.10.0 torchvision==0.25.0 torchaudio==2.10.0 --index-url https://download.pytorch.org/whl/cpu
+```
+
 ### v2.9.1
 
 #### Wheel
