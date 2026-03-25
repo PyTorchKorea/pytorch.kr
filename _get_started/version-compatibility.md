@@ -39,7 +39,7 @@ PyTorch 및 Domain APIs의 버전 호환성을 정리하였습니다. \
       <td><a href="https://github.com/pytorch/audio/releases/tag/v2.11.0" target="_blank">2.11.0</a></td>
       <td><em>—</em></td>
       <td><em>—</em></td>
-      <td><em>—</em></td>
+      <td><a href="https://github.com/meta-pytorch/torchcodec/releases/tag/v0.11.0" target="_blank">0.11.0</a></td>
       <td><a href="https://pypi.org/project/torch/2.11.0/" target="_blank">>=3.10, <=3.14</a></td>
       <td>13.0; 12.8; 12.6</td>
       <td>7.2</td>
@@ -1037,5 +1037,5 @@ PyTorch 2.11 릴리즈에서 지원하는 CUDA 아키텍처 정보입니다.
 </div>
 
 <p class="text-muted text-right mb-0">
-  <small><strong>Last Update:</strong> 2026-03-24</small>
+  <small><strong>Last Update:</strong> 2026-03-25</small>
 </p>
