@@ -6,7 +6,7 @@ name: 김지호
 title: Maintainer
 team: tutorials-kr
 link_github: https://github.com/jih0-kim
-link_linkedin:
+link_linkedin: https://www.linkedin.com/in/jih0
 link_twitter:
 link_facebook:
 link_instagram:
