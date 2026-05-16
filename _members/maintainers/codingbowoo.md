@@ -1,10 +1,10 @@
 ---
-role: alumni
-joined: 2020
+role: maintainer
+joined: 202002
 _id: codingbowoo
 name: 장보우
-title: Inactive Maintainer
-team: CoC, hub-kr, discuss
+title: Maintainer
+team: CoC, PyTorchKR
 link_github: https://github.com/codingbowoo
 link_linkedin: https://www.linkedin.com/in/jangbowoo/
 link_twitter:
