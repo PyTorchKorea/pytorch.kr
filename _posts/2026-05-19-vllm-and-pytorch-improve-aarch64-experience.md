@@ -7,7 +7,7 @@ org_title: "vLLM and PyTorch Work Together to Improve the Developer Experience o
 org_link: https://pytorch.org/blog/vllm-and-pytorch-work-together-to-improve-the-developer-experience-on-aarch64/
 ---
 
-*TL;DR: PyTorch 2.11부터는 aarch64 Linux에서도 PyPI를 통해 CUDA가 활성화된 PyTorch 휠(wheel)을 곧바로 설치할 수 있게 되었습니다. 이로써 NVIDIA GH200, GB200, GB300 등의 시스템에 배포할 때 그동안 발목을 잡아왔던 별도의 패키지 인덱스나 우회 방법(workaround)이 더 이상 필요하지 않습니다. 이 글에서는 You Kaichao(Inferact)가 이번 패키징 변경이 vLLM 사용자의 설치 경험을 어떻게 개선하는지 설명하고, PyTorch Foundation을 통한 vLLM과 PyTorch의 협업이 어떻게 이번 수정 사항을 프로덕션에 안착시켰는지 짚어봅니다.*
+*TL;DR: PyTorch 2.11부터는 aarch64 Linux에서도 PyPI를 통해 CUDA가 활성화된 PyTorch 휠(wheel)을 곧바로 설치할 수 있게 되었습니다. 이로써 NVIDIA GH200, GB200, GB300 등의 시스템에 배포할 때 그동안 발목을 잡아왔던 별도의 패키지 인덱스나 우회 방법(workaround)이 더 이상 필요하지 않습니다. 이 글에서는 Kaichao You(Inferact)가 이번 패키징 변경이 vLLM 사용자의 설치 경험을 어떻게 개선하는지 설명하고, PyTorch Foundation을 통한 vLLM과 PyTorch의 협업이 어떻게 이번 수정 사항을 프로덕션에 안착시켰는지 짚어봅니다.*
 > *TLDR: PyTorch 2.11 makes it possible to install CUDA-enabled PyTorch wheels on aarch64 Linux directly from PyPI, eliminating the need for custom package indexes and workarounds that previously complicated deployment on systems such as NVIDIA GH200, GB200, and GB300. In this post, Kaichao You (Inferact) explains how this packaging change improves the installation experience for vLLM users and highlights how collaboration between vLLM and PyTorch through PyTorch Foundation helped bring the fix to production.*
 
 ![GB200 / GB300 / GH200에서의 PyTorch aarch64 설치 / PyTorch aarch64 install on GB200 / GB300 / GH200](/assets/blog/2026-05-19-vllm-and-pytorch-improve-aarch64-experience/unnamed-7.png){:style="width:100%"}
