@@ -87,7 +87,7 @@ class TinyRPS(nn.Module):
         return x
 ```
 
-이 아키텍처는 컴팩트하고 Ethos 친화적이어서 마이크로 엣지 배포에 이상적입니다. 학습에는 Adam 옵티마이저를 사용하며, 소규모 합성 데이터셋으로 몇 에폭만에 95% 이상의 검증 정확도를 달성합니다.
+이 아키텍처는 컴팩트하고 Ethos 친화적이어서 마이크로 엣지 배포에 이상적입니다. 학습에는 Adam을 사용하며, 소규모 합성 데이터셋으로 몇 에폭만에 95% 이상의 검증 정확도를 달성합니다.
 > This architecture is compact and Ethos-friendly, ideal for deployment to the micro-edge. Training uses Adam with a small synthetic dataset and achieves over 95% validation accuracy after a few epochs.
 
 **2. ExecuTorch로 내보내기 / Exporting to ExecuTorch**
@@ -106,7 +106,7 @@ def export_to_pte(model: nn.Module, out_path: str, img_size: int) -> None:
         dtype=torch.float32
     )
 
-    # PyTorch의 exporter로 내보내기
+    # PyTorch의 내보내기 도구로 내보내기
     exported = export(model, (example,))
     edge = exir.to_edge(exported)
     prog = edge.to_executorch()
@@ -132,7 +132,7 @@ def export_to_pte(model: nn.Module, out_path: str, img_size: int) -> None:
 이 데모를 만들면서 PyTorch의 유연성이 데이터 센터에서 멈출 필요가 없다는 것을 알게 되었습니다. ExecuTorch를 사용하면 익숙한 PyTorch 워크플로우를 IoT 센서, 웨어러블, 임베디드 장치에 그대로 가져갈 수 있으며, 어디에서든 프라이버시를 보호하면서 저전력 AI를 구현할 수 있습니다.
 > Working on this demo revealed that PyTorch's flexibility doesn't have to stop at the data center. ExecuTorch makes it possible to bring the same familiar PyTorch workflow to IoT sensors, wearables, and embedded devices, enabling privacy-preserving, low-power AI anywhere.
 
-엣지 AI는 크기는 작지만, 잠재력은 무한합니다.
+엣지 AI는 크기는 작아 보일 수 있지만, 잠재력은 무한합니다.
 > Edge AI may be small in size, but it's huge in potential.
 
 ## 직접 해보기 / Try It Yourself
@@ -149,5 +149,5 @@ def export_to_pte(model: nn.Module, out_path: str, img_size: int) -> None:
 이 학습 경로는 협업의 결실이며, 이 과정을 완성하는 데 도움을 준 팀에 특별한 감사를 드립니다. Annie Tallund, Zingo Andersen, George Gekov, Gemma Paris, Adrian Lundell, Madeline Underwood, Mary Bennion, Fredrik Knutsson의 소중한 기여에 감사드립니다.
 > This learning path was a collaborative effort, and I owe a special thanks to the team that helped bring this course to life, including the valuable contributions of Annie Tallund, Zingo Andersen, George Gekov, Gemma Paris, Adrian Lundell, Madeline Underwood, Mary Bennion, and Fredrik Knutsson.
 
-[저전력, 자원 제한 장치에서 Arm Ethos-U NPU를 사용한 엣지 AI 개발 관련 다른 도움말 살펴보기](https://developer.arm.com/edge-ai)
+[저전력 및 자원이 제한된 장치에서 Arm Ethos-U NPU를 사용한 엣지 AI 개발 관련 다른 도움말 살펴보기](https://developer.arm.com/edge-ai)
 > [Explore other help for Edge AI development on low-power, resource-constrained devices using Arm Ethos-U NPUs](https://developer.arm.com/edge-ai)
