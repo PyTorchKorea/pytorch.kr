@@ -133,7 +133,7 @@ external_urls:
   previous_pytorch_versions: https://pytorch.kr/get-started/previous-versions/
   site_tutorials: https://tutorials.pytorch.kr
   site_blog: https://pytorch.kr/blog
-  site_community: https://discuss.pytorch.kr
+  site_community: https://discuss.pytorch.kr/
   site_hub: https://pytorch.kr/hub
   repo_tutorials: https://github.com/PyTorchKorea/tutorials-kr
   repo_hub: https://github.com/PyTorchKorea/hub-kr
