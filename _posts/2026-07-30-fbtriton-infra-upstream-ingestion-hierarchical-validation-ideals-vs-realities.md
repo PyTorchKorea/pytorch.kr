@@ -41,7 +41,7 @@ Triton은 Meta의 AI 하드웨어 가속 전략에서 근간을 이루는 요소
 
 빠르게 움직이는 업스트림과의 격차를 작게 유지하면서 Meta에서 출발한 최적화를 적극적으로 개발하는 일은 fbtriton 입장에서는 쉽지 않습니다.  
 다운스트림 포크를 유지하려면 보통 두 전략 중 하나를 골라야 합니다. 주기적으로 트렁크 전체를 리베이스(full-trunk rebase)하거나, 계속 체리픽(cherry-pick)하는 것입니다. 수정 사항을 안정적으로 유지하고, 대규모 리베이스가 낳는 구조적 불확실성과 마찰에서 일상적인 개발을 떼어 놓기 위해 지속적인 체리픽을 택했습니다.  
-핵심 마찰은 컴파일러 스택의 아키텍처 차이에서 나옵니다. fbtriton은 레이아웃 인터페이스, 양자화, 워프 특화(warp specialization)에 각기 다른 전략과 설계를 사용합니다.  
+핵심 마찰은 컴파일러 스택의 아키텍처 차이에서 나옵니다. fbtriton은 레이아웃 인터페이스, 양자화, 워프 특화(warp specialization)에 업스트림과는 다른 전략과 설계를 사용합니다.  
 CI 엔지니어에게 수동 충돌 해결을 잔뜩 떠안기지 않고 쌓인 백로그를 해소하기 위해, 업스트림 커밋을 큰 저위험 번들과 컨텍스트가 많이 필요한 위험 체인으로 나누는 에이전트 루프(agentic loop)를 만들었습니다.
 > It is not easy for fbtriton to aggressively develop Meta-inspired optimizations while keeping the gap against a fast-moving upstream small.  
 > Maintaining a downstream fork usually forces a choice between two strategies: periodic full-trunk rebases or continuous cherry-picking. We chose continuous cherry-picking to keep our modifications stable and decouple daily development from the structural uncertainty and friction of large rebases.  
@@ -134,7 +134,7 @@ LIT(LLVM Integrated Tester), Triton 단위 테스트, TLX 튜토리얼 커널 �
 
 ## 결함 없는 CI: 이상과 현실 / Flawless CI: Ideals vs Realities
 
-엔지니어링의 이상은 완전히 자율적이고 노이즈가 없으며 즉각적인, 그리고 넓은 서브시스템 수준 지표에 완벽하게 대응되는 CI/CD 루프입니다. 프로덕션 현실은 더 복잡합니다. 굵은 단위의 지표만으로는 위험을 온전히 포착하지 못하며, 플릿 규모의 안정성에는 추상적인 서브시스템 수준 추적에 더해 국소적인 운영 규율이 필요합니다.
+엔지니어링의 이상은 완전히 자율적이고, 노이즈가 없고, 즉각적이면서 넓은 서브시스템 수준 지표에 완벽하게 대응되는 CI/CD 루프입니다. 프로덕션 현실은 더 복잡합니다. 굵은 단위의 지표만으로는 위험을 온전히 포착하지 못하며, 플릿 규모의 안정성에는 추상적인 서브시스템 수준 추적에 더해 국소적인 운영 규율이 필요합니다.
 > The engineering ideal is a fully autonomous, zero-noise, instantaneous CI/CD loop that maps perfectly to broad subsystem-level metrics. Production reality is more complicated. Coarse metrics do not fully capture risk, and fleet-scale stability requires localized operational discipline in addition to abstract subsystem-level tracking.
 
 완성도 높은 CI 시스템은 하루아침에 만들어지지 않습니다. 코드를 모으는 일뿐 아니라 팀을 모으는 일, 그리고 그렇게 맞춰진 문화를 오랫동안 지켜 내는 일이 필요합니다.
