@@ -16,20 +16,20 @@ org_link: https://pytorch.org/blog/fast-ondevice-agentic-ai-with-executorch/
 
 ## 왜 ExecuTorch인가? / Why ExecuTorch?
 
-대부분의 로컬 AI 프레임워크는 모델을 Python이 아닌 다른 언어로 다시 구현합니다. LLM이 표준적인 텍스트 트랜스포머이던 시절에는 이 방식이 잘 확장됐지만, 오늘날의 모델은 점점 더 복잡해지고 있습니다. 새로운 아키텍처, 멀티모달 입출력, 낮은 지연 시간을 위한 [DFlash](https://arxiv.org/abs/2602.06036)(확산 기반 병렬 추측 디코딩) 같은 고급 디코딩 알고리즘이 그렇습니다. 이런 것들을 백엔드마다 다시 구현하는 방식은 확장되지 않습니다.
+대부분의 로컬 AI 프레임워크는 모델을 Python이 아닌 다른 언어로 다시 구현합니다. LLM이 표준적인 텍스트 트랜스포머이던 시절에는 이 방식에도 확장성이 있었지만, 오늘날의 모델은 점점 더 복잡해지고 있습니다. 새로운 아키텍처, 멀티모달 입출력, 낮은 지연 시간을 위한 [DFlash](https://arxiv.org/abs/2602.06036)(확산 기반 병렬 추측 디코딩) 같은 고급 디코딩 알고리즘이 그렇습니다. 이런 것들을 백엔드마다 다시 구현하는 방식에는 확장성이 없습니다.
 > Most local AI frameworks rewrite models in other non-Python languages. That scaled well when LLMs were standard text transformers, but today's models are becoming more complex – novel architectures, multimodal inputs and outputs, advanced decoding algorithms like [DFlash](https://arxiv.org/abs/2602.06036) (parallel diffusion-based speculative decoding) for low latency. Reimplementing these across different backends doesn't scale.
 
-[ExecuTorch](https://pytorch.org/blog/introducing-executorch-1-0/)는 다른 접근을 택합니다. 머신러닝 엔지니어와 연구자는 모델(과 그 디코딩 전략)을 PyTorch로 구현하기만 하면 됩니다. 배포할 준비가 되면 ExecuTorch로 익스포트(export)하고, 백엔드별 저수준화(lowering)는 프레임워크가 알아서 처리합니다. CUDA에서는 Triton으로, Apple 실리콘에서는 MLX 네이티브 구현과 커스텀 Metal 구현으로 내려갑니다. 사전 컴파일(ahead-of-time compilation)은 개별 연산만이 아니라 실행 경로 전체를 엔드투엔드로 최적화합니다.
+[ExecuTorch](https://pytorch.org/blog/introducing-executorch-1-0/)는 다른 접근을 택합니다. 머신러닝 엔지니어와 연구자는 모델(과 그 디코딩 전략)을 PyTorch로 구현합니다. 배포할 준비가 되면 ExecuTorch로 내보내고(export), 백엔드별 저수준화(lowering)는 프레임워크가 처리합니다. CUDA에서는 Triton으로, Apple 실리콘에서는 MLX 네이티브 구현과 커스텀 Metal 구현으로 내려갑니다. 사전 컴파일(ahead-of-time compilation)은 개별 연산만이 아니라 실행 경로 전체를 엔드투엔드로 최적화합니다.
 > [ExecuTorch](https://pytorch.org/blog/introducing-executorch-1-0/) takes a different approach. As machine learning engineers and researchers, you implement the model (and its decoding strategy) in PyTorch. Once you're ready for deployment, you export to ExecuTorch, and the framework handles backend-specific lowering, Triton on CUDA, MLX-native and custom Metal on Apple silicon. Ahead-of-time compilation optimizes the full execution path end-to-end, not just individual ops.
 
-Muse Glimmer의 텍스트·이미지 입력, GGUF 직접 익스포트, K-quant 네이티브 실행, 128K 이상의 토큰 컨텍스트, DFlash 추측 디코딩(speculative decoding) 기능도 이런 방식으로 제공합니다. 미리 빌드된 PTE 아티팩트 번들도 공개했으니, 이를 내려받아 지원되는 NVIDIA GPU나 Apple 실리콘 기반 Mac에서 ExecuTorch 런타임으로 실행할 수 있습니다.
+Muse Glimmer의 텍스트·이미지 입력, GGUF 직접 내보내기, K-quant 네이티브 실행, 128K 이상의 토큰 컨텍스트, DFlash 추측 디코딩(speculative decoding) 기능을 이런 방식으로 제공합니다. 미리 빌드된 PTE 아티팩트 번들을 공개했으므로, 이를 내려받아 지원되는 NVIDIA GPU나 Apple 실리콘 기반 Mac에서 ExecuTorch 런타임으로 실행할 수 있습니다.
 > This is how we ship Muse Glimmer's text and image inputs, direct GGUF export, native K-quant execution, 128K+-token context, and DFlash speculative decoding features. We have released prebuilt PTE artifact bundles that you can download and run on supported NVIDIA GPUs or Macs with Apple silicon using the ExecuTorch runtime.
 
 ## 빠르게 시작하기 / Quickstart
 
 ### PTE 받기 / Getting the PTEs
 
-PTE는 ExecuTorch Python 스택이 모델의 PyTorch 그래프로부터 사전에 만들어내는 직렬화된 아티팩트로, 대상 백엔드에 맞춰 최적화되어 있습니다.
+PTE는 ExecuTorch Python 스택이 모델의 PyTorch 그래프에서 사전에 만들어내는 직렬화된 아티팩트로, 대상 백엔드에 맞춰 최적화되어 있습니다.
 > A PTE is the serialized artifact produced ahead of time from a model's PyTorch graph by the ExecuTorch Python stack, and optimized for a target backend.
 
 #### 내려받기(권장) / Download (Preferred)
@@ -39,12 +39,12 @@ NVIDIA CUDA와 Apple 실리콘(Metal)용으로 검증한 PTE를 Hugging Face에 
 
 #### 직접 빌드하기 / Build your own
 
-미리 빌드된 PTE로 시작하는 것이 가장 빠르게 실행해 보는 방법입니다. 직접 빌드하려면 ExecuTorch의 Muse Glimmer [README](https://github.com/pytorch/executorch/blob/main/examples/models/muse-glimmer/README.md)를 따라 백엔드와 모달리티(modality), 컨텍스트 길이, DFlash 사용 여부를 선택하면 됩니다. ExecuTorch는 `torch.export` 기반 사전 컴파일 스택을 통해 공개된 GGUF 체크포인트에서 곧바로 익스포트합니다. CUDA 익스포트는 감지된 GPU 아키텍처에 맞춰 Triton 커널을 컴파일하고 자동 튜닝(autotune)합니다. 최상의 결과를 얻으려면 아티팩트를 실행할 GPU와 같은 아키텍처에서 익스포트하세요.
+미리 빌드된 PTE로 시작하면 가장 빠르게 실행해 볼 수 있습니다. 직접 빌드하려면 ExecuTorch의 Muse Glimmer [README](https://github.com/pytorch/executorch/blob/main/examples/models/muse-glimmer/README.md)를 따라 백엔드와 모달리티(modality), 컨텍스트 길이, DFlash 사용 여부를 선택하면 됩니다. ExecuTorch는 `torch.export` 기반 사전 컴파일 스택을 통해 공개된 GGUF 체크포인트에서 곧바로 내보냅니다. CUDA 내보내기는 감지된 GPU 아키텍처에 맞춰 Triton 커널을 컴파일하고 자동 튜닝(autotune)합니다. 최상의 결과를 얻으려면 아티팩트를 실행할 GPU와 같은 아키텍처에서 내보내세요.
 > Starting with a prebuilt PTE is the fastest way to get running. To build your own, follow the ExecuTorch Muse Glimmer [README](https://github.com/pytorch/executorch/blob/main/examples/models/muse-glimmer/README.md), and select the backend, modality, context length, and whether to use DFlash. ExecuTorch exports directly from the released GGUF checkpoints through its torch.export-based ahead-of-time stack. CUDA export compiles and autotunes Triton kernels for the detected GPU architecture. For the best results, export on the same GPU architecture that will run the artifact.
 
-## PTE 실행하기 / Executing the PTEs
+### PTE 실행하기 / Executing the PTEs
 
-### 1. 런타임 빌드하기 / 1. Build the runtime
+#### 1. 런타임 빌드하기 / 1. Build the runtime
 
 ExecuTorch는 이 모델 러너(runner)를 위해 [CUDA](https://docs.pytorch.org/executorch/stable/backends/cuda/cuda-overview.html)와 [MLX 백엔드](https://pytorch.kr/blog/2026/executorch-mlx-delegate/) 양쪽의 CMake 프리셋을 함께 제공합니다. [여기](https://docs.pytorch.org/executorch/stable/getting-started.html)의 ExecuTorch 설치 안내를 따른 뒤, 선택한 PTE에 맞춰 추측 디코딩을 적용하거나 적용하지 않은 러너를 CMake로 빌드하세요. DFlash를 쓰는 러너와 쓰지 않는 러너 모두 텍스트와 이미지 모달리티를 지원하며, 에이전틱 사용 사례를 위한 ExecuTorch의 예제 `llm_server` 와도 호환됩니다.
 > ExecuTorch ships CMake presets for both the [CUDA](https://docs.pytorch.org/executorch/stable/backends/cuda/cuda-overview.html) and [MLX backends](https://pytorch.org/blog/running-pytorch-models-on-apple-silicon-gpus-with-the-executorch-mlx-delegate/) for this model runner(s). Follow ExecuTorch installation instructions [here](https://docs.pytorch.org/executorch/stable/getting-started.html), and then use CMake to build the runners with or without speculative decoding for the PTE you selected. Both, with and without DFlash, runners support text and image modalities and are compatible with the example llm\_server in ExecuTorch for agentic use cases.
@@ -60,9 +60,9 @@ $ cmake --workflow --preset muse-glimmer-cuda # macOS에서는 muse-glimmer-mlx 
 # 이 명령으로 solo_runner, dflash_runner, 서빙 워커가 빌드됩니다.
 ```
 
-### 2. PTE 실행하기 / 2. Run the PTEs
+#### 2. PTE 실행해 보기 / 2. Run the PTEs
 
-러너를 빌드했다면, 아래는 PTE를 실행하는 몇 가지 예시입니다.
+러너를 빌드했다면, 다음은 PTE를 실행하는 몇 가지 예시입니다.
 > Here are some examples of how to run the PTEs, once you have built the runners.
 
 ```bash
@@ -127,8 +127,8 @@ $ pi \
 
 ### DFlash 추측 디코딩 지원 / Enabling DFlash speculative decoding
 
-- 가중치를 공유해 타깃 모델과 드래프트 모델의 상호 운용을 최적화했고, 둘을 하나의 PTE로 익스포트했습니다.
-- DFlash의 블록 차원은 동적으로 익스포트되므로, 하나의 PTE로 런타임에 블록 길이를 선택할 수 있습니다.
+- 가중치를 공유해 타깃 모델과 드래프트 모델의 상호 운용을 최적화했고, 둘을 하나의 PTE로 내보냈습니다.
+- DFlash의 블록 차원은 동적으로 내보내지므로, 하나의 PTE로 런타임에 블록 길이를 선택할 수 있습니다.
 - 런타임은 그리디 디코딩(greedy decoding)과 거부 샘플링(rejection sampling)을 모두 지원합니다.
 
 > - We optimized target and draft interoperability through weight sharing, exporting both into a single PTE.
@@ -137,9 +137,9 @@ $ pi \
 
 ### GGUF 로딩과 K-quant 지원 / Supporting GGUF loading and k-quant
 
-- Muse Glimmer와 함께 공개된 GGUF에서 곧바로 익스포트합니다.
+- Muse Glimmer와 함께 공개된 GGUF에서 곧바로 내보냅니다.
 - CUDA에서는 Q4\_K/Q5\_K/Q6\_K를 dp4a GEMV 커널을 사용하는 패킹된 INT4/5/6으로 매핑하고, MLX에서는 재패킹하거나 융합한 Metal 커널로 매핑합니다.
-- MLX에서는 성능을 위해, 재패킹 시점에 스케일과 최솟값이 동일한 인접 서브블록들을 병합이 무손실인 경우에 한해 최대 128까지 더 큰 그룹 크기로 합칩니다.
+- MLX에서는 성능을 위해, 재패킹 시점에 스케일과 최솟값이 같은 인접 서브블록들을 최대 128까지 더 큰 그룹 크기로 합칩니다. 단, 병합이 무손실일 때만 합칩니다.
 
 > - We export straight from the GGUF released with the Muse Glimmer.
 > - We map Q4\_K/Q5\_K/Q6\_K to packed INT4/5/6 with dp4a GEMV kernels on CUDA, and to repacked or fused Metal kernels on MLX.
@@ -148,7 +148,7 @@ $ pi \
 ### 에이전틱 하네스(agentic harness)와 LLM 서빙 / Agentic harness and LLM serving
 
 - 두 백엔드에 추가한 세션별 가변 상태 재바인딩(mutable-state rebinding) 덕분에, 모델을 한 번만 로드해도 서로 격리된 여러 대화를 처리할 수 있습니다.
-- 추론(reasoning) 라우팅을 갖춘 Harmony 채팅 템플릿을 추가했습니다.
+- 추론(reasoning) 라우팅을 갖춘 Harmony 채팅 템플릿 처리를 추가했습니다.
 - 한 턴에 여러 번 호출하는 경우까지 포함해, 모델의 XML 도구 호출 형식을 처리하는 파서를 추가했습니다.
 
 > - One model load serves multiple isolated conversations, through per-session mutable-state rebinding we added to both backends.
@@ -159,7 +159,7 @@ $ pi \
 
 **CUDA**
 
-- 디코드를 CUDA 그래프로 캡처해, 커널마다 발생하던 실행 오버헤드를 한 번의 제출로 줄였습니다.
+- 디코드를 CUDA 그래프로 캡처해, 커널마다 들던 실행(launch) 오버헤드를 제출 한 번으로 줄였습니다.
 - 패킹된 K-quant 커널은 배치가 작은 디코드를 가속하고, 길이를 인식하는 split-K FlashDecoding++ 경로는 단일 토큰 디코드와 작은 DFlash 검증 블록을 최적화합니다.
 
 > **CUDA**
