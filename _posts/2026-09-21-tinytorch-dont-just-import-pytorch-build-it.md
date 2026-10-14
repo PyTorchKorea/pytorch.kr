@@ -20,7 +20,7 @@ org_link: https://pytorch.org/blog/tinytorch-dont-just-import-pytorch-build-it/
 
 ## 요약 / TL;DR
 
-성숙한 시스템 프로젝트는 결국 모두 교육용 버전이 필요해집니다. TinyTorch는 무료 오픈소스 커리큘럼(curriculum)으로, 텐서부터 트랜스포머까지 동작하는 ML 프레임워크를 순수 Python으로, PyTorch 자체의 API를 사용해 처음부터 직접 만들어 봅니다. 모듈은 20개입니다. RAM 4GB에 GPU가 없는 노트북에서도 실행됩니다. [tinytorch.ai](https://tinytorch.ai/)에서 볼 수 있습니다.
+성숙한 시스템 프로젝트는 결국 모두 교육용 버전이 필요해집니다. TinyTorch는 텐서부터 트랜스포머까지 동작하는 ML 프레임워크를 PyTorch 자체의 API를 사용해 순수 Python으로 처음부터 직접 만들어 보는 무료 오픈소스 커리큘럼(curriculum)입니다. 모듈은 20개입니다. RAM 4GB에 GPU가 없는 노트북에서도 실행됩니다. [tinytorch.ai](https://tinytorch.ai/)에서 볼 수 있습니다.
 > Every mature systems project eventually needs a teaching version. TinyTorch is a free, open-source curriculum where you build a working ML framework from scratch, tensors through transformers, in pure Python, using PyTorch’s own API. Twenty modules. Runs on a laptop with 4 GB of RAM and no GPU. It is at [tinytorch.ai](https://tinytorch.ai/).
 
 이 글의 나머지 부분에서는 왜 이런 것이 있어야 했다고 생각하는지, 그리고 6년 동안 운영하며 배운 것 중 오픈 커리큘럼 작업을 하는 다른 사람들에게 쓸모 있을 만한 것을 이야기합니다.
@@ -37,7 +37,7 @@ Unix가 머릿속에 다 담기에는 너무 커지자, Andrew Tanenbaum은 MINI
 이 중 어느 것도 프로덕션 시스템을 대체하려던 것이 아닙니다. 이들은 프로덕션 시스템이 감출 수밖에 없는 것을 가르쳤습니다.
 > None of these were trying to replace the production system. They taught what production systems have to hide.
 
-이제 PyTorch가 그 지점에 와 있고, 이는 칭찬입니다. PyTorch 내부 구조에 대해서는 정말 좋은 글이 있고, 대부분은 그 내부를 직접 작성한 사람들이 썼습니다. 다만 그 글들은 거의 모두 독자가 이미 프레임워크 엔지니어처럼 생각한다고 가정합니다. 빠져 있던 것은 그 아래의 사다리 한 칸입니다. 직접 만들어 보는 것이면서, 대학이 학점 과목으로 실제 채택할 수 있는 채점 인프라를 갖추고, 독학하는 사람도 GPU 예산 없이 끝까지 해낼 수 있는 것입니다.
+이제 PyTorch가 그 지점에 와 있고, 이는 칭찬입니다. PyTorch 내부 구조에 대해서는 정말 좋은 글이 있고, 대부분은 그 내부를 직접 작성한 사람들이 썼습니다. 다만 그 글들은 거의 모두 독자가 이미 프레임워크 엔지니어처럼 생각한다고 가정합니다. 빠져 있던 것은 그보다 한 단계 아래의 입문 과정입니다. 직접 만들어 보는 것이면서, 대학이 학점 과목으로 실제 채택할 수 있는 채점 인프라를 갖추고, 독학하는 사람도 GPU 예산 없이 끝까지 해낼 수 있는 것입니다.
 > PyTorch is at that point now, which is a compliment. There is genuinely good writing on its internals, most of it by the people who wrote them, and nearly all of it assumes you already think like a framework engineer. What has been missing is the rung below that. Something you build yourself, with grading infrastructure a university can actually adopt for credit, that a self-learner can get through without a GPU budget.
 
 ## 학생만이 아니라 PyTorch에도 중요한 이유 / Why This Matters to PyTorch, Not Only to Students
@@ -60,7 +60,7 @@ Unix가 머릿속에 다 담기에는 너무 커지자, Andrew Tanenbaum은 MINI
 `backward()`를 직접 작성해 보고, 모멘텀(momentum)과 분산(variance) 버퍼를 직접 할당하며 Adam의 메모리 사용량이 세 배로 늘어나는 것을 지켜본 학생은, 이미 머릿속에 모델을 갖춘 상태로 PyTorch의 실제 Autograd를 만납니다. 이 학생은 프로덕션 코드를 자신이 이해하는 것의 더 정교한 버전으로 읽습니다. 그만큼 온보딩 비용이 적게 드는 엔지니어입니다.
 > A student who has written `backward()` themselves, who allocated the momentum and variance buffers and watched Adam’s memory footprint triple, shows up to PyTorch’s real autograd with the mental model already loaded. They read the production code as a more sophisticated version of something they understand. That is a cheaper engineer to onboard.
 
-예상하지 못했던 부분은 기업들도 이것을 원한다는 점입니다. 여러 팀이 TinyTorch를 2~3주짜리 집중 신입 온보딩 과정으로, 한 분기에 걸친 사내 교육으로, 그리고 특정 디버깅 워크숍으로 사용했습니다. 디버깅 워크숍에서는 누군가가 Autograd를 다루는 모듈 06이나 어텐션을 다루는 모듈 12를 풀어 봅니다. 그 하위 시스템에서 계속 막히기 때문입니다. 어디에 등록되어 있을 필요도 없습니다.
+예상하지 못했던 부분은 기업들도 이것을 원한다는 점입니다. 여러 팀이 TinyTorch를 2~3주짜리 집중 신입 온보딩 과정으로, 한 분기에 걸친 사내 교육으로, 그리고 특정 디버깅 워크숍으로 사용했습니다. 디버깅 워크숍에서는 누군가가 Autograd를 다루는 모듈 06이나 어텐션을 다루는 모듈 12를 풀어 봅니다. 그 하위 시스템에서 계속 막히기 때문입니다. 어딘가에 수강 등록을 할 필요도 없습니다.
 > The part we did not anticipate is that companies want this too. Teams have used TinyTorch for new-hire onboarding as a two to three week intensive, as internal training spread across a quarter, and as targeted debugging workshops where somebody works through Module 06 on autograd or Module 12 on attention because that is the subsystem they keep losing to. You do not have to be enrolled anywhere.
 
 ## 무엇을 만들었나 / What We Built
@@ -138,7 +138,7 @@ TinyTorch는 Harvard에서 [Machine Learning Systems](https://mlsysbook.ai/) 프
 이 가이드라인은 다른 기관이 적용할 수 있는 교훈을 요청하는데, 마땅히 요청할 만한 것입니다. 네 가지를 소개합니다.
 > These guidelines ask for lessons other institutions can apply, which is the right thing to ask for. Four of them.
 
-**프로덕션 API와 정확히 맞추세요.** 저희가 내린 결정 중 가장 효과가 컸던 것은 독자적인 문법을 만들지 않기로 한 것입니다. 학습자가 교육용 API와 실제 API 사이를 번역하는 데 쓰는 시간은 학습자에게 아무것도 남기지 않고, 여러분은 그때마다 학습자 일부를 잃게 됩니다. API 호환성을 있으면 좋은 것이 아니라 반드시 지켜야 할 요구사항으로 다루세요.
+**프로덕션 API와 정확히 맞추세요.** 저희가 내린 결정 중 가장 효과가 컸던 것은 독자적인 문법을 만들지 않기로 한 것입니다. 학습자가 교육용 API와 실제 API 사이를 번역하는 데 쓰는 시간은 학습자에게 아무것도 남기지 않고, 여러분은 그때마다 학습자 일부를 잃게 됩니다. API 호환성은 있으면 좋은 정도로 여기지 말고, 반드시 지켜야 할 요구사항으로 다루세요.
 > **Match the production API exactly.** The highest-leverage decision we made was refusing to invent our own syntax. Every hour a learner spends translating between your teaching API and the real one is an hour that buys them nothing and costs you a fraction of them. Treat API compatibility as a hard requirement, not a nice-to-have.
 
 **기능 목록보다 하드웨어 하한선을 먼저 정하세요.** TinyTorch는 2GHz 듀얼 코어 CPU와 4GB RAM에서, 학습 중 네트워크 연결 없이 실행됩니다. 작은 오프라인 데이터셋 두 개(흑백 숫자 이미지 약 1,000개와 대화형 질문-답변 쌍 350개, 합쳐서 50MB 미만)를 함께 제공하기 때문입니다. 그 대가로 GPU 지원을 포기했습니다. 대신 Chromebook을 쓰는 교실, 5년 된 노트북, 네트워크 정책 때문에 다른 방식은 막혔을 대학들을 얻었습니다. 누구를 배제할 각오가 되어 있는지 시작하기 전에 정하세요. 이 결정은 나중에 다시 바꾸려면 비용이 커집니다.
