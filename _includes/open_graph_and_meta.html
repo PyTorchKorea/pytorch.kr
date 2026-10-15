@@ -71,7 +71,11 @@
 <meta name="twitter:description" content="{{ og_description | escape }}" />
 <meta name="twitter:image" content="{{ og_image }}" />
 <link rel="canonical" href="{{ canonical_url }}" />
+{% if jekyll.environment == 'preview' %}
+<meta name="robots" content="noindex, nofollow" />
+{% else %}
 <meta name="robots" content="index, follow, max-image-preview:large" />
+{% endif %}
 {%- if og_type == 'article' %}
 <script type="application/ld+json">
 {

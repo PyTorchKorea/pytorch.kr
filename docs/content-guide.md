@@ -51,7 +51,7 @@ vLLM.KR은 본문에서 세 가지 활동을 소개합니다. 회차를 관리�
 
 날짜가 지났다고 `held`로 바꾸지 않습니다. 개최 여부가 확인되면 변경합니다. 취소·연기한 행사는 삭제하지 않고 상태를 바꿉니다. 새 날짜가 확정되기 전에는 기존 날짜와 `postponed`를 유지하며, 행사 목록의 변경 안내에 표시됩니다.
 
-다가오는 행사·지난 행사 구분은 빌드 시각 기준입니다. 현재 배포 워크플로는 매일 빌드합니다. 신청 버튼은 명시된 마감 이후 브라우저에서도 ‘참가 안내 보기’로 바뀌며, 실제 접수 여부는 모집 플랫폼을 따릅니다. 조기 마감은 `registration.status: closed`로 수정합니다. 발표자 모집은 일반 참가 신청과 혼동하지 않도록 본문 또는 이름이 분명한 관련 링크에 둡니다.
+다가오는 행사·지난 행사 구분은 빌드 시각 기준입니다. 운영 사이트는 매일 빌드하고, PR 미리보기는 PR 변경 또는 수동 실행 시 갱신합니다. 오래된 미리보기의 날짜 구분을 확인할 때는 다시 빌드합니다. 신청 버튼은 명시된 마감 이후 브라우저에서도 ‘참가 안내 보기’로 바뀌며, 실제 접수 여부는 모집 플랫폼을 따릅니다. 조기 마감은 `registration.status: closed`로 수정합니다. 발표자 모집은 일반 참가 신청과 혼동하지 않도록 본문 또는 이름이 분명한 관련 링크에 둡니다.
 
 ## 영상·발표자료를 추가하는 방법
 
@@ -114,6 +114,7 @@ make include-yarn-deps
 ruby scripts/check_content.rb
 ruby scripts/test_content.rb
 BUNDLE_PATH=vendor/bundler bundle exec ruby scripts/test_content_render.rb
+node --test scripts/test_navigation.js
 BUNDLE_PATH=vendor/bundler bundle exec jekyll build
 python3 scripts/check_content_links.py
 python3 -m http.server 4000 --bind 127.0.0.1 --directory _site

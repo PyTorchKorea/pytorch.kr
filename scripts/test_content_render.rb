@@ -9,12 +9,13 @@ root = File.expand_path('..', __dir__)
 Dir.mktmpdir('pytorchkr-render-') do |dir|
   %w[_layouts _includes _events _groups _projects _data events projects groups].each { |name| FileUtils.mkdir_p(File.join(dir, name)) }
   %w[event activity].each { |name| FileUtils.cp(File.join(root, "_layouts/#{name}.html"), File.join(dir, '_layouts')) }
-  %w[session content_links event_list event_status activity_card section_hero main_menu mobile_menu dropdown_links].each { |name| FileUtils.cp(File.join(root, "_includes/#{name}.html"), File.join(dir, '_includes')) }
+  %w[session content_links event_list event_status activity_card section_hero main_menu mobile_menu dropdown_links open_graph_and_meta].each { |name| FileUtils.cp(File.join(root, "_includes/#{name}.html"), File.join(dir, '_includes')) }
   File.write(File.join(dir, '_layouts/general.html'), '{% if page.hero_image %}{% include section_hero.html %}{% endif %}{{ content }}')
   File.write(File.join(dir, '_layouts/default.html'), '{{ content }}{% include main_menu.html %}{% include mobile_menu.html %}')
   File.write(File.join(dir, '_includes/quick_start_module.html'), '')
   FileUtils.cp(File.join(root, 'index.html'), dir)
   File.write(File.join(dir, 'all-events.html'), "---\n---\n{% include event_list.html limit=20 %}")
+  File.write(File.join(dir, 'metadata.html'), "---\n---\n{% include open_graph_and_meta.html %}")
   FileUtils.cp(File.join(root, '_data/navigation.yml'), File.join(dir, '_data'))
   %w[projects groups].each do |name|
     FileUtils.cp(File.join(root, "#{name}/index.html"), File.join(dir, name))
@@ -33,7 +34,7 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
     data = { 'uid' => uid, 'title' => uid, 'summary' => 'Fixture', 'event_date' => '2099-10-14', 'event_status' => 'scheduled', 'last_verified_at' => '2026-10-02' }.merge(extra)
     File.write(File.join(dir, "_events/#{uid}.md"), data.to_yaml + "---\nFixture body\n")
   end
-  write.call('future', { 'sessions' => [session], 'registration' => { 'url' => 'https://example.org/register', 'closes_at' => '2099-10-13T23:59:00+09:00' } })
+  write.call('future', { 'group_ids' => ['groups-0'], 'project_ids' => ['projects-0'], 'sessions' => [session], 'registration' => { 'url' => 'https://example.org/register', 'closes_at' => '2099-10-13T23:59:00+09:00' } })
   write.call('cancelled', { 'event_status' => 'cancelled', 'registration' => { 'url' => 'https://example.org/register', 'closes_at' => '2099-10-13T23:59:00+09:00' } })
   write.call('postponed', { 'event_status' => 'postponed' })
   write.call('past-unconfirmed', { 'event_date' => '2000-01-01', 'registration' => { 'url' => 'https://example.org/register', 'closes_at' => '2000-01-01T00:00:00+09:00' } })
@@ -58,6 +59,11 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
     assert.call(detail.scan('<h1>').size == 1 && detail.include?('class="section-hero-image" src="/preview/assets/'), "#{name}: detail hero missing or heading duplicated")
   end
   assert.call(future.include?('href="/preview/events/"'), 'baseurl not honored')
+  %w[groups/groups-0 projects/projects-0].each do |name|
+    related = File.read(File.join(dir, "_site/#{name}/index.html"))
+    assert.call(related.include?('href="/preview/events/future/"'), "#{name}: a linked event did not appear automatically")
+    assert.call(future.include?("href=\"/preview/#{name}/\""), "future: related #{name} link missing")
+  end
   %w[cancelled past-unconfirmed not-open early-closed].each { |uid| assert.call(!read.call(uid).include?('참가 신청하기'), "#{uid}: invalid signup CTA") }
   assert.call(read.call('past-unconfirmed').include?('지난 일정'), 'past date inferred as held')
   assert.call(read.call('limited').include?('음성이 녹음되지'), 'audio failure notice missing')
@@ -87,6 +93,20 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
   %w[projects groups events].each do |name|
     listing = File.read(File.join(dir, "_site/#{name}/index.html"))
     assert.call(listing.scan('<h1>').size == 1 && listing.include?('class="section-hero-image" src="/preview/assets/'), "#{name} photo hero missing")
+  end
+
+  original_environment = ENV['JEKYLL_ENV']
+  begin
+    %w[production preview].each do |environment|
+      ENV['JEKYLL_ENV'] = environment
+      Jekyll::Site.new(Jekyll.configuration(config)).process
+      metadata = File.read(File.join(dir, '_site/metadata.html'))
+      expected = environment == 'preview' ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'
+      assert.call(metadata.include?("<meta name=\"robots\" content=\"#{expected}\" />"), "#{environment}: incorrect indexing policy")
+      assert.call(metadata.scan('name="robots"').size == 1, "#{environment}: conflicting indexing directives")
+    end
+  ensure
+    ENV['JEKYLL_ENV'] = original_environment
   end
 
 end

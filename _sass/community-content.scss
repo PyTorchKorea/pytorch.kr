@@ -19,7 +19,7 @@ $community-link: #d63916;
   ul, ol { margin: 0; padding-left: 24px; }
   img { max-width: 100%; height: auto; }
 }
-.community-page a, .community-home a { color: $community-link; }
+.community-page :where(main) a, .community-home a { color: $community-link; }
 :is(.community-page, .community-home, .main-menu, .mobile-main-menu) :is(a, button, summary):focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
 .content-heading { padding: 20px 0 38px; border-bottom: 1px solid $light_white; margin-bottom: 40px; }
 .community-page p.content-eyebrow, .community-home p.content-eyebrow { color: $dark_grey; font-size: 14px; margin: 0 0 10px; letter-spacing: .015em; }
