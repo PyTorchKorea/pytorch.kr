@@ -14,7 +14,8 @@ The earlier proposal to replace the main hero does not describe the final agreem
 
 The audit covers content relationships, shared templates, navigation, the existing design system, local validation, and preview deployment.
 Completion requires fresh desktop and mobile inspection, a pushed commit, a successful preview workflow, and inspection of the deployed result.
-Local and browser inspection passed. Deployment evidence appears below after the preview workflow completes.
+Local inspection and the first deployed browser inspection passed.
+The deployment inspection identified one additional mobile contrast correction.
 
 ## Findings and local changes
 
@@ -39,7 +40,9 @@ A screen reader audit was not part of this inspection.
 The community link selector also changed links in the dark footer callouts.
 The resulting foreground color had a contrast ratio of 3.21:1 against the background.
 The selector now applies only inside the main content.
-The shared footer uses a lighter orange from the existing palette.
+The shared footer uses a lighter orange from the existing palette, with a contrast ratio of 5.18:1.
+The deployed mobile menu also exposed active links with a contrast ratio of 4.11:1.
+Those 17-pixel links now use the same lighter orange, with a contrast ratio of 5.18:1.
 Body action buttons retain white text and their existing orange background.
 
 ### Preview indexing
@@ -97,7 +100,7 @@ The content guide distinguishes daily production builds from previews refreshed 
 | Keyboard navigation | Skip link, section links, menu arrows, Escape, Tab wrapping, resize cleanup | Passed |
 | Representative video playback | End To End speech recognition, 2022 seminar, reached 3:08 of 34:55 | Passed |
 | Revised workflow | YAML, shell, embedded JavaScript, and target validation cases | Local review passed |
-| Commit, push, preview deployment, and live revision match | Recorded after deployment below | Pending |
+| Commit, push, preview deployment, and live revision match | Run 38697768760 and live browser inspection | Passed for first deployment |
 
 The browser inspection covered the homepage, collection indexes, vLLM group, Physical AI group, project, and event, and representative archived events.
 All 50 route and viewport combinations had one main heading and no horizontal overflow.
@@ -140,9 +143,19 @@ The builds succeeded, but contributor metadata completeness is not proven.
 
 ## Deployment evidence
 
-The reviewed changes will be pushed to the existing PR branch.
-The preview workflow must pass content tests, build the site, inspect local links, deploy, and compare the public revision file.
-The live audit must then confirm responsive rendering, keyboard focus, robots metadata, and current event status.
+Commit `4a98b80fb26fdc87501ae16c3305c117a849dc6d` passed [preview run 38697768760](https://github.com/PyTorchKR/pytorch.kr/actions/runs/38697768760).
+The public revision file matched the tested merge commit `5d8accd0db0f541637f14a9de3624d606c2b0d0d`.
+The workflow passed dependency installation, content tests, site generation, local link inspection, deployment, and the public revision comparison.
+
+The live browser inspected ten routes at 320 and 1440 CSS pixels after page load.
+All 20 combinations had one main heading, no horizontal overflow, and `noindex, nofollow` metadata.
+The skip link focused the main content. The mobile menu restored focus and removed background isolation after Escape.
+The Physical AI event displayed “지난 일정” and “참가 안내 보기”.
+The deployed site retained the PyTorch release update from the base branch through the PR merge build.
+
+A second commit applies the mobile contrast correction found during the deployed inspection.
+The final task result records the follow-up workflow and public revision comparison.
+The production workflow is reviewed and tested locally, but this audit deploys only the PR preview.
 
 Unpublished slides, private photos, draft recaps, and proposed storage services remain outside the confirmed public content.
 The audit does not infer that an event occurred merely because its scheduled date passed.
