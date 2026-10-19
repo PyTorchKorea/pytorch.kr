@@ -3,6 +3,8 @@ uid: physical-ai
 title: PhysicalAI Study
 summary: Physical AI 논문과 기술을 공부하고, Awesome Physical AI와 세미나 발표로 결과를 정리하는 스터디입니다.
 kind: 스터디
+featured: true
+group_type: community
 order: 2
 sources:
 - https://github.com/PyTorchKR/Awesome-Physical-AI

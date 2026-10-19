@@ -6,6 +6,7 @@ kind: 탐색 도구
 website_url: https://oss-landscape.pytorch.kr/
 website_label: OSS Landscape 보기
 repository_url: https://github.com/PyTorchKR/oss-landscape
+featured: true
 order: 3
 sources:
 - https://github.com/PyTorchKR/oss-landscape

@@ -3,6 +3,8 @@ uid: example-group
 title: 모임 이름
 summary: 모임의 주제와 활동 방식을 소개합니다.
 kind: 기술 모임
+featured: false
+group_type: community
 order: 10
 published: false
 sources:

@@ -9,7 +9,7 @@ root = File.expand_path('..', __dir__)
 Dir.mktmpdir('pytorchkr-render-') do |dir|
   %w[_layouts _includes _events _groups _projects _data events projects groups].each { |name| FileUtils.mkdir_p(File.join(dir, name)) }
   %w[event activity].each { |name| FileUtils.cp(File.join(root, "_layouts/#{name}.html"), File.join(dir, '_layouts')) }
-  %w[session content_links event_list event_status activity_card section_hero main_menu mobile_menu dropdown_links open_graph_and_meta].each { |name| FileUtils.cp(File.join(root, "_includes/#{name}.html"), File.join(dir, '_includes')) }
+  %w[session content_links event_list event_status activity_card section_hero main_menu mobile_menu dropdown_links open_graph_and_meta activity_directory activity_relations event_navigation material_list].each { |name| FileUtils.cp(File.join(root, "_includes/#{name}.html"), File.join(dir, '_includes')) }
   File.write(File.join(dir, '_layouts/general.html'), '{% if page.hero_image %}{% include section_hero.html %}{% endif %}{{ content }}')
   File.write(File.join(dir, '_layouts/default.html'), '{{ content }}{% include main_menu.html %}{% include mobile_menu.html %}')
   File.write(File.join(dir, '_includes/quick_start_module.html'), '')
@@ -18,14 +18,15 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
   File.write(File.join(dir, 'metadata.html'), "---\n---\n{% include open_graph_and_meta.html %}")
   FileUtils.cp(File.join(root, '_data/navigation.yml'), File.join(dir, '_data'))
   %w[projects groups].each do |name|
-    FileUtils.cp(File.join(root, "#{name}/index.html"), File.join(dir, name))
+    FileUtils.cp_r(Dir.glob(File.join(root, name, '*')), File.join(dir, name))
     4.times do |i|
-      data = { 'uid' => "#{name}-#{i}", 'title' => "#{name} #{i}", 'summary' => 'Fixture', 'order' => i }
+      data = { 'uid' => "#{name}-#{i}", 'title' => "#{name} #{i}", 'summary' => 'Fixture', 'order' => i, 'featured' => i < 3, 'group_type' => (i == 3 ? 'series' : 'community') }
+      data['group_ids'] = ['groups-0'] if name == 'projects' && i == 0
       File.write(File.join(dir, "_#{name}/#{name}-#{i}.md"), data.to_yaml + "---\n")
     end
     File.write(File.join(dir, "_#{name}/hidden.md"), { 'title' => 'Hidden activity', 'published' => false }.to_yaml + "---\n")
   end
-  FileUtils.cp(File.join(root, 'events/index.html'), File.join(dir, 'events'))
+  FileUtils.cp_r(Dir.glob(File.join(root, 'events/*')), File.join(dir, 'events'))
   config = { 'source' => dir, 'destination' => File.join(dir, '_site'), 'baseurl' => '/preview', 'timezone' => 'Asia/Seoul',
     'collections' => %w[events projects groups features].to_h { |name| [name, { 'output' => true, 'permalink' => "/#{name}/:path/" }] },
     'defaults' => YAML.safe_load(File.read(File.join(root, '_config.yml')))['defaults'] }
@@ -70,7 +71,13 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
   %w[no-media private].each { |uid| assert.call(!read.call(uid).include?('YouTube에서 보기') && !read.call(uid).include?('slides.pdf'), "#{uid}: media button leaked") }
   assert.call(read.call('private').include?('비공개'), 'private state notice missing')
   index = File.read(File.join(dir, '_site/events/index.html'))
+  archive = File.read(File.join(dir, '_site/events/archive/index.html'))
+  materials = File.read(File.join(dir, '_site/events/materials/index.html'))
+  assert.call(archive.include?('/events/past-unconfirmed/') && !index.include?('/events/past-unconfirmed/'), 'past events mixed into upcoming list')
+  assert.call(materials.include?('/preview/events/future/#session-talk') && !materials.include?('Private talk') && !materials.include?('No media'), 'public materials missing or unavailable materials leaked')
   assert.call(index.include?('/events/future/') && index.include?('취소·일정 변경 안내') && index.include?('/events/cancelled/') && index.include?('/events/postponed/'), 'future or changed event disappeared')
+  series = index.match(/<h2>행사 시리즈<\/h2>(.*?)<\/section>/m)[1]
+  assert.call(series.include?('/groups/groups-3/') && !series.include?('/groups/groups-0/'), 'event series mixed with community groups')
   assert.call(!index.include?('draft-secret') && !File.exist?(File.join(dir, '_site/events/draft-secret/index.html')), 'unpublished event leaked')
   home = File.read(File.join(dir, '_site/index.html'))
   project_section = home.match(/id="home-projects">(.*?)id="home-events"/m)[1]
@@ -81,15 +88,26 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
   all_events = File.read(File.join(dir, '_site/all-events.html'))
   dates = all_events.scan(/class="event-date" datetime="([^"]+)"/).flatten
   assert.call(dates == dates.sort.reverse && dates.include?('2000-01-01') && dates.include?('2099-11-01'), 'combined list must include past and future events in descending date order')
-  assert.call(event_section.scan(/class="event-date" datetime="([^"]+)"/).flatten == dates.first(3), 'homepage must show the latest three events')
-  %w[desktop mobile].each do |mode|
-    %w[projects groups].each do |collection|
-      panel = home.match(/id="#{mode}-menu-#{collection}"[^>]*>(.*?)<\/(?:div|ul)>/m)[1]
-      assert.call(panel.include?("href=\"/preview/#{collection}/\""), "#{mode} collection index missing")
-      4.times { |i| assert.call(panel.include?("href=\"/preview/#{collection}/#{collection}-#{i}/\""), "#{mode} collection item missing") }
-      assert.call(!panel.include?('hidden'), 'unpublished navigation entry leaked')
-    end
+  assert.call(!event_section.include?('/events/cancelled/') && !event_section.include?('/events/postponed/') && !event_section.include?('/events/past-unconfirmed/'), 'homepage mixed past or changed events into upcoming events')
+  upcoming_dates = event_section.scan(/class="event-date" datetime="([^"]+)"/).flatten
+  assert.call(upcoming_dates == upcoming_dates.sort, 'homepage upcoming events are not chronological')
+  navigation = home.scan(/<nav class="main-menu".*?<\/nav>/m)
+  assert.call(navigation.size == 2, 'desktop or mobile navigation missing')
+  navigation.each do |menu|
+    %w[projects groups events].each { |name| assert.call(menu.include?("href=\"/preview/#{name}/\""), "#{name} direct navigation missing") }
+    assert.call(!menu.include?('/projects/projects-') && !menu.include?('/groups/groups-'), 'detail links mixed into global navigation')
   end
+  %w[projects groups].each do |collection|
+    listing = File.read(File.join(dir, "_site/#{collection}/index.html"))
+    all = File.read(File.join(dir, "_site/#{collection}/all/index.html"))
+    assert.call(listing.include?("/#{collection}/#{collection}-0/") && !listing.include?("/#{collection}/#{collection}-3/"), 'featured selection ignored')
+    assert.call(all.include?("/#{collection}/#{collection}-3/") && !all.include?('Hidden activity'), 'archive dropped a public record or leaked a draft')
+    assert.call(!home.include?("menu-#{collection}"), 'individual activities remain in global dropdowns')
+  end
+  group = File.read(File.join(dir, '_site/groups/groups-0/index.html'))
+  project = File.read(File.join(dir, '_site/projects/projects-0/index.html'))
+  assert.call(group.include?('/preview/projects/projects-0/') && project.include?('/preview/groups/groups-0/'), 'bidirectional project-group relationship missing')
+  assert.call(group.include?('id="related-events"') && project.include?('id="related-events"'), 'event relationship anchor missing')
   %w[projects groups events].each do |name|
     listing = File.read(File.join(dir, "_site/#{name}/index.html"))
     assert.call(listing.scan('<h1>').size == 1 && listing.include?('class="section-hero-image" src="/preview/assets/'), "#{name} photo hero missing")
@@ -110,4 +128,4 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
   end
 
 end
-puts 'Content rendering: future, changed, draft, registration, video/slides and missing-media, photo headers, collection navigation and homepage limits passed.'
+puts 'Content rendering: future, changed, draft, registration, video/slides and missing-media, photo headers, activity directories, relationships, public materials, direct navigation and upcoming homepage limits passed.'

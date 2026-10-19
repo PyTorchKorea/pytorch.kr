@@ -3,6 +3,8 @@ uid: pytorch-day-korea
 title: PyTorch Day Korea
 summary: 모델 개발과 최적화, 추론·서빙, AI 애플리케이션을 다루는 커뮤니티 컨퍼런스입니다.
 kind: 컨퍼런스
+group_type: series
+navigation_key: events
 order: 5
 sources:
 - https://pytorchday.kr/

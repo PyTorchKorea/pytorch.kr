@@ -119,7 +119,7 @@ defaults:
   - scope: { path: "", type: groups }
     values: { layout: activity, navigation_key: groups, hero_image: /assets/images/about-background.jpg }
   - scope: { path: "", type: events }
-    values: { layout: event, navigation_key: groups, hero_image: /assets/images/about-background.jpg }
+    values: { layout: event, navigation_key: events, hero_image: /assets/images/about-background.jpg }
 
 # Blog Pagination
 pagination:

@@ -26,24 +26,21 @@ main_menu:
 
   - title: "프로젝트"
     key: "projects"
-    has_dropdown: true
-    collection: projects
-    dropdown_items:
-      - title: "모든 프로젝트"
-        url: "/projects/"
-        url_type: "baseurl"
+    url: "/projects/"
+    url_type: "baseurl"
+    has_dropdown: false
 
-  - title: "모임·행사"
+  - title: "모임"
     key: "groups"
-    has_dropdown: true
-    collection: groups
-    dropdown_items:
-      - title: "모든 모임"
-        url: "/groups/"
-        url_type: "baseurl"
-      - title: "행사 일정·발표자료"
-        url: "/events/"
-        url_type: "baseurl"
+    url: "/groups/"
+    url_type: "baseurl"
+    has_dropdown: false
+
+  - title: "행사·자료"
+    key: "events"
+    url: "/events/"
+    url_type: "baseurl"
+    has_dropdown: false
 
   - title: "블로그"
     key: "blog"

@@ -6,6 +6,7 @@ kind: 번역
 website_url: https://tutorials.pytorch.kr/
 website_label: 튜토리얼 보기
 repository_url: https://github.com/PyTorchKR/tutorials-kr
+featured: true
 order: 1
 sources:
 - https://github.com/PyTorchKR/tutorials-kr

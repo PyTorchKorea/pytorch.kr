@@ -116,6 +116,12 @@ class ContentCheck
         if data.key?('published') && ![true, false].include?(data['published'])
           error(path, 'published must be a boolean')
         end
+        if data.key?('featured') && ![true, false].include?(data['featured'])
+          error(path, 'featured must be a boolean')
+        end
+        if collection == 'groups' && !%w[community series].include?(data['group_type'])
+          error(path, 'group_type must be community or series')
+        end
         error(path, 'use event_date, not Jekyll date') if collection == 'events' && data.key?('date')
         error(path, 'projects require a website_url or repository_url') if collection == 'projects' && !data['website_url'] && !data['repository_url']
         links(path, data)

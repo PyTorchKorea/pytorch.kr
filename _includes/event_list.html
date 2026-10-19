@@ -24,6 +24,7 @@
         <p class="event-meta">{% include event_status.html event=event %}{% if event.venue %} <span aria-hidden="true">·</span> {{ event.venue | escape }}{% endif %}</p>
         <h3><a href="{{ event.url | relative_url }}">{{ event.title | escape }}</a></h3>
         <p>{{ event.summary | escape }}</p>
+        {% include activity_relations.html item=event %}
         {% if event.recording == 'limited' %}<p class="event-note">음성 녹음 문제로 영상 제공이 제한됩니다.</p>{% endif %}
       </div>
       <a class="content-more" href="{{ event.url | relative_url }}">상세 보기 <span class="visually-hidden">{{ event.title | escape }}</span><span aria-hidden="true"> →</span></a>

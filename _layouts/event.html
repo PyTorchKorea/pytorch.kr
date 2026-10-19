@@ -2,7 +2,8 @@
 layout: general
 community_page: true
 ---
-<nav class="content-breadcrumb" aria-label="현재 위치"><a href="{{ '/' | relative_url }}">홈</a><span aria-hidden="true">/</span><a href="{{ '/groups/' | relative_url }}">모임·행사</a><span aria-hidden="true">/</span><a href="{{ '/events/' | relative_url }}">행사 일정·발표자료</a></nav>
+<nav class="content-breadcrumb" aria-label="현재 위치"><a href="{{ '/' | relative_url }}">홈</a><span aria-hidden="true">/</span><a href="{{ '/events/' | relative_url }}">행사·자료</a></nav>
+{% include activity_relations.html item=page %}
 <header class="content-heading">
   <p class="content-eyebrow">{% include event_status.html event=page %}</p>
   <dl class="event-facts">
@@ -27,10 +28,5 @@ community_page: true
 <div class="content-prose">{{ content }}</div>
 {% if page.sessions.size > 0 %}<section class="content-section"><h2>발표와 자료</h2>{% for session in page.sessions %}{% include session.html session=session %}{% endfor %}</section>{% endif %}
 {% if page.related_links.size > 0 %}<section class="content-section"><h2>후기와 관련 자료</h2>{% include content_links.html links=page.related_links %}</section>{% endif %}
-{% if page.group_ids.size > 0 or page.project_ids.size > 0 %}
-<section class="content-section"><h2>관련 모임·프로젝트</h2><ul class="content-links">
-{% for group in site.groups %}{% if page.group_ids contains group.uid and group.published != false %}<li><a href="{{ group.url | relative_url }}">{{ group.title | escape }} →</a></li>{% endif %}{% endfor %}
-{% for project in site.projects %}{% if page.project_ids contains project.uid and project.published != false %}<li><a href="{{ project.url | relative_url }}">{{ project.title | escape }} →</a></li>{% endif %}{% endfor %}
-</ul></section>{% endif %}
 <p class="content-source">{% if page.source_note %}{{ page.source_note | escape }} · {% endif %}정보 확인: {{ page.last_verified_at | date: '%Y.%m.%d' }}{% for source in page.sources %} · <a href="{{ source | escape }}">{% if forloop.first %}출처{% else %}출처 {{ forloop.index }}{% endif %}</a>{% endfor %}</p>
 <script src="{{ '/assets/community-content.js' | relative_url }}" defer></script>

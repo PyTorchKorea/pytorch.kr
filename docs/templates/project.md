@@ -3,6 +3,7 @@ uid: example-project
 title: 프로젝트 이름
 summary: 실제 공개된 산출물과 활용 방법을 소개합니다.
 kind: 오픈소스 프로젝트
+featured: false
 order: 10
 published: false
 website_url: https://example.org/

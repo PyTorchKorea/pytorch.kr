@@ -6,6 +6,7 @@ kind: 스터디 결과물
 website_url: https://pytorchkr.github.io/Awesome-Physical-AI/
 website_label: 대시보드 보기
 repository_url: https://github.com/PyTorchKR/Awesome-Physical-AI
+featured: true
 order: 5
 sources:
 - https://github.com/PyTorchKR/Awesome-Physical-AI

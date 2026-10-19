@@ -3,6 +3,8 @@ uid: vllm-kr
 title: vLLM.KR
 summary: 대규모 모델 추론과 운영에 관한 지식과 경험을 나누는 PyTorchKR 산하 모임입니다.
 kind: 기술 모임
+featured: true
+group_type: community
 order: 1
 sources:
 - https://vllm.ai/blog/2025-09-16-vllm-meetup

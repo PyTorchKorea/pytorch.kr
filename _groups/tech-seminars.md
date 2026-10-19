@@ -3,6 +3,8 @@ uid: tech-seminars
 title: PyTorchKR 기술 세미나
 summary: PyTorch와 오픈소스 AI를 활용한 연구·개발 경험을 나누는 기술 행사입니다.
 kind: 세미나·컨퍼런스
+group_type: series
+navigation_key: events
 order: 4
 sources:
 - https://event-us.kr/pytorchkr/event

@@ -35,7 +35,14 @@ Dir.mktmpdir('pytorchkr-content-') do |dir|
   assert.call('missing media', ->(d) { d['sessions'] = [{ 'uid' => 'talk', 'title' => 'Talk', 'video' => { 'state' => 'public' } }] }, '11-character')
   assert.call('private URL leak', ->(d) { d['sessions'] = [{ 'uid' => 'talk', 'title' => 'Talk', 'slides' => { 'state' => 'private', 'url' => 'https://example.org/private.pdf' } }] }, 'must not contain')
   assert.call('duplicate sessions', ->(d) { d['sessions'] = Array.new(2) { { 'uid' => 'talk', 'title' => 'Talk' } } }, 'unique slugs')
+  assert.call('invalid selection', ->(d) { d['featured'] = 'yes' }, 'featured must be a boolean')
   File.write(path, original)
+  group_path = File.join(dir, '_groups/physical-ai.md')
+  group_original = File.read(group_path)
+  File.write(group_path, group_original.sub('group_type: community', 'group_type: invalid'))
+  raise 'invalid group type accepted' unless ContentCheck.new(dir).run.any? { |error| error.include?('group_type must be') }
+  checks += 1
+  File.write(group_path, group_original)
   raise ContentCheck.new(dir).run.join("\n") unless ContentCheck.new(dir).run.empty?
 end
 puts "Content validator: #{checks} rejection cases and restored valid content passed."
