@@ -36,7 +36,7 @@ main_menu:
     url_type: "baseurl"
     has_dropdown: false
 
-  - title: "행사·자료"
+  - title: "행사"
     key: "events"
     url: "/events/"
     url_type: "baseurl"

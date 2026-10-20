@@ -1,24 +1,24 @@
 ---
 uid: coresig
-title: CoreSIG
-summary: PyTorch 내부 구조와 AI 가속기 연동 강의 내용을 정리하는 프로젝트입니다.
-kind: 강의 정리
-website_url: https://pytorch.liam.kim/
-website_label: 강의 자료 보기
-repository_url: https://github.com/PyTorchKR/pytorchcore-kr
+title: PyTorch Internals Course
+summary: CoreSIG의 PyTorch + NPU랩에서 진행한 7회 강의를 정리한 PyTorch 내부 구조 강의록입니다.
+kind: 강의록
+website_url: https://core-sig.pytorch.kr/
+website_label: 강의록 보기
+repository_url: https://github.com/PyTorchKR/pytorch-internals-course
 order: 6
+group_ids:
+- coresig
 sources:
-- https://pytorch.liam.kim/
-- https://github.com/PyTorchKR/pytorchcore-kr
-last_verified_at: '2026-10-02'
+- https://github.com/PyTorchKR/pytorch-internals-course
+- https://core-sig.pytorch.kr/
+last_verified_at: '2026-10-20'
 ---
 
-## 강의 자료
+## 강의 내용
 
-PyTorch + NPU랩에서 진행한 강의를 문서로 정리합니다. Eager Mode와 Graph Mode, 자동 미분, 분산 프로그래밍, Custom Kernel과 vLLM, CPU·GPU·NPU를 다룹니다.
+모두의연구소 PyTorch + NPU랩에서 진행한 7회 강의를 문서로 정리합니다. PyTorch의 기술적 배경, Eager Mode와 Graph Mode, 자동 미분, 분산 프로그래밍, Custom Kernel과 vLLM, CPU·GPU·NPU를 다룹니다.
 
-현재 자료는 [PyTorch Internal 강의 사이트](https://pytorch.liam.kim/)에서 볼 수 있습니다. 이 사이트의 자료는 2026년 9월에 PyTorch 2.14 기준으로 검증·업데이트되었습니다.
+## 강의록과 기여
 
-## PyTorchKR 공개 계획
-
-강의 정리 자료를 PyTorchKR에서도 제공할 계획입니다. 공개 전까지는 현재 강의 사이트와 [활동 저장소](https://github.com/PyTorchKR/pytorchcore-kr)를 참고할 수 있습니다.
+[강의록 사이트](https://core-sig.pytorch.kr/)에서 내용을 읽고, [강의록 저장소](https://github.com/PyTorchKR/pytorch-internals-course)에서 수정 사항을 제안할 수 있습니다. 모임 운영과 활동 기록은 연결된 CoreSIG 모임에서 확인할 수 있습니다.

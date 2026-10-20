@@ -2,7 +2,7 @@
 layout: general
 community_page: true
 ---
-{% if page.collection == 'projects' %}{% assign listing = '/projects/' %}{% assign listing_title = '프로젝트' %}{% else %}{% assign listing = '/groups/' %}{% assign listing_title = '모임' %}{% if page.group_type == 'series' %}{% assign listing = '/events/' %}{% assign listing_title = '행사·자료' %}{% endif %}{% endif %}
+{% if page.collection == 'projects' %}{% assign listing = '/projects/' %}{% assign listing_title = '프로젝트' %}{% else %}{% assign listing = '/groups/' %}{% assign listing_title = '모임' %}{% if page.group_type == 'series' %}{% assign listing = '/events/' %}{% assign listing_title = '행사' %}{% endif %}{% endif %}
 <nav class="content-breadcrumb" aria-label="현재 위치"><a href="{{ '/' | relative_url }}">홈</a><span aria-hidden="true">/</span><a href="{{ listing | relative_url }}">{{ listing_title }}</a><span aria-hidden="true">/</span>{% if page.collection == 'projects' %}<a href="{{ '/projects/all/' | relative_url }}#activity-projects--{{ page.uid }}">전체 프로젝트</a>{% else %}<a href="{{ '/groups/all/' | relative_url }}#activity-groups--{{ page.uid }}">전체 모임·행사 시리즈</a>{% endif %}</nav>
 {% if page.website_url or page.repository_url or page.programs.size > 0 %}
 <div class="content-heading">
