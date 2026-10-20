@@ -1,4 +1,4 @@
-<article class="activity-card">
+<article class="activity-card" id="activity-{{ include.item.collection }}--{{ include.item.uid }}" tabindex="-1">
   <p class="content-eyebrow">{{ include.item.kind | escape }}</p>
   <h3><a href="{{ include.item.url | relative_url }}">{{ include.item.title | escape }}</a></h3>
   <p>{{ include.item.summary | escape }}</p>

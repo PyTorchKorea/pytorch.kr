@@ -1,5 +1,5 @@
 {% assign session = include.session %}
-<section class="session" id="session-{{ session.uid }}">
+<section class="session" id="session-{{ session.uid }}" tabindex="-1">
   <h3>{{ session.title | escape }}</h3>
   {% if session.speakers.size > 0 %}<p class="session-speakers">{% for speaker in session.speakers %}{{ speaker.name | escape }}{% if speaker.affiliation %} · {{ speaker.affiliation | escape }}{% endif %}{% unless forloop.last %} / {% endunless %}{% endfor %}</p>{% endif %}
   {% if session.summary %}<p>{{ session.summary | escape }}</p>{% endif %}
@@ -22,4 +22,5 @@
   {% elsif session.video.state == 'pending' %}<p class="event-note">발표 영상 공개를 준비하고 있습니다.</p>{% endif %}
   {% if session.slides.state == 'private' %}<p class="event-note">발표자료는 비공개입니다.</p>{% elsif session.slides.state == 'pending' %}<p class="event-note">발표자료 공개를 준비하고 있습니다.</p>{% endif %}
   {% include content_links.html links=session.related_links %}
+  {% if session.video.state == 'public' or session.slides.state == 'public' %}<p class="session-return"><a href="{{ '/events/materials/' | relative_url }}#material-{{ page.uid }}--{{ session.uid }}">발표 목록으로 돌아가기 <span class="visually-hidden">{{ session.title | escape }}</span> →</a></p>{% endif %}
 </section>

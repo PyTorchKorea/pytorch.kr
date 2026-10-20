@@ -44,6 +44,7 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
   write.call('draft-secret', { 'published' => false })
   write.call('limited', { 'event_date' => '2000-01-01', 'event_status' => 'held', 'recording' => 'limited' })
   write.call('no-media', { 'event_date' => '2099-11-01', 'sessions' => [{ 'uid' => 'talk', 'title' => 'No media' }] })
+  write.call('slides-only', { 'event_date' => '2000-01-01', 'sessions' => [{ 'uid' => 'talk', 'title' => 'Slides only', 'slides' => { 'state' => 'public', 'url' => 'https://example.org/slides-only.pdf' } }] })
   write.call('private', { 'sessions' => [{ 'uid' => 'talk', 'title' => 'Private talk', 'video' => { 'state' => 'private' }, 'slides' => { 'state' => 'private' } }] })
   Jekyll::Site.new(Jekyll.configuration(config)).process
   read = ->(uid) { File.read(File.join(dir, "_site/events/#{uid}/index.html")) }
@@ -74,6 +75,16 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
   archive = File.read(File.join(dir, '_site/events/archive/index.html'))
   materials = File.read(File.join(dir, '_site/events/materials/index.html'))
   assert.call(archive.include?('/events/past-unconfirmed/') && !index.include?('/events/past-unconfirmed/'), 'past events mixed into upcoming list')
+  %w[future slides-only].each do |uid|
+    assert.call(read.call(uid).include?("href=\"/preview/events/materials/#material-#{uid}--talk\""), "#{uid}: session return link missing")
+    assert.call(materials.include?("id=\"material-#{uid}--talk\" tabindex=\"-1\""), "#{uid}: focusable material destination missing")
+  end
+  %w[private no-media].each { |uid| assert.call(!read.call(uid).include?('발표 목록으로 돌아가기'), "#{uid}: return link has no public destination") }
+  %w[future past-unconfirmed cancelled postponed no-media].each do |uid|
+    tabs = read.call(uid).match(/<nav class="content-tabs".*?<\/nav>/m)[0]
+    %w[/events/ /events/materials/ /events/archive/].each { |path| assert.call(tabs.include?("href=\"/preview#{path}\""), "#{uid}: event navigation missing") }
+    assert.call(!tabs.include?('aria-current="page"'), "#{uid}: detail falsely marks a listing as current")
+  end
   assert.call(materials.include?('/preview/events/future/#session-talk') && !materials.include?('Private talk') && !materials.include?('No media'), 'public materials missing or unavailable materials leaked')
   assert.call(index.include?('/events/future/') && index.include?('취소·일정 변경 안내') && index.include?('/events/cancelled/') && index.include?('/events/postponed/'), 'future or changed event disappeared')
   series = index.match(/<h2>행사 시리즈<\/h2>(.*?)<\/section>/m)[1]
@@ -103,6 +114,13 @@ Dir.mktmpdir('pytorchkr-render-') do |dir|
     assert.call(listing.include?("/#{collection}/#{collection}-0/") && !listing.include?("/#{collection}/#{collection}-3/"), 'featured selection ignored')
     assert.call(all.include?("/#{collection}/#{collection}-3/") && !all.include?('Hidden activity'), 'archive dropped a public record or leaked a draft')
     assert.call(!home.include?("menu-#{collection}"), 'individual activities remain in global dropdowns')
+  end
+  %w[projects groups].each do |collection|
+    [0, 3].each do |i|
+      detail = File.read(File.join(dir, "_site/#{collection}/#{collection}-#{i}/index.html"))
+      breadcrumb = detail.match(/<nav class="content-breadcrumb".*?<\/nav>/m)[0]
+      assert.call(breadcrumb.include?("href=\"/preview/#{collection}/all/#activity-#{collection}--#{collection}-#{i}\""), "#{collection}-#{i}: full directory return path missing")
+    end
   end
   group = File.read(File.join(dir, '_site/groups/groups-0/index.html'))
   project = File.read(File.join(dir, '_site/projects/projects-0/index.html'))
