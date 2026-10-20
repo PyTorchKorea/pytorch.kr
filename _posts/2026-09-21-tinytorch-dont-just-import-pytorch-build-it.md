@@ -20,7 +20,7 @@ org_link: https://pytorch.org/blog/tinytorch-dont-just-import-pytorch-build-it/
 
 ## 요약 / TL;DR
 
-성숙한 시스템 프로젝트는 결국 모두 교육용 버전이 필요해집니다. TinyTorch는 텐서부터 트랜스포머까지 동작하는 ML 프레임워크를 PyTorch 자체의 API를 사용해 순수 Python으로 처음부터 직접 만들어 보는 무료 오픈소스 커리큘럼(curriculum)입니다. 모듈은 20개입니다. RAM 4GB에 GPU가 없는 노트북에서도 실행됩니다. [tinytorch.ai](https://tinytorch.ai/)에서 볼 수 있습니다.
+성숙한 시스템 프로젝트는 결국 모두 교육용 버전이 필요해집니다. TinyTorch는 텐서부터 트랜스포머까지 동작하는 ML 프레임워크를 PyTorch와 똑같은 API를 따라 순수 Python으로 처음부터 직접 만들어 보는 무료 오픈소스 커리큘럼(curriculum)입니다. 모듈은 20개입니다. RAM 4GB에 GPU가 없는 노트북에서도 실행됩니다. [tinytorch.ai](https://tinytorch.ai/)에서 볼 수 있습니다.
 > Every mature systems project eventually needs a teaching version. TinyTorch is a free, open-source curriculum where you build a working ML framework from scratch, tensors through transformers, in pure Python, using PyTorch’s own API. Twenty modules. Runs on a laptop with 4 GB of RAM and no GPU. It is at [tinytorch.ai](https://tinytorch.ai/).
 
 이 글의 나머지 부분에서는 왜 이런 것이 있어야 했다고 생각하는지, 그리고 6년 동안 운영하며 배운 것 중 오픈 커리큘럼 작업을 하는 다른 사람들에게 쓸모 있을 만한 것을 이야기합니다.
@@ -74,7 +74,7 @@ Unix가 머릿속에 다 담기에는 너무 커지자, Andrew Tanenbaum은 MINI
 교육적인 효과의 대부분은 세 가지 설계 결정에서 나옵니다.
 > Three design decisions do most of the pedagogical work.
 
-**첫날부터 시스템을 다룹니다.** 모듈 01은 행렬 곱셈보다 `memory_footprint()` 메서드를 먼저 제공합니다. ImageNet 이미지 32장짜리 배치 하나가 19MB를 차지한다는 것을 어딘가에서 읽어서가 아니라 직접 계산해서 알게 됩니다. 나중에는 Adam이 SGD보다 옵티마이저 메모리를 대략 3배 더 필요로 한다는 것을 알게 되는데, 그 버퍼를 직접 할당하고 측정해 보았기 때문입니다.
+**첫날부터 시스템을 다룹니다.** 모듈 01은 행렬 곱셈보다 `memory_footprint()` 메서드를 먼저 제공합니다. ImageNet 이미지 32장짜리 배치 하나가 19MB를 차지한다는 것을 어딘가에서 읽어서가 아니라 직접 계산해서 알게 됩니다. 나중에는 Adam에 SGD의 약 3배에 달하는 옵티마이저 메모리가 필요하다는 것을 알게 되는데, 그 버퍼를 직접 할당하고 측정해 보았기 때문입니다.
 > **Systems from day one.** Module 01 ships a `memory_footprint()` method before it ships matrix multiplication. You learn that one batch of 32 ImageNet images costs 19 MB by computing it, not by reading it somewhere. Later you find out Adam needs roughly 3× the optimizer memory of SGD, because you allocated those buffers yourself and then measured them.
 
 **점진적 공개(progressive disclosure).** `Tensor` 클래스는 모듈 05까지 깔끔하게 유지되며, 데이터 레이아웃과 산술 연산을 어지럽히는 변화도 관련 장치가 없습니다. 그러다 모듈 06에서 `enable_autograd()`를 구현하는데, 이 함수는 이미 이해하고 있는 클래스에 `requires_grad`, `.grad`, `.backward()`를 붙여 넣습니다. 기존 코드는 그대로 동작합니다.
@@ -86,7 +86,7 @@ Unix가 머릿속에 다 담기에는 너무 커지자, Andrew Tanenbaum은 MINI
 ![모듈 06에서 만나는 행렬 곱셈의 변화도 구현 과제 / The gradient of matrix multiplication in Module 06](/assets/blog/2026-09-21-tinytorch-dont-just-import-pytorch-build-it/Figure3.png){:style="width:100%"}
 *그림 3: 학습자가 모듈 06에서 만나는 행렬 곱셈의 변화도. 독스트링(docstring)이 수학적 규칙을 알려 주고 번호가 매겨진 접근 방법이 이를 단계로 나누어 주지만, 구현은 직접 해야 합니다. 20개 모듈이 모두 이런 모습입니다. / Figure 3: The gradient of matrix multiplication, as a learner meets it in Module 06. The docstring gives you the mathematical rule and the numbered approach breaks it into steps, but the implementation is yours. All twenty modules look like this.*
 
-**만들어서 검증합니다.** 6개의 역사적 마일스톤(milestone)이 구현이 제대로 동작함을 증명합니다. 1958년 Rosenblatt의 퍼셉트론(Perceptron), 1969년 XOR 위기, 1986년 역전파(backpropagation)의 부활, 직접 만든 네트워크가 CIFAR-10에서 75%를 넘어야 하는 1998년 CNN의 돌파구, 2017년 트랜스포머, 그리고 마지막으로 MLPerf 방식의 벤치마킹입니다. 역사는 동기를 주기 위해 있습니다. 과제 성능은 단위 테스트보다 훨씬 속이기 어렵기 때문에 있습니다. 네트워크가 학습하니까, 여러분의 Autograd가 올바른 것입니다.
+**만들어서 검증합니다.** 6개의 역사적 마일스톤(milestone)으로 구현이 제대로 동작하는지 증명합니다. 1958년 Rosenblatt의 퍼셉트론(Perceptron), 1969년 XOR 위기, 1986년 역전파(backpropagation)의 부활, 직접 만든 네트워크가 CIFAR-10에서 75%를 넘어야 하는 1998년 CNN의 돌파구, 2017년 트랜스포머, 그리고 마지막으로 MLPerf 방식의 벤치마킹입니다. 역사는 동기를 주기 위해 있습니다. 과제 성능 기준을 둔 것은 단위 테스트보다 훨씬 속이기 어렵기 때문입니다. 네트워크가 학습한다는 것 자체가 여러분의 Autograd가 올바르다는 증거입니다.
 > **Build to validate.** Six historical milestones prove your implementation works. Rosenblatt’s Perceptron in 1958, the XOR crisis in 1969, the backpropagation revival in 1986, the CNN breakthrough in 1998 where your network has to clear 75% on CIFAR-10, the transformer in 2017, and finally MLPerf-style benchmarking. The history is there for motivation. The task performance is there because it is a much harder thing to fake than a unit test. Your autograd is correct because your network learns.
 
 ![마일스톤 사다리 / The milestone ladder](/assets/blog/2026-09-21-tinytorch-dont-just-import-pytorch-build-it/Figure4.png){:style="width:100%"}
@@ -98,7 +98,7 @@ TinyTorch는 전반에 걸쳐 의도적으로 PyTorch의 API를 그대로 따릅
 ![TinyTorch 학습 루프와 PyTorch 학습 루프 비교 / A TinyTorch training loop next to the equivalent PyTorch loop](/assets/blog/2026-09-21-tinytorch-dont-just-import-pytorch-build-it/Figure5.png){:style="width:100%"}
 *그림 5: TinyTorch 학습 루프와 그에 해당하는 PyTorch 루프를 나란히 놓은 모습. import 문만 다르고 나머지는 거의 같은데, 바로 그것이 핵심입니다. 여기서 배운 것 중 나중에 잊어야 할 것은 없습니다. / Figure 5: A TinyTorch training loop next to the equivalent PyTorch loop. The imports differ and almost nothing else does, which is the entire point. Nothing you learn here has to be unlearned later.*
 
-TinyTorch가 아닌 것도 두 가지 있습니다. 닮은 점은 API 표면에서 끝나므로, 디스패처(dispatcher)도, C++이나 CUDA 계층도, JIT도, 분산 처리도 없습니다. 그리고 느립니다. 순수 Python은 PyTorch보다 대략 100배에서 10,000배 느린데, 이 점이 중요한 것으로 드러났기 때문에 뒤에서 다시 이야기합니다.
+다만 TinyTorch가 PyTorch와 다른 점도 두 가지 있습니다. 닮은 점은 API 표면에서 끝나므로, 디스패처(dispatcher)도, C++이나 CUDA 계층도, JIT도, 분산 처리도 없습니다. 그리고 느립니다. 순수 Python은 PyTorch보다 대략 100배에서 10,000배 느린데, 이 점이 중요한 것으로 드러났기 때문에 뒤에서 다시 이야기합니다.
 > Two things it is not. The resemblance stops at the API surface, so there is no dispatcher, no C++ or CUDA layer, no JIT, nothing distributed. And it is slow. Pure Python runs somewhere between 100 and 10,000 times slower than PyTorch, which we will come back to, because it turned out to matter.
 
 ## 어디에서 시작되었나 / Where It Came From
