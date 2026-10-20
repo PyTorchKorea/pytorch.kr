@@ -55,7 +55,7 @@ Helion을 추론 엔진에 통합하는 데에는 아직 몇 가지 과제가 �
 **시작 시간 오버헤드(Startup-time overhead)**: vLLM이 시작할 때 수행하는 CUDA 그래프(CUDA Graph) 캡처가 Helion JIT 컴파일을 유발해 콜드 스타트(cold-start) 지연 시간이 늘어납니다. 컴파일된 결과물을 캐싱하면 웜 스타트(warm start)에서는 이 오버헤드를 대부분 없앨 수 있습니다.
 > **Startup-time overhead**: CUDA Graph capture during vLLM startup triggers Helion JIT compilation, increasing cold-start latency. This overhead can be largely eliminated on warm starts by caching compiled artifacts.
 
-**추론 실행 시간 오버헤드(Inference-runtime overhead)**: CUDA 그래프 캡처 범위 밖에서는 추론 중 Helion 커널의 디스패치와 런치(launch)가 CPU 오버헤드를 더할 수 있습니다. 이 오버헤드는 세밀한 튜닝으로 얻은 성능 이득을 상쇄할 수 있습니다. 실제로 Helion은 이 CPU 오버헤드를 피할 수 있도록 CUDA 그래프 아래에서 실행할 때 가장 효과적입니다.
+**추론 실행 시간 오버헤드(Inference-runtime overhead)**: CUDA 그래프 캡처 범위 밖에서는 추론 중 Helion 커널의 디스패치와 호출(launch)이 CPU 오버헤드를 더할 수 있습니다. 이 오버헤드는 세밀한 튜닝으로 얻은 성능 이득을 상쇄할 수 있습니다. 실제로 Helion은 이 CPU 오버헤드를 피할 수 있도록 CUDA 그래프 아래에서 실행할 때 가장 효과적입니다.
 > **Inference-runtime overhead**: Outside the CUDA Graph capture range, Helion kernel dispatch and launch during inference can introduce additional CPU overhead, potentially offsetting the performance gains from fine-grained tuning. In practice, Helion is most effective when executed under CUDA Graphs to avoid this CPU overhead.
 
 **유지 관리 오버헤드(Maintenance overhead)**: 인기 모델을 위해 미리 튜닝한 구성을 함께 배포하면 업스트림(upstream)에 지속적인 유지 관리 부담이 생깁니다. 큰 구성 파일은 유지 관리하기 어렵고, 단위 테스트와 CI로 빠짐없이 검증하기도 현실적이지 않습니다.
@@ -185,7 +185,7 @@ def matmul(
 
 이 하이브리드 디스패치 전략에는 세 가지 실용적인 이점이 있습니다:
 
-- **Helion의 실행 시간 오버헤드를 없앱니다**. Helion 커널은 CUDA 그래프 재생으로만 실행되므로, 커널 디스패치와 런치에서 오는 추가 CPU 오버헤드를 피합니다.
+- **Helion의 실행 시간 오버헤드를 없앱니다**. Helion 커널은 CUDA 그래프 재생으로만 실행되므로, 커널 디스패치와 호출에서 오는 추가 CPU 오버헤드를 피합니다.
 - **커널 튜닝 오버헤드를 줄입니다**. 세밀한 Helion 튜닝을 디코딩 워크로드의 대부분을 차지하는 작은 `num_tokens` 범위로 제한합니다. 그래서 튜닝해야 하는 입력 형태의 수가 크게 줄어들면서도, 의미 있는 엔드투엔드 성능 향상의 여지는 그대로 남습니다.
 - **구성 유지 관리 오버헤드를 줄입니다**. 튜닝한 구성의 수가 적어서, 미리 튜닝한 구성을 검증하고 배포하고 오래 유지 관리하기가 더 현실적입니다.
 
@@ -236,7 +236,7 @@ num_tokens = [1, 2, 4, 8, 16, 24, 32]
 
 #### 자동 튜너 벤치마킹에 CUDA 그래프 사용 / Enable CUDA Graph for Autotuner Benchmarking
 
-커널 디스패치와 런치에서 오는 추가 CPU 오버헤드 때문에, Helion 커널은 CUDA 그래프 실행 아래에서만 사용합니다. 따라서 CUDA 그래프를 켜고 벤치마크하면, 자동 튜너가 실제 추론 실행과 더 가까운 조건에서 구성을 평가할 수 있습니다.
+커널 디스패치와 호출에서 오는 추가 CPU 오버헤드 때문에, Helion 커널은 CUDA 그래프 실행 아래에서만 사용합니다. 따라서 CUDA 그래프를 켜고 벤치마크하면, 자동 튜너가 실제 추론 실행과 더 가까운 조건에서 구성을 평가할 수 있습니다.
 > Due to the additional CPU overhead from kernel dispatch and launch, Helion kernels are used only under CUDA Graph execution. Benchmarking with CUDA Graph enabled therefore allows the autotuner to evaluate configs under conditions that more closely match actual inference execution.
 
 Helion은 이 기능을 `HELION_BENCHMARK_CUDAGRAPH` 환경 변수로 제공하며, 이번 작업에서는 이 기능을 켰습니다.
