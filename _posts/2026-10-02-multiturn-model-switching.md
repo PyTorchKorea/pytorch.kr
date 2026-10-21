@@ -17,7 +17,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 요청은 성공합니다. 그런데 대화가 정말 나아졌을까요?
 > The request succeeds. But did the conversation improve?
 
-모델 B는 전체 대화 기록(transcript)을 받더라도 잘못된 답을 그대로 물려받을 수 있습니다. 모델 B의 레플리카(replica)는 점점 길어지는 프롬프트를 처음부터 다시 계산해야 할 수도 있습니다. 도구 호출이 진행 중이라면, 모델을 바꾸는 일이 그 결과를 해석하는 방식까지 바꿀 수 있습니다.
+모델 B는 전체 대화 기록(transcript)을 받더라도 잘못된 답을 그대로 물려받을 수 있습니다. 모델 B의 레플리카(replica)는 점점 길어지는 프롬프트를 다시 계산해야 할 수도 있습니다. 도구 호출이 진행 중이라면, 모델을 바꾸는 일이 그 결과를 해석하는 방식까지 바꿀 수 있습니다.
 > Model B may receive the entire transcript and still inherit an incorrect answer.
 > Its replica may have to compute the growing prompt again. If a tool call is in
 > flight, changing models can also change how the result is interpreted.
@@ -48,7 +48,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 | 제공자 관리 상태 / Provider-managed state | 저장된 컨텍스트에 대한 접근, 또는 다른 백엔드로 옮기기 전의 재구성. / Access to stored context, or reconstruction before moving to another backend. |
 | KV 캐시 / KV cache | 세션 ID만이 아니라, 목적지에서 쓸 수 있는 호환 가능한 프리픽스(prefix) 계산 결과. / Compatible prefix computations available at the destination, not just a session ID. |
 
-라우터가 소유한 Responses 기록은 전체 요청으로 확장한 뒤에는 다른 곳으로 옮길 수 있게(portable) 됩니다. 그렇다고 모든 상태를 옮길 수 있게 되는 것은 아닙니다. 진행 중인 도구 루프와 옮길 수 없는 컨텍스트는 [연속성 보호 계약(continuity protection contract)](https://vllm-sr.ai/docs/tutorials/learning/protection)에 따라 소유권 제약을 유지합니다. 또한 기록을 옮길 수 있다고 해서 그 기록이 올바르다고 보장되지도 않습니다.
+라우터가 소유한 Responses API 기록은 전체 요청으로 확장한 뒤에는 다른 곳으로 옮길 수 있게(portable) 됩니다. 그렇다고 모든 상태를 옮길 수 있게 되는 것은 아닙니다. 진행 중인 도구 루프와 옮길 수 없는 컨텍스트는 [연속성 보호 계약(continuity protection contract)](https://vllm-sr.ai/docs/tutorials/learning/protection)에 따라 소유권 제약을 유지합니다. 또한 기록을 옮길 수 있다고 해서 그 기록이 올바르다고 보장되지도 않습니다.
 > Router-owned Responses history can become portable after expansion into a full
 > request. That does not make all state portable: active tool loops and nonportable
 > context retain ownership constraints under the
@@ -223,7 +223,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 
 - **작업 정확성:** 요청 성공 여부만이 아니라, 최종 결과와 중간 오류.
 - **연속성:** 도구 호출/결과 순서와 저장된 기록의 이식성(portability).
-- **서빙 동작:** 선택 가능한 엔드포인트 선택, 웜/콜드 프리픽스, 첫 토큰까지의 시간(time to first token), 대기열 시간, 지연 시간 백분위수.
+- **서빙 동작:** 선택 가능한(eligible) 엔드포인트를 골랐는지 여부, 웜/콜드 프리픽스, 첫 토큰까지의 시간(time to first token), 대기열 시간, 지연 시간 백분위수.
 - **장애 복구:** 소유 모델 유실, 재시도, 도구 부수 효과의 중복 실행 방지.
 
 > Compare fixed strong and small models, per-turn routing, and continuity-protected
