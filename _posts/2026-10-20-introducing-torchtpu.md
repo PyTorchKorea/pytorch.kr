@@ -192,6 +192,8 @@ def main():
     ...
 ```
 
+*역주: 위 세 코드의 `word_size` 는 원문 표기를 그대로 옮긴 것으로, `world_size` 의 오기로 보입니다. 변수 이름만 다를 뿐 동작에는 영향이 없습니다.*
+
 ### 수치 정밀도 / Numerical Precision
 
 TorchTPU는 표준 PyTorch 정밀도 API를 TPU 하드웨어에 맞게 적용합니다. 모든 고성능 머신러닝 아키텍처와 마찬가지로, TPU는 세대별로 선호하는 특정 네이티브 데이터 타입을 사용할 때 최고 성능과 에너지 효율을 내도록 최적화되어 있습니다. TPU의 네이티브 행렬 곱셈 형식은 bfloat16(BF16)으로, 넓은 동적 범위와 효율적인 처리량 사이의 균형을 맞춥니다. TPU 행렬 곱셈 유닛(MXU)은 BF16 입력으로 연산하고 중간 누산은 32비트 부동소수점으로 하도록 설계되어 있으므로, 이 구성이 TPU 고성능 컴퓨팅의 초석입니다. 축약(contraction)이 없는 연산(요소별 덧셈, 활성화 함수, layernorm, softmax 등)의 경우, TorchTPU는 완전한 IEEE-754 FP32 산술을 네이티브로 수행하는 TPU 벡터 실행 유닛(VPU)에서 FP32 텐서 연산을 실행합니다.
@@ -420,6 +422,8 @@ TPU와 GPU의 주요 차이 하나는 XLA가 전통적으로 정적 형태(stati
   z = add_vectors(x, y)
   ```
 
+  *역주: 원문 코드는 커널을 `add_vectors_kernel` 로 정의하고 `pl.pallas_call` 에는 `add_vectors_pallas_kernel` 을 넘깁니다. 원문대로 옮겼으며, 실행하려면 두 이름을 하나로 맞춰야 합니다.*
+
 - (프로덕션 준비 완료) *사용자가 [Tokamax](http://openxla.org/tokamax)의 커널을 활용* 합니다. Tokamax는 고성능 TPU 커널 라이브러리로, 이제 PyTorch와 매끄럽게 상호 운용할 수 있습니다. Tokamax는 핵심 연산자의 고도로 최적화된 구현을 제공합니다. 여기에는 그룹 행렬 곱셈(grouped matrix multiplication)과 토큰 gather/scatter 같은 전문가 혼합(mixture-of-experts) 구성 요소, 페이지드 어텐션(paged attention), gated deltanet, Kimi delta attention, 멀티헤드 잠재 어텐션(multiheaded latent attention) 같은 어텐션 변형, TopK 계산이 포함됩니다. 연산자 목록은 최신 하드웨어 가속기에서 실행되는 최신 OSS 모델을 지원하도록 계속 발전할 것입니다(예: 출시 시점부터 TPU v8i 지원). 커널은 운영 복잡성을 줄이기 위해 오토튜닝(autotuning, 예: 타일 크기 탐색), 오버헤드가 적은 XProf 기반 벤치마킹, 회귀 테스트 같은 견고하고 통합된 기반 인프라의 뒷받침을 받습니다. 커널 자체는 JAX/Pallas로 작성되어 있지만, 라이브러리 인프라는 `torch.tpu.pallas.jax_op` API를 사용해 상호 운용을 투명하게 관리하고, 개발자 편의를 위해 네이티브 PyTorch API를 노출합니다.
   > (Production ready) The *user leverages kernels from [Tokamax](http://openxla.org/tokamax)*, a library of high-performance TPU kernels, now available for seamless interoperability with PyTorch. Tokamax provides highly optimized implementations of key operators, including mixture-of-experts building blocks like grouped matrix multiplication and token gathers/scatters, attention variants like paged attention, gated deltanet, Kimi delta attention and multiheaded latent attention, and TopK computation. The operator portfolio will evolve over time to support the latest OSS models running on the latest hardware accelerators (e.g., TPU v8i support at launch). The kernels are supported by robust, integrated, foundational infrastructure such as autotuning (e.g., tile size searches), low-overhead XProf-based benchmarking, and regression testing, to mitigate operational complexity. While the kernels themselves are written in JAX/Pallas, the library’s infrastructure employs the `torch.tpu.pallas.jax_op` API to transparently manage the interop and exposes native PyTorch APIs for developer convenience.
 
@@ -446,6 +450,8 @@ TPU와 GPU의 주요 차이 하나는 XLA가 전통적으로 정적 형태(stati
 
 기존 PyTorch 분산 API 및 프레임워크와의 호환성을 보장하기 위해, `c10d::Backend` 를 상속하여 Process Group API 수준에서 TPU 집합 통신을 구현하기로 했습니다. 이렇게 하면 즉시 실행 모드와 컴파일 모드 모두에서 집합 통신 연산을 가로챌 수 있고, DTensor, FSDPv2, SimpleFSDP, FairScale 같은 PyTorch 분산 프레임워크를 매끄럽게 지원할 수 있습니다. GPU 위의 PyTorch와 마찬가지로 장치당 프로세스 하나 방식을 따르며, 실제로 이를 강제합니다. 구현 관점에서 보면 TPU 스택은 TPU 간 통신을 위한 별도 라이브러리를 제공하지 않습니다. 대신 TPU 집합 통신 연산은 [StableHLO 연산](https://openxla.org/stablehlo/spec#collective_ops)(`stablehlo.all_gather`, `stablehlo.all_scatter`, `stablehlo.all_to_all` 등)으로 표현되며, 이는 위에서 설명한 메커니즘과 자연스럽게 맞아떨어집니다.
 > To ensure compatibility with existing PyTorch distributed APIs and frameworks, we decided to implement TPU collectives at the Process Group API level, by inheriting from `c10d::Backend`; that allows us to intercept collective ops in both eager and compile mode and seamlessly support PyTorch distributed frameworks such as DTensor, FSDPv2, SimpleFSDP, FairScale, etc. Similarly to PyTorch on GPU, we follow (and actually enforce) the one-process-per-device approach. From an implementation point of view, the TPU stack doesn’t offer a separate library for TPU-to-TPU communication, rather TPU collective ops are expressed as [StableHLO ops](https://openxla.org/stablehlo/spec#collective_ops) (`stablehlo.all_gather`, `stablehlo.all_scatter`, `stablehlo.all_to_all`, etc), which fits naturally with the mechanisms described above.
+
+*역주: [StableHLO 명세](https://openxla.org/stablehlo/spec#collective_ops)의 집합 통신 연산에는 `all_gather`, `all_reduce`, `all_to_all`, `reduce_scatter`, `collective_permute`, `collective_broadcast` 등이 있으며 `stablehlo.all_scatter` 는 없습니다. 원문 표기를 그대로 옮겼습니다.*
 
 Process Group 수준에서 집합 통신을 가로채면 거의 다 온 셈이지만, GPU와 비교해 TPU에는 주목할 만한 몇 가지 특이점이 있습니다:
 > Intercepting collectives at the Process Group level takes us almost to the finish line, with the exception of a few notable TPU idiosyncrasies w.r.t. GPUs:
@@ -551,6 +557,8 @@ TPU의 독특한 연결 구조 때문에, 대역폭을 최대화하고 네트워
 > - **ICI**: Direct, optical/copper interconnects connecting chips in a Torus mesh. Provides tens-to-hundreds of gigabytes/sec bandwidth.
 > - **DCN**: Standard host-level Ethernet used to connect different TPU slices. Has significantly lower bandwidth and higher latency than ICI.
 
+*역주: 원문의 병렬화 전략 목록 `(TC, CP, FSDP, DP)` 에서 `TC` 는 아래 표의 텐서 병렬화(TP)를 가리키는 오기로 보입니다.*
+
 좋은 규칙은 TorchTPU의 `topology_aware_mesh()` API를 사용해 통신이 가장 많은 병렬화 차원을 가장 빠르고 가장 인접한 물리적 ICI 차원에 매핑하는 것입니다. 즉, 메시 차원을 네트워크 사용량이 가장 적은 것부터 가장 많은 것 순서로 정렬합니다. 예시는 아래 표를 참고하세요:
 > A good rule is to use TorchTPU’s `topology_aware_mesh()` API and map the most communication-heavy parallelism dimensions to the fastest, most contiguous physical ICI dimensions, which is to order your mesh dimensions from lowest network intensity to the highest network intensity. See the table below for examples:
 
@@ -649,6 +657,8 @@ def get_send_to_next_op(world_size: int):
       output_partition_specs=[P("x")],
   )
 ```
+
+*역주: 원문 코드의 3단계는 `jax_fn` 을 만들어 두고도 `torch.tpu.pallas.jax_op` 에는 `build_jax_fn(mesh)` 를 다시 호출해 넘깁니다. 원문대로 옮겼으며, `jax_fn` 을 넘겨도 결과는 같습니다.*
 
 다음 표는 통신하는 Pallas 커널을 작성하는 방법을 요약합니다.
 > The following table summarizes how to write a communicating Pallas kernel.
@@ -893,6 +903,8 @@ TorchTPU는 대규모 분산 학습을 위한 PyTorch의 레퍼런스 플랫폼�
 
 TorchTPU 위의 TorchTitan의 향후 개발은 네 가지 전략적 우선순위를 목표로 합니다. TPU에 최적화된 모델 목록 확대, torchao를 통한 FP8 및 FP4 저비트 양자화 통합, 그리고 VeRL에서 학습 루프를 vLLM/SGLang 샘플링 백엔드와 결합해 엔드투엔드 강화 학습(RL)을 지원하는 것입니다.
 > Ongoing development for TorchTitan on TorchTPU targets four strategic priorities: expanding list of models optimized for TPU; integrating FP8 and FP4 low-bit quantization via torchao; and supporting end-to-end Reinforcement Learning (RL) by coupling training loops with vLLM/SGLang sampling backends in VeRL.
+
+*역주: 원문은 "네 가지 전략적 우선순위"라고 쓰고 세 가지만 나열합니다. 번역은 원문을 그대로 옮겼습니다.*
 
 ### 사례 연구 6: TorchRec과 SparseCore로 하드웨어 가속한 추천 모델 / Case Study 6: Hardware-Accelerated Recommendation Models with TorchRec and SparseCore
 
