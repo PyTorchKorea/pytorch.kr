@@ -22,7 +22,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 > Its replica may have to compute the growing prompt again. If a tool call is in
 > flight, changing models can also change how the result is interpreted.
 
-이러한 트레이드오프를 vLLM Semantic Router, Envoy, 그리고 GPU 기반 vLLM 서버로 벤치마크했습니다. [960회 호출 홀드아웃(holdout)](https://github.com/vllm-project/semantic-router/issues/4080#issuecomment-5938865660)에서, 한 반응형(reactive) 전환 정책은 게이트를 끈 대조군(control)에 비해 강한 모델 사용 비율을 **31.8%p**, 세션당 평균 지연 시간을 **550 ms** 줄였습니다. 하지만 대조군이 통과한 최종 검사 세 건에서 실패했습니다. 별도로 진행한 네이티브 도구(native-tool) 실험에서는 어려운 경계를 만나기 *전에* 충분한 능력을 가진 모델을 고르는 것의 이점이 드러났습니다.
+이러한 트레이드오프를 vLLM Semantic Router, Envoy, 그리고 GPU 기반 vLLM 서버로 벤치마크했습니다. [960회 호출 홀드아웃(holdout)](https://github.com/vllm-project/semantic-router/issues/4080#issuecomment-5938865660)에서, 한 반응형(reactive) 전환 정책은 게이트를 끈 대조군(control)에 비해 강한 모델 사용 비율을 **31.8%p**, 세션당 평균 지연 시간을 **550 ms** 줄였습니다. 하지만 대조군이 통과한 최종 검사 세 건에서 실패했습니다. 별도로 진행한 네이티브 도구(native-tool) 실험에서는 어려운 경계를 만나기 *전에* 능력이 충분한 모델을 고르는 이점이 드러났습니다.
 > We benchmarked these tradeoffs through vLLM Semantic Router, Envoy, and GPU-backed
 > vLLM servers. In the [960-call holdout](https://github.com/vllm-project/semantic-router/issues/4080#issuecomment-5938865660), one reactive switching policy reduced
 > strong-model use by **31.8 percentage points** and mean session latency by
@@ -44,7 +44,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 | 상태 / State | 전환 시 보존하거나 재구성해야 하는 것 / What a switch must preserve or rebuild |
 |---|---|
 | 기록 / History | 완전하고 올바른 순서로 정렬된 메시지와 도구 결과. 이전의 실수도 함께 옮겨집니다. / Complete, correctly ordered messages and tool results. Earlier mistakes travel too. |
-| 도구 소유권 / Tool ownership | 모델이 진행 중인 호출/결과 순서를 호환되게 이어 가는 것. / A compatible continuation of the model's pending call/result sequence. |
+| 도구 소유권 / Tool ownership | 모델이 처리 중인(pending) 호출/결과 순서를 호환되게 이어 가는 것. / A compatible continuation of the model's pending call/result sequence. |
 | 제공자 관리 상태 / Provider-managed state | 저장된 컨텍스트에 대한 접근, 또는 다른 백엔드로 옮기기 전의 재구성. / Access to stored context, or reconstruction before moving to another backend. |
 | KV 캐시 / KV cache | 세션 ID만이 아니라, 목적지에서 쓸 수 있는 호환 가능한 프리픽스(prefix) 계산 결과. / Compatible prefix computations available at the destination, not just a session ID. |
 
@@ -61,7 +61,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 > **Semantic Router chooses the logical model.** Request signals, capabilities,
 > policy, and configured continuity protection determine which model may do the work.
 
-**추론 라우터(inference router)는 서빙 엔드포인트(serving endpoint)를 고릅니다.** 추론 라우터는 그 모델에 허용된 풀(pool) 안에서, 상태(health), 대기열 압력(queue pressure), 캐시 가용성 같은 지원되는 신호를 사용해 스케줄링합니다.
+**추론 라우터(inference router)는 서빙 엔드포인트(serving endpoint)를 고릅니다.** 추론 라우터는 그 모델에 허용된 풀(pool) 안에서, 정상 여부(health), 대기열 압력(queue pressure), 캐시 가용성 같은 지원되는 신호를 사용해 스케줄링합니다.
 > **An inference router chooses the serving endpoint.** It schedules within that
 > model's admitted pool, using supported signals such as health, queue pressure,
 > and cache availability.
@@ -79,7 +79,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 
 ## KV 캐시는 전환을 시스템 차원의 결정으로 만듭니다 / KV cache makes switching a systems decision
 
-대화 기록은 옮겨 갈 수 있지만, 모델 A의 KV 캐시가 모델 B의 캐시가 되지는 않습니다. 그 어텐션 계산 결과는 특정 모델과 특정 토큰 시퀀스에 속합니다. 목적지에는 그 모델 자체의 호환 가능한 캐시된 프리픽스가 있어야 하고, 없다면 프롬프트를 프리필(prefill)해야 합니다.
+대화 기록은 옮겨 갈 수 있지만, 모델 A의 KV 캐시가 모델 B의 캐시가 되지는 않습니다. 그 어텐션 계산 결과는 특정 모델과 특정 토큰 시퀀스에 속합니다. 목적지에는 자체적으로 호환 가능한 캐시된 프리픽스가 있어야 하고, 없다면 프롬프트를 프리필(prefill)해야 합니다.
 > The transcript can travel; model A's KV cache does not become model B's cache.
 > Those attention computations belong to a particular model and token sequence.
 > The destination needs its own compatible cached prefix or must prefill the prompt.
@@ -115,9 +115,9 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 > separate from **replica scheduling**. The request flow below illustrates one
 > request selecting model B, then replica B1, rather than searching every pod indiscriminately.
 
-![에이전트가 AI 게이트웨이를 통해 기록과 도구를 보냅니다. Semantic Router는 요청과 대화 컨텍스트를 사용해 모델 B를 허용합니다. 추론 라우터는 그 풀 안에서 B1을 선택하고, 모델 A는 제외됩니다. 각 레플리카는 자체 KV 캐시를 가집니다. / An agent sends history and tools through an AI gateway. Semantic Router uses request and conversation context to admit model B. The inference router selects B1 within that pool; model A is excluded. Each replica has its own KV cache.](/assets/blog/2026-10-02-multiturn-model-switching/routing-architecture.svg){:style="width:92%"}
+![에이전트가 AI 게이트웨이를 통해 기록과 도구를 보냅니다. Semantic Router는 요청과 대화 컨텍스트를 사용해 모델 B를 허용합니다. 추론 라우터는 그 풀 안에서 B1을 선택하고, 모델 A는 제외됩니다. 레플리카마다 KV 캐시가 따로 있습니다. / An agent sends history and tools through an AI gateway. Semantic Router uses request and conversation context to admit model B. The inference router selects B1 within that pool; model A is excluded. Each replica has its own KV cache.](/assets/blog/2026-10-02-multiturn-model-switching/routing-architecture.svg){:style="width:92%"}
 
-*그림 1: 선택 가능한 모델을 고른 뒤, 그 풀 안에서 스케줄링합니다. 이것은 논리적 경계이며, 하나의 게이트웨이 프로세스를 공유할 수도 있습니다. / Figure 1: Choose an eligible model, then schedule inside its pool. These are logical boundaries; they may share a gateway process.*
+*그림 1: 선택 가능한 모델을 고른 뒤, 그 풀 안에서 스케줄링합니다. 이 경계는 논리적인 구분이며, 실제로는 하나의 게이트웨이 프로세스를 함께 쓸 수도 있습니다. / Figure 1: Choose an eligible model, then schedule inside its pool. These are logical boundaries; they may share a gateway process.*
 
 에이전트는 기록과 도구 상태를 제공합니다. 게이트웨이는 요청을 인증하고 테넌트 단위(tenant-scoped)의 대화 식별자를 보존합니다. Envoy 외부 프로세서(external processor)인 Semantic Router는 선택 가능한 모델을 고르고 연속성 보호를 적용합니다. 추론 라우터는 레플리카를 고르고, 모델 서버는 요청을 실행합니다. 응답은 에이전트로 돌아가며, 도구 실행과 다음 턴은 에이전트가 맡습니다.
 > The agent supplies history and tool state. The gateway authenticates the request
@@ -129,7 +129,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 다음 세 가지 통합 방식이 이 구성을 믿을 수 있게 만듭니다:
 
 1. **컨텍스트를 누가 소유할지 정합니다.** 턴 사이에 대화 식별자를 보존하고, 저장된 기록을 어디서 해석(resolve)할지 결정합니다. 식별 헤더가 빠진 경우도 테스트합니다. 설정된 헤더가 없으면 보호 기능이 페일 오픈(fail open, 실패 시 차단하지 않고 통과시킴)될 수 있습니다.
-2. **모델과 풀 사이의 계약을 명시적으로 만듭니다.** 최종 모델 선택 결과를 게이트웨이 끝까지 전달합니다. 엔드포인트가 풀에 속하는지, 그리고 공유 풀이라면 모델/어댑터 호환성을 단언(assert)합니다. 보호 중인 소유 모델이 사용할 수 없게 되면 명시적인 복구가 필요하며, 도구 루프 도중에 임의의 폴백(fallback)으로 넘어가서는 안 됩니다.
+2. **모델과 풀 사이의 계약을 명시적으로 만듭니다.** 최종 모델 선택 결과를 게이트웨이 끝까지 전달합니다. 엔드포인트가 풀에 속하는지, 그리고 공유 풀이라면 모델/어댑터 호환성을 단언(assert)합니다. 보호 대상인 소유 모델을 쓸 수 없게 되면 명시적인 복구가 필요하며, 도구 루프 도중에 임의의 폴백(fallback)으로 넘어가서는 안 됩니다.
 3. **요청 전체를 추적합니다.** 라우팅 사유, 최종 모델, 엔드포인트, 토큰 사용량, 캐시 근거, 지연 시간, 작업 판정을 하나로 묶습니다. 이렇게 하면 능력 불일치를 콜드(cold) 프리픽스나 바쁜 레플리카와 구분할 수 있습니다.
 
 > Three integration choices make this composition reliable:
@@ -154,7 +154,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 > workloads: ordered state retention, and a one-off retrieval challenge followed
 > by easy acknowledgements. Thresholds were frozen before inspecting the holdout.
 
-최근 결과 게이트는 관찰된 결과가 정당화할 때까지 제안된 전환을 미룰 수 있습니다. **관찰(observe)** 모드는 판정을 기록만 하고 적용하지 않으며, **강제(enforce)** 모드는 판정을 적용합니다.
+최근 결과 게이트는 관찰된 결과가 전환을 뒷받침할 때까지 제안된 전환을 미룰 수 있습니다. **관찰(observe)** 모드는 판정을 기록만 하고 적용하지 않으며, **강제(enforce)** 모드는 판정을 적용합니다.
 > A recent-outcome gate can delay a proposed switch until observed outcomes justify
 > it. **Observe** records its verdict without applying it; **enforce** applies it.
 
@@ -179,7 +179,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 > [-21.9, 0.0]; the apparent turn-accuracy improvement was also inconclusive. The
 > candidate did not meet our quality requirement and was rejected for enforcement.
 
-이 결과는 통제된 환경에서 측정한 전환 결과이며, **시맨틱 분류기의 정확도나 프로덕션 규모의 처리량이 아닙니다.** 신호와 전환 제안은 통제했고, 호출은 순차적으로 실행했으며, 출력은 짧았습니다. 캐시 비율은 백엔드 카운터의 증가분을 세션별로 평균한 값입니다. 강한 모델 비중은 사용량을 대신 보여 주는 지표(proxy)이며, 실제로 측정한 비용 절감액이 아닙니다. 별도의 [llm-d 시뮬레이터 테스트](https://github.com/vllm-project/semantic-router/pull/4443)는 모델/풀/엔드포인트 구성을 확인하며, 실제 GPU에서의 스케줄링 성능을 확인하지는 않습니다.
+이 결과는 통제된 환경에서 측정한 전환 결과이며, **시맨틱 분류기의 정확도나 프로덕션 규모의 처리량이 아닙니다.** 신호와 전환 제안은 통제했고, 호출은 순차적으로 실행했으며, 출력은 짧았습니다. 캐시 비율은 백엔드 카운터의 증가분을 세션별로 평균한 값입니다. 강한 모델 비중은 사용량을 대신 보여 주는 지표(proxy)이며, 실제로 측정한 비용 절감액이 아닙니다. 별도의 [llm-d 시뮬레이터 테스트](https://github.com/vllm-project/semantic-router/pull/4443)는 모델/풀/엔드포인트 구성을 확인하며, 실제 GPU 환경의 스케줄링 성능을 확인하지는 않습니다.
 > These are controlled switching measurements, **not semantic-classifier accuracy
 > or production-scale throughput**. Signals and proposals were controlled, calls
 > were sequential, and outputs were short. Cache ratios were backend counter
@@ -189,7 +189,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 
 ## 대화는 언제 모델을 바꿔야 할까요? / When should the conversation change models?
 
-실패한 최종 검사 세 건은 모두 같은 일정을 가진 상태 유지 세션에서 나왔습니다. 작은 모델이 세 턴을 맡은 뒤 강한 모델이 세 턴을 맡는 일정입니다. 작은 모델이 세 번째 턴에서 실패했고, 강한 모델은 그 답을 기록에 담은 채 작업을 이어 갔습니다. 최종 종합 결과에는 순서가 잘못된 값들이 들어 있었습니다.
+실패한 최종 검사 세 건은 모두 일정이 같은 상태 유지 세션에서 나왔습니다. 작은 모델이 세 턴을 맡은 뒤 강한 모델이 세 턴을 맡는 일정입니다. 작은 모델이 세 번째 턴에서 실패했고, 강한 모델은 그 답을 기록에 담은 채 작업을 이어 갔습니다. 최종 종합 결과에는 순서가 잘못된 값들이 들어 있었습니다.
 > All three failed final checks came from state-retention sessions with the same
 > schedule: three small-model turns, then three strong-model turns. The small
 > model failed turn three; the stronger model received that answer in its history
