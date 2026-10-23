@@ -577,6 +577,12 @@
   max-width: 100%;
 }
 
+.blog .pytorch-article .blog-content > p {
+  text-align: justify;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 :where(.blog .pytorch-article .blog-content) img {
   display: block;
   width: 75%;
@@ -587,6 +593,10 @@
 
 .blog .pytorch-article .image-with-caption {
   margin: 0 0 rem(18px);
+
+  p {
+    margin: 0;
+  }
 
   img {
     display: block;
