@@ -2,7 +2,7 @@
 layout: blog_detail
 title: "KVCache Meetup Korea 후기: 메모리 병목과 KV 캐시 최적화를 함께 살펴본 시간"
 author: "박정환(9bow)"
-category: ["pytorchkr", "recap"]
+category: ["pytorchkr", "recap", "meetup", "kvcache-meetup"]
 ---
 
 ![KVCache Meetup Korea 2026 발표 현장](/assets/images/kvcache-meetup-korea-2026/02-audience.webp){: loading="eager" fetchpriority="high" decoding="async" }
