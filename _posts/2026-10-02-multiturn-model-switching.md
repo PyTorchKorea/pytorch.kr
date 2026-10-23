@@ -17,7 +17,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 요청은 성공합니다. 그런데 대화가 정말 나아졌을까요?
 > The request succeeds. But did the conversation improve?
 
-모델 B는 전체 대화 기록(transcript)을 받더라도 잘못된 답을 그대로 물려받을 수 있습니다. 모델 B의 레플리카(replica)는 점점 길어지는 프롬프트를 다시 계산해야 할 수도 있습니다. 도구 호출이 진행 중이라면, 모델을 바꾸는 일이 그 결과를 해석하는 방식까지 바꿀 수 있습니다.
+모델 B는 전체 대화 기록(transcript)을 받더라도 잘못된 답을 그대로 물려받을 수 있습니다. 모델 B의 복제본(replica)은 점점 길어지는 프롬프트를 다시 계산해야 할 수도 있습니다. 도구 호출이 진행 중이라면, 모델을 바꾸는 일이 그 결과를 해석하는 방식까지 바꿀 수 있습니다.
 > Model B may receive the entire transcript and still inherit an incorrect answer.
 > Its replica may have to compute the growing prompt again. If a tool call is in
 > flight, changing models can also change how the result is interpreted.
@@ -66,7 +66,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 > model's admitted pool, using supported signals such as health, queue pressure,
 > and cache availability.
 
-이 두 선택이 충돌할 필요는 없습니다. 시맨틱 정책이 모델 B를 요구한다면, 모델 A의 웜(warm) 레플리카는 선택 대상이 아닙니다. 엔드포인트 선택기(endpoint picker)는 *B의 풀 안에서* 웜 레플리카를 우선할 수 있지만, 단지 캐시 적중(cache hit)을 위해 모델 결정을 뒤집어서는 안 됩니다.
+이 두 선택이 충돌할 필요는 없습니다. 시맨틱 정책이 모델 B를 요구한다면, 모델 A에서 캐시가 준비된(warm) 복제본은 선택 대상이 아닙니다. 엔드포인트 선택기(endpoint picker)는 *B의 풀 안에서* 캐시가 준비된 복제본을 우선할 수 있지만, 단지 캐시 적중(cache hit)을 위해 모델 결정을 뒤집어서는 안 됩니다.
 > These choices need not conflict. If semantic policy requires model B, a warm
 > replica of model A is not eligible. The endpoint picker can prefer a warm replica
 > *within B's pool*, but must not override the model decision merely for a cache hit.
@@ -84,7 +84,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 > Those attention computations belong to a particular model and token sequence.
 > The destination needs its own compatible cached prefix or must prefill the prompt.
 
-같은 모델에 머물러도 재사용이 보장되지는 않습니다. 다른 레플리카에 해당 프리픽스가 없을 수 있고, 블록이 축출(evict)됐을 수 있으며, 렌더링된 프롬프트가 바뀌었을 수도 있습니다. 캐시를 공유하려면 서빙 계층의 명시적인 지원이 필요합니다. [vLLM 자동 프리픽스 캐싱(automatic prefix caching)](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/)은 일치하는 프리픽스의 프리필 작업을 줄여 주지만, 새 출력 토큰을 생성하는 작업은 줄여 주지 않습니다.
+같은 모델에 머물러도 재사용이 보장되지는 않습니다. 다른 복제본에 해당 프리픽스가 없을 수 있고, 블록이 축출(evict)됐을 수 있으며, 렌더링된 프롬프트가 바뀌었을 수도 있습니다. 캐시를 공유하려면 서빙 계층의 명시적인 지원이 필요합니다. [vLLM 자동 프리픽스 캐싱(automatic prefix caching)](https://docs.vllm.ai/en/latest/features/automatic_prefix_caching/)은 일치하는 프리픽스의 프리필 작업을 줄여 주지만, 새 출력 토큰을 생성하는 작업은 줄여 주지 않습니다.
 > Even staying on one model does not guarantee reuse: another replica may lack the
 > prefix, blocks may have been evicted, or the rendered prompt may have changed.
 > Cache sharing requires explicit serving support.
@@ -110,16 +110,16 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 
 ## 기존 게이트웨이와 모델 플릿을 위한 아키텍처 / An architecture for an existing gateway and model fleet
 
-모델이 많고 레플리카가 수천 개인 플릿(fleet)에서는 **모델 선택** 과 **레플리카 스케줄링** 을 분리해 둡니다. 아래 요청 흐름은 모든 파드(pod)를 무차별적으로 탐색하는 대신, 하나의 요청이 모델 B를 고른 뒤 레플리카 B1을 고르는 과정을 보여 줍니다.
+모델이 많고 복제본이 수천 개인 플릿(fleet)에서는 **모델 선택** 과 **복제본 스케줄링** 을 분리해 둡니다. 아래 요청 흐름은 모든 파드(pod)를 무차별적으로 탐색하는 대신, 하나의 요청이 모델 B를 고른 뒤 복제본 B1을 고르는 과정을 보여 줍니다.
 > For a fleet with many models and thousands of replicas, keep **model choice**
 > separate from **replica scheduling**. The request flow below illustrates one
 > request selecting model B, then replica B1, rather than searching every pod indiscriminately.
 
-![에이전트가 AI 게이트웨이를 통해 기록과 도구를 보냅니다. Semantic Router는 요청과 대화 컨텍스트를 사용해 모델 B를 허용합니다. 추론 라우터는 그 풀 안에서 B1을 선택하고, 모델 A는 제외됩니다. 레플리카마다 KV 캐시가 따로 있습니다. / An agent sends history and tools through an AI gateway. Semantic Router uses request and conversation context to admit model B. The inference router selects B1 within that pool; model A is excluded. Each replica has its own KV cache.](/assets/blog/2026-10-02-multiturn-model-switching/routing-architecture.svg){:style="width:92%"}
+![에이전트가 AI 게이트웨이를 통해 기록과 도구를 보냅니다. Semantic Router는 요청과 대화 컨텍스트를 사용해 모델 B를 허용합니다. 추론 라우터는 그 풀 안에서 B1을 선택하고, 모델 A는 제외됩니다. 복제본마다 KV 캐시가 따로 있습니다. / An agent sends history and tools through an AI gateway. Semantic Router uses request and conversation context to admit model B. The inference router selects B1 within that pool; model A is excluded. Each replica has its own KV cache.](/assets/blog/2026-10-02-multiturn-model-switching/routing-architecture.svg){:style="width:92%"}
 
 *그림 1: 선택 가능한 모델을 고른 뒤, 그 풀 안에서 스케줄링합니다. 이 경계는 논리적인 구분이며, 실제로는 하나의 게이트웨이 프로세스를 함께 쓸 수도 있습니다. / Figure 1: Choose an eligible model, then schedule inside its pool. These are logical boundaries; they may share a gateway process.*
 
-에이전트는 기록과 도구 상태를 제공합니다. 게이트웨이는 요청을 인증하고 테넌트 단위(tenant-scoped)의 대화 식별자를 보존합니다. Envoy 외부 프로세서(external processor)인 Semantic Router는 선택 가능한 모델을 고르고 연속성 보호를 적용합니다. 추론 라우터는 레플리카를 고르고, 모델 서버는 요청을 실행합니다. 응답은 에이전트로 돌아가며, 도구 실행과 다음 턴은 에이전트가 맡습니다.
+에이전트는 기록과 도구 상태를 제공합니다. 게이트웨이는 요청을 인증하고 테넌트 단위(tenant-scoped)의 대화 식별자를 보존합니다. Envoy 외부 프로세서(external processor)인 Semantic Router는 선택 가능한 모델을 고르고 연속성 보호를 적용합니다. 추론 라우터는 복제본을 고르고, 모델 서버는 요청을 실행합니다. 응답은 에이전트로 돌아가며, 도구 실행과 다음 턴은 에이전트가 맡습니다.
 > The agent supplies history and tool state. The gateway authenticates the request
 > and preserves tenant-scoped conversation identity. Semantic Router, an Envoy
 > external processor, selects an eligible model and applies continuity protection.
@@ -130,7 +130,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 
 1. **컨텍스트를 누가 소유할지 정합니다.** 턴 사이에 대화 식별자를 보존하고, 저장된 기록을 어디서 해석(resolve)할지 결정합니다. 식별 헤더가 빠진 경우도 테스트합니다. 설정된 헤더가 없으면 보호 기능이 페일 오픈(fail open, 실패 시 차단하지 않고 통과시킴)될 수 있습니다.
 2. **모델과 풀 사이의 계약을 명시적으로 만듭니다.** 최종 모델 선택 결과를 게이트웨이 끝까지 전달합니다. 엔드포인트가 풀에 속하는지, 그리고 공유 풀이라면 모델/어댑터 호환성을 단언(assert)합니다. 보호 대상인 소유 모델을 쓸 수 없게 되면 명시적인 복구가 필요하며, 도구 루프 도중에 임의의 폴백(fallback)으로 넘어가서는 안 됩니다.
-3. **요청 전체를 추적합니다.** 라우팅 사유, 최종 모델, 엔드포인트, 토큰 사용량, 캐시 근거, 지연 시간, 작업 판정을 하나로 묶습니다. 이렇게 하면 능력 불일치를 콜드(cold) 프리픽스나 바쁜 레플리카와 구분할 수 있습니다.
+3. **요청 전체를 추적합니다.** 라우팅 사유, 최종 모델, 엔드포인트, 토큰 사용량, 캐시 근거, 지연 시간, 작업 판정을 하나로 묶습니다. 이렇게 하면 능력 불일치를 캐시되지 않은(cold) 프리픽스나 바쁜 복제본과 구분할 수 있습니다.
 
 > Three integration choices make this composition reliable:
 > 1. **Choose who owns context.** Preserve conversation identity across turns and
@@ -223,7 +223,7 @@ org_link: https://vllm-sr.ai/blog/multiturn-model-switching/
 
 - **작업 정확성:** 요청 성공 여부만이 아니라, 최종 결과와 중간 오류.
 - **연속성:** 도구 호출/결과 순서와 저장된 기록의 이식성(portability).
-- **서빙 동작:** 선택 가능한(eligible) 엔드포인트를 골랐는지 여부, 웜/콜드 프리픽스, 첫 토큰까지의 시간(time to first token), 대기열 시간, 지연 시간 백분위수.
+- **서빙 동작:** 선택 가능한(eligible) 엔드포인트를 골랐는지 여부, 프리픽스 캐시 적중 여부(warm/cold), 첫 토큰까지의 시간(time to first token), 대기열 시간, 지연 시간 백분위수.
 - **장애 복구:** 소유 모델 유실, 재시도, 도구 부수 효과의 중복 실행 방지.
 
 > Compare fixed strong and small models, per-turn routing, and continuity-protected
