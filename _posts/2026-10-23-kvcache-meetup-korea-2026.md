@@ -148,14 +148,6 @@ PyTorchKR은 이번 설문에서 받은 의견을 다음 행사 준비에 반영
 
 평일 저녁 시간을 내어 함께해 주신 참석자 여러분, 지식과 경험을 나눠주신 이주호 님, 오세진 님, 이동훈 님, Baoloong Mao 님께 감사드립니다. 행사를 함께 준비한 XCENA와 후원해 주신 Tensormesh에도 감사드립니다.
 
-## 행사 정보와 참고 자료
-
-- [KVCache Meetup Korea 행사 공지](https://discuss.pytorch.kr/t/kvcache-meetup/11925)
-- [Maru GitHub 저장소](https://github.com/xcena-dev/maru)
-- [LMCache MP Mode 공식 문서](https://docs.lmcache.ai/mp/index.html)
-
-각 세션과 현장 후기는 운영진이 정리한 행사 원고를 바탕으로 작성했습니다. 실험 수치는 발표 사례의 조건에 한정하며, 다른 모델이나 장비에서도 같은 결과를 보장하는 수치는 아닙니다. 참고 자료의 프로젝트 문서는 행사 이후에 갱신될 수 있습니다.
-
 ## 행사 영상 다시 보기
 
 KVCache Meetup Korea의 행사 영상은 [YouTube에서 다시 보실 수 있습니다](https://www.youtube.com/watch?v=F3G4_KSd8Hg&list=PLQxkB_v4d6ZU). 행사에 함께하지 못하신 분들도 영상을 통해 현장을 살펴보세요.
