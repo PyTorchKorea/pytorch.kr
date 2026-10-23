@@ -577,6 +577,30 @@
   max-width: 100%;
 }
 
+.blog .pytorch-article .blog-content img {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog .pytorch-article .image-with-caption {
+  margin: 0 0 rem(18px);
+
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  figcaption {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-style: italic;
+  }
+}
+
 twitterwidget {
   margin: 0 auto;
   margin-top: rem(18px) !important;

@@ -1,12 +1,12 @@
 ---
 layout: blog_detail
-title: "KVCache Meetup Korea 후기, 메모리 병목과 KV 캐시 최적화를 함께 살펴본 시간"
-author: "PyTorchKR, XCENA"
+title: "KVCache Meetup Korea 후기: 메모리 병목과 KV 캐시 최적화를 함께 살펴본 시간"
+author: "박정환(9bow)"
 ---
 
 <img src="/assets/images/kvcache-meetup-korea-2026/02-audience.webp" alt="KVCache Meetup Korea 2026 발표 현장" width="1600" height="1200" loading="eager" fetchpriority="high" decoding="async" style="max-width:100%;height:auto;">
 
-## KVCache Meetup Korea를 돌아보며
+## KVCache Meetup Korea 개요
 
 2026년 9월 30일 저녁, 서울 강남 드림플러스에서 KVCache Meetup Korea를 열었습니다. [PyTorchKR](https://pytorch.kr)과 CXL 전문 스타트업 [XCENA](https://xcena.com)가 공동으로 주최하고, [LMCache](https://lmcache.ai/)의 개발사 [Tensormesh](https://tensormesh.ai/about/)가 후원했습니다. 이번 행사는 대규모 언어 모델(LLM, Large Language Model)의 추론 과정에서 메모리 병목을 줄이는 방법과 경험을 나누는 자리였습니다.
 
@@ -18,19 +18,22 @@ XCENA, SK하이닉스, [FuriosaAI](https://furiosa.ai/), LMCache의 연사들은
 
 이번 행사는 발표를 듣는 시간과 함께, 비슷한 문제를 고민하는 참석자들이 서로 만날 수 있는 자리를 준비했습니다. 등록 데스크에는 Model, Serving, Infra, Hardware, Memory의 다섯 분야 스티커를 마련했습니다. 네트워킹에 관심 있는 참석자들은 자신의 관심사에 맞는 스티커를 최대 두 장 골랐습니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/03-registration.webp" alt="등록 데스크에서 관심 분야 스티커를 고르는 참석자들" width="1600" height="1067" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*각자의 관심 분야를 고르며 행사를 시작한 참석자들.*
+<figcaption>각자의 관심 분야를 고르며 행사를 시작한 참석자들.</figcaption>
+</figure>
 
 오프닝은 PyTorchKR 박정환 운영자와 XCENA 김주현 CPO가 함께했습니다. 이어 XCENA 이주호 님, SK하이닉스 오세진 님, FuriosaAI 이동훈 님, LMCache Baoloong Mao 님의 발표가 진행됐습니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/05-opening-pytorchkr.webp" alt="오프닝 인사를 전하는 PyTorchKR 박정환 운영자" width="1600" height="900" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
+<figcaption>PyTorchKR 박정환 운영자의 오프닝.</figcaption>
+</figure>
 
-*PyTorchKR 박정환 운영자의 오프닝.*
-
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/06-opening-xcena.webp" alt="오프닝 인사를 전하는 XCENA 김주현 CPO" width="1600" height="1067" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*XCENA 김주현 CPO의 오프닝.*
+<figcaption>XCENA 김주현 CPO의 오프닝.</figcaption>
+</figure>
 
 ## CXL과 KV 캐시 저장 계층, XCENA 이주호 님
 
@@ -38,9 +41,10 @@ XCENA, SK하이닉스, [FuriosaAI](https://furiosa.ai/), LMCache의 연사들은
 
 이와 함께 XCENA의 오픈소스 프로젝트 [Maru](https://github.com/xcena-dev/maru)를 소개했습니다. Maru는 LLM 추론에서 CXL 공유 메모리를 활용하기 위한 KV 캐시 저장 엔진입니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/07-xcena.webp" alt="CXL for KVCache를 발표하는 XCENA 이주호 님" width="1600" height="1067" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*CXL의 메모리 확장 방식과 KV 캐시 저장 구조를 소개하는 이주호 님.*
+<figcaption>CXL의 메모리 확장 방식과 KV 캐시 저장 구조를 소개하는 이주호 님.</figcaption>
+</figure>
 
 발표에서는 CXL 메모리 풀에 DRAM과 SSD를 결합하는 구조를 다뤘습니다. 자주 사용하는 캐시는 DRAM에, 덜 사용하는 캐시는 SSD에 두고 Maru로 추론 엔진과 저장 계층을 연결하는 방식입니다. 저장할 수 있는 캐시의 양과 함께, 캐시를 GPU까지 가져오는 경로와 비용도 고려해야 한다는 점을 짚었습니다.
 
@@ -50,9 +54,10 @@ XCENA, SK하이닉스, [FuriosaAI](https://furiosa.ai/), LMCache의 연사들은
 
 오세진 님은 「Analyzing Utilization of GPU and HBM in LLM Serving Systems」에서 입력을 처리하는 프리필(prefill)과 이후 토큰을 생성하는 디코드(decode)의 자원 사용 양상을 분석했습니다. GPU 연산 성능과 고대역폭 메모리(HBM, High Bandwidth Memory)의 대역폭 중 어떤 자원이 성능을 제한하는지, 루프라인(Roofline) 분석과 실제 시스템의 프로파일링을 대조해 설명했습니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/08-skhynix-session.webp" alt="GPU와 HBM의 자원 활용 분석을 발표하는 SK하이닉스 오세진 님" width="1600" height="900" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*프리필과 디코드의 자원 사용 양상을 설명하는 오세진 님.*
+<figcaption>프리필과 디코드의 자원 사용 양상을 설명하는 오세진 님.</figcaption>
+</figure>
 
 발표에서 소개한 H100 두 장, Llama 3.1 8B, vLLM 환경의 실험에서는 프리필의 주요 프로젝션(projection) 구간에서 연산 자원 활용률이 높았고, 디코드에서는 HBM 대역폭 사용률이 높았습니다. 첫 토큰이 나올 때까지 걸리는 시간(TTFT, Time to First Token)과 출력 토큰당 시간(TPOT, Time per Output Token)을 구분해 살펴봐야 하는 이유를 실험으로 설명했습니다.
 
@@ -64,9 +69,10 @@ KV 캐시를 재사용해 프리필 연산을 줄인 뒤에는 메모리 대역�
 
 실행할 텐서의 형태를 미리 컴파일하는 버킷(bucket) 구조와 요청 스케줄링도 다뤘습니다. 여러 요청을 하나로 묶으면 처리량을 늘릴 수 있지만, 더 큰 버킷과 패딩이 필요해 지연 시간이 늘어날 수도 있습니다. 패딩(padding)은 정해진 텐서 형태에 맞춰 사용하지 않는 위치를 채우는 작업입니다. Furiosa-LLM은 실제 장치에서 실행 비용을 측정하고, 두 배치를 따로 처리하는 것보다 비용이 낮을 때 병합하는 방식을 소개했습니다. 요청마다 다른 문맥 길이와 패딩 비용도 함께 고려합니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/09-furiosaai.webp" alt="노드 밖의 KV 캐시 공유 경로를 설명하는 FuriosaAI 이동훈 님" width="1600" height="900" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*KV 캐시를 다른 노드와 공유하는 경로를 설명하는 이동훈 님.*
+<figcaption>KV 캐시를 다른 노드와 공유하는 경로를 설명하는 이동훈 님.</figcaption>
+</figure>
 
 캐시 재사용으로 줄일 수 있는 계산과 캐시 전송에 드는 시간을 비교한 사례도 있었습니다. 발표 사례는 12,370토큰 프롬프트를 요청 하나씩, 조건별 세 차례 측정한 결과였습니다. 호스트 캐시를 가져와 첫 토큰을 생성하는 데 약 92ms, 다시 계산하는 데 약 900ms가 걸렸습니다. 해당 실험 조건에서는 호스트 캐시를 가져오는 편이 빨랐습니다.
 
@@ -78,9 +84,10 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 이번 발표에서는 캐시 관리를 추론 엔진 내부에서 별도 프로세스로 분리하는 [MP Mode(Multiprocess Mode)](https://docs.lmcache.ai/mp/index.html)를 다뤘습니다. 추론 연산과 캐시 입출력(I/O)을 분리해 자원 경합을 줄이려는 설계입니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/10-lmcache.webp" alt="통합 KV 캐시 관리 계층과 MP Mode를 소개하는 LMCache Baoloong Mao 님" width="1600" height="1200" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*여러 추론 엔진과 저장 계층을 연결하는 LMCache의 구조를 소개하는 Baoloong Mao 님.*
+<figcaption>여러 추론 엔진과 저장 계층을 연결하는 LMCache의 구조를 소개하는 Baoloong Mao 님.</figcaption>
+</figure>
 
 발표에서 소개한 CUDA 환경에서는 프로세스 간 통신 기능인 CUDA IPC(Inter-Process Communication)로 GPU 메모리를 공유하고, 프로세스 사이에는 블록 ID 같은 제어 정보를 전달합니다. 노드 안의 공유 CPU 메모리 풀로 중복 저장을 줄이고, 여러 저장 계층을 병렬로 조회하고 불러오는 구성도 설명했습니다.
 
@@ -90,21 +97,24 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 발표가 끝난 뒤에는 연사들이 함께 무대에 올라 참석자들의 질문에 답했습니다. 프리필·디코드 분리와 혼합 배칭의 차이, LMCache와 vLLM 내장 캐시 기능의 역할, MP Mode의 다중 노드 확장 계획 등 발표 내용을 더 구체적으로 살펴보는 질문들이 이어졌습니다. 혼합 배칭(mixed batching)은 프리필과 디코드 작업을 함께 처리하는 방식입니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/11-qa-session.webp" alt="참석자들의 질문을 함께 보며 답하는 연사들" width="1600" height="900" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*현장에서 접수한 질문을 보며 답변하는 연사들.*
+<figcaption>현장에서 접수한 질문을 보며 답변하는 연사들.</figcaption>
+</figure>
 
 질의응답 뒤에는 참석자들이 삼삼오오 모여 이야기를 나눴습니다. 등록할 때 골랐던 관심 분야 스티커는 서로의 관심사를 알아보고 대화를 시작하는 데 활용됐습니다. 연사와 참석자가 함께 이야기를 나누며 같은 문제에 대한 서로 다른 접근을 공유했습니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/14-networking-conversation.webp" alt="네트워킹 시간에 이야기를 나누는 참석자들" width="800" height="533" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*발표 뒤 자유롭게 대화를 나누는 참석자들.*
+<figcaption>발표 뒤 자유롭게 대화를 나누는 참석자들.</figcaption>
+</figure>
 
 행사장 한쪽에 마련한 XCENA의 CXL 서버 주변에서도 교류가 이어졌습니다. 참석자들은 장비를 가까이에서 살펴보며 궁금한 점을 묻고 답했습니다. 발표에서 소개한 메모리 확장 기술을 실제 장비와 연결해 보는 시간이었습니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/15-networking-cxl-server.webp" alt="행사장에 모여 대화를 이어가는 참석자들" width="1600" height="900" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*행사장 곳곳에서 이어진 네트워킹.*
+<figcaption>행사장 곳곳에서 이어진 네트워킹.</figcaption>
+</figure>
 
 ## 설문 응답 72건으로 돌아본 행사
 
@@ -112,15 +122,17 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 행사 만족도는 5점 만점에 평균 4.50점이었습니다. 5점 응답은 46건, 4점은 17건으로, 두 항목을 합한 63건이 전체 응답의 87.5%를 차지했습니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/16-survey-72-satisfaction.webp" alt="설문 응답 72건의 행사 만족도 그래프" width="1800" height="1207" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*평균 만족도 4.50점. 4점 또는 5점을 선택한 응답은 63건으로 87.5%였습니다.*
+<figcaption>평균 만족도 4.50점. 4점 또는 5점을 선택한 응답은 63건으로 87.5%였습니다.</figcaption>
+</figure>
 
 응답자의 업무와 연차도 살펴봤습니다. AI/ML 엔지니어, 소프트웨어 엔지니어, 하드웨어 엔지니어, 학생 등 여러 배경의 참석자들이 설문에 참여했습니다.
 
+<figure class="image-with-caption">
 <img src="/assets/images/kvcache-meetup-korea-2026/17-survey-72-role-career-matrix.webp" alt="설문 응답자의 업무별 연차 분포를 나타낸 그래프" width="1800" height="1165" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
-
-*설문 응답 72건을 기준으로 정리한 업무별 연차 분포. 업무와 연차의 학생 항목은 서로 다른 문항입니다.*
+<figcaption>설문 응답 72건을 기준으로 정리한 업무별 연차 분포. 업무와 연차의 학생 항목은 서로 다른 문항입니다.</figcaption>
+</figure>
 
 좋았던 점을 묻는 복수 선택 문항에서는 프로그램 구성이 48건(66.7%)으로 가장 많이 선택됐습니다. 행사 장소 및 시설은 30건(41.7%), 참여자 간 소통 분위기와 행사 시간 및 일정은 각각 22건(30.6%)이었습니다.
 
@@ -128,7 +140,7 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 다음 행사에서 듣고 싶은 내용으로는 실제 프로덕션 적용 사례, vLLM과 SGLang의 내부 동작, 신경망 처리 장치(NPU, Neural Processing Unit)용 컴파일러, 최신 추론 최적화 기법, 시연과 데모가 제시됐습니다. 제품 소개에 더해 운영 중 겪은 문제와 시행착오, 해결 과정을 구체적으로 나눠달라는 요청도 있었습니다.
 
-## 함께해 주셔서 감사합니다
+## 함께 해주셔서 감사합니다!
 
 <img src="/assets/images/kvcache-meetup-korea-2026/18-group-photo.webp" alt="KVCache Meetup Korea 2026 단체 사진" width="1600" height="899" loading="lazy" decoding="async" style="max-width:100%;height:auto;">
 
@@ -143,8 +155,6 @@ PyTorchKR은 이번 설문에서 받은 의견을 다음 행사 준비에 반영
 - [LMCache MP Mode 공식 문서](https://docs.lmcache.ai/mp/index.html)
 
 각 세션과 현장 후기는 운영진이 정리한 행사 원고를 바탕으로 작성했습니다. 실험 수치는 발표 사례의 조건에 한정하며, 다른 모델이나 장비에서도 같은 결과를 보장하는 수치는 아닙니다. 참고 자료의 프로젝트 문서는 행사 이후에 갱신될 수 있습니다.
-
-*이 글은 GPT 모델로 정리한 초안을 바탕으로 한 것으로, 원문의 내용 또는 의도와 다르게 정리된 내용이 있을 수 있습니다. 관심있는 내용이시라면 원문도 함께 참고해주세요! 읽으시면서 어색하거나 잘못된 내용을 발견하시면 댓글로 알려주시기를 부탁드립니다.* 🤗
 
 ## 행사 영상 다시 보기
 
