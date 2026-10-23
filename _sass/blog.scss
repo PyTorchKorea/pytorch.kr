@@ -577,7 +577,7 @@
   max-width: 100%;
 }
 
-.blog .pytorch-article .blog-content img {
+:where(.blog .pytorch-article .blog-content) img {
   display: block;
   width: 75%;
   height: auto;
