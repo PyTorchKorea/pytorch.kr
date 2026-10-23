@@ -175,4 +175,4 @@ PyTorchKR은 이번 설문에서 받은 의견을 다음 행사 준비에 반영
 
 ## 행사 영상 다시 보기
 
-KVCache Meetup Korea의 행사 영상은 [YouTube에서 다시 보실 수 있습니다](https://www.youtube.com/watch?v=F3G4_KSd8Hg&list=PLQxkB_v4d6ZU). 행사에 함께하지 못하신 분들도 영상을 통해 현장을 살펴보세요.
+KVCache Meetup Korea의 행사 영상은 [PyTorchKR YouTube](https://www.youtube.com/watch?v=F3G4_KSd8Hg&list=PLQxkB_v4d6ZU)에서 다시 보실 수 있습니다. 행사에 함께하지 못하신 분들도 영상을 통해 현장을 살펴보세요.
