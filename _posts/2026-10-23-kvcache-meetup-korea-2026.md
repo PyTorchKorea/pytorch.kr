@@ -7,7 +7,7 @@ category: ["pytorchkr", "recap", "meetup", "kvcache-meetup"]
 
 <figure class="image-with-caption" markdown="1">
 
-![KVCache Meetup Korea 2026 발표 현장](/assets/images/kvcache-meetup-korea-2026/02-audience.webp){: loading="eager" fetchpriority="high" decoding="async" }
+![KVCache Meetup Korea 2026 발표 현장](/assets/images/kvcache-meetup-korea-2026/02-audience.webp){:style="width:75%" loading="eager" fetchpriority="high" decoding="async" }
 
 <figcaption>발표를 듣기 위해 모인 KVCache Meetup Korea 참석자들.</figcaption>
 </figure>
@@ -26,7 +26,7 @@ XCENA, SK하이닉스, [FuriosaAI](https://furiosa.ai/), LMCache의 연사들은
 
 <figure class="image-with-caption" markdown="1">
 
-![등록 데스크에서 관심 분야 스티커를 고르는 참석자들](/assets/images/kvcache-meetup-korea-2026/03-registration.webp){: loading="lazy" decoding="async" }
+![등록 데스크에서 관심 분야 스티커를 고르는 참석자들](/assets/images/kvcache-meetup-korea-2026/03-registration.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>각자의 관심 분야를 고르며 행사를 시작한 참석자들.</figcaption>
 </figure>
@@ -35,14 +35,14 @@ XCENA, SK하이닉스, [FuriosaAI](https://furiosa.ai/), LMCache의 연사들은
 
 <figure class="image-with-caption" markdown="1">
 
-![오프닝 인사를 전하는 PyTorchKR 박정환 운영자](/assets/images/kvcache-meetup-korea-2026/05-opening-pytorchkr.webp){: loading="lazy" decoding="async" }
+![오프닝 인사를 전하는 PyTorchKR 박정환 운영자](/assets/images/kvcache-meetup-korea-2026/05-opening-pytorchkr.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>PyTorchKR 박정환 운영자의 오프닝.</figcaption>
 </figure>
 
 <figure class="image-with-caption" markdown="1">
 
-![오프닝 인사를 전하는 XCENA 김주현 CPO](/assets/images/kvcache-meetup-korea-2026/06-opening-xcena.webp){: loading="lazy" decoding="async" }
+![오프닝 인사를 전하는 XCENA 김주현 CPO](/assets/images/kvcache-meetup-korea-2026/06-opening-xcena.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>XCENA 김주현 CPO의 오프닝.</figcaption>
 </figure>
@@ -55,7 +55,7 @@ XCENA, SK하이닉스, [FuriosaAI](https://furiosa.ai/), LMCache의 연사들은
 
 <figure class="image-with-caption" markdown="1">
 
-![CXL for KVCache를 발표하는 XCENA 이주호 님](/assets/images/kvcache-meetup-korea-2026/07-xcena.webp){: loading="lazy" decoding="async" }
+![CXL for KVCache를 발표하는 XCENA 이주호 님](/assets/images/kvcache-meetup-korea-2026/07-xcena.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>CXL의 메모리 확장 방식과 KV 캐시 저장 구조를 소개하는 이주호 님.</figcaption>
 </figure>
@@ -70,7 +70,7 @@ XCENA, SK하이닉스, [FuriosaAI](https://furiosa.ai/), LMCache의 연사들은
 
 <figure class="image-with-caption" markdown="1">
 
-![GPU와 HBM의 자원 활용 분석을 발표하는 SK하이닉스 오세진 님](/assets/images/kvcache-meetup-korea-2026/08-skhynix-session.webp){: loading="lazy" decoding="async" }
+![GPU와 HBM의 자원 활용 분석을 발표하는 SK하이닉스 오세진 님](/assets/images/kvcache-meetup-korea-2026/08-skhynix-session.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>프리필과 디코드의 자원 사용 양상을 설명하는 오세진 님.</figcaption>
 </figure>
@@ -87,7 +87,7 @@ KV 캐시를 재사용해 프리필 연산을 줄인 뒤에는 메모리 대역�
 
 <figure class="image-with-caption" markdown="1">
 
-![노드 밖의 KV 캐시 공유 경로를 설명하는 FuriosaAI 이동훈 님](/assets/images/kvcache-meetup-korea-2026/09-furiosaai.webp){: loading="lazy" decoding="async" }
+![노드 밖의 KV 캐시 공유 경로를 설명하는 FuriosaAI 이동훈 님](/assets/images/kvcache-meetup-korea-2026/09-furiosaai.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>KV 캐시를 다른 노드와 공유하는 경로를 설명하는 이동훈 님.</figcaption>
 </figure>
@@ -104,7 +104,7 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 <figure class="image-with-caption" markdown="1">
 
-![통합 KV 캐시 관리 계층과 MP Mode를 소개하는 LMCache Baoloong Mao 님](/assets/images/kvcache-meetup-korea-2026/10-lmcache.webp){: loading="lazy" decoding="async" }
+![통합 KV 캐시 관리 계층과 MP Mode를 소개하는 LMCache Baoloong Mao 님](/assets/images/kvcache-meetup-korea-2026/10-lmcache.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>여러 추론 엔진과 저장 계층을 연결하는 LMCache의 구조를 소개하는 Baoloong Mao 님.</figcaption>
 </figure>
@@ -119,7 +119,7 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 <figure class="image-with-caption" markdown="1">
 
-![참석자들의 질문을 함께 보며 답하는 연사들](/assets/images/kvcache-meetup-korea-2026/11-qa-session.webp){: loading="lazy" decoding="async" }
+![참석자들의 질문을 함께 보며 답하는 연사들](/assets/images/kvcache-meetup-korea-2026/11-qa-session.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>현장에서 접수한 질문을 보며 답변하는 연사들.</figcaption>
 </figure>
@@ -128,7 +128,7 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 <figure class="image-with-caption" markdown="1">
 
-![네트워킹 시간에 이야기를 나누는 참석자들](/assets/images/kvcache-meetup-korea-2026/14-networking-conversation.webp){: loading="lazy" decoding="async" }
+![네트워킹 시간에 이야기를 나누는 참석자들](/assets/images/kvcache-meetup-korea-2026/14-networking-conversation.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>발표 뒤 자유롭게 대화를 나누는 참석자들.</figcaption>
 </figure>
@@ -137,7 +137,7 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 <figure class="image-with-caption" markdown="1">
 
-![행사장에 모여 대화를 이어가는 참석자들](/assets/images/kvcache-meetup-korea-2026/15-networking-cxl-server.webp){: loading="lazy" decoding="async" }
+![행사장에 모여 대화를 이어가는 참석자들](/assets/images/kvcache-meetup-korea-2026/15-networking-cxl-server.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>행사장 곳곳에서 이어진 네트워킹.</figcaption>
 </figure>
@@ -150,7 +150,7 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 <figure class="image-with-caption" markdown="1">
 
-![설문 응답 72건의 행사 만족도 그래프](/assets/images/kvcache-meetup-korea-2026/16-survey-72-satisfaction.webp){: loading="lazy" decoding="async" }
+![설문 응답 72건의 행사 만족도 그래프](/assets/images/kvcache-meetup-korea-2026/16-survey-72-satisfaction.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>평균 만족도 4.50점. 4점 또는 5점을 선택한 응답은 63건으로 87.5%였습니다.</figcaption>
 </figure>
@@ -159,7 +159,7 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 <figure class="image-with-caption" markdown="1">
 
-![설문 응답자의 업무별 연차 분포를 나타낸 그래프](/assets/images/kvcache-meetup-korea-2026/17-survey-72-role-career-matrix.webp){: loading="lazy" decoding="async" }
+![설문 응답자의 업무별 연차 분포를 나타낸 그래프](/assets/images/kvcache-meetup-korea-2026/17-survey-72-role-career-matrix.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>설문 응답 72건을 기준으로 정리한 업무별 연차 분포. 업무와 연차의 학생 항목은 서로 다른 문항입니다.</figcaption>
 </figure>
@@ -174,7 +174,7 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 <figure class="image-with-caption" markdown="1">
 
-![KVCache Meetup Korea 2026 단체 사진](/assets/images/kvcache-meetup-korea-2026/18-group-photo.webp){: loading="lazy" decoding="async" }
+![KVCache Meetup Korea 2026 단체 사진](/assets/images/kvcache-meetup-korea-2026/18-group-photo.webp){:style="width:75%" loading="lazy" decoding="async" }
 
 <figcaption>KVCache Meetup Korea에 함께한 참석자들과 연사들.</figcaption>
 </figure>
