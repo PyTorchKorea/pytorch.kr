@@ -4,8 +4,13 @@
 
 <body class="blog">
     {% include tag_manager_script.html %}
-    {% comment %} 번역 원문 블로그: category 에 'vllm.ai' 가 있으면 vLLM 공식 블로그, 아니면 PyTorch 공식 블로그 {% endcomment %}
-    {% if page.category contains 'vllm.ai' %}
+    {% comment %} 번역 원문 블로그: category 에 'vllm-sr.ai' 가 있으면 vLLM Semantic Router 공식 블로그, 'vllm.ai' 가 있으면 vLLM 공식 블로그, 아니면 PyTorch 공식 블로그 {% endcomment %}
+    {% if page.category contains 'vllm-sr.ai' %}
+        {% assign org_blog_name = 'vLLM Semantic Router 공식 블로그' %}
+        {% assign org_blog_name_en = 'vLLM Semantic Router official blog' %}
+        {% assign org_blog_url = 'https://vllm-sr.ai/blog' %}
+        {% assign org_default_author = 'vLLM Semantic Router Team' %}
+    {% elsif page.category contains 'vllm.ai' %}
         {% assign org_blog_name = 'vLLM 공식 블로그' %}
         {% assign org_blog_name_en = 'vLLM official blog' %}
         {% assign org_blog_url = 'https://vllm.ai/blog' %}
