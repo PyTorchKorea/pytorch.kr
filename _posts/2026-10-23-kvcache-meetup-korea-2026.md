@@ -5,11 +5,16 @@ author: "박정환(9bow)"
 category: ["pytorchkr", "recap", "meetup", "kvcache-meetup"]
 ---
 
+<figure class="image-with-caption" markdown="1">
+
 ![KVCache Meetup Korea 2026 발표 현장](/assets/images/kvcache-meetup-korea-2026/02-audience.webp){: loading="eager" fetchpriority="high" decoding="async" }
+
+<figcaption>발표를 듣기 위해 모인 KVCache Meetup Korea 참석자들.</figcaption>
+</figure>
 
 ## KVCache Meetup Korea 개요
 
-2026년 9월 30일 저녁, 서울 강남 드림플러스에서 KVCache Meetup Korea를 열었습니다. [PyTorchKR](https://pytorch.kr)과 CXL 전문 스타트업 [XCENA](https://xcena.com)가 공동으로 주최하고, [LMCache](https://lmcache.ai/)의 개발사 [Tensormesh](https://tensormesh.ai/about/)가 후원했습니다. 이번 행사는 대규모 언어 모델(LLM, Large Language Model)의 추론 과정에서 메모리 병목을 줄이는 방법과 경험을 나누는 자리였습니다.
+지난 2026년 9월 30일 저녁, 서울 강남 드림플러스에서 KVCache Meetup Korea 행사가 진행되었습니다. [PyTorchKR](https://pytorch.kr)과 CXL 전문 스타트업 [XCENA](https://xcena.com)가 공동으로 주최하고, [LMCache](https://lmcache.ai/)의 개발사 [Tensormesh](https://tensormesh.ai/about/)가 후원했습니다. 이번 행사는 대규모 언어 모델(LLM, Large Language Model)의 추론 과정에서 메모리 병목을 줄이는 방법과 경험을 나누는 자리였습니다.
 
 이번 밋업의 주제는 KV 캐시(KV Cache)였습니다. KV 캐시는 모델이 앞서 처리한 토큰의 어텐션 키(Key)와 값(Value)을 저장해, 다음 토큰을 생성할 때 같은 계산을 반복하지 않도록 하는 데이터입니다. 이를 어디에 보관하고, 어떻게 재사용하며, 필요한 곳까지 얼마나 빠르게 가져올 것인지를 하드웨어와 추론 소프트웨어의 관점에서 함께 살펴봤습니다.
 
@@ -167,7 +172,12 @@ LMCache의 메인테이너이자 핵심 아키텍트인 Baoloong Mao 님은 여�
 
 ## 함께 해주셔서 감사합니다!
 
+<figure class="image-with-caption" markdown="1">
+
 ![KVCache Meetup Korea 2026 단체 사진](/assets/images/kvcache-meetup-korea-2026/18-group-photo.webp){: loading="lazy" decoding="async" }
+
+<figcaption>KVCache Meetup Korea에 함께한 참석자들과 연사들.</figcaption>
+</figure>
 
 PyTorchKR은 이번 설문에서 받은 의견을 다음 행사 준비에 반영하겠습니다. 발표를 더 잘 듣고 볼 수 있는 환경과 함께, 관심 분야가 비슷한 참석자들이 쉽게 만나 대화를 시작할 수 있는 방식도 검토하겠습니다.
 
